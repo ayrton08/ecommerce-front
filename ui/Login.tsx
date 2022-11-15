@@ -47,6 +47,22 @@ export const Login = () => {
               />
             </label>
             <button className="btn mt-4">Next</button>
+
+            {/* <label className="label">
+              <span className="label-text">Your Code</span>
+            </label>
+            <label className="input-group">
+              <span>Code</span>
+              <input
+                type="text"
+                placeholder="1234"
+                className="input input-bordered"
+              />
+            </label>
+            <div className="text-green-500 font-bold bg-white p-1">
+              Te enviamos un codigo a tu email
+            </div>
+            <button className="btn mt-4">Ingresar</button> */}
           </div>
         </div>
       </div>
