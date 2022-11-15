@@ -8,10 +8,10 @@ import logo from "assets/logo.svg";
 import Link from "next/link";
 
 export const Header = () => {
-  const logued = true;
+  const logued = false;
 
   return (
-    <div className="navbar bg-base-200 h-[75px] rounded-lg justify-between shadow-lg shadow-black/00">
+    <div className="navbar bg-base-200 h-[75px] rounded-lg justify-between shadow-lg shadow-black/10 z-30 ">
       <div>
         <a className="btn btn-ghost normal-case text-xl">
           <Image src={logo} alt={"user icon"} className="mr-2" />
@@ -159,20 +159,13 @@ export const Header = () => {
               </ul>
             </>
           ) : (
-            <div className="sm:flex sm:gap-4">
+            <div className="sm:flex justify-end w-[175px] sm:gap-4 mr-2">
               <Link
-                className="block rounded-md bg-teal-600 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-teal-700"
+                className="block  rounded-md bg-teal-600 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-teal-700"
                 href="/signin"
               >
                 Login
               </Link>
-
-              <a
-                className="hidden rounded-md bg-gray-100 px-5 py-2.5 text-sm font-medium text-teal-600 transition hover:text-teal-600/75 sm:block"
-                href=""
-              >
-                Register
-              </a>
             </div>
           )}
         </div>
