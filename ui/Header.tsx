@@ -5,6 +5,8 @@ import user from "assets/user.svg";
 import menu from "assets/menu.svg";
 import logo from "assets/logo.svg";
 
+import Link from "next/link";
+
 export const Header = () => {
   const logued = true;
 
@@ -55,7 +57,10 @@ export const Header = () => {
         </button>
         {/* Carrito de compras */}
         {logued && (
-          <div className=" dropdown-end hidden sm:dropdown">
+          <div className=" dropdown-end hidden sm:dropdown ">
+            <label className="btn btn-ghost">
+              <h3 className="text-green-400 text-md">Ayrton</h3>
+            </label>
             <label tabIndex={0} className="btn btn-ghost btn-circle">
               <div className="indicator">
                 <svg
@@ -97,9 +102,33 @@ export const Header = () => {
           tabIndex={0}
           className="btn btn-ghost btn-circle avatar sm:hidden"
         >
-          <div className="w-8 rounded-full">
+          {/* <div className="w-8 rounded-full">
             <Image src={menu} alt={"menu"} className="sm:hidden" />
-          </div>
+          </div> */}
+
+          <label className="btn btn-circle swap swap-rotate">
+            <input type="checkbox" className="hidden" />
+
+            <svg
+              className="swap-off fill-current"
+              xmlns="http://www.w3.org/2000/svg"
+              width="32"
+              height="32"
+              viewBox="0 0 512 512"
+            >
+              <path d="M64,384H448V341.33H64Zm0-106.67H448V234.67H64ZM64,128v42.67H448V128Z" />
+            </svg>
+
+            <svg
+              className="swap-on fill-current"
+              xmlns="http://www.w3.org/2000/svg"
+              width="32"
+              height="32"
+              viewBox="0 0 512 512"
+            >
+              <polygon points="400 145.49 366.51 112 256 222.51 145.49 112 112 145.49 222.51 256 112 366.51 145.49 400 256 289.49 366.51 400 400 366.51 289.49 256 400 145.49" />
+            </svg>
+          </label>
         </label>
 
         <div className=" dropdown-end hidden sm:dropdown">
@@ -131,12 +160,12 @@ export const Header = () => {
             </>
           ) : (
             <div className="sm:flex sm:gap-4">
-              <a
+              <Link
                 className="block rounded-md bg-teal-600 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-teal-700"
-                href=""
+                href="/signin"
               >
                 Login
-              </a>
+              </Link>
 
               <a
                 className="hidden rounded-md bg-gray-100 px-5 py-2.5 text-sm font-medium text-teal-600 transition hover:text-teal-600/75 sm:block"
