@@ -8,7 +8,7 @@ import logo from "assets/logo.svg";
 import Link from "next/link";
 
 export const Header = () => {
-  const logued = false;
+  const logued = true;
 
   return (
     <div className="navbar bg-base-200 h-[75px] rounded-lg justify-between shadow-lg shadow-black/10 z-30 ">
@@ -148,7 +148,9 @@ export const Header = () => {
                 className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
               >
                 <li>
-                  <a className="justify-between">Profile</a>
+                  <Link className="justify-between" href="/profile">
+                    Profile
+                  </Link>
                 </li>
                 <li>
                   <a>Settings</a>

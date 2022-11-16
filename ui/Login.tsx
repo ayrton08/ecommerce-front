@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export const Login = () => {
   return (
-    <div className="card lg:card-side bg-base-100 shadow-xl h-2/5 bg-black/20 z-30">
+    <div className="card lg:card-side  shadow-xl h-2/5 bg-black/20 z-30">
       <figure>
         <Image src={login} alt="login" className="w-80" />
       </figure>
