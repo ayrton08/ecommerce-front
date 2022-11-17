@@ -6,6 +6,7 @@ import menu from "assets/menu.svg";
 import logo from "assets/logo.svg";
 
 import Link from "next/link";
+import { AvatarIcon, LogoIcon, MenuIcon } from "./icons";
 
 export const Header = () => {
   const logued = true;
@@ -14,7 +15,8 @@ export const Header = () => {
     <div className="navbar bg-base-200 h-[75px] rounded-lg justify-between shadow-lg shadow-black/10 ">
       <div>
         <Link className="btn btn-ghost normal-case text-xl" href="/">
-          <Image src={logo} alt={"user icon"} className="mr-2" />
+          <LogoIcon className="mr-2" />
+          {/* <Image src={logo} alt={"user icon"} className="mr-2" /> */}
           ecommerce
         </Link>
       </div>
@@ -102,33 +104,7 @@ export const Header = () => {
           tabIndex={0}
           className="btn btn-ghost btn-circle avatar sm:hidden"
         >
-          {/* <div className="w-8 rounded-full">
-            <Image src={menu} alt={"menu"} className="sm:hidden" />
-          </div> */}
-
-          <label className="btn btn-circle swap swap-rotate">
-            <input type="checkbox" className="hidden" />
-
-            <svg
-              className="swap-off fill-current"
-              xmlns="http://www.w3.org/2000/svg"
-              width="32"
-              height="32"
-              viewBox="0 0 512 512"
-            >
-              <path d="M64,384H448V341.33H64Zm0-106.67H448V234.67H64ZM64,128v42.67H448V128Z" />
-            </svg>
-
-            <svg
-              className="swap-on fill-current"
-              xmlns="http://www.w3.org/2000/svg"
-              width="32"
-              height="32"
-              viewBox="0 0 512 512"
-            >
-              <polygon points="400 145.49 366.51 112 256 222.51 145.49 112 112 145.49 222.51 256 112 366.51 145.49 400 256 289.49 366.51 400 400 366.51 289.49 256 400 145.49" />
-            </svg>
-          </label>
+          <MenuIcon />
         </label>
 
         <div className=" dropdown-end hidden sm:dropdown">
@@ -136,11 +112,7 @@ export const Header = () => {
             <>
               <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                 <div className="w-10 rounded-full">
-                  <Image
-                    src={user}
-                    alt={"user icon"}
-                    className="hidden sm:flex"
-                  />
+                  <AvatarIcon></AvatarIcon>
                 </div>
               </label>
               <ul

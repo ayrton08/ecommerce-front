@@ -3,12 +3,14 @@ import Link from "next/link";
 import Image from "next/image";
 
 import user from "assets/user.svg";
+import { AvatarIcon } from "./icons";
 
 export const User = () => {
   return (
-    <div className=" card flex flex-col shadow-xl  bg-black/20 p-4  z-30">
+    <div className=" card flex flex-col shadow-xl  bg-black/20 py-8 px-4  z-30">
       <figure>
-        <Image src={user} alt="login" className="w-40" />
+        <AvatarIcon className="w-36" />
+        {/* <Image src={user} alt="login" className="w-40" /> */}
       </figure>
       <div className="flex flex-col p-4 justify-center">
         <h2 className="card-title self-center mb-4">Ayrton Juarez</h2>

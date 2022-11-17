@@ -2,12 +2,13 @@ import React from "react";
 import login from "assets/login.svg";
 import Image from "next/image";
 import Link from "next/link";
+import { LoginIcon } from "./icons";
 
 export const Login = () => {
   return (
-    <div className="card lg:card-side  shadow-xl h-2/5 bg-black/20 z-30">
+    <div className="card lg:card-side  shadow-xl h-2/5 bg-black/20 z-30 px-4 py-8">
       <figure>
-        <Image src={login} alt="login" className="w-80 p-4" />
+        <LoginIcon />
       </figure>
       <div className="card-body justify-center">
         <ul className="menu text-white hover:bg-inherit hover:text-black font-bold items-center  p-[1px] rounded-box z-30 bg-black/50 absolute top-4 right-4">

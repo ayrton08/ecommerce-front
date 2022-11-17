@@ -6,7 +6,7 @@ import user from "assets/user.svg";
 
 export const Cart = () => {
   return (
-    <div className=" card flex flex-col shadow-xl h-[564px] w-[426px] bg-black/20 p-4  z-30">
+    <div className=" card flex flex-col shadow-xl h-[580px] w-[426px] bg-black/20 py-8 px-4   z-30">
       {/* <figure>
         <Image src={user} alt="login" className="w-40" />
       </figure> */}
