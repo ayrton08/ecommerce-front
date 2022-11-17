@@ -7,11 +7,11 @@ export const Menu = () => {
     <Button.Group className="w-1/3">
       <Button color="gray" className="w-full">
         {" "}
-        Categories
+        <a href="#categories">Categories</a>
       </Button>
       <Button color="gray" className="w-full">
         {" "}
-        Featured
+        <a href="#featured">Featured</a>
       </Button>
       <Button color="gray" className="w-full">
         {" "}

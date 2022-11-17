@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  scroll-behavior: smooth;
+}
+
 .glass-efect {
   background: linear-gradient(
     135deg,
@@ -10,6 +14,14 @@
   );
   -webkit-backdrop-filter: blur(20px);
   backdrop-filter: blur(20px);
-  /* box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37); */
+  box-shadow: 0 8px 15px 0 rgba(0, 0, 0, 0.37);
   border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 4px;
+}
+.card-result {
+  @apply lg:w-1/4 md:w-1/2 p-4 w-full glass-efect  transition-all duration-500 ease-in-out hover:bg-[#EC7063] hover:text-white transform hover:-translate-y-1 hover:scale-105;
+}
+
+.bg {
+  @apply bg-gradient-to-b from-red-200 via-red-300 to-yellow-200;
 }

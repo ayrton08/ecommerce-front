@@ -11,12 +11,12 @@ export const Header = () => {
   const logued = true;
 
   return (
-    <div className="navbar bg-base-200 h-[75px] rounded-lg justify-between shadow-lg shadow-black/10 z-30 ">
+    <div className="navbar bg-base-200 h-[75px] rounded-lg justify-between shadow-lg shadow-black/10 ">
       <div>
-        <a className="btn btn-ghost normal-case text-xl">
+        <Link className="btn btn-ghost normal-case text-xl" href="/">
           <Image src={logo} alt={"user icon"} className="mr-2" />
           ecommerce
-        </a>
+        </Link>
       </div>
       {/*input search */}
       <div className="form-control  self-center w-1/2 max-w-[450px] hidden sm:flex relative">
