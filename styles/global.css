@@ -25,3 +25,7 @@
 .bg {
   @apply bg-gradient-to-b from-red-200 via-red-300 to-yellow-200;
 }
+
+.screen {
+  height: calc(100vh - 222px);
+}

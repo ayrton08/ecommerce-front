@@ -10,7 +10,7 @@ import Link from "next/link";
 
 export default function Signin() {
   return (
-    <div className="flex flex-col h-screen justify-center self-center items-center relative bg">
+    <div className="flex flex-col screen justify-center self-center items-center relative ">
       {/* <Image
         src={background}
         alt=""

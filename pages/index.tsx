@@ -11,7 +11,10 @@ import bg from "assets/bg.svg";
 
 export default function Home() {
   return (
-    <div className="bg">
+    <div>
+      <Head>
+        <title>Home</title>
+      </Head>
       <div className="p-4 mb-10 flex flex-col gap-10 items-center">
         <Header />
         <Menu />
@@ -26,7 +29,6 @@ export default function Home() {
       <Featured />
       <div className="divider px-8"></div>
       <Categories />
-      <Footer />
     </div>
   );
 }

@@ -16,7 +16,7 @@ export default function Search() {
   // });
 
   return (
-    <div className="p-4  flex flex-col min-h-screen gap-10 items-center bg">
+    <div className="p-4  flex flex-col min-h-screen gap-10 items-center">
       <Header />
       {/* <Menu /> */}
       <Product
