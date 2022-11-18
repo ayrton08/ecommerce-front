@@ -3,9 +3,19 @@ import Avatar from "./avatar.svg";
 import Login from "./login.svg";
 import Logo from "./logo.svg";
 import Payment from "./payment.svg";
+import Cart from "./cart.svg";
+import Computer from "./tecs/computer.svg";
+import Home from "./home.svg";
 
+const HomeIcon = ({ className }: any) => {
+  return <Home className={className} />;
+};
 const NotFoundIcon = ({ className }: any) => {
   return <NotFound className={className} />;
+};
+
+const ComputerIcon = ({ className }: any) => {
+  return <Computer className={className} />;
 };
 
 const AvatarIcon = ({ className }: any) => {
@@ -22,6 +32,10 @@ const LogoIcon = ({ className }: any) => {
 
 const PaymentIcon = ({ className }: any) => {
   return <Payment className={className} />;
+};
+
+const CartIcon = ({ className }: any) => {
+  return <Cart className={className} />;
 };
 
 const MenuIcon = ({ className }: any) => {
@@ -52,4 +66,14 @@ const MenuIcon = ({ className }: any) => {
   );
 };
 
-export { NotFoundIcon, AvatarIcon, LoginIcon, LogoIcon, PaymentIcon, MenuIcon };
+export {
+  NotFoundIcon,
+  AvatarIcon,
+  LoginIcon,
+  LogoIcon,
+  PaymentIcon,
+  MenuIcon,
+  CartIcon,
+  ComputerIcon,
+  HomeIcon,
+};

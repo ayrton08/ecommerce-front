@@ -1,7 +1,6 @@
+import Head from "next/head";
 import { Product } from "components/Product";
-import React from "react";
 import { Header } from "ui/Header";
-import { Menu } from "ui/Menu";
 
 import useSWR from "swr";
 import { data } from "components/data";
@@ -17,6 +16,9 @@ export default function Search() {
 
   return (
     <div className="p-4  flex flex-col min-h-screen gap-10 items-center">
+      <Head>
+        <title>Search</title>
+      </Head>
       <Header />
       {/* <Menu /> */}
       <Product

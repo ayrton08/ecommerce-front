@@ -1,9 +1,4 @@
 import React from "react";
-import Image from "next/image";
-
-import user from "assets/user.svg";
-import menu from "assets/menu.svg";
-import logo from "assets/logo.svg";
 
 import Link from "next/link";
 import { AvatarIcon, LogoIcon, MenuIcon } from "./icons";
@@ -16,7 +11,6 @@ export const Header = () => {
       <div>
         <Link className="btn btn-ghost normal-case text-xl" href="/">
           <LogoIcon className="mr-2" />
-          {/* <Image src={logo} alt={"user icon"} className="mr-2" /> */}
           ecommerce
         </Link>
       </div>

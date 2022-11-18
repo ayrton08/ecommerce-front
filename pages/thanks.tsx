@@ -1,7 +1,4 @@
-import React from "react";
-import { Header } from "ui/Header";
-
-import { Payment } from "ui/Payment";
+import { Header, Payment } from "ui";
 
 export default function thanks() {
   return (

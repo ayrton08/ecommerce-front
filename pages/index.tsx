@@ -1,13 +1,10 @@
+import { ProductFeatured } from "components/ProductFeatured";
 import Head from "next/head";
-import Image from "next/image";
-import { Header } from "ui/Header";
-import { Banner } from "ui/Banner";
-import { Footer } from "ui/Footer";
-import { Featured } from "ui/Featured";
-import { Categories } from "ui/Categories";
-import { Menu } from "ui/Menu";
+import { Header, Banner, Featured, Categories, Menu } from "ui";
+import { Category } from "ui/Category";
+import { ComputerIcon } from "ui/icons";
 
-import bg from "assets/bg.svg";
+import { data } from "components/data";
 
 export default function Home() {
   return (
@@ -19,16 +16,42 @@ export default function Home() {
         <Header />
         <Menu />
       </div>
-      {/* <Image
-        src={bg}
-        alt=""
-        className="z-0  fixed top-0 bottom-0 left-0 right-0"
-      /> */}
 
       <Banner />
-      <Featured />
+      <Featured>
+        <ProductFeatured
+          title={data.Name}
+          price={data["Unit cost"]}
+          picture={data.Images[0].url}
+        />
+        <ProductFeatured
+          title={data.Name}
+          price={data["Unit cost"]}
+          picture={data.Images[0].url}
+        />
+        <ProductFeatured
+          title={data.Name}
+          price={data["Unit cost"]}
+          picture={data.Images[0].url}
+        />
+        <ProductFeatured
+          title={data.Name}
+          price={data["Unit cost"]}
+          picture={data.Images[0].url}
+        />
+        <ProductFeatured
+          title={data.Name}
+          price={data["Unit cost"]}
+          picture={data.Images[0].url}
+        />
+      </Featured>
       <div className="divider px-8"></div>
-      <Categories />
+      <Categories>
+        <Category label="Tecnology" icon={<ComputerIcon />} />
+        <Category label="Wrraper" icon={<ComputerIcon />} />
+        <Category label="Bazar" icon={<ComputerIcon />} />
+        <Category label="Sport" icon={<ComputerIcon />} />
+      </Categories>
     </div>
   );
 }
