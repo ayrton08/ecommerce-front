@@ -4,9 +4,10 @@ import { Header, Banner, Featured, Categories, Menu } from "ui";
 import { Category } from "ui/Category";
 import { ComputerIcon } from "ui/icons";
 
-import { data } from "components/data";
+import { useProducts } from "hooks/useData";
 
 export default function Home() {
+  const data = useProducts();
   return (
     <div>
       <Head>
@@ -19,31 +20,14 @@ export default function Home() {
 
       <Banner />
       <Featured>
-        <ProductFeatured
-          title={data.Name}
-          price={data["Unit cost"]}
-          picture={data.Images[0].url}
-        />
-        <ProductFeatured
-          title={data.Name}
-          price={data["Unit cost"]}
-          picture={data.Images[0].url}
-        />
-        <ProductFeatured
-          title={data.Name}
-          price={data["Unit cost"]}
-          picture={data.Images[0].url}
-        />
-        <ProductFeatured
-          title={data.Name}
-          price={data["Unit cost"]}
-          picture={data.Images[0].url}
-        />
-        <ProductFeatured
-          title={data.Name}
-          price={data["Unit cost"]}
-          picture={data.Images[0].url}
-        />
+        {data?.results?.map((data: any) => (
+          <ProductFeatured
+            key={data.Name}
+            title={data.Name}
+            price={data["Unit cost"]}
+            picture={data.Images[0].url}
+          />
+        ))}
       </Featured>
       <div className="divider px-8"></div>
       <Categories>

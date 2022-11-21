@@ -1,10 +1,29 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import Link from "next/link";
 import { AvatarIcon, LogoIcon, MenuIcon } from "./icons";
+import { isUserLogged } from "helpers/isUserLogged";
+import { Form, Formik } from "formik";
+import Router from "next/router";
+
+const initialValues = {
+  search: "",
+};
 
 export const Header = () => {
-  const logued = true;
+  const [logged, setLogged] = useState(false);
+
+  useEffect(() => {
+    const logged = isUserLogged();
+    setLogged(logged);
+  }, []);
+
+  const handler = (path: string) => {
+    Router.push({
+      pathname: "/search",
+      query: { q: path },
+    });
+  };
 
   return (
     <div className="navbar bg-base-200 h-[75px] rounded-lg justify-between shadow-lg shadow-black/10 ">
@@ -15,44 +34,35 @@ export const Header = () => {
         </Link>
       </div>
       {/*input search */}
-      <div className="form-control  self-center w-1/2 max-w-[450px] hidden sm:flex relative">
-        <input
-          type="text"
-          placeholder="Search"
-          className="input input-bordered w-full"
-        />
-        <button className="absolute flex justify-center items-center right-0 top-0 bottom-0 w-16 rounded-r-lg bg-[#458CD6] hover:bg-[#7baee4]">
-          <svg
-            width="26"
-            height="26"
-            fill="#ffffff"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path d="M10 18a7.952 7.952 0 0 0 4.897-1.688l4.396 4.396 1.414-1.414-4.396-4.396A7.952 7.952 0 0 0 18 10c0-4.411-3.589-8-8-8s-8 3.589-8 8 3.589 8 8 8Zm0-14c3.309 0 6 2.691 6 6s-2.691 6-6 6-6-2.691-6-6 2.691-6 6-6Z"></path>
-          </svg>
-        </button>
-      </div>
+      <Formik
+        initialValues={initialValues}
+        onSubmit={(values) => handler(values.search)}
+      >
+        {({ handleChange }) => (
+          <Form className="form-control  self-center w-1/2 max-w-[450px] hidden sm:flex relative">
+            <input
+              type="text"
+              placeholder="Search"
+              className="input input-bordered w-full"
+              onChange={handleChange}
+              name="search"
+            />
+            <button className="btn-search" type="submit">
+              <i
+                className="bx bx-search bx-sm mt-1"
+                style={{ color: "#f1f3ed" }}
+              ></i>
+            </button>
+          </Form>
+        )}
+      </Formik>
       <div className="flex-none gap-2">
         {/* lupa para buscar */}
         <button className="btn btn-ghost btn-circle sm:hidden">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-5 w-5"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-            />
-          </svg>
+          <i className="bx bx-search bx-sm p-2"></i>
         </button>
         {/* Carrito de compras */}
-        {logued && (
+        {logged && (
           <div className=" dropdown-end hidden sm:dropdown ">
             <label className="btn btn-ghost">
               <h3 className="text-green-400 text-md">Ayrton</h3>
@@ -102,7 +112,7 @@ export const Header = () => {
         </label>
 
         <div className=" dropdown-end hidden sm:dropdown">
-          {logued ? (
+          {logged ? (
             <>
               <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                 <div className="w-10 rounded-full">

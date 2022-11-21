@@ -29,3 +29,17 @@
 .screen {
   height: calc(100vh - 222px);
 }
+
+p {
+  width: 100%;
+  line-height: 1.2em;
+  height: 3.6em;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+
+.btn-search {
+  @apply absolute flex justify-center items-center right-0 top-0 bottom-0 w-16 rounded-r-lg bg-[#458CD6] hover:bg-[#7baee4];
+}
