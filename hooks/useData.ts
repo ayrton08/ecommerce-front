@@ -39,3 +39,8 @@ export const useCode = () => {
     getCode,
   };
 };
+
+export const useMe = (path: string) => {
+  const { data, error } = useSWRInmutable(path, fetchApi);
+  return data;
+};

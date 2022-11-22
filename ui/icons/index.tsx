@@ -6,7 +6,11 @@ import Payment from "./payment.svg";
 import Cart from "./cart.svg";
 import Computer from "./tecs/computer.svg";
 import Home from "./home.svg";
+import Results from "./no-results.svg";
 
+const NoResultsIcons = ({ className }: any) => {
+  return <Results className={className} />;
+};
 const HomeIcon = ({ className }: any) => {
   return <Home className={className} />;
 };
@@ -76,4 +80,5 @@ export {
   CartIcon,
   ComputerIcon,
   HomeIcon,
+  NoResultsIcons,
 };

@@ -41,3 +41,32 @@ export const getTokenJWT = async (info: any) => {
     console.error(error);
   }
 };
+
+export const updateUserData = async (info: any) => {
+  try {
+    if (info["email"] === "") {
+      delete info.email;
+    }
+    if (info["name"] === "") {
+      delete info.name;
+    }
+    if (info["address"] === "") {
+      delete info.address;
+    }
+    if (info["city"] === "") {
+      delete info.city;
+    }
+
+    const data = await fetchApi("/me", {
+      method: "PATCH",
+      body: JSON.stringify(info),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    return data;
+  } catch (error) {
+    console.error(error);
+  }
+};

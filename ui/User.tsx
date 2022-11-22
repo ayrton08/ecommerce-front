@@ -10,11 +10,7 @@ export const User = ({ children, userName, userImage }: any) => {
       <div className="flex flex-col p-4 justify-center">
         <h2 className="card-title self-center mb-4">{userName}</h2>
         <div className="card-actions justify-end">
-          <div className="form-control">
-            {children}
-            <button className="btn bg-green-500 mt-3">My Cart</button>
-            <button className="btn mt-3">Edit</button>
-          </div>
+          <div className="form-control">{children}</div>
         </div>
       </div>
     </div>
