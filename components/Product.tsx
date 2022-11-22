@@ -1,13 +1,14 @@
 /* eslint-disable @next/next/no-img-element */
 import React from "react";
 import { Button } from "ui/Button";
-import { Link } from "ui/Link";
+import Link from "next/link";
 
 interface ProductProps {
   description: string;
   title: string;
   price: number;
   picture: string;
+  id: string;
 }
 
 export const Product = ({
@@ -15,6 +16,7 @@ export const Product = ({
   picture,
   price,
   title,
+  id,
 }: ProductProps) => {
   return (
     <div className="container px-5 py-5 mx-auto bg-black/10">
@@ -39,7 +41,9 @@ export const Product = ({
             </span>
 
             <div className="flex gap-2">
-              <Button className="w-32 mt-0">View More</Button>
+              <Link href={"/item/" + id}>
+                <Button className="w-32 mt-0">View More</Button>
+              </Link>
               <Button className="w-32 mt-0 bg-green-500 border-0 py-2  focus:outline-none hover:bg-green-600 rounded-lg">
                 Add to cart
               </Button>
