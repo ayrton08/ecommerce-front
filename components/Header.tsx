@@ -9,6 +9,8 @@ import { useMe } from "hooks/useData";
 import { useTotalCart } from "hooks/useTotalCart";
 import { Searcher } from "../ui/Searcher";
 import { CartIndicator } from "ui/CartIndicator";
+import { cart } from "store/atoms";
+import { useRecoilState } from "recoil";
 
 const initialValues = {
   search: "",
@@ -18,7 +20,8 @@ export const Header = () => {
   const [logged, setLogged] = useState(false);
 
   const data = useMe("/me");
-  const { total, totalItems } = useTotalCart(data);
+  const [cartUser, setCartUser] = useRecoilState(cart);
+  const { total, totalItems } = useTotalCart(cartUser);
 
   useEffect(() => {
     const logged = isUserLogged();

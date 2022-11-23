@@ -18,6 +18,7 @@ export default function itemId() {
   const cart: {}[] = user?.data?.cart;
 
   const addToCart = async () => {
+    console.log("cart", cart);
     cart.push(data.product);
     await updateUserData({ ...data?.data?.cart, cart });
   };

@@ -13,7 +13,7 @@ export const useTotalCart = (data: any) => {
     let total = values.reduce((a, b) => a + b, 0);
     setTotal(total);
     setTotalItems(cart?.length);
-  }, [cart]);
+  }, [data]);
 
   return {
     total,

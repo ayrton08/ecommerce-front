@@ -4,18 +4,29 @@ import { useMe } from "hooks/useData";
 import { useTotalCart } from "hooks/useTotalCart";
 import { createOrder, updateCart } from "lib/api";
 import Head from "next/head";
+import { useEffect } from "react";
+import { useRecoilState } from "recoil";
 import { Cart } from "ui";
 import { Loader } from "ui/Loader";
 
+import { cart } from "store/atoms";
+
 export default function Profile() {
   const data = useMe("/me");
+
+  const [cartUser, setCartUser] = useRecoilState(cart);
   const { total, totalItems } = useTotalCart(data);
+
+  useEffect(() => {
+    setCartUser(data);
+    console.log("cart atom", cartUser);
+  }, [data]);
 
   const cleanCart = async () => {
     await updateCart({ cart: [] });
   };
 
-  const productId = data?.data?.cart[0].objectID;
+  const productId = data?.data?.cart[0]?.objectID;
   const orderProduct = data?.data?.cart[0];
   const order = {
     items: [
@@ -38,6 +49,7 @@ export default function Profile() {
   };
   const handler = async () => {
     const res = await createOrder({ ...order }, productId);
+    cleanCart();
     console.log(res);
   };
 

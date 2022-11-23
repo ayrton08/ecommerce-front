@@ -42,6 +42,6 @@ export const useCode = () => {
 };
 
 export const useMe = (path: string) => {
-  const { data, error } = useSWRInmutable(path, fetchApi);
+  const { data, error } = useSWR(path, fetchApi);
   return data;
 };
