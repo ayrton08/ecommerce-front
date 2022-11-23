@@ -26,6 +26,7 @@ export default function Home() {
             title={data.Name}
             price={data["Unit cost"]}
             picture={data.Images[0].url}
+            id={data.objectID}
           />
         ))}
       </Featured>

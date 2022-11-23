@@ -1,6 +1,7 @@
 import { Form, Formik } from "formik";
 import { useMe } from "hooks/useData";
 import { updateUserData } from "lib/api";
+import { createCart } from "lib/createCart";
 import Head from "next/head";
 import { useState } from "react";
 import { User, Header, Cart } from "ui";
@@ -17,7 +18,7 @@ const initialValues = {
 export default function Profile() {
   const data = useMe("/me");
   const [editOn, setEditOn] = useState(false);
-  console.log("data", data);
+  const profileWithCart = createCart({ ...data?.data });
 
   return (
     <div className="flex gap-5 h-screen justify-center self-center items-center relative">
@@ -31,9 +32,7 @@ export default function Profile() {
         <Formik
           initialValues={initialValues}
           onSubmit={async (values) => {
-            console.log(values);
-            const res = await updateUserData({ ...values });
-            console.log("res", res);
+            await updateUserData({ ...profileWithCart, ...values });
           }}
         >
           {({ handleChange }) => (
@@ -54,14 +53,14 @@ export default function Profile() {
               ></Field>
               <Field
                 label="Address"
-                placeholder={JSON.stringify(data?.data?.address)}
+                placeholder={data?.data?.address}
                 disable={!editOn}
                 name="address"
                 onChange={handleChange}
               ></Field>
               <Field
                 label="City"
-                placeholder={JSON.stringify(data?.data?.address?.city)}
+                placeholder={data?.data?.city}
                 disable={!editOn}
                 name="city"
                 onChange={handleChange}

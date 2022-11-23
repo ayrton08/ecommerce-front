@@ -5,6 +5,8 @@ import { AvatarIcon, LogoIcon, MenuIcon } from "./icons";
 import { isUserLogged } from "helpers/isUserLogged";
 import { Form, Formik } from "formik";
 import Router from "next/router";
+import { useMe } from "hooks/useData";
+import { useTotalCart } from "hooks/useTotalCart";
 
 const initialValues = {
   search: "",
@@ -24,6 +26,8 @@ export const Header = () => {
       query: { q: path },
     });
   };
+  const data = useMe("/me");
+  const { total, totalItems } = useTotalCart(data);
 
   return (
     <div className="navbar bg-base-200 h-[75px] rounded-lg justify-between shadow-lg shadow-black/10 ">
@@ -83,7 +87,9 @@ export const Header = () => {
                     d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
                   />
                 </svg>
-                <span className="badge badge-sm indicator-item">0</span>
+                <span className="badge badge-sm indicator-item">
+                  {totalItems}
+                </span>
               </div>
             </label>
             <div
@@ -91,12 +97,12 @@ export const Header = () => {
               className="mt-3 card card-compact dropdown-content w-52 bg-base-100 shadow"
             >
               <div className="card-body">
-                <span className="font-bold text-lg">8 Items</span>
-                <span className="text-info">Subtotal: $999</span>
+                <span className="font-bold text-lg">{totalItems} Items</span>
+                <span className="text-info">Subtotal: ${total}</span>
                 <div className="card-actions">
-                  <button className="btn btn-primary btn-block">
+                  <Link href={"/cart"} className="btn btn-primary btn-block">
                     View cart
-                  </button>
+                  </Link>
                 </div>
               </div>
             </div>

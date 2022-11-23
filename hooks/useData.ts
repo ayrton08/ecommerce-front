@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import axios from "axios";
 import { fetchApi, getCode } from "lib/api";
 import { useState } from "react";

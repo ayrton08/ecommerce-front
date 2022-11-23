@@ -59,7 +59,22 @@ export const updateUserData = async (info: any) => {
 
     const data = await fetchApi("/me", {
       method: "PATCH",
-      body: JSON.stringify(info),
+      body: JSON.stringify({ ...info }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    return data;
+  } catch (error) {
+    console.error(error);
+  }
+};
+export const updateCart = async (cart: any, info: any) => {
+  try {
+    const data = await fetchApi("/me", {
+      method: "PATCH",
+      body: JSON.stringify({ ...cart, ...info }),
       headers: {
         "Content-Type": "application/json",
       },

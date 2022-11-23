@@ -1,13 +1,22 @@
 /* eslint-disable @next/next/no-img-element */
+import Link from "next/link";
 import React from "react";
+import { Button } from "ui/Button";
+import { Toast } from "ui/Toast";
 
 interface ProductProps {
   title: string;
   price: number;
   picture: string;
+  id: string;
 }
 
-export const ProductFeatured = ({ title, picture, price }: ProductProps) => {
+export const ProductFeatured = ({
+  title,
+  picture,
+  price,
+  id,
+}: ProductProps) => {
   return (
     <div className="card-result">
       <a className="block relative h-48 rounded overflow-hidden">
@@ -24,7 +33,12 @@ export const ProductFeatured = ({ title, picture, price }: ProductProps) => {
         <h2 className="text-gray-900 title-font text-lg font-medium">
           {title}
         </h2>
-        <p className="mt-1">${price}</p>
+        <p className="mt-1 flex justify-between items-center">
+          <span className="font-bold text-xl">${price}</span>
+          <Link href={"/item/" + id}>
+            <Button className="w-28 btn-md text-xs mt-0">View More</Button>
+          </Link>
+        </p>
       </div>
     </div>
   );

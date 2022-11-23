@@ -9,6 +9,7 @@ import { useData } from "hooks/useData";
 import { Basic } from "ui/wrappers/Basic";
 
 import { NoResultsIcons } from "ui/icons";
+import { Toast } from "ui/Toast";
 
 export default function Search() {
   const router = useRouter();
@@ -40,6 +41,9 @@ export default function Search() {
             price={product["Unit cost"]}
             picture={product.Images[0].url}
             id={product.objectID}
+            onClick={() => {
+              Toast("Producto agregado al carrito");
+            }}
           />
         ))
       ) : (
