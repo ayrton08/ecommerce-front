@@ -1,8 +1,9 @@
 import Head from "next/head";
 import { Product } from "components/Product";
-import { Header } from "ui/Header";
 
 import { useRouter } from "next/router";
+
+import { Header } from "components/Header";
 
 import { Loader } from "ui/Loader";
 import { useData } from "hooks/useData";

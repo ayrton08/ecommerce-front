@@ -32,7 +32,7 @@ export const LoginEmail = ({ handler }: any) => {
                 onChange={handleChange}
                 type="email"
               />
-              <Button type="submit">Next</Button>
+              <Button type="submit" className="mt-4">Next</Button>
             </Form>
           )}
         </Formik>

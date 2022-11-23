@@ -1,5 +1,4 @@
 export * from "./Banner";
-export * from "./Header";
 export * from "./Payment";
 export * from "./User";
 export * from "./wrappers/Cart";

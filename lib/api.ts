@@ -1,5 +1,6 @@
 import useSWR from "swr";
 const BASE_URL = "https://e-commerce-backend-jade.vercel.app/api";
+// const BASE_URL = "http://localhost:3001/api";
 
 import axios from "axios";
 
@@ -70,11 +71,26 @@ export const updateUserData = async (info: any) => {
     console.error(error);
   }
 };
-export const updateCart = async (cart: any, info: any) => {
+export const updateCart = async (cart: any, info?: any) => {
   try {
     const data = await fetchApi("/me", {
       method: "PATCH",
       body: JSON.stringify({ ...cart, ...info }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    return data;
+  } catch (error) {
+    console.error(error);
+  }
+};
+export const createOrder = async (order: any, productId: string) => {
+  try {
+    const data = await fetchApi("/order?productId=" + productId, {
+      method: "POST",
+      body: JSON.stringify({ ...order }),
       headers: {
         "Content-Type": "application/json",
       },

@@ -1,10 +1,11 @@
+import { Header } from "components/Header";
 import { Form, Formik } from "formik";
 import { useMe } from "hooks/useData";
 import { updateUserData } from "lib/api";
 import { createCart } from "lib/createCart";
 import Head from "next/head";
 import { useState } from "react";
-import { User, Header, Cart } from "ui";
+import { User, Cart } from "ui";
 import { Button } from "ui/Button";
 import { Field } from "ui/Field";
 
@@ -68,7 +69,7 @@ export default function Profile() {
               <Button
                 onClick={() => setEditOn((value) => (value ? false : true))}
                 type={"submit"}
-                className={editOn ? "" : "hidden"}
+                className={editOn ? "mt-4" : "hidden"}
               >
                 Save
               </Button>
@@ -79,7 +80,7 @@ export default function Profile() {
         <Button
           onClick={() => setEditOn((value) => (value ? false : true))}
           type={"button"}
-          className={editOn ? "hidden" : ""}
+          className={editOn ? "hidden" : "mt-4"}
         >
           Edit
         </Button>

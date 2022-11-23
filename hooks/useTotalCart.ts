@@ -6,7 +6,6 @@ export const useTotalCart = (data: any) => {
   let values: number[] = [];
   const [total, setTotal] = useState(0);
   const cart = data?.data?.cart;
-  console.log(cart);
 
   cart?.map((item: any) => values.push(item["Unit cost"]));
 

@@ -99,7 +99,7 @@ export const Product = ({
               </div>
             </div>
           )}
-          <div className="flex justify-between">
+          <div className="flex justify-between mt-6">
             <div className="stat-value">${price}</div>
 
             <div className="flex gap-2">
@@ -110,7 +110,7 @@ export const Product = ({
               )}
               <Button
                 onClick={onClick}
-                className="w-32 mt-0 bg-green-500 border-0 py-2  focus:outline-none hover:bg-green-600 rounded-lg"
+                className="w-32 bg-green-500 border-0 py-2  focus:outline-none hover:bg-green-600 rounded-lg"
               >
                 Add to cart
               </Button>

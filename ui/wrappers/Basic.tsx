@@ -14,14 +14,14 @@ export const Basic = ({ children, icon, color }: BasicProps) => {
     >
       {icon}
 
-      <ul className="menu text-white hover:bg-inherit hover:text-black font-bold items-center  p-[1px] rounded-box z-30 bg-black/50 absolute top-4 right-4">
+      {/* <ul className="menu text-white hover:bg-inherit hover:text-black font-bold items-center  p-[1px] rounded-box z-30 bg-black/50 absolute top-4 right-4">
         <li>
           <Link href="/">
             <HomeIcon />
             Home
           </Link>
         </li>
-      </ul>
+      </ul> */}
       <div className="card-body justify-center w-full items-start  p-2">
         {children}
       </div>

@@ -2,11 +2,12 @@
 import React, { useEffect } from "react";
 import { useRouter } from "next/router";
 import Head from "next/head";
-import { Header } from "ui";
 import { useMe, useProduct } from "hooks/useData";
 import { Product } from "components/Product";
 import { updateUserData } from "lib/api";
 import { Toast } from "ui/Toast";
+import { Loader } from "ui/Loader";
+import { Header } from "components/Header";
 
 export default function itemId() {
   const router = useRouter();
@@ -27,7 +28,8 @@ export default function itemId() {
         <title>Search</title>
       </Head>
       <Header />
-      {data && (
+
+      {data ? (
         <Product
           detail
           description={data.product.Description}
@@ -42,6 +44,8 @@ export default function itemId() {
             Toast(`${data?.product?.Name} agregado al carrito`);
           }}
         />
+      ) : (
+        <Loader />
       )}
     </div>
   );

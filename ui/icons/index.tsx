@@ -3,7 +3,7 @@ import Avatar from "./avatar.svg";
 import Login from "./login.svg";
 import Logo from "./logo.svg";
 import Payment from "./payment.svg";
-import Cart from "./cart.svg";
+import Cart from "./cart-logo.svg";
 import Computer from "./tecs/computer.svg";
 import Home from "./home.svg";
 import Results from "./no-results.svg";
@@ -38,7 +38,7 @@ const PaymentIcon = ({ className }: any) => {
   return <Payment className={className} />;
 };
 
-const CartIcon = ({ className }: any) => {
+const CartLogo = ({ className }: any) => {
   return <Cart className={className} />;
 };
 
@@ -77,7 +77,7 @@ export {
   LogoIcon,
   PaymentIcon,
   MenuIcon,
-  CartIcon,
+  CartLogo,
   ComputerIcon,
   HomeIcon,
   NoResultsIcons,

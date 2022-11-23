@@ -33,7 +33,9 @@ export const LoginCode = ({ handler, email }: any) => {
                 onChange={handleChange}
                 type="text"
               />
-              <Button type="submit">Ingresar</Button>
+              <Button type="submit" className="mt-4">
+                Ingresar
+              </Button>
             </Form>
           )}
         </Formik>
