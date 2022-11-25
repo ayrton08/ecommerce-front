@@ -3,7 +3,7 @@ import { AvatarIcon } from "./icons";
 
 export const User = ({ children, userName, userImage }: any) => {
   return (
-    <div className=" card flex flex-col shadow-xl  bg-black/20 py-8 px-4  z-30">
+    <div className=" card flex flex-col shadow-xl  bg-black/20 py-8 px-4  z-30 glass-efect">
       <figure>
         <AvatarIcon className="w-36" />
       </figure>

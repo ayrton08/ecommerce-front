@@ -1,9 +1,15 @@
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 export const CartIndicator = ({ totalItems, total }: any) => {
   return (
     <>
-      <label tabIndex={0} className="btn btn-ghost btn-circle">
+      <label
+        tabIndex={0}
+        className={`btn btn-ghost btn-circle animate__animated 
+           animate__heartBeat
+        `}
+      >
         <div className="indicator">
           <svg
             xmlns="http://www.w3.org/2000/svg"

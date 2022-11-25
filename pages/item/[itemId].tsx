@@ -4,23 +4,24 @@ import { useRouter } from "next/router";
 import Head from "next/head";
 import { useMe, useProduct } from "hooks/useData";
 import { Product } from "components/Product";
-import { updateUserData } from "lib/api";
+import { updateCart } from "lib/api";
 import { Toast } from "ui/Toast";
 import { Loader } from "ui/Loader";
 import { Header } from "components/Header";
+import { useCounter } from "hooks/useCounter";
 
 export default function itemId() {
   const router = useRouter();
   const productId = router.query.itemId as string;
 
+  const { increment } = useCounter();
+
   const data = useProduct(productId);
   const user = useMe("/me");
-  const cart: {}[] = user?.data?.cart;
 
   const addToCart = async () => {
-    console.log("cart", cart);
-    cart.push(data.product);
-    await updateUserData({ ...data?.data?.cart, cart });
+    increment();
+    await updateCart({ cart: [...user?.data?.cart, data.product] });
   };
 
   return (

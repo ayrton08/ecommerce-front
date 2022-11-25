@@ -10,27 +10,31 @@ import { Header } from "components/Header";
 export default function Home() {
   const data = useProducts();
   return (
-    <div className="pt-52">
+    <div className="pt-32">
       <Head>
         <title>Home</title>
       </Head>
       <div className="p-4 mb-10 flex flex-col gap-10 items-center fixed top-0 w-full z-30">
         <Header />
-        <Menu />
       </div>
 
       <Banner />
-      <Featured>
-        {data?.results?.map((data: any) => (
-          <ProductFeatured
-            key={data.Name}
-            title={data.Name}
-            price={data["Unit cost"]}
-            picture={data.Images[0].url}
-            id={data.objectID}
-          />
-        ))}
-      </Featured>
+      {data ? (
+        <Featured>
+          {data?.results?.map((data: any) => (
+            <ProductFeatured
+              key={data.Name}
+              title={data.Name}
+              price={data["Unit cost"]}
+              picture={data.Images[0].url}
+              id={data.objectID}
+            />
+          ))}
+        </Featured>
+      ) : (
+        <progress className="progress w-full fixed top-0"></progress>
+      )}
+
       <div className="divider px-8"></div>
       <Categories>
         <Category label="Tecnology" icon={<ComputerIcon />} />

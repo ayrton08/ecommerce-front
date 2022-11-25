@@ -17,7 +17,6 @@ export default function Search() {
   const query = JSON.stringify(router.query);
 
   const data = useData(`/products?search=${query}`);
-  console.log(data);
 
   return (
     <div className="p-4  flex flex-col min-h-screen gap-10 items-center ">

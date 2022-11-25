@@ -1,32 +1,33 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
 
 import Link from "next/link";
 import { AvatarIcon, LogoIcon, MenuIcon } from "../ui/icons";
-import { isUserLogged } from "helpers/isUserLogged";
-import { Form, Formik } from "formik";
+import { isUserLogged, removeToken } from "helpers/localStorage";
 import Router from "next/router";
 import { useMe } from "hooks/useData";
 import { useTotalCart } from "hooks/useTotalCart";
 import { Searcher } from "../ui/Searcher";
 import { CartIndicator } from "ui/CartIndicator";
-import { cart } from "store/atoms";
-import { useRecoilState } from "recoil";
+import { useCounter } from "hooks/useCounter";
+import { useLogin } from "hooks/useLogin";
 
 const initialValues = {
   search: "",
 };
 
 export const Header = () => {
-  const [logged, setLogged] = useState(false);
-
   const data = useMe("/me");
-  const [cartUser, setCartUser] = useRecoilState(cart);
-  const { total, totalItems } = useTotalCart(cartUser);
+  const { logged, setLogged } = useLogin();
+
+  const { total, totalItems } = useTotalCart(data?.data?.cart);
+
+  const { totalItemsCart } = useCounter(totalItems);
 
   useEffect(() => {
     const logged = isUserLogged();
     setLogged(logged);
-  }, []);
+  }, [data]);
 
   const handler = (path: string) => {
     Router.push({
@@ -36,7 +37,7 @@ export const Header = () => {
   };
 
   return (
-    <div className="navbar bg-base-200 h-[75px] rounded-lg justify-between shadow-lg shadow-black/10">
+    <div className="navbar bg-base-200 h-[80px] rounded-lg justify-between shadow-lg shadow-black/10 glass-efect">
       <div>
         <Link className="btn btn-ghost normal-case text-xl" href="/">
           <LogoIcon className="mr-2" />
@@ -55,9 +56,11 @@ export const Header = () => {
         {logged && (
           <div className=" dropdown-end hidden sm:dropdown ">
             <label className="btn btn-ghost">
-              <h3 className="text-green-400 text-md">Ayrton</h3>
+              <Link href="/profile">
+                <h3 className="text-white text-md">{data?.data?.name}</h3>
+              </Link>
             </label>
-            <CartIndicator totalItems={totalItems} total={total} />
+            <CartIndicator totalItems={totalItemsCart} total={total} />
           </div>
         )}
 
@@ -87,14 +90,18 @@ export const Header = () => {
                   </Link>
                 </li>
                 <li>
-                  <a>Settings</a>
+                  <Link className="justify-between" href="/orders">
+                    Orders
+                  </Link>
                 </li>
                 <li>
                   <Link
                     href={"/"}
                     onClick={() => {
-                      localStorage.removeItem("token");
+                      removeToken();
+                      setLogged(false);
                     }}
+                    className="bg-red-500/80  hover:border-red-600 hover:bg-red-400/80 text-white font-bold"
                   >
                     Logout
                   </Link>
@@ -102,7 +109,7 @@ export const Header = () => {
               </ul>
             </>
           ) : (
-            <div className="sm:flex justify-end w-[175px] sm:gap-4 mr-2">
+            <div className="sm:flex justify-end w-[175px] sm:gap-4 mr-2 animate__animated animate__fadeIn">
               <Link
                 className="block  rounded-md bg-teal-600 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-teal-700"
                 href="/signin"

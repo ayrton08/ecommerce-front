@@ -8,6 +8,7 @@ interface FieldProps {
   type?: string;
   onChange?: ChangeEventHandler;
   disable?: boolean;
+  className?: string;
 }
 
 export const Field = ({
@@ -18,6 +19,7 @@ export const Field = ({
   type = "text",
   onChange,
   disable,
+  className,
 }: FieldProps) => {
   return (
     <>
@@ -32,7 +34,7 @@ export const Field = ({
           className={
             disable
               ? "input input-bordered w-full disabled:placeholder:text-black disabled:hover:cursor-default"
-              : " w-full bg-black/50 placeholder:text-white h-[48px]"
+              : `w-full bg-black/40 text-white placeholder:text-white h-[48px] ${className} `
           }
           name={name}
           onChange={onChange}

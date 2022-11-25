@@ -1,21 +1,22 @@
-import useSWR from "swr";
 const BASE_URL = "https://e-commerce-backend-jade.vercel.app/api";
 // const BASE_URL = "http://localhost:3001/api";
 
-import axios from "axios";
-
-export const fetchApi = async (input: RequestInfo, options: RequestInit) => {
+export const fetchApi = async (input: RequestInfo, options: any) => {
   const url = BASE_URL + input;
   const token = localStorage.getItem("token");
 
+  const newOptions: any = options || {};
+  newOptions.headers ||= {};
   if (token) {
-    const newOptions: any = options || {};
-    newOptions.headers ||= {};
     newOptions.headers.authorization = "Bearer " + token;
-    options = newOptions;
+  }
+  newOptions.headers["content-type"] = "application/json";
+
+  if (newOptions.body) {
+    newOptions.body = JSON.stringify(newOptions.body);
   }
 
-  const res = await fetch(url, options);
+  const res = await fetch(url, newOptions);
 
   if (res.status >= 200 && res.status < 300) {
     return res.json();
@@ -26,7 +27,10 @@ export const fetchApi = async (input: RequestInfo, options: RequestInit) => {
 
 export const getCode = async (email: any) => {
   try {
-    const { data } = await axios.post(BASE_URL + "/auth", email);
+    const data = await fetchApi("/auth", {
+      method: "POST",
+      body: { email },
+    });
 
     return data.data;
   } catch (error) {
@@ -35,7 +39,11 @@ export const getCode = async (email: any) => {
 };
 export const getTokenJWT = async (info: any) => {
   try {
-    const { data } = await axios.post(BASE_URL + "/auth/token", { ...info });
+    const data = await fetchApi("/auth/token", {
+      method: "POST",
+      body: { ...info },
+    });
+
     localStorage.setItem("token", data.token);
     return data.token;
   } catch (error) {
@@ -45,25 +53,24 @@ export const getTokenJWT = async (info: any) => {
 
 export const updateUserData = async (info: any) => {
   try {
-    if (info["email"] === "") {
+    if (info.email === "") {
       delete info.email;
     }
-    if (info["name"] === "") {
+    if (info.name === "") {
       delete info.name;
     }
-    if (info["address"] === "") {
+    if (info.address === "") {
       delete info.address;
     }
-    if (info["city"] === "") {
+    if (info.city === "") {
       delete info.city;
     }
 
+    delete info.cart;
+
     const data = await fetchApi("/me", {
       method: "PATCH",
-      body: JSON.stringify({ ...info }),
-      headers: {
-        "Content-Type": "application/json",
-      },
+      body: { ...info },
     });
 
     return data;
@@ -75,10 +82,7 @@ export const updateCart = async (cart: any, info?: any) => {
   try {
     const data = await fetchApi("/me", {
       method: "PATCH",
-      body: JSON.stringify({ ...cart, ...info }),
-      headers: {
-        "Content-Type": "application/json",
-      },
+      body: { ...cart, ...info },
     });
 
     return data;
@@ -90,10 +94,7 @@ export const createOrder = async (order: any, productId: string) => {
   try {
     const data = await fetchApi("/order?productId=" + productId, {
       method: "POST",
-      body: JSON.stringify({ ...order }),
-      headers: {
-        "Content-Type": "application/json",
-      },
+      body: { ...order },
     });
 
     return data;

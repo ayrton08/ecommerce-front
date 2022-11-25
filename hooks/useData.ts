@@ -22,6 +22,11 @@ export const useProduct = (id: string) => {
   return data;
 };
 
+export const useOrders = () => {
+  const { data, error } = useSWR("/me/orders", fetchApi);
+  return data;
+};
+
 export const useCode = () => {
   const [isSendig, setIsSendig] = useState(false);
   const getCode = async (email: any) => {

@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react";
 
-export const useTotalCart = (data: any) => {
+export const useTotalCart = (cart: any) => {
   const [totalItems, setTotalItems] = useState(0);
 
   let values: number[] = [];
   const [total, setTotal] = useState(0);
-  const cart = data?.data?.cart;
 
   cart?.map((item: any) => values.push(item["Unit cost"]));
 
@@ -13,7 +12,7 @@ export const useTotalCart = (data: any) => {
     let total = values.reduce((a, b) => a + b, 0);
     setTotal(total);
     setTotalItems(cart?.length);
-  }, [data]);
+  }, [cart]);
 
   return {
     total,

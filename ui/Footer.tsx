@@ -3,7 +3,7 @@ import { Link } from "./Link";
 
 export const Footer = () => {
   return (
-    <footer className="footer p-10 glass-efect text-base-content z-30">
+    <footer className="footer p-10 glass-footer text-base-content z-30">
       <div>
         <span className="footer-title">Services</span>
         <Link label="Branding" />

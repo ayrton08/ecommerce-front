@@ -2,7 +2,7 @@ import { Header } from "components/Header";
 import { Form, Formik } from "formik";
 import { useMe } from "hooks/useData";
 import { updateUserData } from "lib/api";
-import { createCart } from "lib/createCart";
+import { createCart } from "helpers/createCart";
 import Head from "next/head";
 import { useState } from "react";
 import { User, Cart } from "ui";
@@ -22,7 +22,7 @@ export default function Profile() {
   const profileWithCart = createCart({ ...data?.data });
 
   return (
-    <div className="flex gap-5 h-screen justify-center self-center items-center relative">
+    <div className="flex gap-5 h-screen justify-center self-center items-center relative ">
       <Head>
         <title>{data?.data?.name || "Profile"}</title>
       </Head>
