@@ -7,7 +7,7 @@ import { Button } from "ui/Button";
 
 export const Cart = ({ orders, handler, total, items }: any) => {
   return (
-    <div className=" card flex lg:flex-row shadow-xl h-max w-max bg-black/20 py-8 px-8  gap-8 z-10 glass-efect">
+    <div className=" card flex lg:flex-row shadow-xl h-max w-max bg-black/20 py-8 px-8  gap-8 z-10 glass-efect animate__animated animate__fadeIn">
       <CartLogo className="w-96" />
       <div className="flex flex-col p-4  lg:min-h-[564px] w-96 relative">
         <h2 className="card-title self-center mb-4">Cart</h2>

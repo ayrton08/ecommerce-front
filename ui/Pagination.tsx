@@ -3,9 +3,12 @@ import React from "react";
 
 export const Pagination = ({
   currentPage = [],
+  handler,
   handlerPrev,
   handlerNext,
   totalPages,
+  active,
+  activePage,
 }: any) => {
   let id = 0;
 
@@ -15,7 +18,14 @@ export const Pagination = ({
         «
       </button>
       {currentPage?.map((page: AnyMxRecord) => (
-        <button key={id++} className="btn">
+        <button
+          key={id++}
+          className={`btn ${activePage === page && "btn-active"}`}
+          onClick={() => {
+            handler(page);
+            // window.scrollTo(0, 0);
+          }}
+        >
           {page as any}
         </button>
       ))}

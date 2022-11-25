@@ -15,17 +15,14 @@ import { Toast } from "ui/Toast";
 import { Pagination } from "ui/Pagination";
 import { useEffect, useState } from "react";
 
-import noImage from "ui/icons/no-image.svg";
-
 export default function Search() {
   const router = useRouter();
   const { q } = router.query;
 
   const [offSet, setOffSet] = useState(0);
 
-  const [totalPage, setTotalPage] = useState(0);
+  const [totalPage, setTotalPage] = useState(1);
   const [currentPage, setCurrentPage] = useState(1);
-
   const data = useData(`/products?limit=5&offset=${offSet}&search=${q}`);
 
   const newData = data?.results?.filter((product: any) => {
@@ -33,9 +30,6 @@ export default function Search() {
       return product;
     }
   });
-
-  console.log("products", newData);
-  console.log("total Page", totalPage);
 
   const pageNumbers = [] as any;
 
@@ -46,10 +40,6 @@ export default function Search() {
   ) {
     pageNumbers.push(i);
   }
-
-  const selectPage = (page: number) => {
-    setOffSet(page);
-  };
 
   useEffect(() => {
     const pages = Math.ceil(data?.pagination?.total / data?.pagination?.limit);
@@ -94,11 +84,39 @@ export default function Search() {
               totalPages={totalPage}
               handlerPrev={(page: number) => {
                 setCurrentPage(page);
-                totalPage > 1 && setOffSet((prev) => prev - 5);
+                totalPage > 1 && setOffSet((prev) => prev - 10);
               }}
               handlerNext={(page: number) => {
                 setCurrentPage(page);
-                totalPage > 1 && setOffSet((prev) => prev + 5);
+                totalPage > 1 && setOffSet((prev) => prev + 10);
+              }}
+              activePage={currentPage}
+              handler={(page: any) => {
+                if (page === 1) {
+                  setOffSet(0);
+                  setCurrentPage(page);
+                } else if (page === 2) {
+                  setOffSet(5);
+                  setCurrentPage(page);
+                } else if (page === 3) {
+                  setOffSet(10);
+                  setCurrentPage(page);
+                } else if (page === 4) {
+                  setOffSet(15);
+                  setCurrentPage(page);
+                } else if (page === 5) {
+                  setOffSet(20);
+                  setCurrentPage(page);
+                } else if (page === 6) {
+                  setOffSet(25);
+                  setCurrentPage(page);
+                } else if (page === 7) {
+                  setOffSet(60);
+                  setCurrentPage(page);
+                } else if (page === 8) {
+                  setOffSet(70);
+                  setCurrentPage(page);
+                }
               }}
             />
           </div>
