@@ -50,3 +50,15 @@ export const useMe = (path: string) => {
   const { data, error } = useSWR(path, fetchApi);
   return data;
 };
+
+export const useGetProductBySearch = (
+  query: string,
+  offset?: number,
+  limit?: number
+) => {
+  const path = `/search?q=${query}&offset=${offset || 0}&limit=${limit || 12}`;
+  const { data, error } = useSWR(path, fetchApi);
+
+  if (error?.status) return false;
+  return data;
+};

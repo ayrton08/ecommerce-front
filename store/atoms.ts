@@ -1,12 +1,12 @@
 import { atom, selector } from "recoil";
 
 export const cartAmount = atom({
-  key: "total-money",
+  key: "cash",
   default: 0,
 });
 
 export const cartItems = atom({
-  key: "total-items",
+  key: "items",
   default: 0,
 });
 
