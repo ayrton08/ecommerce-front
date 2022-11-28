@@ -23,7 +23,7 @@ export const Pagination = ({
           className={`btn ${activePage === page && "btn-active"}`}
           onClick={() => {
             handler(page);
-            // window.scrollTo(0, 0);
+            window.scrollTo(0, 0);
           }}
         >
           {page as any}

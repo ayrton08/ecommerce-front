@@ -14,10 +14,14 @@ import { NoResultsIcons } from "ui/icons";
 import { Toast } from "ui/Toast";
 import { Pagination } from "ui/Pagination";
 import { useEffect, useState } from "react";
+import { useCart } from "hooks/userCart";
+import { useMe, useProduct } from "hooks/useData";
 
 export default function Search() {
   const router = useRouter();
   const { q } = router.query;
+
+  const user = useMe("/me");
 
   const [offSet, setOffSet] = useState(0);
 
@@ -46,6 +50,8 @@ export default function Search() {
     setTotalPage(pages);
   }, [data]);
 
+  const { addToCart } = useCart();
+
   let id = 0;
   return (
     <div className="p-4   min-h-screen  ">
@@ -73,6 +79,7 @@ export default function Search() {
                 picture={product.Images[0].url || ""}
                 id={product.objectID}
                 onClick={() => {
+                  addToCart(user.data.cart, product);
                   Toast("Producto agregado al carrito");
                 }}
               />
@@ -84,11 +91,11 @@ export default function Search() {
               totalPages={totalPage}
               handlerPrev={(page: number) => {
                 setCurrentPage(page);
-                totalPage > 1 && setOffSet((prev) => prev - 10);
+                totalPage > 1 && setOffSet((prev) => prev - 5);
               }}
               handlerNext={(page: number) => {
                 setCurrentPage(page);
-                totalPage > 1 && setOffSet((prev) => prev + 10);
+                totalPage > 1 && setOffSet((prev) => prev + 5);
               }}
               activePage={currentPage}
               handler={(page: any) => {

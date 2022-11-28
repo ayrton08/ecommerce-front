@@ -8,21 +8,17 @@ import { updateCart } from "lib/api";
 import { Toast } from "ui/Toast";
 import { Loader } from "ui/Loader";
 import { Header } from "components/Header";
-import { useCounter } from "hooks/useCounter";
+import { useCart } from "hooks/userCart";
 
 export default function itemId() {
   const router = useRouter();
   const productId = router.query.itemId as string;
-
-  const { increment } = useCounter();
-
   const data = useProduct(productId);
   const user = useMe("/me");
 
-  const addToCart = async () => {
-    increment();
-    await updateCart({ cart: [...user?.data?.cart, data.product] });
-  };
+  const currentCart = user?.data?.cart;
+
+  const { increment, addToCart } = useCart();
 
   return (
     <div className="p-4  flex flex-col min-h-screen gap-10 items-center ">
@@ -42,7 +38,7 @@ export default function itemId() {
           className="h-full w-2/3"
           category={data.product.Type}
           onClick={() => {
-            addToCart();
+            addToCart(currentCart, data.product);
             Toast(`${data?.product?.Name} agregado al carrito`);
           }}
         />

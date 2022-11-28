@@ -9,7 +9,7 @@ import { useMe } from "hooks/useData";
 import { useTotalCart } from "hooks/useTotalCart";
 import { Searcher } from "../ui/Searcher";
 import { CartIndicator } from "ui/CartIndicator";
-import { useCounter } from "hooks/useCounter";
+import { useCart } from "hooks/userCart";
 import { useLogin } from "hooks/useLogin";
 
 const initialValues = {
@@ -22,7 +22,7 @@ export const Header = () => {
 
   const { total, totalItems } = useTotalCart(data?.data?.cart);
 
-  const { totalItemsCart } = useCounter(totalItems);
+  const { totalItemsCart } = useCart(totalItems);
 
   useEffect(() => {
     const logged = isUserLogged();

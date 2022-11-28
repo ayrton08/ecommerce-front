@@ -18,7 +18,6 @@ type BodyFetch = {
 export default function Signin() {
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState(false);
-  console.log(status);
 
   const { getCode, isSendig } = useCode();
   const { logged, setLogged } = useLogin();

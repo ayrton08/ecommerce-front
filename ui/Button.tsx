@@ -1,6 +1,6 @@
 interface ButtonProps {
   onClick?: (args: any) => any;
-  children: string;
+  children: any;
   className?: string;
   type?: "button" | "submit" | "reset";
 }
