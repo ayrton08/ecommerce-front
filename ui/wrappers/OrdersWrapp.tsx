@@ -1,6 +1,6 @@
-export const OrdersWrapp = ({ children }: any) => {
+export const OrdersWrapp = ({ children, status }: any) => {
   return (
-    <div className="overflow-x-auto w-2/3 animate__animated animate__fadeIn">
+    <div className="overflow-x-auto w-2/3 animate__animated animate__fadeIn self-center mt-8 mb-48">
       <table className="table w-full">
         <thead>
           <tr>

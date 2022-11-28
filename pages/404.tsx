@@ -1,5 +1,5 @@
+import { Header } from "components/Header";
 import Head from "next/head";
-import { Header } from "ui";
 import { NotFoundIcon } from "ui/icons";
 import { Basic } from "ui/wrappers/Basic";
 
@@ -12,7 +12,7 @@ export default function notFound() {
       <div className="fixed top-4 w-full px-4">
         <Header />
       </div>
-      <Basic icon={<NotFoundIcon className="w-full" />} color="bg-red-600/40">
+      <Basic icon={<NotFoundIcon className="w-full" />} color="bg-red-600/40 self-center">
         <h2 className="card-title">Page not Found!</h2>
       </Basic>
     </div>

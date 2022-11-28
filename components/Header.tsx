@@ -37,9 +37,9 @@ export const Header = () => {
   };
 
   return (
-    <div className="navbar bg-base-200 h-[80px] rounded-lg justify-between shadow-lg shadow-black/10 glass-efect">
-      <div>
-        <Link className="btn btn-ghost normal-case text-xl" href="/">
+    <div className="navbar bg-base-200 h-[80px] rounded-lg px-4 flex justify-between shadow-lg shadow-black/10 items-center glass-efect">
+      <div className="w-[260px] justify-start">
+        <Link className="btn btn-ghost normal-case text-xl " href="/">
           <LogoIcon className="mr-2" />
           market
         </Link>
@@ -53,13 +53,13 @@ export const Header = () => {
           <i className="bx bx-search bx-sm p-2"></i>
         </button>
         {/* Carrito de compras */}
+        <label className="btn btn-ghost">
+          <Link href="/profile">
+            <h3 className="text-white text-md">{data?.data?.name}</h3>
+          </Link>
+        </label>
         {logged && (
-          <div className=" dropdown-end hidden sm:dropdown ">
-            <label className="btn btn-ghost">
-              <Link href="/profile">
-                <h3 className="text-white text-md">{data?.data?.name}</h3>
-              </Link>
-            </label>
+          <div className=" dropdown-end items-center mt-2 sm:dropdown hidden md:dropdown-end">
             <CartIndicator totalItems={totalItemsCart} total={total} />
           </div>
         )}

@@ -54,15 +54,17 @@ export default function Search() {
 
   let id = 0;
   return (
-    <div className="p-4   min-h-screen  ">
+    <div className=" min-h-screen flex flex-col justify-center items-center relative">
       <Head>
         <title>Search</title>
       </Head>
-      <Header />
+      <div className="fixed top-4 w-full px-4">
+        <Header />
+      </div>
       {data?.pagination?.total === 0 && (
         <Basic
           icon={<NoResultsIcons className="w-full" />}
-          color="bg-red-600/40"
+          color="bg-red-600/40 w-1/2 "
         >
           <h2 className="card-title">No Results!</h2>
         </Basic>
@@ -80,7 +82,7 @@ export default function Search() {
                 id={product.objectID}
                 onClick={() => {
                   addToCart(user.data.cart, product);
-                  Toast("Producto agregado al carrito");
+                  Toast(`${product.Name} added to cart`);
                 }}
               />
             ))}

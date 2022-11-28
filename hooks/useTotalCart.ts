@@ -6,14 +6,11 @@ export const useTotalCart = (cart: any) => {
 
   let values: number[] = [];
 
-  cart?.map((item: any) => values.push(item["Unit cost"]));
-
-  console.log("cart", cart);
+  cart?.map((item: any) => values.push(item["Unit cost"] * item.cantidad));
 
   useEffect(() => {
     let cartItems = cart?.map((order: any) => order.cantidad);
     cartItems = cartItems?.reduce((a: number, b: number) => a + b, 0);
-    console.log(cartItems);
     let total = values.reduce((a, b) => a + b, 0);
     setTotal(total);
     setTotalItems(cartItems);

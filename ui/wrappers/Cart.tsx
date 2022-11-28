@@ -27,7 +27,7 @@ export const Cart = ({
                 <div className="divider h-max m-0"></div>
 
                 <div
-                  className="w-full flex items-center  p-2 hover:bg-white/60"
+                  className="w-full flex items-center  p-2 hover:bg-black/20 rounded-sm" 
                   key={order.objectID}
                 >
                   <img
@@ -37,20 +37,22 @@ export const Cart = ({
                   />
                   <div className="flex w-full items-center justify-between">
                     <div className="indicator">
-                      <span className="mr-3">{order.Name}</span>
+                      <span className="mr-3 ">{order.Name}</span>
                       <span className="indicator-item badge badge-secondary ">
                         {order.cantidad}
                       </span>
                     </div>
-                    <span className="text-white">
-                      $ {order["Unit cost"] * order.cantidad}
-                    </span>
-                    <Button className="w-max mt-0 px-2  bg-red-500/80 text-xs btn-sm">
-                      <i
-                        className="bx bx-trash bx-xs"
-                        style={{ color: "#fdfdfd" }}
-                      ></i>
-                    </Button>
+                    <div className="w-32 flex justify-between items-center">
+                      <span className="text-white w-max">
+                        $ {order["Unit cost"]}
+                      </span>
+                      <Button className="w-max mt-0 px-2  bg-red-500/80 text-xs btn-sm">
+                        <i
+                          className="bx bx-trash bx-xs"
+                          style={{ color: "#fdfdfd" }}
+                        ></i>
+                      </Button>
+                    </div>
                   </div>
                 </div>
               </>
@@ -59,7 +61,7 @@ export const Cart = ({
           <div className="divider h-max m-0 mb-6"></div>
         </div>
         <div className="flex  w-full items-center justify-between">
-          <div className="bg-black/30 text-white w-full justify-between  py-2 px-4 rounded-md mr-4 h-full">
+          <div className="bg-black/50 text-white w-full justify-between  py-2 px-4 rounded-md mr-4 h-full">
             <div className="relative">
               <span className=" w-14  p-1 rounded-md">Products:</span>
               <span className="text-white  absolute right-4">
