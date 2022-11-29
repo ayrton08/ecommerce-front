@@ -22,7 +22,7 @@ export default function Profile() {
     setEfect("animate__wobble");
 
     await updateCart({ cart: [] });
-    window.location.href = window.location.href;
+    // window.location.href = window.location.href;
   };
 
   const productId = data?.data?.cart[0]?.objectID;

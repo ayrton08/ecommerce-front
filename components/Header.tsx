@@ -1,16 +1,12 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
 
+import Router from "next/router";
 import Link from "next/link";
 import { AvatarIcon, LogoIcon, MenuIcon } from "../ui/icons";
 import { isUserLogged, removeToken } from "helpers/localStorage";
-import Router from "next/router";
-import { useMe } from "hooks/useData";
-import { useTotalCart } from "hooks/useTotalCart";
-import { Searcher } from "../ui/Searcher";
-import { CartIndicator } from "ui/CartIndicator";
-import { useCart } from "hooks/userCart";
-import { useLogin } from "hooks/useLogin";
+import { useMe, useTotalCart, useCart, useLogin } from "hooks";
+import { Searcher, CartIndicator } from "ui";
 
 const initialValues = {
   search: "",
@@ -19,9 +15,7 @@ const initialValues = {
 export const Header = () => {
   const data = useMe("/me");
   const { logged, setLogged } = useLogin();
-
   const { total, totalItems } = useTotalCart(data?.data?.cart);
-
   const { totalItemsCart } = useCart(totalItems);
 
   useEffect(() => {
@@ -48,11 +42,9 @@ export const Header = () => {
       <Searcher handler={handler} initialValues={initialValues} />
 
       <div className="flex-none gap-2">
-        {/* lupa para buscar */}
         <button className="btn btn-ghost btn-circle sm:hidden">
           <i className="bx bx-search bx-sm p-2"></i>
         </button>
-        {/* Carrito de compras */}
         <label className="btn btn-ghost">
           <Link href="/profile">
             <h3 className="text-white text-md">{data?.data?.name}</h3>
@@ -64,7 +56,6 @@ export const Header = () => {
           </div>
         )}
 
-        {/* icon user */}
         <label
           tabIndex={0}
           className="btn btn-ghost btn-circle avatar sm:hidden"

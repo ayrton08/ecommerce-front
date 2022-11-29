@@ -1,5 +1,6 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import axios from "axios";
+import { LoginEmail } from "interface/signin";
 import { fetchApi, getCode } from "lib/api";
 import { useState } from "react";
 import useSWR from "swr";
@@ -29,7 +30,7 @@ export const useOrders = () => {
 
 export const useCode = () => {
   const [isSendig, setIsSendig] = useState(false);
-  const getCode = async (email: any) => {
+  const getCode = async ({ email }: LoginEmail) => {
     try {
       setIsSendig(true);
       const { data } = await axios.post(BASE_URL + "/auth", email);

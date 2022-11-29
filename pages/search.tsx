@@ -71,7 +71,7 @@ export default function Search() {
       )}
       {data ? (
         <>
-          <div className="flex flex-col gap-5 items-center mt-12 mb-8">
+          <div className="flex flex-col gap-5 items-center mt-32 mb-8">
             {newData.map((product: any) => (
               <Product
                 key={id++}
@@ -87,7 +87,7 @@ export default function Search() {
               />
             ))}
           </div>
-          <div className="flex justify-center">
+          <div className="flex justify-center mb-8">
             <Pagination
               currentPage={[...pageNumbers]}
               totalPages={totalPage}

@@ -6,8 +6,6 @@ export const Pagination = ({
   handler,
   handlerPrev,
   handlerNext,
-  totalPages,
-  active,
   activePage,
 }: any) => {
   let id = 0;

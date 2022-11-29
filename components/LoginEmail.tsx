@@ -6,12 +6,13 @@ import { Field } from "ui/Field";
 import { Button } from "ui/Button";
 
 import { Formik, Form } from "formik";
+import { HandlerEmail } from "interface/signin";
 
 const initialValues = {
   email: "",
 };
 
-export const LoginEmail = ({ handler }: any) => {
+export const LoginEmail = ({ handler }: HandlerEmail) => {
   return (
     <Basic icon={<LoginIcon className="w-full" />} color="bg-black/20">
       <h2 className="card-title">Login</h2>

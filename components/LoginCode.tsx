@@ -1,18 +1,15 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import React, { useState } from "react";
-import { LoginIcon } from "../ui/icons";
-import { Basic } from "../ui/wrappers/Basic";
-import { Field } from "ui/Field";
-import { Button } from "ui/Button";
-
 import { Formik, Form } from "formik";
-import { Link } from "ui/Link";
+
+import { LoginIcon } from "../ui/icons";
+import { Basic, Field, Button } from "ui";
+import { LoginCodeProps } from "interface/signin";
 
 const initialValues = {
   code: "",
 };
 
-export const LoginCode = ({ handler, email, onClick }: any) => {
+export const LoginCode = ({ handlerEmail, email, onClick }: LoginCodeProps) => {
   return (
     <Basic icon={<LoginIcon className="w-full" />} color="bg-black/20">
       <h2 className="card-title">Login</h2>
@@ -21,11 +18,11 @@ export const LoginCode = ({ handler, email, onClick }: any) => {
           initialValues={initialValues}
           onSubmit={(values) => {
             const code = Number(values.code);
-            handler({ email: email, code });
+            handlerEmail({ email: email, code });
           }}
         >
           {({ handleChange }) => (
-            <Form className="form-control">
+            <Form className="form-control" onClick={() => {}}>
               <Field
                 title="Your Code"
                 label="Code"

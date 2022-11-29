@@ -1,10 +1,5 @@
-interface ButtonProps {
-  onClick?: (args: any) => any;
-  children: any;
-  className?: string;
-  type?: "button" | "submit" | "reset";
-}
-1;
+import { ButtonProps } from "interface/ui";
+
 export const Button = ({ children, className, type, onClick }: ButtonProps) => {
   return (
     <button

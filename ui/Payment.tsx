@@ -1,9 +1,5 @@
-import Image from "next/image";
-
-import payment from "assets/payment.svg";
 import Link from "next/link";
 
-import "animate.css";
 import { PaymentIcon } from "./icons";
 import { Basic } from "./wrappers/Basic";
 

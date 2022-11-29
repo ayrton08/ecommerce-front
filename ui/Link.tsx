@@ -1,12 +1,7 @@
+import { LinkType } from "interface/ui";
 import LinkNext from "next/link";
 
-interface LinkProps {
-  label: string;
-  href?: string;
-  className?: string;
-}
-
-export const Link = ({ label, href, className }: LinkProps) => {
+export const Link = ({ label, href, className }: LinkType) => {
   return (
     <LinkNext
       href={href || ""}

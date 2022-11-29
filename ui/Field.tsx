@@ -1,26 +1,15 @@
-import { ChangeEventHandler } from "react";
-
-interface FieldProps {
-  title?: string;
-  label: string;
-  placeholder: string;
-  name?: string;
-  type?: string;
-  onChange?: ChangeEventHandler;
-  disable?: boolean;
-  className?: string;
-}
+import { FieldType } from "interface/ui";
 
 export const Field = ({
+  className,
+  disable,
   label,
+  name,
+  onChange,
   placeholder,
   title,
-  name,
   type = "text",
-  onChange,
-  disable,
-  className,
-}: FieldProps) => {
+}: FieldType) => {
   return (
     <>
       <label className="label">

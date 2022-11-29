@@ -1,7 +1,7 @@
+import { CartTotals } from "interface/ui";
 import Link from "next/link";
-import { useEffect, useState } from "react";
 
-export const CartIndicator = ({ totalItems, total }: any) => {
+export const CartIndicator = ({ totalItems, total }: CartTotals) => {
   return (
     <>
       <label

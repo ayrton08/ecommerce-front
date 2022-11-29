@@ -2,19 +2,7 @@
 import React from "react";
 import { Button } from "ui/Button";
 import Link from "next/link";
-
-interface ProductProps {
-  description: string;
-  title: string;
-  price: number;
-  picture: string;
-  id: string;
-  className?: string;
-  detail?: boolean;
-  color?: any;
-  category?: string;
-  onClick?: any;
-}
+import { ProductType } from "interface/product";
 
 export const Product = ({
   description,
@@ -24,10 +12,9 @@ export const Product = ({
   id,
   className,
   detail,
-  color,
   category,
   onClick,
-}: ProductProps) => {
+}: ProductType) => {
   return (
     <div className={`container px-5 py-5 mx-auto bg-black/10 ${className}`}>
       <div

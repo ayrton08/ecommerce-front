@@ -1,3 +1,6 @@
+import { CreateOrder } from "interface/cart";
+import { LoginEmail } from "interface/signin";
+
 const BASE_URL = "https://e-commerce-backend-jade.vercel.app/api";
 // const BASE_URL = "http://localhost:3001/api";
 
@@ -25,7 +28,7 @@ export const fetchApi = async (input: RequestInfo, options: any) => {
   }
 };
 
-export const getCode = async (email: any) => {
+export const getCode = async ({ email }: LoginEmail) => {
   try {
     const data = await fetchApi("/auth", {
       method: "POST",
@@ -90,7 +93,8 @@ export const updateCart = async (cart: any, info?: any) => {
     console.error(error);
   }
 };
-export const createOrder = async (order: any, productId: string) => {
+export const createOrder = async (order: CreateOrder, productId: string) => {
+  console.log(order);
   try {
     const data = await fetchApi("/order?productId=" + productId, {
       method: "POST",

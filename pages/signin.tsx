@@ -10,10 +10,7 @@ import { Loader } from "ui/Loader";
 import Router from "next/router";
 import { useLogin } from "hooks/useLogin";
 import { Header } from "components/Header";
-
-type BodyFetch = {
-  code: string;
-};
+import { BodyFetch } from "interface/signin";
 
 export default function Signin() {
   const [email, setEmail] = useState("");
@@ -41,22 +38,20 @@ export default function Signin() {
       <div className="fixed top-4 right-4 left-4">
         <Header />
       </div>
-      {/* {isSendig && <Loader />} */}
       {!status ? (
         <LoginEmail
-          handler={async (e: any) => {
+          handler={async (email) => {
             setStatus(true);
-            const data = await getCode(e);
+            const data = await getCode(email);
             setEmail(data?.email);
           }}
         />
       ) : (
         <LoginCode
-          handler={async (e: any) => {
+          handlerEmail={async (e: any) => {
             await getToken({ ...e });
           }}
           email={email}
-          label="change email"
           onClick={() => setStatus(false)}
         />
       )}

@@ -1,22 +1,10 @@
 /* eslint-disable @next/next/no-img-element */
+import { ProductType } from "interface/product";
 import Link from "next/link";
 import React from "react";
 import { Button } from "ui/Button";
-import { Toast } from "ui/Toast";
 
-interface ProductProps {
-  title: string;
-  price: number;
-  picture: string;
-  id: string;
-}
-
-export const ProductFeatured = ({
-  title,
-  picture,
-  price,
-  id,
-}: ProductProps) => {
+export const ProductFeatured = ({ title, picture, price, id }: ProductType) => {
   return (
     <div className="card-result">
       <a className="block relative h-48 rounded overflow-hidden">
