@@ -1,12 +1,13 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect, useState } from "react";
-
+import React, { useEffect } from "react";
 import Router from "next/router";
 import Link from "next/link";
+
 import { AvatarIcon, LogoIcon, MenuIcon } from "../ui/icons";
 import { isUserLogged, removeToken } from "helpers/localStorage";
 import { useMe, useTotalCart, useCart, useLogin } from "hooks";
-import { Searcher, CartIndicator } from "ui";
+import { CartIndicator, ButtonSearch } from "ui";
+import { Searcher } from "./Searcher";
 
 const initialValues = {
   search: "",
@@ -42,9 +43,11 @@ export const Header = () => {
       <Searcher handler={handler} initialValues={initialValues} />
 
       <div className="flex-none gap-2">
-        <button className="btn btn-ghost btn-circle sm:hidden">
+        <ButtonSearch>
           <i className="bx bx-search bx-sm p-2"></i>
-        </button>
+        </ButtonSearch>
+        {/* <button className="btn btn-ghost btn-circle sm:hidden">
+        </button> */}
         <label className="btn btn-ghost">
           <Link href="/profile">
             <h3 className="text-white text-md">{data?.data?.name || ""}</h3>
@@ -66,7 +69,10 @@ export const Header = () => {
         <div className=" dropdown-end hidden sm:dropdown">
           {logged ? (
             <>
-              <label tabIndex={0} className="btn btn-ghost btn-circle avatar mt-1">
+              <label
+                tabIndex={0}
+                className="btn btn-ghost btn-circle avatar mt-1"
+              >
                 <div className="w-10 rounded-full">
                   <AvatarIcon></AvatarIcon>
                 </div>

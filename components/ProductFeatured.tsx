@@ -1,8 +1,9 @@
 /* eslint-disable @next/next/no-img-element */
-import { ProductType } from "interface/product";
-import Link from "next/link";
 import React from "react";
-import { Button } from "ui/Button";
+import Link from "next/link";
+
+import { ProductType } from "interface/product";
+import { Button } from "ui/button/Button";
 
 export const ProductFeatured = ({ title, picture, price, id }: ProductType) => {
   return (

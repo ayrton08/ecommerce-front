@@ -1,5 +1,5 @@
 import "styles/global.css";
-import { Footer } from "ui/Footer";
+import { Footer } from "ui";
 import { RecoilRoot } from "recoil";
 
 function MyApp({ Component, pageProps }: any) {

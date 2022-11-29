@@ -1,5 +1,5 @@
 import { CreateOrder } from "interface/cart";
-import { LoginEmail } from "interface/signin";
+import { LoginEmailType } from "interface/signin";
 
 const BASE_URL = "https://e-commerce-backend-jade.vercel.app/api";
 // const BASE_URL = "http://localhost:3001/api";
@@ -28,7 +28,7 @@ export const fetchApi = async (input: RequestInfo, options: any) => {
   }
 };
 
-export const getCode = async ({ email }: LoginEmail) => {
+export const getCode = async ({ email }: LoginEmailType) => {
   try {
     const data = await fetchApi("/auth", {
       method: "POST",

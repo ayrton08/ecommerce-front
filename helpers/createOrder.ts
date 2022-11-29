@@ -4,7 +4,6 @@ export const createNewOrder = (orderProduct: any, total: number) => {
       {
         title: orderProduct?.Name,
         description: orderProduct?.Description.substring(0, 100),
-        // picture_url: orderProduct ? orderProduct?.Image[0]?.url : "",
         category_id: orderProduct?.Type,
         quantity: 1,
         currency_id: "ARS",

@@ -6,7 +6,7 @@ import { Header } from "components";
 import { useMe } from "hooks/useData";
 import { updateUserData } from "lib/api";
 import { createCart } from "helpers/createCart";
-import { User, Button, Field } from "ui";
+import { User, Button, UserField } from "ui";
 
 const initialValues = {
   name: "",
@@ -36,35 +36,35 @@ export default function Profile() {
           }}
         >
           {({ handleChange }) => (
-            <Form>
-              <Field
+            <Form className="flex flex-col gap-4">
+              <UserField
                 label="Name"
                 placeholder={data?.data?.name || "Choose a name"}
                 disable={!editOn}
                 name="name"
                 onChange={handleChange}
-              ></Field>
-              <Field
+              ></UserField>
+              <UserField
                 label="Email"
                 placeholder={data?.data?.email}
                 disable={!editOn}
                 name="email"
                 onChange={handleChange}
-              ></Field>
-              <Field
+              ></UserField>
+              <UserField
                 label="Address"
                 placeholder={data?.data?.address}
                 disable={!editOn}
                 name="address"
                 onChange={handleChange}
-              ></Field>
-              <Field
+              ></UserField>
+              <UserField
                 label="City"
                 placeholder={data?.data?.city}
                 disable={!editOn}
                 name="city"
                 onChange={handleChange}
-              ></Field>
+              ></UserField>
               <Button
                 onClick={() => setEditOn((value) => (value ? false : true))}
                 type={"submit"}

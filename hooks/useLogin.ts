@@ -8,8 +8,6 @@ import axios from "axios";
 import { getTokenJWT } from "lib/api";
 const BASE_URL = "https://e-commerce-backend-jade.vercel.app/api";
 
-import Router from "next/router";
-
 export const useLogin = () => {
   const [logged, setLogged] = useRecoilState(loginStatus);
   const { getCode, isSendig } = useCode();
@@ -18,12 +16,6 @@ export const useLogin = () => {
     const token = await getTokenJWT(data);
     token && setLogged(true);
   };
-
-  useEffect(() => {
-    if (logged) {
-      Router.push("/");
-    }
-  }, [logged]);
 
   return { logged, setLogged, getToken, getCode };
 };

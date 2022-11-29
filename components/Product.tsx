@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
-import React from "react";
-import { Button } from "ui/Button";
 import Link from "next/link";
+
+import { Button } from "ui/button/Button";
 import { ProductType } from "interface/product";
 
 export const Product = ({
@@ -62,30 +62,8 @@ export const Product = ({
                 : "leading-relaxed"
             }
           >
-            {!detail ? description.substring(0, 200) + "..." : description}
+            {!detail ? description?.substring(0, 200) + "..." : description}
           </p>
-          {detail && (
-            <div className="flex mt-6 items-center pb-5 border-b-2 border-gray-100 mb-5">
-              <div className="flex ml-6 items-center">
-                <div className="relative flex gap-2">
-                  <select className="select select-primary bg-inherit w-max md:w-36">
-                    <option disabled>Color</option>
-                    <option>White</option>
-                    <option>Black</option>
-                    <option>Yellow</option>
-                    <option>Orange</option>
-                  </select>
-                  <select className="select select-primary bg-inherit w-36">
-                    <option>Size</option>
-                    <option>SM</option>
-                    <option>M</option>
-                    <option>L</option>
-                    <option>XL</option>
-                  </select>
-                </div>
-              </div>
-            </div>
-          )}
           <div className="flex justify-between mt-6">
             <div className="stat-value">${price}</div>
 

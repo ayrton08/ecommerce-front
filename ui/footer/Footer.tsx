@@ -1,25 +1,27 @@
 import React from "react";
-import { Link } from "./Link";
+import { Link } from "../Link";
+import { ContainerFooter, SectionFooter, TitleFooter } from "./styled";
 
 export const Footer = () => {
   return (
-    <footer className="footer p-10 glass-footer text-base-content z-30">
-      <div>
-        <span className="footer-title">Services</span>
+    <ContainerFooter>
+      <SectionFooter>
+        <TitleFooter>Services</TitleFooter>
         <Link label="Branding" />
         <Link label="Design" />
         <Link label="Marketing" />
         <Link label="Advertisement" />
-      </div>
-      <div>
-        <span className="footer-title">Company</span>
+      </SectionFooter>
+      <SectionFooter>
+        <TitleFooter>Company</TitleFooter>
         <Link label="About us" />
         <Link label="Contact" />
         <Link label="Jobs" />
         <Link label="Press kit" />
-      </div>
-      <div>
-        <span className="footer-title">Social</span>
+      </SectionFooter>
+      <SectionFooter>
+        <TitleFooter>Social</TitleFooter>
+
         <div className="grid grid-flow-col gap-4">
           <a>
             <i className="bx bxl-twitter bx-md"></i>
@@ -28,7 +30,7 @@ export const Footer = () => {
             <i className="bx bxl-facebook-circle bx-md"></i>
           </a>
         </div>
-      </div>
-    </footer>
+      </SectionFooter>
+    </ContainerFooter>
   );
 };

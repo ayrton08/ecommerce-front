@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 
 import { CartLogo } from "../icons";
-import { Button } from "ui/Button";
+import { Button } from "ui/button/Button";
 import { CartWrapperType } from "interface/cart";
 
 export const Cart = ({

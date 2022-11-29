@@ -4,8 +4,8 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
 import { useData, useCart, useMe } from "hooks";
-import { Product, Header } from "components/";
-import { Loader, Basic, Toast, Pagination } from "ui";
+import { Product, Header, Pagination } from "components/";
+import { Loader, Basic, Toast } from "ui";
 import { NoResultsIcons } from "ui/icons";
 import { getNumberOfPages } from "helpers/pagination";
 import { usePagination } from "hooks/usePagination";

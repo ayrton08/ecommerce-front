@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import Head from "next/head";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import Router from "next/router";
 
 import { useLogin } from "hooks";
 import { LoginEmail, Header, LoginCode } from "components";
@@ -10,7 +11,7 @@ export default function Signin() {
   const [email, setEmail] = useState<any>();
   const [status, setStatus] = useState(false);
 
-  const { getToken, getCode } = useLogin();
+  const { logged, getToken, getCode } = useLogin();
 
   const handlerEmail = async ({ email }: LoginEmailType) => {
     setStatus(true);
@@ -21,6 +22,12 @@ export default function Signin() {
   const handlerCode = async (e: any) => {
     await getToken({ ...e });
   };
+
+  useEffect(() => {
+    if (logged) {
+      Router.push("/");
+    }
+  }, [logged]);
 
   return (
     <div className="flex flex-col screen justify-center self-center items-center relative ">
