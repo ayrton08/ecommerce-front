@@ -82,12 +82,20 @@ export const Header = () => {
                 className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
               >
                 <li>
-                  <Link className="justify-between" href="/profile">
+                  <Link className="items-center" href="/profile">
+                    <i
+                      className="bx bx-user-circle bx-sm"
+                      style={{ color: "#6c63ff" }}
+                    ></i>
                     Profile
                   </Link>
                 </li>
                 <li>
-                  <Link className="justify-between" href="/orders">
+                  <Link className="items-center" href="/orders">
+                    <i
+                      className="bx bx-money-withdraw bx-sm"
+                      style={{ color: "#6c63ff" }}
+                    ></i>
                     Orders
                   </Link>
                 </li>
@@ -100,6 +108,10 @@ export const Header = () => {
                     }}
                     className="btn-danger text-white font-bold"
                   >
+                    <i
+                      className="bx bx-log-out bx-sm"
+                      style={{ color: "#FDFDFD" }}
+                    ></i>
                     Logout
                   </Link>
                 </li>

@@ -68,8 +68,12 @@ export default function Profile() {
               <Button
                 onClick={() => setEditOn((value) => (value ? false : true))}
                 type={"submit"}
-                className={editOn ? "mt-4" : "hidden"}
+                className={editOn ? "gap-4 " : "hidden"}
               >
+                <i
+                  className="bx bx-save bx-sm "
+                  style={{ color: "#ffffff" }}
+                ></i>
                 Save
               </Button>
             </Form>
@@ -78,8 +82,9 @@ export default function Profile() {
         <Button
           onClick={() => setEditOn((value) => (value ? false : true))}
           type={"button"}
-          className={editOn ? "hidden" : "mt-4"}
+          className={editOn ? "hidden" : "mt-4 gap-4"}
         >
+          <i className="bx bx-edit-alt bx-sm" style={{ color: "#ffffff" }}></i>
           Edit
         </Button>
       </User>

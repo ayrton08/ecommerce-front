@@ -6,7 +6,7 @@ export const ContainerOrder: FC<any> = tw.tr`
 `;
 
 export const ItemOrder: FC<any> = tw.td`
-    order-item
+    order-item font-bold 
 `;
 
 export const ItemLinkOrder = tw(ItemOrder)`
