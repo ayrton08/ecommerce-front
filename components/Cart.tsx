@@ -1,17 +1,16 @@
 /* eslint-disable @next/next/no-img-element */
-import React, { useEffect, useState } from "react";
 
-import { CartLogo } from "../icons";
+import { CartLogo } from "../ui/icons";
 import { Button } from "ui/button/Button";
 import { CartWrapperType } from "interface/cart";
 
 export const Cart = ({
-  orders,
-  handler,
-  total,
-  items,
-  handlerRemove,
   efect,
+  handler,
+  handlerRemove,
+  items,
+  orders,
+  total,
 }: CartWrapperType) => {
   return (
     <div
@@ -24,13 +23,10 @@ export const Cart = ({
         <div className="form-control flex items-center h-full">
           {orders.map((order: any) => {
             return (
-              <>
+              <div key={order.objectID} className="w-full">
                 <div className="divider h-max m-0"></div>
 
-                <div
-                  className="w-full flex items-center  p-2 hover:bg-black/20 rounded-sm"
-                  key={order.objectID}
-                >
+                <div className="w-full flex items-center  p-2 hover:bg-black/20 rounded-sm">
                   <img
                     src={order.Images[0].url}
                     alt=""
@@ -39,15 +35,15 @@ export const Cart = ({
                   <div className="flex w-full items-center justify-between">
                     <div className="indicator">
                       <span className="mr-3 ">{order.Name}</span>
-                      <span className="indicator-item badge badge-secondary ">
+                      <span className="indicator-item badge badge-primary ">
                         {order.cantidad}
                       </span>
                     </div>
                     <div className="w-32 flex justify-between items-center">
-                      <span className="text-white w-max">
+                      <span className="text-black w-max">
                         $ {order["Unit cost"]}
                       </span>
-                      <Button className="w-max mt-0 px-2  bg-red-500/80 text-xs btn-sm">
+                      <Button className="w-max mt-0 px-2  btn-danger text-xs btn-sm">
                         <i
                           className="bx bx-trash bx-xs"
                           style={{ color: "#fdfdfd" }}
@@ -56,7 +52,7 @@ export const Cart = ({
                     </div>
                   </div>
                 </div>
-              </>
+              </div>
             );
           })}
           <div className="divider h-max m-0 mb-6"></div>
@@ -84,10 +80,10 @@ export const Cart = ({
             </div>
           </div>
           <div className="flex flex-col gap-3 w-max">
-            <Button onClick={handler} className="">
+            <Button onClick={handler} className="btn-success text-white">
               Pay
             </Button>
-            <Button onClick={handlerRemove} className=" bg-red-600/80 ">
+            <Button onClick={handlerRemove} className="btn-danger">
               Clean Cart
             </Button>
           </div>

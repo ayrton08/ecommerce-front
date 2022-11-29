@@ -8,6 +8,7 @@ import { isUserLogged, removeToken } from "helpers/localStorage";
 import { useMe, useTotalCart, useCart, useLogin } from "hooks";
 import { CartIndicator, ButtonSearch } from "ui";
 import { Searcher } from "./Searcher";
+import { ContainerHeader } from "ui/wrappers/styled";
 
 const initialValues = {
   search: "",
@@ -32,7 +33,7 @@ export const Header = () => {
   };
 
   return (
-    <div className="navbar bg-base-200 h-[80px] rounded-lg px-4 flex justify-between shadow-lg shadow-black/10 items-center glass-efect">
+    <ContainerHeader>
       <div className="w-[260px] justify-start">
         <Link className="btn btn-ghost normal-case text-xl " href="/">
           <LogoIcon className="mr-2" />
@@ -46,11 +47,10 @@ export const Header = () => {
         <ButtonSearch>
           <i className="bx bx-search bx-sm p-2"></i>
         </ButtonSearch>
-        {/* <button className="btn btn-ghost btn-circle sm:hidden">
-        </button> */}
+
         <label className="btn btn-ghost">
           <Link href="/profile">
-            <h3 className="text-white text-md">{data?.data?.name || ""}</h3>
+            <h3 className="text-white text-md">{logged && data?.data?.name}</h3>
           </Link>
         </label>
         {logged && (
@@ -98,7 +98,7 @@ export const Header = () => {
                       removeToken();
                       setLogged(false);
                     }}
-                    className="bg-red-500/80  hover:border-red-600 hover:bg-red-400/80 text-white font-bold"
+                    className="btn-danger text-white font-bold"
                   >
                     Logout
                   </Link>
@@ -108,7 +108,7 @@ export const Header = () => {
           ) : (
             <div className="sm:flex justify-end w-[175px] sm:gap-4 mr-2 animate__animated animate__fadeIn">
               <Link
-                className="block  rounded-md bg-teal-600 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-teal-700"
+                className="block  rounded-md btn-color px-5 py-2.5 text-sm font-medium text-white transition "
                 href="/signin"
               >
                 Login
@@ -117,6 +117,6 @@ export const Header = () => {
           )}
         </div>
       </div>
-    </div>
+    </ContainerHeader>
   );
 };

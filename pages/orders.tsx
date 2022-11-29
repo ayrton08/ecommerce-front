@@ -30,7 +30,7 @@ export default function Orders() {
         <div className="flex flex-col w-full absolute top-32 h-full">
           <div className="form-control w-36 max-w-xs self-end mr-6">
             <select
-              className="select select-bordered"
+              className="select  select-primary "
               value={selected}
               onChange={handlerChange}
               defaultValue={"Pending"}

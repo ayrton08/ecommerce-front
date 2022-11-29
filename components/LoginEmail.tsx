@@ -1,11 +1,13 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import { LoginIcon } from "../ui/icons";
 import { Basic } from "../ui/wrappers/Basic";
-import { Field } from "ui/field/Field";
+import { UserField } from "ui/field/Field";
 import { Button } from "ui/button/Button";
 
 import { Formik, Form } from "formik";
 import { HandlerEmail } from "interface/signin";
+import { ContainerCard } from "ui/wrappers/styled";
+import { CardTitle } from "ui/label/styled";
 
 const initialValues = {
   email: "",
@@ -14,8 +16,8 @@ const initialValues = {
 export const LoginEmail = ({ handler }: HandlerEmail) => {
   return (
     <Basic icon={<LoginIcon className="w-full" />} color="bg-black/20">
-      <h2 className="card-title">Login</h2>
-      <div className="card-actions">
+      <CardTitle>Login</CardTitle>
+      <ContainerCard>
         <Formik
           initialValues={initialValues}
           onSubmit={(values) => {
@@ -24,7 +26,7 @@ export const LoginEmail = ({ handler }: HandlerEmail) => {
         >
           {({ handleChange, values }) => (
             <Form className="form-control">
-              <Field
+              <UserField
                 title="Your Email"
                 label="Email"
                 placeholder="user@email.com"
@@ -32,6 +34,7 @@ export const LoginEmail = ({ handler }: HandlerEmail) => {
                 onChange={handleChange}
                 type="email"
                 className="bg-white"
+                disable={false}
               />
               <Button type="submit" className="mt-4">
                 Next
@@ -39,7 +42,7 @@ export const LoginEmail = ({ handler }: HandlerEmail) => {
             </Form>
           )}
         </Formik>
-      </div>
+      </ContainerCard>
     </Basic>
   );
 };

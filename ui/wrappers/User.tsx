@@ -1,4 +1,4 @@
-import { AvatarIcon } from "./icons";
+import { AvatarIcon } from "../icons";
 
 export const User = ({ children, userName }: any) => {
   return (

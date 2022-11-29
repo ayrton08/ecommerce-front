@@ -23,11 +23,22 @@ export const Footer = () => {
         <TitleFooter>Social</TitleFooter>
 
         <div className="grid grid-flow-col gap-4">
-          <a>
-            <i className="bx bxl-twitter bx-md"></i>
+          <a
+            href="https://www.linkedin.com/in/ayrton-juarez/"
+            target={"_blank"}
+            rel="noreferrer"
+          >
+            <i className="bx bxl-twitter bx-md text-color"></i>
           </a>
-          <a>
-            <i className="bx bxl-facebook-circle bx-md"></i>
+          <a
+            href="https://www.linkedin.com/in/ayrton-juarez/"
+            target={"_blank"}
+            rel="noreferrer"
+          >
+            <i
+              className="bx bxl-facebook-circle bx-md text-color"
+              style={{ color: "#6c63ff" }}
+            ></i>
           </a>
         </div>
       </SectionFooter>

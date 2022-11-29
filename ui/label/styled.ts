@@ -14,7 +14,7 @@ export const Label: FC<TitleProps | any> = tw.span`
 `;
 
 export const LabelPrimary: FC<TitleProps | any> = tw.span`
-    bg-violet-600 text-white font-bold p-2 rounded-md
+    bg-violet text-white font-bold p-2 rounded-md
 `;
 
 export const CardTitle: FC<any> = tw.h2`

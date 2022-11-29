@@ -63,9 +63,25 @@ p {
 }
 
 .btn-search {
-  @apply absolute flex justify-center items-center right-0 top-0 bottom-0 w-16 rounded-r-lg bg-[#458CD6] hover:bg-[#7baee4];
+  @apply absolute flex justify-center items-center right-0 top-0 bottom-0 w-16 rounded-r-lg;
+}
+
+.btn-color {
+  @apply bg-violet hover:bg-violet_hover;
+}
+
+.text-color {
+  @apply text-violet hover:text-violet_hover;
+}
+
+.btn-danger {
+  @apply bg-red-500/80 hover:bg-gray-800/80 font-extrabold;
+}
+
+.btn-success {
+  @apply bg-[#239B56] hover:bg-gray-800/80;
 }
 
 .order-item {
-  @apply bg-violet-500/20;
+  @apply bg-violet/20;
 }

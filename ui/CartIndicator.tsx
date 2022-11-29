@@ -36,7 +36,7 @@ export const CartIndicator = ({ totalItems, total }: CartTotals) => {
           <span className="font-bold text-lg">{totalItems} Items</span>
           <span className="text-info">Subtotal: ${total}</span>
           <div className="card-actions">
-            <Link href={"/cart"} className="btn btn-primary btn-block">
+            <Link href={"/cart"} className="btn btn-color btn-block">
               View cart
             </Link>
           </div>

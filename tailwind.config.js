@@ -9,6 +9,11 @@ module.exports = {
   ],
   theme: {
     extend: {},
+    colors: {
+      violet: "#6C63FF",
+      violet_hover: "#744fe3",
+      green: "#4CAF50",
+    },
   },
   plugins: [require("daisyui"), require("flowbite/plugin")],
   daisyui: {

@@ -2,8 +2,11 @@
 import { Formik, Form } from "formik";
 
 import { LoginIcon } from "../ui/icons";
-import { Basic, Field, Button } from "ui";
+import { Basic, Button, ButtonSmall } from "ui";
 import { LoginCodeProps } from "interface/signin";
+import { Field } from "ui/field/styled";
+import { CardTitle } from "ui/label/styled";
+import { ContainerCard } from "ui/wrappers/styled";
 
 const initialValues = {
   code: "",
@@ -12,8 +15,8 @@ const initialValues = {
 export const LoginCode = ({ handler, email, onClick }: LoginCodeProps) => {
   return (
     <Basic icon={<LoginIcon className="w-full" />} color="bg-black/20">
-      <h2 className="card-title">Login</h2>
-      <div className="card-actions">
+      <CardTitle>Login</CardTitle>
+      <ContainerCard>
         <Formik
           initialValues={initialValues}
           onSubmit={(values) => {
@@ -36,19 +39,14 @@ export const LoginCode = ({ handler, email, onClick }: LoginCodeProps) => {
                 We send your code to{" "}
                 <code className="text-violet-800">{email}</code>
               </span>
-              <button
-                className="bg-red-500 w-max px-3 py-1  self-end text-white font-bold text-sm rounded-b-md mr-2  hover:bg-red-600"
-                onClick={onClick}
-              >
-                Change email
-              </button>
+              <ButtonSmall onClick={onClick}>Change email</ButtonSmall>
               <Button type="submit" className="mt-4">
                 Ingresar
               </Button>
             </Form>
           )}
         </Formik>
-      </div>
+      </ContainerCard>
     </Basic>
   );
 };
