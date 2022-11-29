@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 
 import { CartLogo } from "../icons";
 import { Button } from "ui/Button";
+import { CartWrapperType } from "interface/cart";
 
 export const Cart = ({
   orders,
@@ -11,7 +12,7 @@ export const Cart = ({
   items,
   handlerRemove,
   efect,
-}: any) => {
+}: CartWrapperType) => {
   return (
     <div
       className={`card flex lg:flex-col shadow-xl   lg:w-2/3 xl:w-1/2 bg-black/20 py-8 px-8 mt-24 gap-8 z-10 glass-efect animate__animated  ${efect}`}
@@ -27,7 +28,7 @@ export const Cart = ({
                 <div className="divider h-max m-0"></div>
 
                 <div
-                  className="w-full flex items-center  p-2 hover:bg-black/20 rounded-sm" 
+                  className="w-full flex items-center  p-2 hover:bg-black/20 rounded-sm"
                   key={order.objectID}
                 >
                   <img
@@ -86,12 +87,7 @@ export const Cart = ({
             <Button onClick={handler} className="">
               Pay
             </Button>
-            <Button
-              onClick={() => {
-                handlerRemove();
-              }}
-              className=" bg-red-600/80 "
-            >
+            <Button onClick={handlerRemove} className=" bg-red-600/80 ">
               Clean Cart
             </Button>
           </div>

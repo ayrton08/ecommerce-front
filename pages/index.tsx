@@ -1,11 +1,9 @@
-import { ProductFeatured } from "components/ProductFeatured";
 import Head from "next/head";
-import { Banner, Featured, Categories, Menu } from "ui";
-import { Category } from "ui/Category";
-import { ComputerIcon } from "ui/icons";
-
 import { useProducts } from "hooks/useData";
-import { Header } from "components/Header";
+
+import { ProductFeatured, Header } from "components";
+import { Banner, Featured, Categories, Category } from "ui";
+import { ComputerIcon } from "ui/icons";
 
 export default function Home() {
   const data = useProducts();

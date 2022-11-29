@@ -47,11 +47,11 @@ export const Header = () => {
         </button>
         <label className="btn btn-ghost">
           <Link href="/profile">
-            <h3 className="text-white text-md">{data?.data?.name}</h3>
+            <h3 className="text-white text-md">{data?.data?.name || ""}</h3>
           </Link>
         </label>
         {logged && (
-          <div className=" dropdown-end items-center mt-2 sm:dropdown hidden md:dropdown-end">
+          <div className=" dropdown-end items-center mt-1 sm:dropdown hidden md:dropdown-end">
             <CartIndicator totalItems={totalItemsCart} total={total} />
           </div>
         )}
@@ -66,7 +66,7 @@ export const Header = () => {
         <div className=" dropdown-end hidden sm:dropdown">
           {logged ? (
             <>
-              <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+              <label tabIndex={0} className="btn btn-ghost btn-circle avatar mt-1">
                 <div className="w-10 rounded-full">
                   <AvatarIcon></AvatarIcon>
                 </div>

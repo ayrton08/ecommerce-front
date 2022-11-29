@@ -1,21 +1,14 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import Head from "next/head";
-import { Product } from "components/Product";
-
 import { useRouter } from "next/router";
-
-import { Header } from "components/Header";
-
-import { Loader } from "ui/Loader";
-import { useData } from "hooks/useData";
-import { Basic } from "ui/wrappers/Basic";
-
-import { NoResultsIcons } from "ui/icons";
-import { Toast } from "ui/Toast";
-import { Pagination } from "ui/Pagination";
 import { useEffect, useState } from "react";
-import { useCart } from "hooks/userCart";
-import { useMe, useProduct } from "hooks/useData";
+
+import { useData, useCart, useMe } from "hooks";
+import { Product, Header } from "components/";
+import { Loader, Basic, Toast, Pagination } from "ui";
+import { NoResultsIcons } from "ui/icons";
+import { getNumberOfPages } from "helpers/pagination";
+import { usePagination } from "hooks/usePagination";
 
 export default function Search() {
   const router = useRouter();
@@ -23,36 +16,18 @@ export default function Search() {
 
   const user = useMe("/me");
 
-  const [offSet, setOffSet] = useState(0);
-
-  const [totalPage, setTotalPage] = useState(1);
-  const [currentPage, setCurrentPage] = useState(1);
-  const data = useData(`/products?limit=5&offset=${offSet}&search=${q}`);
-
-  const newData = data?.results?.filter((product: any) => {
-    if (product.Name) {
-      return product;
-    }
-  });
-
-  const pageNumbers = [] as any;
-
-  for (
-    let i = 1;
-    i <= Math.ceil(data?.pagination?.total / data?.pagination?.limit);
-    i++
-  ) {
-    pageNumbers.push(i);
-  }
-
-  useEffect(() => {
-    const pages = Math.ceil(data?.pagination?.total / data?.pagination?.limit);
-    setTotalPage(pages);
-  }, [data]);
+  const {
+    data,
+    leakedProducts,
+    numberOfPages,
+    currentPage,
+    totalPage,
+    setOffSet,
+    setCurrentPage,
+  } = usePagination(q as string);
 
   const { addToCart } = useCart();
 
-  let id = 0;
   return (
     <div className=" min-h-screen flex flex-col justify-center items-center relative">
       <Head>
@@ -72,9 +47,9 @@ export default function Search() {
       {data ? (
         <>
           <div className="flex flex-col gap-5 items-center mt-32 mb-8">
-            {newData.map((product: any) => (
+            {leakedProducts.map((product: any) => (
               <Product
-                key={id++}
+                key={product.objectID}
                 title={product.Name}
                 description={product.Description}
                 price={product["Unit cost"]}
@@ -89,7 +64,7 @@ export default function Search() {
           </div>
           <div className="flex justify-center mb-8">
             <Pagination
-              currentPage={[...pageNumbers]}
+              currentPage={[...numberOfPages]}
               totalPages={totalPage}
               handlerPrev={(page: number) => {
                 setCurrentPage(page);

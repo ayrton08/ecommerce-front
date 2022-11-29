@@ -1,4 +1,5 @@
-import { Header, Payment } from "ui";
+import { Header } from "components";
+import { Payment } from "ui";
 
 export default function thanks() {
   return (

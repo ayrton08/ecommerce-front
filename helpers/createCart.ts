@@ -1,5 +1,6 @@
-export const createCart = (user: any) => {
-  console.log(user);
+import { UserType } from "interface/user";
+
+export const createCart = (user: UserType) => {
   const profile = Object.keys(user);
 
   if (profile) {

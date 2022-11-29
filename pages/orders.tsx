@@ -1,38 +1,18 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { Header } from "components/Header";
-import { useOrders } from "hooks/useData";
-import { OrderCart } from "interface/cart";
 import Head from "next/head";
 import { useEffect, useState } from "react";
-import { Loader } from "ui/Loader";
-import { Order } from "ui/Order";
+
+import { Header } from "components";
+import { useOrders } from "hooks";
+import { Loader, Order } from "ui";
 import { OrdersWrapp } from "ui/wrappers/OrdersWrapp";
 
 export default function Orders() {
   const [selected, setSelected] = useState<string>("Pending");
-  const allOrders = useOrders();
-  const [orders, setOrders] = useState([]);
 
-  const pendigOrders = allOrders?.orders?.filter(
-    (order: OrderCart) => order.status === "pending"
-  );
-  const closedOrders = allOrders?.orders?.filter((order: OrderCart) => {
-    order.status === "closed";
-  });
+  const { orders, allOrders } = useOrders(selected);
 
-  useEffect(() => {
-    if (selected === "Pending") {
-      setOrders(pendigOrders);
-    }
-    if (selected === "Payeds") {
-      setOrders(closedOrders);
-    }
-    if (selected === "All") {
-      setOrders(allOrders.orders);
-    }
-  }, [selected]);
-
-  const handleChange = (event: any) => {
+  const handlerChange = (event: any) => {
     setSelected(event.target.value);
   };
 
@@ -52,7 +32,7 @@ export default function Orders() {
             <select
               className="select select-bordered"
               value={selected}
-              onChange={handleChange}
+              onChange={handlerChange}
               defaultValue={"Pending"}
             >
               <option value={"Pending"}>Pending</option>

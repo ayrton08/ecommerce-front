@@ -1,17 +1,17 @@
 import { MouseEventHandler } from "react";
 
 export interface LoginCodeProps {
-  handlerEmail: (args: any) => void;
+  handler: (args: any) => void;
   email: string;
   onClick: MouseEventHandler;
 }
 
-export interface LoginEmail {
+export interface LoginEmailType {
   email: string;
 }
 
 export interface HandlerEmail {
-  handler: (args: LoginEmail) => Promise<any>;
+  handler: (args: LoginEmailType) => Promise<any>;
 }
 
 export type BodyFetch = {

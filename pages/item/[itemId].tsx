@@ -18,7 +18,7 @@ export default function itemId() {
 
   const currentCart = user?.data?.cart;
 
-  const { increment, addToCart } = useCart();
+  const { addToCart } = useCart();
 
   return (
     <div className="p-4  flex flex-col min-h-screen gap-10 items-center ">

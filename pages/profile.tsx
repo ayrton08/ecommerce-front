@@ -1,13 +1,12 @@
-import { Header } from "components/Header";
+import { useState } from "react";
+import Head from "next/head";
 import { Form, Formik } from "formik";
+
+import { Header } from "components";
 import { useMe } from "hooks/useData";
 import { updateUserData } from "lib/api";
 import { createCart } from "helpers/createCart";
-import Head from "next/head";
-import { useState } from "react";
-import { User, Cart } from "ui";
-import { Button } from "ui/Button";
-import { Field } from "ui/Field";
+import { User, Button, Field } from "ui";
 
 const initialValues = {
   name: "",
@@ -76,7 +75,6 @@ export default function Profile() {
             </Form>
           )}
         </Formik>
-        {/* <Button className="bg-green-500">My Cart</Button> */}
         <Button
           onClick={() => setEditOn((value) => (value ? false : true))}
           type={"button"}

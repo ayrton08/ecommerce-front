@@ -9,7 +9,7 @@ const initialValues = {
   code: "",
 };
 
-export const LoginCode = ({ handlerEmail, email, onClick }: LoginCodeProps) => {
+export const LoginCode = ({ handler, email, onClick }: LoginCodeProps) => {
   return (
     <Basic icon={<LoginIcon className="w-full" />} color="bg-black/20">
       <h2 className="card-title">Login</h2>
@@ -18,7 +18,7 @@ export const LoginCode = ({ handlerEmail, email, onClick }: LoginCodeProps) => {
           initialValues={initialValues}
           onSubmit={(values) => {
             const code = Number(values.code);
-            handlerEmail({ email: email, code });
+            handler({ email: email, code });
           }}
         >
           {({ handleChange }) => (

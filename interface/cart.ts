@@ -50,3 +50,34 @@ export interface Item {
   "Size (WxLxH)": string;
   "Total units sold": number;
 }
+
+export interface OrderType {
+  Notes?: string;
+  Color: string[];
+  "Gross sales": number;
+  objectID: string;
+  Vendor: string[];
+  Type: string;
+  "Unit cost": number;
+  Images: any[];
+  Description: string;
+  Link: string;
+  "Total units sold": number;
+  cantidad: number;
+  Settings: string[];
+  Materials: string[];
+  "Size (WxLxH)": string;
+  Name: string;
+  Designer: string[];
+  Orders?: string[];
+  "In stock"?: boolean;
+}
+
+export interface CartWrapperType {
+  efect: string;
+  handler: (args: any) => any;
+  handlerRemove: () => void;
+  items: number;
+  orders: OrderType[];
+  total: number;
+}

@@ -1,54 +1,25 @@
 /* eslint-disable @next/next/no-img-element */
-import { Header } from "components/Header";
-import { useMe } from "hooks/useData";
-import { useTotalCart } from "hooks/useTotalCart";
-import { createOrder, updateCart } from "lib/api";
-import Head from "next/head";
-import { Cart } from "ui";
-import { Loader } from "ui/Loader";
-import { useCart } from "hooks/userCart";
 import Router from "next/router";
-import { useState } from "react";
+import Head from "next/head";
+import { Header } from "components/Header";
+import { useMe, useCleanCart, useCart, useTotalCart } from "hooks";
+import { createOrder } from "lib/api";
+import { Cart, Loader } from "ui";
+import { createNewOrder } from "helpers/createOrder";
 
-export default function Profile() {
+export default function CartPage() {
   const data = useMe("/me");
-  const [efect, setEfect] = useState("animate__fadeIn");
-
   const { total, totalItems } = useTotalCart(data?.data?.cart);
-
   const { totalItemsCart } = useCart(totalItems);
-
-  const cleanCart = async () => {
-    setEfect("animate__wobble");
-
-    await updateCart({ cart: [] });
-    // window.location.href = window.location.href;
-  };
+  const { efect, cleanCart } = useCleanCart();
 
   const productId = data?.data?.cart[0]?.objectID;
   const orderProduct = data?.data?.cart[0];
-  const order = {
-    items: [
-      {
-        title: orderProduct?.Name,
-        description: orderProduct?.Description.substring(0, 100),
-        // picture_url: orderProduct ? orderProduct?.Image[0]?.url : "",
-        category_id: orderProduct?.Type,
-        quantity: 1,
-        currency_id: "ARS",
-        ...orderProduct,
-        unit_price: total,
-      },
-    ],
-    back_urls: {
-      success: "https://apx.school",
-    },
-    notification_url:
-      "https://e-commerce-backend-jade.vercel.app/api/ipn/mercadopago",
-  };
+
+  const { order } = createNewOrder(orderProduct, total);
 
   const handler = async () => {
-    const res = await createOrder({ ...order }, productId);
+    await createOrder({ ...order }, productId);
     cleanCart();
     Router.push({
       pathname: "/orders",
