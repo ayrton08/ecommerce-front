@@ -6,6 +6,7 @@ import { useEffect, useRef, useState } from "react";
 import { createNewOrder } from "helpers/createOrder";
 import { createOrder } from "lib/api";
 import Image from "next/image";
+import { TrashIcon } from "ui/icons/boxicons";
 
 export const Cart = ({ data }: CartWrapperType) => {
   const ref = useRef<HTMLInputElement>(null);
@@ -87,7 +88,7 @@ export const Cart = ({ data }: CartWrapperType) => {
                           removeElement(index, currentOrders, order.objectID);
                         }}
                       >
-                        <i className="bx bx-trash bx-xs text-white"></i>
+                        <TrashIcon />
                       </Button>
                     </div>
                   </div>

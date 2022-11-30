@@ -23,7 +23,7 @@
 }
 
 .text-color {
-  @apply hover:text-primary_hover text-white font-bold;
+  @apply hover:text-primary_hover text-primary font-bold;
 }
 
 .btn-danger {
@@ -39,11 +39,11 @@
 }
 
 .flex-col-center {
-  @apply flex flex-col screen justify-center self-center items-center;
+  @apply flex flex-col min-h-screen justify-center self-center items-center;
 }
 
 .flex-center {
-  @apply flex min-h-screen justify-center self-center items-center relative;
+  @apply flex min-h-screen  justify-center self-center items-center relative;
 }
 
 .header {

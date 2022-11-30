@@ -9,5 +9,5 @@ export const Field: FC<any> = tw.input`
 `;
 
 export const FieldSearch: FC<any> = tw.input`
-  input input-bordered w-full
+  input input-bordered w-full h-max
 `;

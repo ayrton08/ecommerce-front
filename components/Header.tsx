@@ -13,14 +13,9 @@ import { ModalMenu } from "./ModalMenu";
 import {
   LogoutIcon,
   OrdersIconPrimary,
-  ProfileIcon,
   ProfileIconPrimary,
   SearchIconDark,
 } from "ui/icons/boxicons";
-
-const initialValues = {
-  search: "",
-};
 
 export const Header = () => {
   const data = useMe("/me");
@@ -33,53 +28,46 @@ export const Header = () => {
     setLogged(logged);
   }, [data]);
 
-  const handler = (path: string) => {
-    Router.push({
-      pathname: "/search",
-      query: { q: path },
-    });
-  };
-
   return (
     <section className="header">
       <ModalMenu></ModalMenu>
       <ContainerHeader>
-        <div className="w-[260px] justify-start">
+        <LogoIcon className="mr-2 sm:hidden min-w-max" />
+
+        <div className="hidden sm:flex w-max md:w-[260px] justify-start">
           <Link className="btn btn-ghost normal-case text-xl " href="/">
             <LogoIcon className="mr-2" />
             market
           </Link>
         </div>
 
-        <Searcher handler={handler} initialValues={initialValues} />
+        <Searcher />
 
-        <div className="flex-none gap-2">
-          <ButtonSearch aria-label="button search">
-            <SearchIconDark />
-          </ButtonSearch>
-
-          <label className="md:btn-ghost hidden md:btn">
-            <Link href="/profile" passHref>
-              <h3 className="text-primary text-md">
-                {logged && data?.data?.name}
-              </h3>
-            </Link>
-          </label>
+        <div className="flex-none">
           {logged && (
-            <div className=" dropdown-end items-center mt-1 sm:dropdown hidden md:dropdown-end">
+            <label className="md:btn-ghost hidden md:btn mr-2">
+              <Link href="/profile" passHref>
+                <h3 className="text-primary text-md">{data?.data?.name}</h3>
+              </Link>
+            </label>
+          )}
+          {logged && (
+            <div className=" dropdown-end items-center mt-1 sm:dropdown hidden md:dropdown-end mr-2">
               <CartIndicator totalItems={totalItemsCart} total={total} />
             </div>
           )}
 
-          <label
-            tabIndex={0}
-            className="btn btn-ghost btn-circle avatar sm:hidden"
-          >
-            <MenuIcon />
-          </label>
+          {logged && (
+            <label
+              tabIndex={0}
+              className="btn btn-ghost btn-circle avatar sm:hidden"
+            >
+              <MenuIcon />
+            </label>
+          )}
 
-          <div className=" dropdown-end hidden sm:dropdown">
-            {logged ? (
+          <div className=" dropdown-end hidden sm:dropdown mr-2">
+            {logged && (
               <>
                 <label
                   tabIndex={0}
@@ -120,17 +108,18 @@ export const Header = () => {
                   </li>
                 </ul>
               </>
-            ) : (
-              <div className="sm:flex justify-end w-[175px] sm:gap-4 mr-2 animate__animated animate__fadeIn">
-                <Link
-                  className="block  rounded-md btn-color px-5 py-2.5 text-sm font-medium text-white transition "
-                  href="/signin"
-                >
-                  Login
-                </Link>
-              </div>
             )}
           </div>
+          {!logged && (
+            <div className="sm:flex justify-end items-end md:w-[260px] animate__animated animate__fadeIn">
+              <Link
+                className="block  rounded-md btn-color px-5 py-2 text-sm font-medium text-white transition "
+                href="/signin"
+              >
+                Login
+              </Link>
+            </div>
+          )}
         </div>
       </ContainerHeader>
     </section>

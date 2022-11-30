@@ -30,3 +30,23 @@ export const LogoutIcon = () => {
 export const CartIcon = () => {
   return <i className="bx bx-cart text-white bx-sm"></i>;
 };
+
+export const TrashIcon = () => {
+  return <i className="bx bx-trash bx-xs text-white"></i>;
+};
+
+export const SaveIcon = () => {
+  return <i className="bx bx-save bx-sm text-white"></i>;
+};
+
+export const EditIcon = () => {
+  return <i className="bx bx-edit-alt bx-sm text-white"></i>;
+};
+
+export const TwitterIcon = () => {
+  return <i className="bx bxl-twitter bx-md text-color"></i>;
+};
+
+export const FacebookIcon = () => {
+  return <i className="bx bxl-facebook-circle bx-md text-color"></i>;
+};

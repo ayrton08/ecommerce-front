@@ -15,7 +15,7 @@ const initialValues = {
 
 export const LoginEmail = ({ handler }: HandlerEmail) => {
   return (
-    <Basic icon={<LoginIcon className="w-full" />} color="bg-black/20">
+    <Basic icon={<LoginIcon className="w-full" />} color="bg-dark_light">
       <CardTitle>Login</CardTitle>
       <ContainerCard>
         <Formik

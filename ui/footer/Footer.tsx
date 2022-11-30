@@ -1,5 +1,7 @@
 import React from "react";
+import { FacebookIcon, TwitterIcon } from "ui/icons/boxicons";
 import { Link } from "../Link";
+import LinkNext from "next/link";
 import { ContainerFooter, SectionFooter, TitleFooter } from "./styled";
 
 export const Footer = () => {
@@ -23,22 +25,22 @@ export const Footer = () => {
         <TitleFooter>Social</TitleFooter>
 
         <div className="grid grid-flow-col gap-4">
-          <a
+          <LinkNext
             href="https://www.linkedin.com/in/ayrton-juarez/"
             target={"_blank"}
             rel="noreferrer"
             aria-label="twitter"
           >
-            <i className="bx bxl-twitter bx-md text-color"></i>
-          </a>
-          <a
+            <TwitterIcon />
+          </LinkNext>
+          <LinkNext
             href="https://www.linkedin.com/in/ayrton-juarez/"
             target={"_blank"}
             rel="noreferrer"
             aria-label="facebook"
           >
-            <i className="bx bxl-facebook-circle bx-md text-color"></i>
-          </a>
+            <FacebookIcon />
+          </LinkNext>
         </div>
       </SectionFooter>
     </ContainerFooter>

@@ -7,6 +7,7 @@ import { useMe } from "hooks/useData";
 import { updateUserData } from "lib/api";
 import { createCart } from "helpers/createCart";
 import { User, Button, UserField } from "ui";
+import { EditIcon, SaveIcon } from "ui/icons/boxicons";
 
 const initialValues = {
   name: "",
@@ -21,7 +22,7 @@ export default function Profile() {
   const profileWithCart = createCart({ ...data?.data });
 
   return (
-    <div className="flex gap-5 h-screen justify-center self-center items-center relative ">
+    <div className="flex gap-5 h-screen justify-center self-center items-center relative">
       <Head>
         <title>{data?.data?.name || "Profile"}</title>
       </Head>
@@ -68,7 +69,7 @@ export default function Profile() {
                 type={"submit"}
                 className={editOn ? "gap-4 " : "hidden"}
               >
-                <i className="bx bx-save bx-sm text-white"></i>
+                <SaveIcon />
                 Save
               </Button>
             </Form>
@@ -79,7 +80,7 @@ export default function Profile() {
           type={"button"}
           className={editOn ? "hidden" : "mt-4 gap-4"}
         >
-          <i className="bx bx-edit-alt bx-sm text-white"></i>
+          <EditIcon />
           Edit
         </Button>
       </User>

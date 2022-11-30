@@ -30,7 +30,7 @@ export default function Signin() {
   }, [logged]);
 
   return (
-    <div className="flex-col-center">
+    <div className="flex-col-center container-page">
       <Head>
         <title>Signin</title>
       </Head>
