@@ -10,7 +10,7 @@ interface BasicProps {
 export const Basic = ({ children, icon, color }: BasicProps) => {
   return (
     <div
-      className={`card lg:card-side lg:gap-6 shadow-xl h-2/5 ${color} z-30 px-4 py-8 animate__animated animate__fadeIn`}
+      className={`card lg:card-side lg:gap-6 shadow-xl  ${color} z-30 px-4 py-16 animate__animated animate__fadeIn `}
     >
       {icon}
 

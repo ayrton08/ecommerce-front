@@ -80,4 +80,5 @@ export interface CartWrapperType {
   items: number;
   orders: OrderType[];
   total: number;
+  handlerRemoveProduct?: any;
 }

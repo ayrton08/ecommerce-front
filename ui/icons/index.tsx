@@ -7,7 +7,25 @@ import Cart from "./cart-logo.svg";
 import Computer from "./tecs/computer.svg";
 import Home from "./home.svg";
 import Results from "./no-results.svg";
+import Visa from "./visa.svg";
+import Master from "./master.svg";
+import MercadoPago from "./mp.svg";
+import Cash from "./cash.svg";
 
+const CashIcon = ({ className }: any) => {
+  return <Cash className={className} />;
+};
+
+const MercadoPagoIcon = ({ className }: any) => {
+  return <MercadoPago className={className} />;
+};
+
+const MasterIcon = ({ className }: any) => {
+  return <Master className={className} />;
+};
+const VisaIcon = ({ className }: any) => {
+  return <Visa className={className} />;
+};
 const NoResultsIcons = ({ className }: any) => {
   return <Results className={className} />;
 };
@@ -44,7 +62,7 @@ const CartLogo = ({ className }: any) => {
 
 const MenuIcon = ({ className }: any) => {
   return (
-    <label className="btn btn-circle swap swap-rotate">
+    <label htmlFor="my-modal" className="btn btn-circle swap swap-rotate">
       <input type="checkbox" className="hidden" />
 
       <svg
@@ -71,14 +89,18 @@ const MenuIcon = ({ className }: any) => {
 };
 
 export {
-  NotFoundIcon,
   AvatarIcon,
-  LoginIcon,
-  LogoIcon,
-  PaymentIcon,
-  MenuIcon,
   CartLogo,
   ComputerIcon,
   HomeIcon,
+  LoginIcon,
+  LogoIcon,
+  MasterIcon,
+  MenuIcon,
+  MercadoPagoIcon,
   NoResultsIcons,
+  NotFoundIcon,
+  PaymentIcon,
+  VisaIcon,
+  CashIcon,
 };

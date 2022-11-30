@@ -29,7 +29,7 @@ export default function Search() {
   const { addToCart } = useCart();
 
   return (
-    <div className=" min-h-screen flex flex-col justify-center items-center relative">
+    <div className="container-page  flex  justify-center items-center  relative">
       <Head>
         <title>Search</title>
       </Head>
@@ -39,7 +39,7 @@ export default function Search() {
       {data?.pagination?.total === 0 && (
         <Basic
           icon={<NoResultsIcons className="w-full" />}
-          color="bg-red-600/40 w-1/2 "
+          color="bg-red-600/40 md:w-1/2 lg:w-1/3 h-full"
         >
           <h2 className="card-title">No Results!</h2>
         </Basic>
@@ -61,48 +61,50 @@ export default function Search() {
                 }}
               />
             ))}
-          </div>
-          <div className="flex justify-center mb-8">
-            <Pagination
-              currentPage={[...numberOfPages]}
-              totalPages={totalPage}
-              handlerPrev={(page: number) => {
-                setCurrentPage(page);
-                totalPage > 1 && setOffSet((prev) => prev - 5);
-              }}
-              handlerNext={(page: number) => {
-                setCurrentPage(page);
-                totalPage > 1 && setOffSet((prev) => prev + 5);
-              }}
-              activePage={currentPage}
-              handler={(page: any) => {
-                if (page === 1) {
-                  setOffSet(0);
-                  setCurrentPage(page);
-                } else if (page === 2) {
-                  setOffSet(5);
-                  setCurrentPage(page);
-                } else if (page === 3) {
-                  setOffSet(10);
-                  setCurrentPage(page);
-                } else if (page === 4) {
-                  setOffSet(15);
-                  setCurrentPage(page);
-                } else if (page === 5) {
-                  setOffSet(20);
-                  setCurrentPage(page);
-                } else if (page === 6) {
-                  setOffSet(25);
-                  setCurrentPage(page);
-                } else if (page === 7) {
-                  setOffSet(60);
-                  setCurrentPage(page);
-                } else if (page === 8) {
-                  setOffSet(70);
-                  setCurrentPage(page);
-                }
-              }}
-            />
+            {data?.pagination?.total !== 0 && (
+              <div className="flex justify-center mb-8">
+                <Pagination
+                  currentPage={[...numberOfPages]}
+                  totalPages={totalPage}
+                  handlerPrev={(page: number) => {
+                    setCurrentPage(page);
+                    totalPage > 1 && setOffSet((prev) => prev - 5);
+                  }}
+                  handlerNext={(page: number) => {
+                    setCurrentPage(page);
+                    totalPage > 1 && setOffSet((prev) => prev + 5);
+                  }}
+                  activePage={currentPage}
+                  handler={(page: any) => {
+                    if (page === 1) {
+                      setOffSet(0);
+                      setCurrentPage(page);
+                    } else if (page === 2) {
+                      setOffSet(5);
+                      setCurrentPage(page);
+                    } else if (page === 3) {
+                      setOffSet(10);
+                      setCurrentPage(page);
+                    } else if (page === 4) {
+                      setOffSet(15);
+                      setCurrentPage(page);
+                    } else if (page === 5) {
+                      setOffSet(20);
+                      setCurrentPage(page);
+                    } else if (page === 6) {
+                      setOffSet(25);
+                      setCurrentPage(page);
+                    } else if (page === 7) {
+                      setOffSet(60);
+                      setCurrentPage(page);
+                    } else if (page === 8) {
+                      setOffSet(70);
+                      setCurrentPage(page);
+                    }
+                  }}
+                />
+              </div>
+            )}
           </div>
         </>
       ) : (

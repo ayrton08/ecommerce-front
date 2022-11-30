@@ -12,7 +12,7 @@ export const createNewOrder = (orderProduct: any, total: number) => {
       },
     ],
     back_urls: {
-      success: "https://apx.school",
+      success: "https://aj-market.vercel.app/thanks",
     },
     notification_url:
       "https://e-commerce-backend-jade.vercel.app/api/ipn/mercadopago",

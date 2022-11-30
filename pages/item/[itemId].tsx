@@ -21,7 +21,7 @@ export default function itemId() {
   const { addToCart } = useCart();
 
   return (
-    <div className="p-4  flex flex-col min-h-screen gap-10 items-center ">
+    <div className="p-4 container-page flex flex-col min-h-screen gap-10 items-center ">
       <Head>
         <title>Search</title>
       </Head>

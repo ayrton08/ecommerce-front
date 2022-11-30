@@ -1,14 +1,12 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import Head from "next/head";
-import { useEffect, useState } from "react";
-import moment from "moment";
+import { useState } from "react";
 
 import { Header } from "components";
 import { useOrders } from "hooks";
 import { Loader, Order } from "ui";
 import { OrdersWrapp } from "ui/wrappers/OrdersWrapp";
 import { convertSecondsToDate } from "helpers/convertSecondsToDate";
-import { data } from "autoprefixer";
 
 export default function Orders() {
   const [selected, setSelected] = useState<string>("Pending");
@@ -22,7 +20,7 @@ export default function Orders() {
   let index = 1;
 
   return (
-    <div className="flex gap-5 min-h-screen  h-full justify-center self-center items-center  pt-36 pb-16 relative">
+    <div className="flex container-page gap-5 min-h-screen  h-full justify-center self-center items-center  pt-36 pb-16 relative">
       <Head>
         <title>Cart</title>
       </Head>
@@ -48,7 +46,6 @@ export default function Orders() {
           <OrdersWrapp>
             {orders?.map((order: any) => {
               const date = convertSecondsToDate(order.createdAt._seconds);
-              console.log(date);
 
               return (
                 <Order

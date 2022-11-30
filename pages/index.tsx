@@ -3,12 +3,20 @@ import { useProducts } from "hooks/useData";
 
 import { ProductFeatured, Header } from "components";
 import { Banner, Featured, Categories, Category } from "ui";
-import { ComputerIcon } from "ui/icons";
+import {
+  CashIcon,
+  ComputerIcon,
+  MasterIcon,
+  MercadoPagoIcon,
+  VisaIcon,
+} from "ui/icons";
+import { ContainerCard, ContainerPayments } from "ui/wrappers/styled";
+import { CardTitle } from "ui/label/styled";
 
 export default function Home() {
   const data = useProducts();
   return (
-    <div className="pt-32">
+    <div className="pt-40">
       <Head>
         <title>Home</title>
       </Head>
@@ -40,6 +48,16 @@ export default function Home() {
         <Category label="Bazar" icon={<ComputerIcon />} />
         <Category label="Sport" icon={<ComputerIcon />} />
       </Categories>
+      <div className="divider px-8"></div>
+      <ContainerPayments>
+        <CardTitle>Payment Methods</CardTitle>
+        <ContainerCard>
+          <VisaIcon />
+          <MasterIcon />
+          <MercadoPagoIcon />
+          <CashIcon className="w-20" />
+        </ContainerCard>
+      </ContainerPayments>
     </div>
   );
 }

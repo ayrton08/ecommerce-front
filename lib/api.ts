@@ -94,7 +94,6 @@ export const updateCart = async (cart: any, info?: any) => {
   }
 };
 export const createOrder = async (order: CreateOrder, productId: string) => {
-  console.log(order);
   try {
     const data = await fetchApi("/order?productId=" + productId, {
       method: "POST",

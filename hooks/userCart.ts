@@ -2,11 +2,10 @@
 import { updateCart } from "lib/api";
 import { useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
-import { cartAmount, cartItems } from "store/atoms";
+import { cartItems } from "store/atoms";
 
 export const useCart = (totalItems = 0, totalCart?: number) => {
   const [counter, setCounter] = useState(totalItems);
-  const [totalAmountCart, setTotalAmountCart] = useRecoilState(cartAmount);
   const [totalItemsCart, setTotalItemsCart] = useRecoilState(cartItems);
 
   useEffect(() => {
@@ -19,6 +18,9 @@ export const useCart = (totalItems = 0, totalCart?: number) => {
 
   const increment = (value = 1) => {
     setTotalItemsCart((current) => current + value);
+  };
+  const decrement = (value = 1) => {
+    setTotalItemsCart((current) => current - value);
   };
 
   const addToCart = async (currentCart: any, product: any) => {
@@ -44,5 +46,6 @@ export const useCart = (totalItems = 0, totalCart?: number) => {
     totalItemsCart,
     increment,
     addToCart,
+    decrement,
   };
 };

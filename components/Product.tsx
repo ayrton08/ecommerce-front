@@ -29,7 +29,7 @@ export const Product = ({
           className={
             !detail
               ? "md:w-52 w-full min-w-[210px] md:h-52 h-64 object-cover object-center rounded self-center"
-              : "md:w-full w-full min-w-[210px] md:h-[600px] h-64 object-cover object-center rounded self-center p-5"
+              : "md:w-full w-full min-w-[210px] md:h-[450px] h-64 object-cover object-center rounded self-center p-5"
           }
           src={picture}
         />
@@ -75,7 +75,7 @@ export const Product = ({
               )}
               <Button
                 onClick={onClick}
-                className="w-32 bg-green-500 border-0 py-2  focus:outline-none hover:bg-green-600 rounded-lg"
+                className="w-32 btn-success border-0 py-2  focus:outline-none text-white rounded-lg"
               >
                 Add to cart
               </Button>

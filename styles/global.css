@@ -67,7 +67,7 @@ p {
 }
 
 .btn-color {
-  @apply bg-violet hover:bg-violet_hover;
+  @apply bg-violet hover:bg-gray-800/80;
 }
 
 .text-color {
@@ -84,4 +84,8 @@ p {
 
 .order-item {
   @apply bg-violet/20;
+}
+
+.container-page {
+  min-height: calc(100vh - 222px);
 }

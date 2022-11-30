@@ -6,5 +6,9 @@ export const ContainerHeader: FC<any> = tw.div`
 `;
 
 export const ContainerCard: FC<any> = tw.div`
-    card-actions
+    card-actions items-center 
+`;
+
+export const ContainerPayments = tw(ContainerCard)`
+    flex flex-col justify-center items-center mb-8
 `;

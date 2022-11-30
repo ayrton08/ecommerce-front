@@ -3,27 +3,33 @@
 import { CartLogo } from "../ui/icons";
 import { Button } from "ui/button/Button";
 import { CartWrapperType } from "interface/cart";
+import { useCart, useCleanCart } from "hooks";
+import { useRef, useState } from "react";
 
 export const Cart = ({
   efect,
   handler,
   handlerRemove,
+  handlerRemoveProduct,
   items,
   orders,
   total,
 }: CartWrapperType) => {
+  const ref = useRef<HTMLInputElement>(null);
+  const { decrement } = useCart();
+
   return (
     <div
-      className={`card flex lg:flex-col shadow-xl   lg:w-2/3 xl:w-1/2 bg-black/20 py-8 px-8 mt-24 gap-8 z-10 glass-efect animate__animated  ${efect}`}
+      className={`card flex lg:flex-col shadow-xl   lg:w-2/3 xl:w-1/2 bg-black/20 py-8 px-8 mt-32 mb-12 gap-8 z-10 glass-efect animate__animated  ${efect}`}
     >
       <CartLogo className="w-[350px] self-center" />
 
       <div className="flex flex-col p-4   w-full ">
         <h2 className="card-title self-center mb-4">Cart</h2>
         <div className="form-control flex items-center h-full">
-          {orders.map((order: any) => {
+          {orders?.map((order: any, index: any) => {
             return (
-              <div key={order.objectID} className="w-full">
+              <div key={index} className="w-full" id={order.objectID} ref={ref}>
                 <div className="divider h-max m-0"></div>
 
                 <div className="w-full flex items-center  p-2 hover:bg-black/20 rounded-sm">
@@ -43,7 +49,13 @@ export const Cart = ({
                       <span className="text-black w-max">
                         $ {order["Unit cost"]}
                       </span>
-                      <Button className="w-max mt-0 px-2  btn-danger text-xs btn-sm">
+                      <Button
+                        className="w-max mt-0 px-2  btn-danger text-xs btn-sm"
+                        onClick={() => {
+                          decrement(order.cantidad);
+                          handlerRemoveProduct(index, orders, order.objectID);
+                        }}
+                      >
                         <i
                           className="bx bx-trash bx-xs"
                           style={{ color: "#fdfdfd" }}
