@@ -1,18 +1,20 @@
-/* eslint-disable @next/next/no-img-element */
 import React from "react";
 import Link from "next/link";
 
 import { ProductType } from "interface/product";
 import { Button } from "ui/button/Button";
+import Image from "next/image";
 
 export const ProductFeatured = ({ title, picture, price, id }: ProductType) => {
   return (
     <div className="card-result">
       <a className="block relative h-48 rounded overflow-hidden">
-        <img
+        <Image
           alt="ecommerce"
           className="object-cover object-center w-full h-full block"
           src={picture}
+          width={500}
+          height={500}
         />
       </a>
       <div className="mt-4">

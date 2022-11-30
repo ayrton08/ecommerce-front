@@ -74,11 +74,5 @@ export interface OrderType {
 }
 
 export interface CartWrapperType {
-  efect: string;
-  handler: (args: any) => any;
-  handlerRemove: () => void;
-  items: number;
-  orders: OrderType[];
-  total: number;
-  handlerRemoveProduct?: any;
+  data: any;
 }

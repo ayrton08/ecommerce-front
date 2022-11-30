@@ -47,7 +47,7 @@ export const Header = () => {
         <Searcher handler={handler} initialValues={initialValues} />
 
         <div className="flex-none gap-2">
-          <ButtonSearch>
+          <ButtonSearch aria-label="button search">
             <i className="bx bx-search bx-sm p-2"></i>
           </ButtonSearch>
 

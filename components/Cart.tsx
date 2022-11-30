@@ -1,22 +1,52 @@
-/* eslint-disable @next/next/no-img-element */
-
 import { CartLogo } from "../ui/icons";
 import { Button } from "ui/button/Button";
 import { CartWrapperType } from "interface/cart";
-import { useCart, useCleanCart } from "hooks";
-import { useRef, useState } from "react";
+import { useCart, useCleanCart, useTotalCart } from "hooks";
+import { useEffect, useRef, useState } from "react";
+import { createNewOrder } from "helpers/createOrder";
+import { createOrder } from "lib/api";
+import Image from "next/image";
 
-export const Cart = ({
-  efect,
-  handler,
-  handlerRemove,
-  handlerRemoveProduct,
-  items,
-  orders,
-  total,
-}: CartWrapperType) => {
+export const Cart = ({ data }: CartWrapperType) => {
   const ref = useRef<HTMLInputElement>(null);
   const { decrement } = useCart();
+
+  const [currentOrders, setCurrentOrders] = useState([]);
+  const { total, totalItems } = useTotalCart(data?.data?.cart);
+  const { totalItemsCart } = useCart(totalItems);
+  const { efect, cleanCart } = useCleanCart();
+
+  const [url, setUrl] = useState("");
+
+  const productId = data?.data?.cart[0]?.objectID;
+  const orderProduct = data?.data?.cart[0];
+
+  useEffect(() => {
+    setCurrentOrders(data?.data?.cart);
+  }, [data]);
+
+  const { order } = createNewOrder(orderProduct, total);
+
+  const handler = async () => {
+    const orderCreated = await createOrder({ ...order }, productId);
+    setUrl(orderCreated.url);
+    console.log("url", orderCreated.url);
+    await cleanCart();
+  };
+
+  useEffect(() => {
+    if (url) {
+      window.open(url, "Payment");
+    }
+  }, [url]);
+
+  const { removeProduct } = useCleanCart();
+
+  const removeElement = async (index: any, orders: any, id: string) => {
+    const newFruits = currentOrders.filter((_, i) => i !== index);
+    setCurrentOrders(newFruits);
+    await removeProduct(orders, id);
+  };
 
   return (
     <div
@@ -27,15 +57,17 @@ export const Cart = ({
       <div className="flex flex-col p-4   w-full ">
         <h2 className="card-title self-center mb-4">Cart</h2>
         <div className="form-control flex items-center h-full">
-          {orders?.map((order: any, index: any) => {
+          {currentOrders?.map((order: any, index: any) => {
             return (
               <div key={index} className="w-full" id={order.objectID} ref={ref}>
                 <div className="divider h-max m-0"></div>
 
                 <div className="w-full flex items-center  p-2 hover:bg-black/20 rounded-sm">
-                  <img
+                  <Image
                     src={order.Images[0].url}
-                    alt=""
+                    alt="product cart"
+                    width={100}
+                    height={100}
                     className="w-16 h-16 mr-4 flex justify-center rounded-md"
                   />
                   <div className="flex w-full items-center justify-between">
@@ -53,7 +85,7 @@ export const Cart = ({
                         className="w-max mt-0 px-2  btn-danger text-xs btn-sm"
                         onClick={() => {
                           decrement(order.cantidad);
-                          handlerRemoveProduct(index, orders, order.objectID);
+                          removeElement(index, currentOrders, order.objectID);
                         }}
                       >
                         <i
@@ -74,13 +106,13 @@ export const Cart = ({
             <div className="relative">
               <span className=" w-14  p-1 rounded-md">Products:</span>
               <span className="text-white  absolute right-4">
-                {orders?.length}
+                {currentOrders?.length}
               </span>
             </div>
             <div className="divider m-0"></div>
             <div className="relative">
               <span className="mr-5 w-14  p-1 rounded-md">Items:</span>
-              <span className="text-white absolute right-4">{items}</span>
+              <span className="text-white absolute right-4">{total}</span>
             </div>
             <div className="divider m-0"></div>
 
@@ -95,7 +127,7 @@ export const Cart = ({
             <Button onClick={handler} className="btn-success text-white">
               Pay
             </Button>
-            <Button onClick={handlerRemove} className="btn-danger">
+            <Button onClick={cleanCart} className="btn-danger">
               Clean Cart
             </Button>
           </div>

@@ -1,8 +1,8 @@
-/* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
 
 import { Button } from "ui/button/Button";
 import { ProductType } from "interface/product";
+import Image from "next/image";
 
 export const Product = ({
   description,
@@ -24,7 +24,7 @@ export const Product = ({
             : "lg:w-full mx-auto flex flex-col md:flex-row"
         }
       >
-        <img
+        <Image
           alt="ecommerce"
           className={
             !detail
@@ -32,6 +32,8 @@ export const Product = ({
               : "md:w-full w-full min-w-[210px] md:h-[450px] h-64 object-cover object-center rounded self-center p-5"
           }
           src={picture}
+          width={300}
+          height={300}
         />
         <div
           className={

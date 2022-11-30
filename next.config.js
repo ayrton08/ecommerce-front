@@ -7,6 +7,22 @@ const nextConfig = withSvgr({
   compiler: {
     styledComponents: true,
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "dl.airtable.com",
+        port: "",
+        pathname: "/.attachments/**",
+      },
+      {
+        protocol: "https",
+        hostname: "img.freepik.com",
+        port: "",
+        pathname: "/vector-gratis/**",
+      },
+    ],
+  },
 });
 
 module.exports = nextConfig;

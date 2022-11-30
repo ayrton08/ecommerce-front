@@ -7,7 +7,6 @@ export const useCleanCart = () => {
   const cleanCart = async () => {
     setEfect("animate__wobble");
     await updateCart({ cart: [] });
-    // window.location.href = window.location.href;
   };
 
   const removeProduct = async (currentCart: any, productId: string) => {
