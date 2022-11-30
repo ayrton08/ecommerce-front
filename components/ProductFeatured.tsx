@@ -8,7 +8,10 @@ import Image from "next/image";
 export const ProductFeatured = ({ title, picture, price, id }: ProductType) => {
   return (
     <div className="card-result">
-      <a className="block relative h-48 rounded overflow-hidden">
+      <Link
+        className="block relative h-48 rounded overflow-hidden"
+        href={"/item/" + id}
+      >
         <Image
           alt="ecommerce"
           className="object-cover object-center w-full h-full block"
@@ -16,11 +19,11 @@ export const ProductFeatured = ({ title, picture, price, id }: ProductType) => {
           width={500}
           height={500}
         />
-      </a>
+      </Link>
       <div className="mt-4">
-        <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">
+        <span className="text-gray-500 text-xs tracking-widest title-font mb-1">
           CATEGORY
-        </h3>
+        </span>
         <h2 className="text-gray-900 title-font text-lg font-medium">
           {title}
         </h2>

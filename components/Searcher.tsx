@@ -18,7 +18,7 @@ export const Searcher = ({ handler, initialValues }: any) => {
             name="search"
           />
 
-          <ButtonSearchPrimary type="submit">
+          <ButtonSearchPrimary type="submit" aria-label="button search">
             <SearchIcon />
           </ButtonSearchPrimary>
         </Form>

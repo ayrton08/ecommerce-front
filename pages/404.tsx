@@ -8,11 +8,19 @@ export default function notFound() {
     <div className="flex flex-col screen justify-center self-center items-center relative bg-red">
       <Head>
         <title>Not Found</title>
+        <meta
+          property="description"
+          content="The url you are trying to access does not exist or is temporarily unavailable"
+          key="title"
+        />
       </Head>
       <div className="fixed top-4 w-full px-4">
         <Header />
       </div>
-      <Basic icon={<NotFoundIcon className="w-full" />} color="bg-red-600/40 self-center">
+      <Basic
+        icon={<NotFoundIcon className="w-full" />}
+        color="bg-red-600/40 self-center"
+      >
         <h2 className="card-title">Page not Found!</h2>
       </Basic>
     </div>

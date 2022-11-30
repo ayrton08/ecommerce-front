@@ -27,6 +27,7 @@ export const Footer = () => {
             href="https://www.linkedin.com/in/ayrton-juarez/"
             target={"_blank"}
             rel="noreferrer"
+            aria-label="twitter"
           >
             <i className="bx bxl-twitter bx-md text-color"></i>
           </a>
@@ -34,6 +35,7 @@ export const Footer = () => {
             href="https://www.linkedin.com/in/ayrton-juarez/"
             target={"_blank"}
             rel="noreferrer"
+            aria-label="facebook"
           >
             <i
               className="bx bxl-facebook-circle bx-md text-color"
