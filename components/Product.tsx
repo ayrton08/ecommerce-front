@@ -16,7 +16,9 @@ export const Product = ({
   onClick,
 }: ProductType) => {
   return (
-    <div className={`container px-5 py-5 mx-auto bg-black/10 ${className}`}>
+    <div
+      className={`container px-5 py-5 mx-auto xl:w-3/4 bg-light ${className}`}
+    >
       <div
         className={
           !detail

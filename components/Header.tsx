@@ -10,6 +10,13 @@ import { CartIndicator, ButtonSearch } from "ui";
 import { Searcher } from "./Searcher";
 import { ContainerHeader } from "ui/wrappers/styled";
 import { ModalMenu } from "./ModalMenu";
+import {
+  LogoutIcon,
+  OrdersIconPrimary,
+  ProfileIcon,
+  ProfileIconPrimary,
+  SearchIconDark,
+} from "ui/icons/boxicons";
 
 const initialValues = {
   search: "",
@@ -34,7 +41,7 @@ export const Header = () => {
   };
 
   return (
-    <>
+    <section className="header">
       <ModalMenu></ModalMenu>
       <ContainerHeader>
         <div className="w-[260px] justify-start">
@@ -48,12 +55,12 @@ export const Header = () => {
 
         <div className="flex-none gap-2">
           <ButtonSearch aria-label="button search">
-            <i className="bx bx-search bx-sm p-2"></i>
+            <SearchIconDark />
           </ButtonSearch>
 
           <label className="md:btn-ghost hidden md:btn">
             <Link href="/profile" passHref>
-              <h3 className="text-white text-md">
+              <h3 className="text-primary text-md">
                 {logged && data?.data?.name}
               </h3>
             </Link>
@@ -88,19 +95,13 @@ export const Header = () => {
                 >
                   <li>
                     <Link className="items-center" href="/profile">
-                      <i
-                        className="bx bx-user-circle bx-sm"
-                        style={{ color: "#6c63ff" }}
-                      ></i>
+                      <ProfileIconPrimary />
                       Profile
                     </Link>
                   </li>
                   <li>
                     <Link className="items-center" href="/orders">
-                      <i
-                        className="bx bx-money-withdraw bx-sm"
-                        style={{ color: "#6c63ff" }}
-                      ></i>
+                      <OrdersIconPrimary />
                       Orders
                     </Link>
                   </li>
@@ -113,10 +114,7 @@ export const Header = () => {
                       }}
                       className="btn-danger text-white font-bold"
                     >
-                      <i
-                        className="bx bx-log-out"
-                        style={{ color: "#FDFDFD" }}
-                      ></i>
+                      <LogoutIcon />
                       Logout
                     </Link>
                   </li>
@@ -135,6 +133,6 @@ export const Header = () => {
           </div>
         </div>
       </ContainerHeader>
-    </>
+    </section>
   );
 };

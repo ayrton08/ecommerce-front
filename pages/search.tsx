@@ -29,13 +29,12 @@ export default function Search() {
   const { addToCart } = useCart();
 
   return (
-    <div className="container-page  flex  justify-center items-center  relative">
+    <div className="container-page flex-center">
       <Head>
         <title>Search</title>
       </Head>
-      <div className="fixed top-4 w-full px-4">
-        <Header />
-      </div>
+      <Header />
+
       {data?.pagination?.total === 0 && (
         <Basic
           icon={<NoResultsIcons className="w-full" />}
@@ -108,9 +107,7 @@ export default function Search() {
           </div>
         </>
       ) : (
-        <div className="flex justify-center">
-          <Loader />
-        </div>
+        <Loader />
       )}
     </div>
   );

@@ -10,7 +10,7 @@ export * from "./Category";
 export * from "./field/Field";
 export * from "./footer/Footer";
 export * from "./Link";
-export * from "./Loader";
+export * from "./loaders/Loader";
 export * from "./orders/Order";
 export * from "./Toast";
 

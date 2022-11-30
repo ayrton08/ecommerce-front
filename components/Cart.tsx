@@ -30,7 +30,6 @@ export const Cart = ({ data }: CartWrapperType) => {
   const handler = async () => {
     const orderCreated = await createOrder({ ...order }, productId);
     setUrl(orderCreated.url);
-    console.log("url", orderCreated.url);
     await cleanCart();
   };
 
@@ -50,7 +49,7 @@ export const Cart = ({ data }: CartWrapperType) => {
 
   return (
     <div
-      className={`card flex lg:flex-col shadow-xl   lg:w-2/3 xl:w-1/2 bg-black/20 py-8 px-8 mt-32 mb-12 gap-8 z-10 glass-efect animate__animated  ${efect}`}
+      className={`card flex w-full  lg:flex-col shadow-xl sm:w-2/3 xl:w-1/2 py-8 md:px-8 mt-32 mb-12 gap-8 z-10 glass-efect animate__animated  ${efect}`}
     >
       <CartLogo className="w-[350px] self-center" />
 
@@ -62,7 +61,7 @@ export const Cart = ({ data }: CartWrapperType) => {
               <div key={index} className="w-full" id={order.objectID} ref={ref}>
                 <div className="divider h-max m-0"></div>
 
-                <div className="w-full flex items-center  p-2 hover:bg-black/20 rounded-sm">
+                <div className="w-full flex items-center  p-2 hover:bg-dark_light rounded-sm">
                   <Image
                     src={order.Images[0].url}
                     alt="product cart"
@@ -88,10 +87,7 @@ export const Cart = ({ data }: CartWrapperType) => {
                           removeElement(index, currentOrders, order.objectID);
                         }}
                       >
-                        <i
-                          className="bx bx-trash bx-xs"
-                          style={{ color: "#fdfdfd" }}
-                        ></i>
+                        <i className="bx bx-trash bx-xs text-white"></i>
                       </Button>
                     </div>
                   </div>
@@ -112,7 +108,7 @@ export const Cart = ({ data }: CartWrapperType) => {
             <div className="divider m-0"></div>
             <div className="relative">
               <span className="mr-5 w-14  p-1 rounded-md">Items:</span>
-              <span className="text-white absolute right-4">{total}</span>
+              <span className="text-white absolute right-4">{totalItems}</span>
             </div>
             <div className="divider m-0"></div>
 

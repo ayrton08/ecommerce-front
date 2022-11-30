@@ -37,10 +37,7 @@ export const Footer = () => {
             rel="noreferrer"
             aria-label="facebook"
           >
-            <i
-              className="bx bxl-facebook-circle bx-md text-color"
-              style={{ color: "#6c63ff" }}
-            ></i>
+            <i className="bx bxl-facebook-circle bx-md text-color"></i>
           </a>
         </div>
       </SectionFooter>

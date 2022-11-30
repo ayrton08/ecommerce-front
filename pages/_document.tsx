@@ -5,8 +5,6 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head>
-        {/* <Script src="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" />
-        <Script src="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" /> */}
         <link
           href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
           rel="stylesheet"

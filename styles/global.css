@@ -6,19 +6,68 @@
   scroll-behavior: smooth;
 }
 
-.glass-efect {
-  background: linear-gradient(
-    135deg,
-    rgba(242, 110, 2, 0.4),
-    rgba(233, 7, 7, 0.2)
-  );
-  -webkit-backdrop-filter: blur(20px);
-  backdrop-filter: blur(20px);
-  box-shadow: 0 8px 15px 0 rgba(0, 0, 0, 0.2);
-
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  border-radius: 10px;
+.card-result {
+  @apply lg:w-1/4 md:w-1/2 p-4 w-full glass-efect  transition-all duration-500 ease-in-out hover:bg-beije hover:text-white transform hover:-translate-y-1 hover:scale-105;
 }
+
+.bg {
+  @apply bg-gradient-to-r from-initial to-finally;
+}
+
+.btn-search {
+  @apply absolute flex justify-center items-center right-0 top-0 bottom-0 w-16 rounded-r-lg;
+}
+
+.btn-color {
+  @apply bg-primary hover:bg-dark;
+}
+
+.text-color {
+  @apply hover:text-primary_hover text-white font-bold;
+}
+
+.btn-danger {
+  @apply bg-danger hover:bg-dark font-extrabold;
+}
+
+.btn-success {
+  @apply bg-successfull hover:bg-dark;
+}
+
+.order-item {
+  @apply bg-light;
+}
+
+.flex-col-center {
+  @apply flex flex-col screen justify-center self-center items-center;
+}
+
+.flex-center {
+  @apply flex min-h-screen justify-center self-center items-center relative;
+}
+
+.header {
+  @apply fixed top-4 w-full px-4 z-40;
+}
+
+.container-page {
+  min-height: calc(100vh - 222px);
+}
+
+.order::-webkit-scrollbar {
+  width: 8px;
+}
+
+.order::-webkit-scrollbar-track {
+  background: rgba(230, 230, 230, 0.53);
+  border-radius: 5px;
+}
+
+.order::-webkit-scrollbar-thumb {
+  background-color: primary;
+  border-radius: 20px;
+}
+
 .glass-footer {
   background: linear-gradient(
     135deg,
@@ -32,24 +81,12 @@
   border-radius: 4px;
 }
 .glass-header {
-  /* From https://css.glass */
   background: rgba(230, 230, 230, 0.53);
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(5.5px);
   -webkit-backdrop-filter: blur(5.5px);
   border: 1px solid rgba(230, 230, 230, 0.21);
-}
-.card-result {
-  @apply lg:w-1/4 md:w-1/2 p-4 w-full glass-efect  transition-all duration-500 ease-in-out hover:bg-[#EC7063] hover:text-white transform hover:-translate-y-1 hover:scale-105;
-}
-
-.bg {
-  @apply bg-gradient-to-b from-red-200 via-red-300 to-yellow-200;
-}
-
-.screen {
-  height: calc(100vh - 222px);
 }
 
 p {
@@ -62,30 +99,15 @@ p {
   -webkit-line-clamp: 3;
 }
 
-.btn-search {
-  @apply absolute flex justify-center items-center right-0 top-0 bottom-0 w-16 rounded-r-lg;
+.glass-efect {
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
-.btn-color {
-  @apply bg-violet hover:bg-gray-800/80;
-}
-
-.text-color {
-  @apply text-violet hover:text-violet_hover;
-}
-
-.btn-danger {
-  @apply bg-red-500/80 hover:bg-gray-800/80 font-extrabold;
-}
-
-.btn-success {
-  @apply bg-[#239B56] hover:bg-gray-800/80;
-}
-
-.order-item {
-  @apply bg-violet/20;
-}
-
-.container-page {
-  min-height: calc(100vh - 222px);
+.screen {
+  height: calc(100vh - 222px);
 }

@@ -6,7 +6,7 @@ import { useMe, useProduct } from "hooks/useData";
 import { Product } from "components/Product";
 import { updateCart } from "lib/api";
 import { Toast } from "ui/Toast";
-import { Loader } from "ui/Loader";
+import { Loader } from "ui/loaders/Loader";
 import { Header } from "components/Header";
 import { useCart } from "hooks/userCart";
 

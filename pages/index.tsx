@@ -12,17 +12,17 @@ import {
 } from "ui/icons";
 import { ContainerCard, ContainerPayments } from "ui/wrappers/styled";
 import { CardTitle } from "ui/label/styled";
+import { Progress } from "ui/loaders/styled";
+import { Divider } from "ui/divider/styled";
 
 export default function Home() {
   const data = useProducts();
   return (
-    <div className="pt-40">
+    <div className="pt-40 ">
       <Head>
         <title>Home</title>
       </Head>
-      <div className="p-4 mb-10 flex flex-col gap-10 items-center fixed top-0 w-full z-30">
-        <Header />
-      </div>
+      <Header />
 
       <Banner />
       {data ? (
@@ -38,17 +38,17 @@ export default function Home() {
           ))}
         </Featured>
       ) : (
-        <progress className="progress w-full fixed top-0"></progress>
+        <Progress />
       )}
 
-      <div className="divider px-8"></div>
+      <Divider />
       <Categories>
         <Category label="Tecnology" icon={<ComputerIcon />} />
         <Category label="Wrraper" icon={<ComputerIcon />} />
         <Category label="Bazar" icon={<ComputerIcon />} />
         <Category label="Sport" icon={<ComputerIcon />} />
       </Categories>
-      <div className="divider px-8"></div>
+      <Divider />
       <ContainerPayments>
         <CardTitle>Payment Methods</CardTitle>
         <ContainerCard>

@@ -10,7 +10,6 @@ import { convertSecondsToDate } from "helpers/convertSecondsToDate";
 
 export default function Orders() {
   const [selected, setSelected] = useState<string>("Pending");
-
   const { orders, allOrders } = useOrders(selected);
 
   const handlerChange = (event: any) => {
@@ -20,13 +19,11 @@ export default function Orders() {
   let index = 1;
 
   return (
-    <div className="flex container-page gap-5 min-h-screen  h-full justify-center self-center items-center  pt-36 pb-16 relative">
+    <div className="container-page flex-center">
       <Head>
         <title>Cart</title>
       </Head>
-      <div className="fixed top-4 z-30 right-4 left-4">
-        <Header />
-      </div>
+      <Header />
       {!allOrders ? (
         <Loader />
       ) : (

@@ -30,13 +30,12 @@ export default function Signin() {
   }, [logged]);
 
   return (
-    <div className="flex flex-col screen justify-center self-center items-center relative ">
+    <div className="flex-col-center">
       <Head>
         <title>Signin</title>
       </Head>
-      <div className="fixed top-4 right-4 left-4">
-        <Header />
-      </div>
+      <Header />
+
       {!status ? (
         <LoginEmail handler={handlerEmail} />
       ) : (

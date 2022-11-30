@@ -5,7 +5,7 @@ import { Basic } from "ui/wrappers/Basic";
 
 export default function notFound() {
   return (
-    <div className="flex flex-col screen justify-center self-center items-center relative bg-red">
+    <div className="flex-col-center">
       <Head>
         <title>Not Found</title>
         <meta
@@ -14,9 +14,7 @@ export default function notFound() {
           key="title"
         />
       </Head>
-      <div className="fixed top-4 w-full px-4">
-        <Header />
-      </div>
+      <Header />
       <Basic
         icon={<NotFoundIcon className="w-full" />}
         color="bg-red-600/40 self-center"

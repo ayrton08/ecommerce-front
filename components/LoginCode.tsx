@@ -37,7 +37,7 @@ export const LoginCode = ({ handler, email, onClick }: LoginCodeProps) => {
               />
               <span className="w-full text-center bg-white/60 mt-2 rounded-md py-2 font-bold flex flex-col">
                 We send your code to{" "}
-                <code className="text-violet-800">{email}</code>
+                <code className="text-primary">{email}</code>
               </span>
               <ButtonSmall onClick={onClick}>Change email</ButtonSmall>
               <Button type="submit" className="mt-4">

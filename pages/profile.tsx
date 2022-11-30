@@ -25,9 +25,7 @@ export default function Profile() {
       <Head>
         <title>{data?.data?.name || "Profile"}</title>
       </Head>
-      <div className="absolute top-4 z-30 right-4 left-4">
-        <Header></Header>
-      </div>
+      <Header />
       <User userName={data?.data?.name || "User"}>
         <Formik
           initialValues={initialValues}
@@ -70,10 +68,7 @@ export default function Profile() {
                 type={"submit"}
                 className={editOn ? "gap-4 " : "hidden"}
               >
-                <i
-                  className="bx bx-save bx-sm "
-                  style={{ color: "#ffffff" }}
-                ></i>
+                <i className="bx bx-save bx-sm text-white"></i>
                 Save
               </Button>
             </Form>
@@ -84,7 +79,7 @@ export default function Profile() {
           type={"button"}
           className={editOn ? "hidden" : "mt-4 gap-4"}
         >
-          <i className="bx bx-edit-alt bx-sm" style={{ color: "#ffffff" }}></i>
+          <i className="bx bx-edit-alt bx-sm text-white"></i>
           Edit
         </Button>
       </User>

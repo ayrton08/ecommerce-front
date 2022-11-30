@@ -1,7 +1,7 @@
 import { Form, Formik } from "formik";
 import { ButtonSearchPrimary } from "../ui/button/Button";
 import { FieldSearch } from "../ui/field/styled";
-import { SearchIcon } from "../ui/icons/SearchIcon";
+import { SearchIconLight } from "../ui/icons/boxicons";
 
 export const Searcher = ({ handler, initialValues }: any) => {
   return (
@@ -19,7 +19,7 @@ export const Searcher = ({ handler, initialValues }: any) => {
           />
 
           <ButtonSearchPrimary type="submit" aria-label="button search">
-            <SearchIcon />
+            <SearchIconLight />
           </ButtonSearchPrimary>
         </Form>
       )}

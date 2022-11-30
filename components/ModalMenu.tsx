@@ -1,24 +1,55 @@
+import { isUserLogged, removeToken } from "helpers/localStorage";
+import { useLogin } from "hooks";
 import Link from "next/link";
-import { ButtonDanger } from "ui";
+import { useEffect } from "react";
+import { Button, ButtonDanger } from "ui";
+import {
+  CartIcon,
+  LogoutIcon,
+  OrdersIcon,
+  ProfileIcon,
+} from "ui/icons/boxicons";
 
 export const ModalMenu = () => {
+  const { logged, setLogged } = useLogin();
+
+  const handlerLogout = () => {
+    removeToken();
+    setLogged(false);
+  };
+
   return (
     <>
-      <input type="checkbox" id="my-modal" className="modal-toggle" />
+      <input type="checkbox" id="my-modal-3" className="modal-toggle" />
       <div className="modal bg-black/80 z-40">
-        <div className="modal-box w-2/3 h-max justify-center">
-          <Link
-            className="flex items-center justify-center gap-3 w-full bg-violet hover:violet_hover py-4 text-md rounded-md modal-action"
-            href="/profile"
+        <div className="modal-box w-3/4 h-max flex flex-col gap-4 items-end pt-3 px-4">
+          <label
+            htmlFor="my-modal-3"
+            className="btn btn-sm btn-circle  bg-danger"
           >
-            <i
-              className="bx bx-user-circle bx-sm"
-              style={{ color: "#f1f1f1" }}
-            ></i>
-            <label htmlFor="my-modal" className="text-white text-md font-bold">
-              Profile
-            </label>
-          </Link>
+            x
+          </label>
+
+          <Button className="btn-color gap-4">
+            <ProfileIcon />
+            <Link href={"/profile"}>Profile</Link>
+          </Button>
+
+          <Button className="btn-color gap-4">
+            <CartIcon />
+            <Link href={"/cart"}>Cart</Link>
+          </Button>
+          <Button className="btn-color gap-4">
+            <OrdersIcon />
+            <Link href={"/orders"}>Orders</Link>
+          </Button>
+          <Button
+            onClick={handlerLogout}
+            className="btn-danger text-white font-bold gap-4"
+          >
+            <LogoutIcon />
+            <Link href={"/"}>Logout</Link>
+          </Button>
         </div>
       </div>
     </>

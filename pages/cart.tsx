@@ -7,13 +7,16 @@ export default function CartPage() {
   const data = useMe("/me");
 
   return (
-    <div className="flex gap-5 min-h-screen justify-center self-center items-center relative">
+    <div className="flex-center">
       <Head>
         <title>Cart</title>
+        <meta
+          property="description"
+          content="Here you can see your shopping cart and added products"
+          key="title"
+        />
       </Head>
-      <div className="absolute top-4 z-30 right-4 left-4">
-        <Header />
-      </div>
+      <Header />
       {!data ? <Loader /> : <Cart data={data}></Cart>}
     </div>
   );

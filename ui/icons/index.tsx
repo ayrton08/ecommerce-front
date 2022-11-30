@@ -62,8 +62,8 @@ const CartLogo = ({ className }: any) => {
 
 const MenuIcon = ({ className }: any) => {
   return (
-    <label htmlFor="my-modal" className="btn btn-circle swap swap-rotate">
-      <input type="checkbox" className="hidden" />
+    <label htmlFor="my-modal-3" className="btn btn-circle swap swap-rotate">
+      <input type="checkbox" id="my-modal-3" className="modal-toggle" />
 
       <svg
         className="swap-off fill-current"
