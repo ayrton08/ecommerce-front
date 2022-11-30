@@ -10,7 +10,7 @@ export const Featured = ({ children }: any) => {
             Featured
           </h1>
         </div>
-        <div className="flex flex-wrap -m-4 gap-4 justify-center ">
+        <div className="flex flex-wrap -m-4  justify-center ">
           {children}
         </div>
       </div>

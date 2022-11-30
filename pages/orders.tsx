@@ -1,16 +1,24 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import Head from "next/head";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { Header } from "components";
-import { useOrders } from "hooks";
+import { useLogin, useOrders } from "hooks";
 import { Loader, Order } from "ui";
 import { OrdersWrapp } from "ui/wrappers/OrdersWrapp";
 import { convertSecondsToDate } from "helpers/convertSecondsToDate";
+import Router from "next/router";
 
 export default function Orders() {
   const [selected, setSelected] = useState<string>("Pending");
   const { orders, allOrders } = useOrders(selected);
+  const { logged } = useLogin();
+
+  useEffect(() => {
+    if (!logged) {
+      Router.push("/signin");
+    }
+  }, [logged]);
 
   const handlerChange = (event: any) => {
     setSelected(event.target.value);

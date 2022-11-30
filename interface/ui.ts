@@ -26,6 +26,9 @@ export interface FieldType {
   onChange?: ChangeEventHandler;
   disable?: boolean;
   className?: string;
+  autoComplete?: string;
+  children?: any;
+  value?: any;
 }
 
 export interface LinkType {

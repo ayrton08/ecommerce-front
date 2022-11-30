@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Head from "next/head";
 import { Form, Formik } from "formik";
 
@@ -8,6 +8,8 @@ import { updateUserData } from "lib/api";
 import { createCart } from "helpers/createCart";
 import { User, Button, UserField } from "ui";
 import { EditIcon, SaveIcon } from "ui/icons/boxicons";
+import { useLogin } from "hooks";
+import Router from "next/router";
 
 const initialValues = {
   name: "",
@@ -20,9 +22,16 @@ export default function Profile() {
   const data = useMe("/me");
   const [editOn, setEditOn] = useState(false);
   const profileWithCart = createCart({ ...data?.data });
+  const { logged } = useLogin();
+
+  useEffect(() => {
+    if (!logged) {
+      Router.push("/signin");
+    }
+  }, [logged]);
 
   return (
-    <div className="flex gap-5 h-screen justify-center self-center items-center relative">
+    <div className="flex-col-center container-page pt-12 pb-4 px-4 sm:px-0">
       <Head>
         <title>{data?.data?.name || "Profile"}</title>
       </Head>

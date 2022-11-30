@@ -2,7 +2,7 @@ import { AvatarIcon } from "../icons";
 
 export const User = ({ children, userName }: any) => {
   return (
-    <div className=" card flex flex-col shadow-xl  bg-black/20  py-8 px-4  z-30 glass-efect animate__animated animate__fadeIn">
+    <div className=" card flex flex-col mt-28 sm:mt-16 shadow-xl  bg-black/20  py-8 px-4  z-30 glass-efect animate__animated animate__fadeIn">
       <figure>
         <AvatarIcon className="w-36" />
       </figure>

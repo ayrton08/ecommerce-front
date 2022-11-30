@@ -30,26 +30,35 @@ export const ModalMenu = () => {
             x
           </label>
 
-          <Button className="btn-color gap-4">
-            <ProfileIcon />
-            <Link href={"/profile"}>Profile</Link>
-          </Button>
+          <Link href={"/profile"} className="w-full">
+            <Button className="btn-color gap-4">
+              <ProfileIcon />
+              Profile
+            </Button>
+          </Link>
 
-          <Button className="btn-color gap-4">
-            <CartIcon />
-            <Link href={"/cart"}>Cart</Link>
-          </Button>
-          <Button className="btn-color gap-4">
-            <OrdersIcon />
-            <Link href={"/orders"}>Orders</Link>
-          </Button>
-          <Button
-            onClick={handlerLogout}
-            className="btn-danger text-white font-bold gap-4"
-          >
-            <LogoutIcon />
-            <Link href={"/"}>Logout</Link>
-          </Button>
+          <Link href={"/cart"} className="w-full">
+            <Button className="btn-color gap-4">
+              <CartIcon />
+              Cart
+            </Button>
+          </Link>
+
+          <Link href={"/orders"} className="w-full">
+            <Button className="btn-color gap-4">
+              <OrdersIcon />
+              Orders
+            </Button>
+          </Link>
+          <Link href={"/"} className="w-full">
+            <Button
+              onClick={handlerLogout}
+              className="btn-danger text-white font-bold gap-4"
+            >
+              <LogoutIcon />
+              Logout
+            </Button>
+          </Link>
         </div>
       </div>
     </>

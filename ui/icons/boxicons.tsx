@@ -50,3 +50,7 @@ export const TwitterIcon = () => {
 export const FacebookIcon = () => {
   return <i className="bx bxl-facebook-circle bx-md text-color"></i>;
 };
+
+export const PasteIcon = () => {
+  return <i className="bx bx-paste text-white bx-sm"></i>;
+};

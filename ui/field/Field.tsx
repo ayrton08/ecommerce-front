@@ -10,6 +10,9 @@ export const UserField = ({
   onChange,
   placeholder,
   type = "text",
+  autoComplete,
+  children,
+  value,
 }: FieldType) => {
   return (
     <>
@@ -22,7 +25,10 @@ export const UserField = ({
           onChange={onChange}
           disabled={disable}
           className={className}
+          autoComplete={autoComplete}
+          value={value}
         />
+        {children}
       </ContainerInput>
     </>
   );

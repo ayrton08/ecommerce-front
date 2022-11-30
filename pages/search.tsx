@@ -1,13 +1,11 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import Head from "next/head";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
 
-import { useData, useCart, useMe } from "hooks";
+import { useCart, useMe } from "hooks";
 import { Product, Header, Pagination } from "components/";
 import { Loader, Basic, Toast } from "ui";
 import { NoResultsIcons } from "ui/icons";
-import { getNumberOfPages } from "helpers/pagination";
 import { usePagination } from "hooks/usePagination";
 
 export default function Search() {
@@ -48,6 +46,7 @@ export default function Search() {
           <div className="flex flex-col gap-5 items-center mt-32 mb-8">
             {leakedProducts.map((product: any) => (
               <Product
+                detail={false}
                 key={product.objectID}
                 title={product.Name}
                 description={product.Description}

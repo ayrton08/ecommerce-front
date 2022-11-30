@@ -7,7 +7,7 @@ import Image from "next/image";
 
 export const ProductFeatured = ({ title, picture, price, id }: ProductType) => {
   return (
-    <div className="card-result">
+    <div className="card-result mx-4 my-4">
       <Link
         className="block relative h-48 rounded overflow-hidden"
         href={"/item/" + id}

@@ -32,11 +32,13 @@ export const Header = () => {
     <section className="header">
       <ModalMenu></ModalMenu>
       <ContainerHeader>
-        <LogoIcon className="mr-2 sm:hidden min-w-max" />
+        <Link className="btn btn-ghost normal sm:hidden min-w-[38px]" href="/">
+          <LogoIcon className="w-12 " />
+        </Link>
 
         <div className="hidden sm:flex w-max md:w-[260px] justify-start">
           <Link className="btn btn-ghost normal-case text-xl " href="/">
-            <LogoIcon className="mr-2" />
+            <LogoIcon className="mr-2 w-8" />
             market
           </Link>
         </div>

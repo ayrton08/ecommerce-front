@@ -17,8 +17,9 @@ import { Divider } from "ui/divider/styled";
 
 export default function Home() {
   const data = useProducts();
+
   return (
-    <div className="pt-40 ">
+    <div className="pt-40">
       <Head>
         <title>Home</title>
       </Head>

@@ -17,7 +17,11 @@ export const Product = ({
 }: ProductType) => {
   return (
     <div
-      className={`container px-5 py-5 mx-auto xl:w-3/4 bg-light ${className}`}
+      className={
+        !detail
+          ? `container  px-5 py-5 mx-auto xl:w-3/4 bg-light ${className}`
+          : `container mt-12 px-5 py-5 lg:px-16 mx-auto w-3/4 bg-light`
+      }
     >
       <div
         className={
@@ -29,9 +33,9 @@ export const Product = ({
         <Image
           alt="ecommerce"
           className={
-            !detail
-              ? "md:w-52 w-full min-w-[210px] md:h-52 h-64 object-cover object-center rounded self-center"
-              : "md:w-full w-full min-w-[210px] md:h-[450px] h-64 object-cover object-center rounded self-center p-5"
+            detail
+              ? "md:w-full w-full min-w-[210px] md:h-[450px] h-64 object-cover object-center rounded self-center p-5"
+              : "md:w-52 w-full min-w-[210px] md:h-52 h-64 object-cover object-center rounded self-center"
           }
           src={picture}
           width={300}
