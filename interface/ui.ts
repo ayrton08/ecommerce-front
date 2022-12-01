@@ -29,6 +29,7 @@ export interface FieldType {
   autoComplete?: string;
   children?: any;
   value?: any;
+  id?: string;
 }
 
 export interface LinkType {

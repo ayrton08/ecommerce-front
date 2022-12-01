@@ -13,6 +13,7 @@ export const UserField = ({
   autoComplete,
   children,
   value,
+  id,
 }: FieldType) => {
   return (
     <>
@@ -27,6 +28,7 @@ export const UserField = ({
           className={className}
           autoComplete={autoComplete}
           value={value}
+          id={id}
         />
         {children}
       </ContainerInput>

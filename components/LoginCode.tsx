@@ -8,18 +8,32 @@ import { Field } from "ui/field/styled";
 import { CardTitle, ContainerInput } from "ui/label/styled";
 import { ContainerCard } from "ui/wrappers/styled";
 import { PasteIcon } from "ui/icons/boxicons";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import * as yup from "yup";
 
 const initialValues = {
   code: "",
 };
 
+const schema = yup.object({
+  code: yup.number().required(),
+});
+
 export const LoginCode = ({ handler, email, onClick }: LoginCodeProps) => {
-  const [codeCopied, setCode] = useState<number | null>(null);
-  const pasteCode = async () => {
-    const text = await navigator.clipboard.readText();
-    setCode(Number(text));
-  };
+  const [codeCopied, setCodeCopied] = useState<number | null | string>("");
+  const [error, setError] = useState(false);
+
+  useEffect(() => {
+    navigator.clipboard.readText().then((value) => {
+      const copiedText = Number(value);
+      const code = isNaN(copiedText);
+      if (code) {
+        return setError(code);
+      } else {
+        setCodeCopied(copiedText.toString());
+      }
+    });
+  }, [handler]);
 
   return (
     <Basic icon={<LoginIcon className="w-full" />} color="bg-black/20">
@@ -28,12 +42,11 @@ export const LoginCode = ({ handler, email, onClick }: LoginCodeProps) => {
         <Formik
           initialValues={initialValues}
           onSubmit={async ({ code }) => {
-            await pasteCode();
-            setCode(Number(code));
-            handler({ email: email, code: codeCopied });
+            handler({ email, code });
           }}
+          validationSchema={schema}
         >
-          {({ handleChange }) => (
+          {({ values, handleChange, setFieldValue }) => (
             <Form className="form-control" onClick={() => {}}>
               <UserField
                 title="Your Code"
@@ -44,9 +57,21 @@ export const LoginCode = ({ handler, email, onClick }: LoginCodeProps) => {
                 type="number"
                 className="bg-white"
                 autoComplete={"false"}
-                value={codeCopied}
+                id="code"
+                value={values.code}
               >
-                <Button className="w-12">
+                <Button
+                  type="button"
+                  className="w-12"
+                  onClick={(e) => {
+                    // if (error) {
+                    //   return alert(
+                    //     `el codigo ${codeCopied} copiado no es un numero`
+                    //   );
+                    // }
+                    setFieldValue("code", codeCopied);
+                  }}
+                >
                   <PasteIcon />
                 </Button>
               </UserField>
