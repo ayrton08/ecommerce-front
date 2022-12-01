@@ -1,37 +1,24 @@
+import { ErrorMessage, useField } from "formik";
 import { FieldType } from "interface/ui";
 import { ContainerInput, Label } from "ui/label/styled";
 import { Field } from "./styled";
 
-export const UserField = ({
-  className,
-  disable,
-  label,
-  name,
-  onChange,
-  placeholder,
-  type = "text",
-  autoComplete,
-  children,
-  value,
-  id,
-}: FieldType) => {
+export const UserField = ({ label, children, ...props }: FieldType) => {
+  const [field, meta] = useField(props as any);
+
   return (
     <>
       <ContainerInput>
-        <Label>{label}</Label>
-        <Field
-          type={type}
-          placeholder={placeholder}
-          name={name}
-          onChange={onChange}
-          disabled={disable}
-          className={className}
-          autoComplete={autoComplete}
-          value={value}
-          id={id}
-        />
+        <Label htmlFor={props.id || props.name}>{label}</Label>
+        <Field {...field} {...props} />
+
         {children}
       </ContainerInput>
+      <ErrorMessage
+        name={props.name as string}
+        component="span"
+        className="error"
+      />
     </>
   );
 };

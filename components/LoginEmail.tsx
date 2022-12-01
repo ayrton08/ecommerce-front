@@ -8,10 +8,15 @@ import { Formik, Form } from "formik";
 import { HandlerEmail } from "interface/signin";
 import { ContainerCard } from "ui/wrappers/styled";
 import { CardTitle } from "ui/label/styled";
+import * as yup from "yup";
 
 const initialValues = {
   email: "",
 };
+
+const schema = yup.object({
+  email: yup.string().email().required("Email is required"),
+});
 
 export const LoginEmail = ({ handler }: HandlerEmail) => {
   return (
@@ -23,8 +28,9 @@ export const LoginEmail = ({ handler }: HandlerEmail) => {
           onSubmit={(values) => {
             handler({ ...values });
           }}
+          validationSchema={schema}
         >
-          {({ handleChange, values }) => (
+          {({ handleChange, values, errors }) => (
             <Form className="form-control">
               <UserField
                 title="Your Email"
@@ -36,9 +42,8 @@ export const LoginEmail = ({ handler }: HandlerEmail) => {
                 className="bg-white"
                 disable={false}
               />
-              <Button type="submit" className="mt-4">
-                Next
-              </Button>
+              {!errors.email && <span className="w-full h-[24px] my-2"></span>}
+              <Button type="submit">Next</Button>
             </Form>
           )}
         </Formik>

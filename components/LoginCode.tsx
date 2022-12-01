@@ -2,7 +2,14 @@
 import { Formik, Form } from "formik";
 
 import { LoginIcon } from "../ui/icons";
-import { Basic, Button, ButtonSmall, UserField } from "ui";
+import {
+  Basic,
+  Button,
+  ButtonDark,
+  ButtonPrimary,
+  ButtonSmall,
+  UserField,
+} from "ui";
 import { LoginCodeProps } from "interface/signin";
 import { Field } from "ui/field/styled";
 import { CardTitle, ContainerInput } from "ui/label/styled";
@@ -16,27 +23,28 @@ const initialValues = {
 };
 
 const schema = yup.object({
-  code: yup.number().required(),
+  code: yup
+    .number()
+    .min(5, "Code has to have 5 characters")
+    .min(6, "Code has to have 5 characters")
+    .required("Code is required"),
 });
 
 export const LoginCode = ({ handler, email, onClick }: LoginCodeProps) => {
-  const [codeCopied, setCodeCopied] = useState<number | null | string>("");
-  const [error, setError] = useState(false);
-
-  useEffect(() => {
-    navigator.clipboard.readText().then((value) => {
-      const copiedText = Number(value);
-      const code = isNaN(copiedText);
-      if (code) {
-        return setError(code);
-      } else {
-        setCodeCopied(copiedText.toString());
-      }
-    });
-  }, [handler]);
+  const pasteCode = async (setFieldValue: any) => {
+    const value = await navigator.clipboard.readText();
+    const copiedText = Number(value);
+    const code = isNaN(copiedText);
+    if (!code) {
+      setFieldValue("code", copiedText);
+    }
+  };
 
   return (
-    <Basic icon={<LoginIcon className="w-full" />} color="bg-black/20">
+    <Basic
+      icon={<LoginIcon className="w-2/3 md:w-full self-center" />}
+      color="md:bg-dark_light relative "
+    >
       <CardTitle>Login</CardTitle>
       <ContainerCard>
         <Formik
@@ -46,7 +54,7 @@ export const LoginCode = ({ handler, email, onClick }: LoginCodeProps) => {
           }}
           validationSchema={schema}
         >
-          {({ values, handleChange, setFieldValue }) => (
+          {({ values, handleChange, setFieldValue, errors }) => (
             <Form className="form-control" onClick={() => {}}>
               <UserField
                 title="Your Code"
@@ -63,26 +71,29 @@ export const LoginCode = ({ handler, email, onClick }: LoginCodeProps) => {
                 <Button
                   type="button"
                   className="w-12"
-                  onClick={(e) => {
-                    // if (error) {
-                    //   return alert(
-                    //     `el codigo ${codeCopied} copiado no es un numero`
-                    //   );
-                    // }
-                    setFieldValue("code", codeCopied);
+                  onClick={() => {
+                    console.log(errors);
+                    pasteCode(setFieldValue);
                   }}
                 >
                   <PasteIcon />
                 </Button>
               </UserField>
-              <span className="w-full text-center bg-white/60 mt-2 rounded-md py-2 font-bold flex flex-col">
-                We send your code to{" "}
-                <code className="text-primary">{email}</code>
-              </span>
-              <ButtonSmall onClick={onClick}>Change email</ButtonSmall>
-              <Button type="submit" className="mt-4">
-                Ingresar
-              </Button>
+              {!errors.code && <span className="w-full h-[24px] my-2"></span>}
+              <Button type="submit">Ingresar</Button>
+              <div className="md:absolute bottom-6 right-6 w-[367px] flex items-center pt-4 ">
+                <span className="w-full text-center bg-white/60 justify-center rounded-l-md h-[64px] font-bold flex flex-col">
+                  We send your code to{" "}
+                  <code className="text-primary">{email}</code>
+                </span>
+                <ButtonDark
+                  onClick={onClick}
+                  type="button"
+                  className="w-20 rounded-l-none  h-[64px]"
+                >
+                  Change email
+                </ButtonDark>
+              </div>
             </Form>
           )}
         </Formik>

@@ -24,12 +24,13 @@ export interface FieldType {
   name?: string;
   type?: string;
   onChange?: ChangeEventHandler;
-  disable?: boolean;
+  disable?: string | boolean;
   className?: string;
   autoComplete?: string;
   children?: any;
   value?: any;
   id?: string;
+  [x: string]: any;
 }
 
 export interface LinkType {

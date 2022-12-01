@@ -4,8 +4,13 @@ import { FC } from "react";
 import { ButtonProps } from "interface/ui";
 
 export const Button: FC<ButtonProps> = tw.button`
-    ${(props) => props.className}
     btn w-full btn-color border-0
+    ${(props) => props.className}
+`;
+
+export const ButtonDark: FC<ButtonProps> = tw.button`
+    btn w-full bg-dark border-0
+    ${(props) => props.className}
 `;
 
 export const ButtonSearchPrimary: FC<any> = tw.button`

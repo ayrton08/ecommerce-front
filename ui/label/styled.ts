@@ -18,5 +18,5 @@ export const LabelPrimary: FC<TitleProps | any> = tw.span`
 `;
 
 export const CardTitle: FC<any> = tw.h2`
-    card-title
+    card-title text-white text-2xl
 `;

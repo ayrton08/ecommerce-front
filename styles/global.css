@@ -6,6 +6,10 @@
   scroll-behavior: smooth;
 }
 
+.error {
+  @apply bg-danger font-bold text-sm border-2 border-danger text-white rounded-md my-2 pl-2;
+}
+
 .card-result {
   @apply lg:w-1/4 md:w-1/2 p-4 w-full glass-efect  transition-all duration-500 ease-in-out hover:bg-beije hover:text-white transform hover:-translate-y-1 hover:scale-105;
 }
