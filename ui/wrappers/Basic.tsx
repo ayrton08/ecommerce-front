@@ -1,6 +1,3 @@
-import Link from "next/link";
-import { HomeIcon, LoginIcon } from "ui/icons";
-
 interface BasicProps {
   children: any;
   icon: any;
@@ -10,7 +7,7 @@ interface BasicProps {
 export const Basic = ({ children, icon, color }: BasicProps) => {
   return (
     <div
-      className={`card lg:card-side lg:gap-6 shadow-xl  ${color} z-30 px-8 sm:px-4 py-2 md:py-8 lg:py-16 animate__animated animate__fadeIn mt-28 sm:mt-20 mb-8 md:mt-16 md:mb-0`}
+      className={`card lg:card-side lg:gap-6 md:shadow-xl  ${color} z-30 md:px-8 sm:px-4 py-2 md:py-8 lg:py-16 animate__animated animate__fadeIn mt-28 sm:mt-20 mb-8 md:mt-16 md:mb-0`}
     >
       {icon}
 

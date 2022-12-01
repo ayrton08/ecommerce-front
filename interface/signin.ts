@@ -1,9 +1,9 @@
 import { MouseEventHandler } from "react";
 
 export interface LoginCodeProps {
-  handler: (args: any) => void;
   email: string;
   onClick: MouseEventHandler;
+  logged: boolean;
 }
 
 export interface LoginEmailType {

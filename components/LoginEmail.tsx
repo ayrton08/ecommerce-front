@@ -20,7 +20,7 @@ const schema = yup.object({
 
 export const LoginEmail = ({ handler }: HandlerEmail) => {
   return (
-    <Basic icon={<LoginIcon className="w-full" />} color="bg-dark_light">
+    <Basic icon={<LoginIcon className="w-2/3 lg:w-full self-center" />} color="md:bg-dark_light">
       <CardTitle>Login</CardTitle>
       <ContainerCard>
         <Formik

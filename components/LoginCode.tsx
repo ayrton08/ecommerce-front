@@ -17,6 +17,7 @@ import { ContainerCard } from "ui/wrappers/styled";
 import { PasteIcon } from "ui/icons/boxicons";
 import { useEffect, useState } from "react";
 import * as yup from "yup";
+import { useLogin } from "hooks";
 
 const initialValues = {
   code: "",
@@ -30,7 +31,7 @@ const schema = yup.object({
     .required("Code is required"),
 });
 
-export const LoginCode = ({ handler, email, onClick }: LoginCodeProps) => {
+export const LoginCode = ({ email, onClick }: LoginCodeProps) => {
   const pasteCode = async (setFieldValue: any) => {
     const value = await navigator.clipboard.readText();
     const copiedText = Number(value);
@@ -39,10 +40,15 @@ export const LoginCode = ({ handler, email, onClick }: LoginCodeProps) => {
       setFieldValue("code", copiedText);
     }
   };
+  const { getToken } = useLogin();
+
+  const handlerCode = async (e: any) => {
+    await getToken({ ...e });
+  };
 
   return (
     <Basic
-      icon={<LoginIcon className="w-2/3 md:w-full self-center" />}
+      icon={<LoginIcon className="w-2/3 lg:w-full self-center" />}
       color="md:bg-dark_light relative "
     >
       <CardTitle>Login</CardTitle>
@@ -50,7 +56,7 @@ export const LoginCode = ({ handler, email, onClick }: LoginCodeProps) => {
         <Formik
           initialValues={initialValues}
           onSubmit={async ({ code }) => {
-            handler({ email, code });
+            handlerCode({ email, code });
           }}
           validationSchema={schema}
         >
@@ -81,7 +87,7 @@ export const LoginCode = ({ handler, email, onClick }: LoginCodeProps) => {
               </UserField>
               {!errors.code && <span className="w-full h-[24px] my-2"></span>}
               <Button type="submit">Ingresar</Button>
-              <div className="md:absolute bottom-6 right-6 w-[367px] flex items-center pt-4 ">
+              <div className="lg:absolute bottom-6 right-10 lg:w-[367px] flex items-center pt-4 ">
                 <span className="w-full text-center bg-white/60 justify-center rounded-l-md h-[64px] font-bold flex flex-col">
                   We send your code to{" "}
                   <code className="text-primary">{email}</code>

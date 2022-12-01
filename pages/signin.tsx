@@ -11,16 +11,12 @@ export default function Signin() {
   const [email, setEmail] = useState<any>();
   const [status, setStatus] = useState(false);
 
-  const { logged, getToken, getCode } = useLogin();
+  const { logged, getCode } = useLogin();
 
   const handlerEmail = async ({ email }: LoginEmailType) => {
     setStatus(true);
     setEmail(email);
     await getCode({ email });
-  };
-
-  const handlerCode = async (e: any) => {
-    await getToken({ ...e });
   };
 
   useEffect(() => {
@@ -40,7 +36,7 @@ export default function Signin() {
         <LoginEmail handler={handlerEmail} />
       ) : (
         <LoginCode
-          handler={handlerCode}
+          logged={logged}
           email={email}
           onClick={() => setStatus(false)}
         />
