@@ -6,16 +6,12 @@ import {
   Basic,
   Button,
   ButtonDark,
-  ButtonPrimary,
-  ButtonSmall,
   UserField,
 } from "ui";
 import { LoginCodeProps } from "interface/signin";
-import { Field } from "ui/field/styled";
-import { CardTitle, ContainerInput } from "ui/label/styled";
+import { CardTitle } from "ui/label/styled";
 import { ContainerCard } from "ui/wrappers/styled";
 import { PasteIcon } from "ui/icons/boxicons";
-import { useEffect, useState } from "react";
 import * as yup from "yup";
 import { useLogin } from "hooks";
 

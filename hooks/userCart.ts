@@ -2,10 +2,11 @@
 import { updateCart } from "lib/api";
 import { useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
-import { cartItems } from "store/atoms";
+import { cart, cartItems } from "store/atoms";
 
 export const useCart = (totalItems = 0, totalCart?: number) => {
   const [counter, setCounter] = useState(totalItems);
+  const [disableButton, setDisableButton] = useState(false);
   const [totalItemsCart, setTotalItemsCart] = useRecoilState(cartItems);
 
   useEffect(() => {
@@ -24,19 +25,35 @@ export const useCart = (totalItems = 0, totalCart?: number) => {
   };
 
   const addToCart = async (currentCart: any, product: any) => {
+    setDisableButton(true);
     increment();
+    // console.log("current Cart", currentCart);
+    console.log("product", product);
     if (!currentCart[0]) {
       product.cantidad = 1;
-      await updateCart({ cart: [{ ...product }] });
+      const res = await updateCart({ cart: [{ ...product }] });
+      console.log("res", res);
+      setDisableButton(false);
+      return;
     }
 
     await currentCart.map(async (producto: any) => {
       if (producto.objectID === product.objectID) {
-        producto.cantidad++;
-        await updateCart({ cart: [...currentCart] });
+        console.log("antes", producto);
+        product.cantidad = producto.cantidad + 1;
+        console.log("despues", product);
+        const rest = currentCart.filter(
+          (products: any) => products.objectID !== product.objectID
+        );
+        console.log("rest", rest);
+        console.log("prod", product);
+
+        await updateCart({ cart: [...rest, { ...product }] });
+        setDisableButton(false);
       } else {
         product.cantidad = 1;
         await updateCart({ cart: [...currentCart, { ...product }] });
+        setDisableButton(false);
       }
     });
   };
@@ -44,6 +61,7 @@ export const useCart = (totalItems = 0, totalCart?: number) => {
   return {
     counter,
     totalItemsCart,
+    disableButton,
     increment,
     addToCart,
     decrement,

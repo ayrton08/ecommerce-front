@@ -2,19 +2,18 @@ import { CartLogo } from "../ui/icons";
 import { Button } from "ui/button/Button";
 import { CartWrapperType } from "interface/cart";
 import { useCart, useCleanCart, useTotalCart } from "hooks";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { createNewOrder } from "helpers/createOrder";
 import { createOrder } from "lib/api";
 import Image from "next/image";
 import { TrashIcon } from "ui/icons/boxicons";
 
 export const Cart = ({ data }: CartWrapperType) => {
-  const ref = useRef<HTMLInputElement>(null);
   const { decrement } = useCart();
 
   const [currentOrders, setCurrentOrders] = useState([]);
   const { total, totalItems } = useTotalCart(data?.data?.cart);
-  const { totalItemsCart } = useCart(totalItems);
+  // const { totalItemsCart } = useCart(totalItems);
   const { efect, cleanCart } = useCleanCart();
 
   const [url, setUrl] = useState("");
@@ -59,7 +58,7 @@ export const Cart = ({ data }: CartWrapperType) => {
         <div className="form-control flex items-center h-full">
           {currentOrders?.map((order: any, index: any) => {
             return (
-              <div key={index} className="w-full" id={order.objectID} ref={ref}>
+              <div key={index} className="w-full" id={order.objectID}>
                 <div className="divider h-max m-0"></div>
 
                 <div className="w-full flex items-center  p-2 hover:bg-dark_light rounded-sm">

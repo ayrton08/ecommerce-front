@@ -1,9 +1,10 @@
+import { useEffect } from "react";
+import Router from "next/router";
 import Head from "next/head";
+
 import { Header } from "components/Header";
 import { useLogin, useMe } from "hooks";
 import { Cart, Loader } from "ui";
-import { useEffect } from "react";
-import Router from "next/router";
 
 export default function CartPage() {
   const data = useMe("/me");

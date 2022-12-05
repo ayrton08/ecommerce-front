@@ -12,8 +12,6 @@ export default function Search() {
   const router = useRouter();
   const { q } = router.query;
 
-  const user = useMe("/me");
-
   const {
     data,
     leakedProducts,
@@ -24,7 +22,8 @@ export default function Search() {
     setCurrentPage,
   } = usePagination(q as string);
 
-  const { addToCart } = useCart();
+  const user = useMe("/me");
+  const { disableButton, addToCart } = useCart();
 
   return (
     <div className="container-page flex-center">
@@ -57,6 +56,7 @@ export default function Search() {
                   addToCart(user.data.cart, product);
                   Toast(`${product.Name} added to cart`);
                 }}
+                disable={disableButton}
               />
             ))}
             {data?.pagination?.total !== 0 && (

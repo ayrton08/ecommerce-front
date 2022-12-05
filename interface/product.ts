@@ -8,4 +8,5 @@ export interface ProductType {
   detail?: boolean;
   category?: string;
   onClick?: any;
+  disable?: boolean;
 }

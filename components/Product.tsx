@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Button } from "ui/button/Button";
 import { ProductType } from "interface/product";
 import Image from "next/image";
+import { Loader } from "ui";
 
 export const Product = ({
   description,
@@ -14,6 +15,7 @@ export const Product = ({
   detail,
   category,
   onClick,
+  disable,
 }: ProductType) => {
   return (
     <div
@@ -83,9 +85,10 @@ export const Product = ({
               )}
               <Button
                 onClick={onClick}
-                className="w-32 btn-success border-0 py-2  focus:outline-none text-white rounded-lg"
+                className="w-32 btn-success border-0 py-2 disabled focus:outline-none text-white rounded-lg"
+                disabled={disable}
               >
-                Add to cart
+                {disable ? <Loader sm /> : "Add to cart"}
               </Button>
             </div>
           </div>

@@ -5,6 +5,7 @@ export interface ButtonProps {
   children: any;
   className?: string;
   type?: "button" | "submit" | "reset";
+  disabled?: boolean;
 }
 
 export interface CartTotals {

@@ -14,3 +14,8 @@ export const loginStatus = atom({
   key: "user-logged",
   default: false,
 });
+
+export const cart = atom({
+  key: "cart-products",
+  default: [],
+});

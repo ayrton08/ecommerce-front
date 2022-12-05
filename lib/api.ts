@@ -81,11 +81,11 @@ export const updateUserData = async (info: any) => {
     console.error(error);
   }
 };
-export const updateCart = async (cart: any, info?: any) => {
+export const updateCart = async (cart: any) => {
   try {
     const data = await fetchApi("/me", {
       method: "PATCH",
-      body: { ...cart, ...info },
+      body: { ...cart },
     });
 
     return data;
