@@ -6,7 +6,6 @@ export const useTotalCart = (cart: any) => {
   const [total, setTotal] = useState(0);
 
   let values: number[] = [];
-
   cart?.map((item: any) => values.push(item["Unit cost"] * item.cantidad));
 
   useEffect(() => {
@@ -20,5 +19,7 @@ export const useTotalCart = (cart: any) => {
   return {
     total,
     totalItems,
+    setTotal,
+    setTotalItems,
   };
 };

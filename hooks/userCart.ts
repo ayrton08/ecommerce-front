@@ -18,41 +18,50 @@ export const useCart = (totalItems = 0, totalCart?: number) => {
   }, [totalItems]);
 
   const increment = (value = 1) => {
-    setTotalItemsCart((current) => current + value);
+    setTotalItemsCart((current) => current + 1);
   };
   const decrement = (value = 1) => {
-    setTotalItemsCart((current) => current - value);
+    setTotalItemsCart((current) => current - 1);
   };
 
-  const addToCart = async (currentCart: any, product: any) => {
-    setDisableButton(true);
-    increment();
-    // console.log("current Cart", currentCart);
-    console.log("product", product);
-    if (!currentCart[0]) {
+  const addToCart = async (currentCart: [], product: any) => {
+    setDisableButton(true); // set fetching true to disable the button addToCart
+    increment(); // increse counter cart
+
+    const res = currentCart.some(
+      ({ objectID }: any) => objectID === product.objectID
+    ); // check if the product exists in the currentCart
+
+    if (!currentCart.length) {
+      // if cart is clean enter in this if
       product.cantidad = 1;
-      const res = await updateCart({ cart: [{ ...product }] });
-      console.log("res", res);
-      setDisableButton(false);
-      return;
+
+      await updateCart({ cart: [{ ...product }] });
+      return setDisableButton(false);
     }
 
-    await currentCart.map(async (producto: any) => {
-      if (producto.objectID === product.objectID) {
-        console.log("antes", producto);
-        product.cantidad = producto.cantidad + 1;
-        console.log("despues", product);
-        const rest = currentCart.filter(
-          (products: any) => products.objectID !== product.objectID
-        );
-        console.log("rest", rest);
-        console.log("prod", product);
+    if (!res) {
+      // if cart have another products but not contain the new product added enter in this if
+      const rest = currentCart.filter(
+        (item: any) => item.objectID !== product.objectID
+      );
+      product.cantidad = 1;
+      await updateCart({
+        cart: [...rest, { ...product }],
+      });
+      return setDisableButton(false);
+    }
 
-        await updateCart({ cart: [...rest, { ...product }] });
-        setDisableButton(false);
-      } else {
-        product.cantidad = 1;
-        await updateCart({ cart: [...currentCart, { ...product }] });
+    // if the cart contain the product increase the cantidad of product
+    currentCart.map(async (producto: any) => {
+      if (producto.objectID === product.objectID) {
+        const rest = currentCart.filter(
+          (item: any) => item.objectID !== product.objectID
+        );
+        product.cantidad = producto.cantidad + 1;
+        await updateCart({
+          cart: [...rest, { ...product }],
+        });
         setDisableButton(false);
       }
     });

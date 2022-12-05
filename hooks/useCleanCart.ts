@@ -5,6 +5,7 @@ export const useCleanCart = () => {
   const [efect, setEfect] = useState("animate__fadeIn");
 
   const cleanCart = async () => {
+    // cleanState({});
     setEfect("animate__wobble");
     await updateCart({ cart: [] });
   };

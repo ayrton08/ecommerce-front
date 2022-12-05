@@ -1,37 +1,37 @@
 import { CartLogo } from "../ui/icons";
 import { Button } from "ui/button/Button";
 import { CartWrapperType } from "interface/cart";
-import { useCart, useCleanCart, useTotalCart } from "hooks";
+import { useCart, useCleanCart, useMe, useTotalCart } from "hooks";
 import { useEffect, useState } from "react";
 import { createNewOrder } from "helpers/createOrder";
 import { createOrder } from "lib/api";
 import Image from "next/image";
 import { TrashIcon } from "ui/icons/boxicons";
+import { Loader } from "ui";
+import Link from "next/link";
 
-export const Cart = ({ data }: CartWrapperType) => {
+export const Cart = () => {
+  const data = useMe("/me");
+  const { removeProduct } = useCleanCart();
   const { decrement } = useCart();
-
-  const [currentOrders, setCurrentOrders] = useState([]);
-  const { total, totalItems } = useTotalCart(data?.data?.cart);
-  // const { totalItemsCart } = useCart(totalItems);
   const { efect, cleanCart } = useCleanCart();
+  const { total, totalItems, setTotal, setTotalItems } = useTotalCart(
+    data?.data?.cart
+  );
+
+  const [disableButton, setDisableButton] = useState(false);
 
   const [url, setUrl] = useState("");
+  const [currentOrders, setCurrentOrders] = useState([]);
 
   const productId = data?.data?.cart[0]?.objectID;
   const orderProduct = data?.data?.cart[0];
+  const { order } = createNewOrder(orderProduct, total);
 
   useEffect(() => {
     setCurrentOrders(data?.data?.cart);
   }, [data]);
-
-  const { order } = createNewOrder(orderProduct, total);
-
-  const handler = async () => {
-    const orderCreated = await createOrder({ ...order }, productId);
-    setUrl(orderCreated.url);
-    await cleanCart();
-  };
+  console.log("current orders", currentOrders);
 
   useEffect(() => {
     if (url) {
@@ -39,7 +39,13 @@ export const Cart = ({ data }: CartWrapperType) => {
     }
   }, [url]);
 
-  const { removeProduct } = useCleanCart();
+  const handler = async () => {
+    setDisableButton(true);
+    const orderCreated = await createOrder({ ...order }, productId);
+    setUrl(orderCreated.url);
+    await cleanCart();
+    setDisableButton(false);
+  };
 
   const removeElement = async (index: any, orders: any, id: string) => {
     const newFruits = currentOrders.filter((_, i) => i !== index);
@@ -47,7 +53,16 @@ export const Cart = ({ data }: CartWrapperType) => {
     await removeProduct(orders, id);
   };
 
-  return (
+  const handlerCleanCart = () => {
+    cleanCart();
+    setTotal(0);
+    setTotalItems(0);
+    setCurrentOrders([]);
+  };
+
+  return !currentOrders ? (
+    <Loader />
+  ) : (
     <div
       className={`card flex w-full  lg:flex-col shadow-xl sm:w-2/3 xl:w-1/2 py-8 md:px-8 mt-32 mb-12 gap-8 z-10 glass-efect animate__animated  ${efect}`}
     >
@@ -62,13 +77,15 @@ export const Cart = ({ data }: CartWrapperType) => {
                 <div className="divider h-max m-0"></div>
 
                 <div className="w-full flex items-center  p-2 hover:bg-dark_light rounded-sm">
-                  <Image
-                    src={order.Images[0].url}
-                    alt="product cart"
-                    width={100}
-                    height={100}
-                    className="w-16 h-16 mr-4 flex justify-center rounded-md"
-                  />
+                  <Link href={"/item/" + order.objectID}>
+                    <Image
+                      src={order.Images[0].url}
+                      alt="product cart"
+                      width={100}
+                      height={100}
+                      className="w-16 h-16 mr-4 flex justify-center rounded-md"
+                    />
+                  </Link>
                   <div className="flex w-full items-center justify-between">
                     <div className="indicator">
                       <span className="mr-3 ">{order.Name}</span>
@@ -120,10 +137,14 @@ export const Cart = ({ data }: CartWrapperType) => {
             </div>
           </div>
           <div className="flex flex-col gap-3 w-max">
-            <Button onClick={handler} className="btn-success text-white">
+            <Button
+              onClick={handler}
+              className="btn-success text-white"
+              disabled={totalItems === 0 ? true : disableButton}
+            >
               Pay
             </Button>
-            <Button onClick={cleanCart} className="btn-danger">
+            <Button onClick={handlerCleanCart} className="btn-danger">
               Clean Cart
             </Button>
           </div>

@@ -25,7 +25,7 @@ export interface FieldType {
   name?: string;
   type?: string;
   onChange?: ChangeEventHandler;
-  disable?: string | boolean;
+  disabled?: string | boolean;
   className?: string;
   autoComplete?: string;
   children?: any;

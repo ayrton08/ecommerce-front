@@ -18,7 +18,7 @@ export default function itemId() {
 
   const currentCart = user?.data?.cart;
 
-  const { addToCart } = useCart();
+  const { addToCart, disableButton } = useCart();
 
   return (
     <div className="container-page flex-col-center pt-8">
@@ -41,6 +41,7 @@ export default function itemId() {
             addToCart(currentCart, data.product);
             Toast(`${data?.product?.Name} agregado al carrito`);
           }}
+          disable={disableButton}
         />
       ) : (
         <Loader />

@@ -7,7 +7,6 @@ import { useLogin, useMe } from "hooks";
 import { Cart, Loader } from "ui";
 
 export default function CartPage() {
-  const data = useMe("/me");
   const { logged } = useLogin();
 
   useEffect(() => {
@@ -27,7 +26,7 @@ export default function CartPage() {
         />
       </Head>
       <Header />
-      {!data ? <Loader /> : <Cart data={data}></Cart>}
+      <Cart />
     </div>
   );
 }
