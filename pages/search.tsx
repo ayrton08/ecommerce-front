@@ -41,7 +41,7 @@ export default function Search() {
         </Basic>
       )}
       {data ? (
-        <>
+        <div className="relative pb-20 w-full">
           <div className="flex flex-col gap-5 items-center mt-32 mb-8">
             {leakedProducts.map((product: any) => (
               <Product
@@ -60,7 +60,7 @@ export default function Search() {
               />
             ))}
             {data?.pagination?.total !== 0 && (
-              <div className="flex justify-center mb-8">
+              <div className="absolute bottom-0 flex justify-center mb-8">
                 <Pagination
                   currentPage={[...numberOfPages]}
                   totalPages={totalPage}
@@ -80,7 +80,7 @@ export default function Search() {
               </div>
             )}
           </div>
-        </>
+        </div>
       ) : (
         <Loader />
       )}
