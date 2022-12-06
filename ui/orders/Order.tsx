@@ -26,7 +26,7 @@ export const Order = ({
             <ButtonDanger>Cancel</ButtonDanger>
           </>
         ) : (
-          <LabelPrimary>En camino...</LabelPrimary>
+          <LabelPrimary>Shipping process...</LabelPrimary>
         )}
       </ItemLinkOrder>
     </ContainerOrder>

@@ -8,9 +8,10 @@ import { Loader, Order } from "ui";
 import { OrdersWrapp } from "ui/wrappers/OrdersWrapp";
 import { convertSecondsToDate } from "helpers/convertSecondsToDate";
 import Router from "next/router";
+const Moment = require("moment");
 
 export default function Orders() {
-  const [selected, setSelected] = useState<string>("Pending");
+  const [selected, setSelected] = useState<string>("Chose");
   const { orders, allOrders } = useOrders(selected);
   const { logged } = useLogin();
 
@@ -38,20 +39,19 @@ export default function Orders() {
         <div className="flex flex-col w-full absolute top-32 h-full">
           <div className="form-control w-36 max-w-xs self-end mr-6">
             <select
-              className="select  select-primary "
+              className="select select-primary "
               value={selected}
               onChange={handlerChange}
-              defaultValue={"Pending"}
             >
-              <option value={"Pending"}>Pending</option>
-              <option value={"Payeds"}>Payeds</option>
-              <option value={"All"}>All</option>
+              <option value="Chose">Chose status</option>
+              <option value="Pending">Pending</option>
+              <option value="Payeds">Payeds</option>
+              <option value="All">All</option>
             </select>
           </div>
           <OrdersWrapp>
             {orders?.map((order: any) => {
               const date = convertSecondsToDate(order.createdAt._seconds);
-
               return (
                 <Order
                   key={order.createdAt._seconds}

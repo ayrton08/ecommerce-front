@@ -68,7 +68,7 @@
 }
 
 .order::-webkit-scrollbar-thumb {
-  background-color: primary;
+  background-color: #6C63FF;
   border-radius: 20px;
 }
 
