@@ -6,7 +6,7 @@ export const ContainerHeader: FC<any> = tw.div`
 `;
 
 export const ContainerCard: FC<any> = tw.div`
-    card-actions items-center 
+    card-actions items-center justify-center 
 `;
 
 export const ContainerPayments = tw(ContainerCard)`

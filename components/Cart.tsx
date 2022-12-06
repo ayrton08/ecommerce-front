@@ -64,9 +64,9 @@ export const Cart = () => {
     <Loader />
   ) : (
     <div
-      className={`card flex w-full  lg:flex-col shadow-xl sm:w-2/3 xl:w-1/2 py-8 md:px-8 mt-32 mb-12 gap-8 z-10 glass-efect animate__animated  ${efect}`}
+      className={`card flex w-full  lg:flex-col shadow-xl sm:w-2/3 xl:w-1/2 py-8 md:px-8 mt-20 mb-12 gap-8 z-10 glass-efect animate__animated  ${efect}`}
     >
-      <CartLogo className="w-[350px] self-center" />
+      <CartLogo className="w-[350px] px-10 self-center" />
 
       <div className="flex flex-col p-4   w-full ">
         <h2 className="card-title self-center mb-4">Cart</h2>
@@ -93,7 +93,7 @@ export const Cart = () => {
                         {order.cantidad}
                       </span>
                     </div>
-                    <div className="w-32 flex justify-between items-center">
+                    <div className="w-32 flex justify-evenly md:justify-between items-center">
                       <span className="text-black w-max">
                         $ {order["Unit cost"]}
                       </span>

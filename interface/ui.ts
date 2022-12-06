@@ -15,7 +15,7 @@ export interface CartTotals {
 
 export interface CategoryType {
   label: string;
-  icon: any;
+  src: string;
 }
 
 export interface FieldType {

@@ -21,7 +21,7 @@ export const Product = ({
     <div
       className={
         !detail
-          ? `container  px-5 py-5 mx-auto xl:w-3/4 bg-light ${className}`
+          ? `container w-5/6 mx-4 md:w-full px-5 py-5 xl:w-3/4 bg-light ${className}`
           : `container mt-12 px-5 py-5 lg:px-16 mx-auto w-3/4 bg-light`
       }
     >
@@ -36,8 +36,8 @@ export const Product = ({
           alt="ecommerce"
           className={
             detail
-              ? "md:w-full w-full min-w-[210px] md:h-[450px] h-64 object-cover object-center rounded self-center p-5"
-              : "md:w-52 w-full min-w-[210px] md:h-52 h-64 object-cover object-center rounded self-center"
+              ? "md:w-full w-full md:min-w-[210px] md:h-[450px] h-64 object-cover object-center rounded self-center p-5"
+              : "md:w-52 w-full min-w-[210px] md:h-52 h-44 object-cover object-center rounded self-center"
           }
           src={picture}
           width={300}
@@ -75,9 +75,9 @@ export const Product = ({
             {!detail ? description?.substring(0, 200) + "..." : description}
           </p>
           <div className="flex justify-between mt-6">
-            <div className="stat-value">${price}</div>
+            <div className="stat-value flex justify-center items-center text-2xl md:text-4xl">${price}</div>
 
-            <div className="flex gap-2">
+            <div className="flex flex-col md:flex-row gap-2">
               {!detail && (
                 <Link href={"/item/" + id}>
                   <Button className="w-32 mt-0">View More</Button>
@@ -85,7 +85,7 @@ export const Product = ({
               )}
               <Button
                 onClick={onClick}
-                className="w-32 btn-success border-0 py-2 disabled focus:outline-none text-white rounded-lg"
+                className="w-max sm:w-32 btn-success border-0 py-2 disabled focus:outline-none text-white rounded-lg"
                 disabled={disable}
               >
                 {disable ? <Loader sm /> : "Add to cart"}

@@ -21,6 +21,12 @@ const nextConfig = withSvgr({
         port: "",
         pathname: "/vector-gratis/**",
       },
+      {
+        protocol: "https",
+        hostname: "cdn-icons-png.flaticon.com",
+        port: "",
+        pathname: "/*/**",
+      },
     ],
   },
 });

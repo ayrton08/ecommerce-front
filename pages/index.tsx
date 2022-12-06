@@ -44,10 +44,30 @@ export default function Home() {
 
       <Divider />
       <Categories>
-        <Category label="Tecnology" icon={<ComputerIcon />} />
-        <Category label="Wrraper" icon={<ComputerIcon />} />
-        <Category label="Bazar" icon={<ComputerIcon />} />
-        <Category label="Sport" icon={<ComputerIcon />} />
+        <Category
+          label="Bookshelves"
+          src="https://cdn-icons-png.flaticon.com/512/2406/2406831.png"
+        />
+        <Category
+          label="Chairs"
+          src="https://cdn-icons-png.flaticon.com/512/2271/2271478.png"
+        />
+        <Category
+          label="Lighting"
+          src="https://cdn-icons-png.flaticon.com/512/4072/4072223.png"
+        />
+        <Category
+          label="Rugs"
+          src="https://cdn-icons-png.flaticon.com/512/3005/3005036.png"
+        />
+        <Category
+          label="Sofas"
+          src="https://cdn-icons-png.flaticon.com/512/1698/1698771.png"
+        />
+        <Category
+          label="Tables"
+          src="https://cdn-icons-png.flaticon.com/512/2669/2669013.png"
+        />
       </Categories>
       <Divider />
       <ContainerPayments>
