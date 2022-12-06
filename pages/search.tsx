@@ -22,6 +22,8 @@ export default function Search() {
     setCurrentPage,
   } = usePagination(q as string);
 
+  console.log(data);
+
   const user = useMe("/me");
   const { disableButton, addToCart } = useCart();
 
@@ -40,10 +42,10 @@ export default function Search() {
           <h2 className="card-title">No Results!</h2>
         </Basic>
       )}
-      {data ? (
-        <div className="relative pb-20 w-full">
+      {data?.pagination.total !== 0 && (
+        <div className={`relative pb-20 w-full`}>
           <div className="flex flex-col gap-5 items-center mt-32 mb-8">
-            {leakedProducts.map((product: any) => (
+            {leakedProducts?.map((product: any) => (
               <Product
                 detail={false}
                 key={product.objectID}
@@ -59,7 +61,7 @@ export default function Search() {
                 disable={disableButton}
               />
             ))}
-            {data?.pagination?.total !== 0 && (
+            {data?.pagination?.total && (
               <div className="absolute bottom-0 flex justify-center mb-8">
                 <Pagination
                   currentPage={[...numberOfPages]}
@@ -81,9 +83,8 @@ export default function Search() {
             )}
           </div>
         </div>
-      ) : (
-        <Loader />
       )}
+      {!data && <Loader />}
     </div>
   );
 }
