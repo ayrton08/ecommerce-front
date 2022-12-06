@@ -1,16 +1,14 @@
-/* eslint-disable react-hooks/rules-of-hooks */
-import React, { useEffect } from "react";
+import React from "react";
 import { useRouter } from "next/router";
 import Head from "next/head";
 import { useMe, useProduct } from "hooks/useData";
 import { Product } from "components/Product";
-import { updateCart } from "lib/api";
 import { Toast } from "ui/Toast";
 import { Loader } from "ui/loaders/Loader";
 import { Header } from "components/Header";
 import { useCart } from "hooks/userCart";
 
-export default function itemId() {
+export default function ItemId() {
   const router = useRouter();
   const productId = router.query.itemId as string;
   const data = useProduct(productId);

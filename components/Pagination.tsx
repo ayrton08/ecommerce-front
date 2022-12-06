@@ -9,10 +9,11 @@ export const Pagination = ({
   activePage,
 }: any) => {
   let id = 0;
+  console.log(currentPage);
 
   return (
     <div className="btn-group">
-      <button className="btn" onClick={handlerPrev}>
+      <button className="btn " onClick={handlerPrev} disabled={activePage <= 1}>
         «
       </button>
       {currentPage?.map((page: AnyMxRecord) => (
@@ -27,7 +28,11 @@ export const Pagination = ({
           {page as any}
         </button>
       ))}
-      <button className="btn" onClick={handlerNext}>
+      <button
+        className="btn"
+        onClick={handlerNext}
+        disabled={currentPage.length === activePage}
+      >
         »
       </button>
     </div>

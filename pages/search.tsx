@@ -64,41 +64,17 @@ export default function Search() {
                 <Pagination
                   currentPage={[...numberOfPages]}
                   totalPages={totalPage}
-                  handlerPrev={(page: number) => {
-                    setCurrentPage(page);
+                  handlerPrev={() => {
+                    setCurrentPage(currentPage - 1);
                     totalPage > 1 && setOffSet((prev) => prev - 5);
                   }}
-                  handlerNext={(page: number) => {
-                    setCurrentPage(page);
+                  handlerNext={() => {
+                    setCurrentPage(currentPage + 1);
                     totalPage > 1 && setOffSet((prev) => prev + 5);
                   }}
                   activePage={currentPage}
                   handler={(page: any) => {
-                    if (page === 1) {
-                      setOffSet(0);
-                      setCurrentPage(page);
-                    } else if (page === 2) {
-                      setOffSet(5);
-                      setCurrentPage(page);
-                    } else if (page === 3) {
-                      setOffSet(10);
-                      setCurrentPage(page);
-                    } else if (page === 4) {
-                      setOffSet(15);
-                      setCurrentPage(page);
-                    } else if (page === 5) {
-                      setOffSet(20);
-                      setCurrentPage(page);
-                    } else if (page === 6) {
-                      setOffSet(25);
-                      setCurrentPage(page);
-                    } else if (page === 7) {
-                      setOffSet(60);
-                      setCurrentPage(page);
-                    } else if (page === 8) {
-                      setOffSet(70);
-                      setCurrentPage(page);
-                    }
+                    setCurrentPage(page);
                   }}
                 />
               </div>

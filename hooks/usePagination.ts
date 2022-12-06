@@ -25,6 +25,32 @@ export const usePagination = (query: string) => {
     setTotalPage(pages);
   }, [data]);
 
+  useEffect(() => {
+    switch (currentPage) {
+      case 1:
+        setOffSet(0);
+        break;
+      case 2:
+        setOffSet(5);
+        break;
+      case 3:
+        setOffSet(10);
+        break;
+      case 4:
+        setOffSet(15);
+        break;
+      case 5:
+        setOffSet(20);
+        break;
+      case 6:
+        setOffSet(25);
+        break;
+      case 7:
+        setOffSet(30);
+        break;
+    }
+  }, [currentPage]);
+
   return {
     data,
     leakedProducts,
