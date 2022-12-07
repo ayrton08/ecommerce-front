@@ -72,7 +72,7 @@ export const Product = ({
                 : "leading-relaxed"
             }
           >
-            {!detail ? description?.substring(0, 200) + "..." : description}
+            {!detail ? description?.substring(0, 300) + "..." : description}
           </p>
           <div className="flex justify-between mt-6">
             <div className="stat-value flex justify-center items-center text-2xl md:text-4xl">${price}</div>

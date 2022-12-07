@@ -6,7 +6,7 @@ import { Basic } from "./wrappers/Basic";
 
 export const Payment = () => {
   return (
-    <Basic icon={<PaymentIcon className="w-full" />} color="bg-green-400/40">
+    <Basic icon={<PaymentIcon className="w-full" />} color="bg-successfull">
       <CardTitle>Payment succesfully!</CardTitle>
       <div className="card-actions justify-end">
         <div className="form-control">

@@ -139,7 +139,7 @@ export const Cart = () => {
               className="btn-success text-white"
               disabled={totalItems === 0 ? true : disableButton}
             >
-              Pay
+              {disableButton ? <Loader sm /> : "Pay"}
             </Button>
             <Button onClick={handlerCleanCart} className="btn-danger">
               Clean Cart
