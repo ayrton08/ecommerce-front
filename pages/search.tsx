@@ -1,12 +1,13 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import Head from "next/head";
-import { useRouter } from "next/router";
+import Router, { useRouter } from "next/router";
 
 import { useCart, useMe } from "hooks";
 import { Product, Header, Pagination } from "components/";
 import { Loader, Basic, Toast } from "ui";
 import { NoResultsIcons } from "ui/icons";
 import { usePagination } from "hooks/usePagination";
+import { isUserLogged } from "helpers/localStorage";
 
 export default function Search() {
   const router = useRouter();
@@ -22,10 +23,17 @@ export default function Search() {
     setCurrentPage,
   } = usePagination(q as string);
 
-  console.log(data);
-
   const user = useMe("/me");
   const { disableButton, addToCart } = useCart();
+  const logged = isUserLogged();
+
+  const handler = async (product: any) => {
+    if (!logged) {
+      return Router.push("/signin");
+    }
+    await addToCart(user.data.cart, product);
+    Toast(`${product.Name} added to cart`);
+  };
 
   return (
     <div className="container-page flex-center">
@@ -55,8 +63,7 @@ export default function Search() {
                 picture={product.Images[0].url || ""}
                 id={product.objectID}
                 onClick={() => {
-                  addToCart(user.data.cart, product);
-                  Toast(`${product.Name} added to cart`);
+                  handler(product);
                 }}
                 disable={disableButton}
               />

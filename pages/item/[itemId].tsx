@@ -1,5 +1,5 @@
 import React from "react";
-import { useRouter } from "next/router";
+import Router, { useRouter } from "next/router";
 import Head from "next/head";
 import { useMe, useProduct } from "hooks/useData";
 import { Product } from "components/Product";
@@ -7,6 +7,7 @@ import { Toast } from "ui/Toast";
 import { Loader } from "ui/loaders/Loader";
 import { Header } from "components/Header";
 import { useCart } from "hooks/userCart";
+import { isUserLogged } from "helpers/localStorage";
 
 export default function ItemId() {
   const router = useRouter();
@@ -17,6 +18,15 @@ export default function ItemId() {
   const currentCart = user?.data?.cart;
 
   const { addToCart, disableButton } = useCart();
+  const logged = isUserLogged();
+
+  const handler = async () => {
+    if (!logged) {
+      return Router.push("/signin");
+    }
+    await addToCart(currentCart, data.product);
+    Toast(`${data?.product?.Name} agregado al carrito`);
+  };
 
   return (
     <div className="container-page flex-col-center pt-8">
@@ -35,10 +45,7 @@ export default function ItemId() {
           title={data.product.Name}
           className="h-full w-2/3"
           category={data.product.Type}
-          onClick={() => {
-            addToCart(currentCart, data.product);
-            Toast(`${data?.product?.Name} agregado al carrito`);
-          }}
+          onClick={handler}
           disable={disableButton}
         />
       ) : (
