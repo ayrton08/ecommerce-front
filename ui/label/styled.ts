@@ -10,7 +10,7 @@ export const ContainerInput: FC<any> = tw.label`
 `;
 
 export const Label: FC<TitleProps | any> = tw.span`
-    w-28
+    w-28 bg-gray-400/70
 `;
 
 export const LabelPrimary: FC<TitleProps | any> = tw.span`
@@ -18,5 +18,5 @@ export const LabelPrimary: FC<TitleProps | any> = tw.span`
 `;
 
 export const CardTitle: FC<any> = tw.h2`
-    card-title text-white text-2xl
+    card-title text-dark text-3xl
 `;

@@ -1,6 +1,5 @@
 import { CartLogo } from "../ui/icons";
 import { Button } from "ui/button/Button";
-import { CartWrapperType } from "interface/cart";
 import { useCart, useCleanCart, useMe, useTotalCart } from "hooks";
 import { useEffect, useState } from "react";
 import { createNewOrder } from "helpers/createOrder";
@@ -20,7 +19,6 @@ export const Cart = () => {
   );
 
   const [disableButton, setDisableButton] = useState(false);
-
   const [url, setUrl] = useState("");
   const [currentOrders, setCurrentOrders] = useState([]);
 
@@ -31,7 +29,6 @@ export const Cart = () => {
   useEffect(() => {
     setCurrentOrders(data?.data?.cart);
   }, [data]);
-  console.log("current orders", currentOrders);
 
   useEffect(() => {
     if (url) {

@@ -1,24 +1,17 @@
 import Head from "next/head";
-import { useProducts } from "hooks/useData";
+import { useProducts } from "hooks";
 
 import { ProductFeatured, Header } from "components";
 import { Banner, Featured, Categories, Category } from "ui";
-import {
-  CashIcon,
-  ComputerIcon,
-  MasterIcon,
-  MercadoPagoIcon,
-  VisaIcon,
-} from "ui/icons";
+import { CashIcon, MasterIcon, MercadoPagoIcon, VisaIcon } from "ui/icons";
 import { ContainerCard, ContainerPayments } from "ui/wrappers/styled";
 import { CardTitle } from "ui/label/styled";
 import { Progress } from "ui/loaders/styled";
 import { Divider } from "ui/divider/styled";
 
 export default function Home() {
-  const data = useProducts();
+  const products = useProducts();
 
-  console.log(data);
   return (
     <div className="pt-40">
       <Head>
@@ -27,9 +20,9 @@ export default function Home() {
       <Header />
 
       <Banner />
-      {data ? (
+      {products ? (
         <Featured>
-          {data?.results?.map((product: any) => (
+          {products?.results?.map((product: any) => (
             <ProductFeatured
               key={product.Name}
               title={product.Name}

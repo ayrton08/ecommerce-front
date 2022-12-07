@@ -1,11 +1,11 @@
 import { Header } from "components";
-import { useLogin } from "hooks";
+import { isUserLogged } from "helpers/localStorage";
 import Router from "next/router";
 import { useEffect } from "react";
 import { Payment } from "ui";
 
 export default function Thanks() {
-  const { logged } = useLogin();
+  const logged = isUserLogged();
 
   useEffect(() => {
     if (!logged) {

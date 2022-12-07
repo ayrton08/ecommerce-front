@@ -1,12 +1,12 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from "react";
-import Router from "next/router";
 import Link from "next/link";
 
 import { AvatarIcon, LogoIcon, MenuIcon } from "../ui/icons";
 import { isUserLogged, removeToken } from "helpers/localStorage";
 import { useMe, useTotalCart, useCart, useLogin } from "hooks";
-import { CartIndicator, ButtonSearch } from "ui";
+import { CartIndicator } from "ui";
 import { Searcher } from "./Searcher";
 import { ContainerHeader } from "ui/wrappers/styled";
 import { ModalMenu } from "./ModalMenu";
@@ -14,7 +14,6 @@ import {
   LogoutIcon,
   OrdersIconPrimary,
   ProfileIconPrimary,
-  SearchIconDark,
 } from "ui/icons/boxicons";
 
 export const Header = () => {
@@ -32,7 +31,7 @@ export const Header = () => {
     <section className="header">
       <ModalMenu></ModalMenu>
       <ContainerHeader>
-        <Link className="btn btn-ghost normal sm:hidden min-w-[38px]" href="/">
+        <Link className="btn btn-ghost normal sm:hidden min-w-[38px]" href="/" aria-label="Button Home">
           <LogoIcon className="w-12 " />
         </Link>
 

@@ -9,7 +9,6 @@ export const Pagination = ({
   activePage,
 }: any) => {
   let id = 0;
-  console.log(currentPage);
 
   return (
     <div className="btn-group">

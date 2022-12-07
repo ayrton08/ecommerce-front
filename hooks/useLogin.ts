@@ -1,16 +1,17 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { isUserLogged } from "helpers/localStorage";
 import { BodyFetch, LoginEmailType } from "interface/signin";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useRecoilState } from "recoil";
 import { loginStatus } from "store/atoms";
 import axios from "axios";
 import { getTokenJWT } from "lib/api";
+import { isUserLogged } from "helpers/localStorage";
 const BASE_URL = "https://e-commerce-backend-jade.vercel.app/api";
 
 export const useLogin = () => {
   const [logged, setLogged] = useRecoilState(loginStatus);
-  const { getCode, isSendig } = useCode();
+
+  const { getCode } = useCode();
 
   const getToken = async (data: BodyFetch) => {
     const token = await getTokenJWT(data);

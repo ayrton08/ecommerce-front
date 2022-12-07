@@ -5,9 +5,10 @@ import Head from "next/head";
 import { Header } from "components/Header";
 import { useLogin, useMe } from "hooks";
 import { Cart, Loader } from "ui";
+import { isUserLogged } from "helpers/localStorage";
 
 export default function CartPage() {
-  const { logged } = useLogin();
+  const logged = isUserLogged();
 
   useEffect(() => {
     if (!logged) {

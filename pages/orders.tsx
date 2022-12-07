@@ -8,12 +8,13 @@ import { Loader, Order } from "ui";
 import { OrdersWrapp } from "ui/wrappers/OrdersWrapp";
 import { convertSecondsToDate } from "helpers/convertSecondsToDate";
 import Router from "next/router";
+import { isUserLogged } from "helpers/localStorage";
 const Moment = require("moment");
 
 export default function Orders() {
   const [selected, setSelected] = useState<string>("Chose");
   const { orders, allOrders } = useOrders(selected);
-  const { logged } = useLogin();
+  const logged = isUserLogged();
 
   useEffect(() => {
     if (!logged) {

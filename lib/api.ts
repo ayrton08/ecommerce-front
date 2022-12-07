@@ -1,3 +1,4 @@
+import { getToken } from "helpers/localStorage";
 import { CreateOrder } from "interface/cart";
 import { LoginEmailType } from "interface/signin";
 
@@ -6,7 +7,7 @@ const BASE_URL = "https://e-commerce-backend-jade.vercel.app/api";
 
 export const fetchApi = async (input: RequestInfo, options: any) => {
   const url = BASE_URL + input;
-  const token = localStorage.getItem("token");
+  const token = getToken();
 
   const newOptions: any = options || {};
   newOptions.headers ||= {};

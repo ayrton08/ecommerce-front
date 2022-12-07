@@ -1,3 +1,5 @@
+import { CardTitle } from "ui/label/styled";
+
 export const Featured = ({ children }: any) => {
   return (
     <section
@@ -5,14 +7,10 @@ export const Featured = ({ children }: any) => {
       id="featured"
     >
       <div className="container px-5 py-24 mx-auto ">
-        <div className="flex flex-col text-center w-full mb-20">
-          <h1 className="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">
-            Featured
-          </h1>
+        <div className="flex justify-center text-center w-full mb-20">
+          <CardTitle>Featured</CardTitle>
         </div>
-        <div className="flex flex-wrap -m-4  justify-center ">
-          {children}
-        </div>
+        <div className="flex flex-wrap -m-4  justify-center ">{children}</div>
       </div>
     </section>
   );

@@ -1,9 +1,8 @@
 /* eslint-disable react-hooks/rules-of-hooks */
+import { isUserLogged } from "helpers/localStorage";
 import { fetchApi } from "lib/api";
 import useSWR from "swr";
 import useSWRInmutable from "swr/immutable";
-
-const BASE_URL = "https://e-commerce-backend-jade.vercel.app/api";
 
 export const useData = (path: string) => {
   const { data, error } = useSWR(path, fetchApi);

@@ -71,7 +71,6 @@ export const LoginCode = ({ email, onClick }: LoginCodeProps) => {
                   type="button"
                   className="w-12"
                   onClick={() => {
-                    console.log(errors);
                     pasteCode(setFieldValue);
                   }}
                 >

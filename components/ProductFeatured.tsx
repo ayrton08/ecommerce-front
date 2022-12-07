@@ -1,9 +1,9 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 import { ProductType } from "interface/product";
 import { Button } from "ui/button/Button";
-import Image from "next/image";
 
 export const ProductFeatured = ({
   title,
