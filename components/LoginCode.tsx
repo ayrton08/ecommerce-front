@@ -2,12 +2,7 @@
 import { Formik, Form } from "formik";
 
 import { LoginIcon } from "../ui/icons";
-import {
-  Basic,
-  Button,
-  ButtonDark,
-  UserField,
-} from "ui";
+import { Basic, Button, ButtonDark, UserField } from "ui";
 import { LoginCodeProps } from "interface/signin";
 import { CardTitle } from "ui/label/styled";
 import { ContainerCard } from "ui/wrappers/styled";
@@ -69,8 +64,10 @@ export const LoginCode = ({ email, onClick }: LoginCodeProps) => {
                 autoComplete={"false"}
                 id="code"
                 value={values.code}
+                data-test="code-input"
               >
                 <Button
+                  data-test="btn-code"
                   type="button"
                   className="w-12"
                   onClick={() => {

@@ -44,9 +44,10 @@ export const LoginEmail = ({ handler }: HandlerEmail) => {
                 type="email"
                 className="bg-white placeholder:text-gray-500"
                 disabled={false}
+                data-test="email-input"
               />
               {!errors.email && <span className="w-full h-[24px] my-2"></span>}
-              <Button type="submit">Next</Button>
+              <Button type="submit" data-test="btn-email">Next</Button>
             </Form>
           )}
         </Formik>
