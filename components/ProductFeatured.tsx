@@ -5,7 +5,13 @@ import { ProductType } from "interface/product";
 import { Button } from "ui/button/Button";
 import Image from "next/image";
 
-export const ProductFeatured = ({ title, picture, price, id }: ProductType) => {
+export const ProductFeatured = ({
+  title,
+  picture,
+  price,
+  id,
+  category,
+}: ProductType) => {
   return (
     <div className="card-result mx-4 my-4">
       <Link
@@ -21,8 +27,8 @@ export const ProductFeatured = ({ title, picture, price, id }: ProductType) => {
         />
       </Link>
       <div className="mt-4">
-        <span className="text-gray-500 text-xs tracking-widest title-font mb-1">
-          CATEGORY
+        <span className="text-dark text-xs tracking-widest title-font mb-1">
+          {category}
         </span>
         <h2 className="text-gray-900 title-font text-lg font-medium">
           {title}

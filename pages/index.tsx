@@ -18,6 +18,7 @@ import { Divider } from "ui/divider/styled";
 export default function Home() {
   const data = useProducts();
 
+  console.log(data);
   return (
     <div className="pt-40">
       <Head>
@@ -28,13 +29,14 @@ export default function Home() {
       <Banner />
       {data ? (
         <Featured>
-          {data?.results?.map((data: any) => (
+          {data?.results?.map((product: any) => (
             <ProductFeatured
-              key={data.Name}
-              title={data.Name}
-              price={data["Unit cost"]}
-              picture={data.Images[0].url}
-              id={data.objectID}
+              key={product.Name}
+              title={product.Name}
+              price={product["Unit cost"]}
+              picture={product.Images[0].url}
+              id={product.objectID}
+              category={product.Type}
             />
           ))}
         </Featured>

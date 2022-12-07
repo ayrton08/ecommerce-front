@@ -21,8 +21,8 @@ export const Product = ({
     <div
       className={
         !detail
-          ? `container w-5/6 mx-4 md:w-full px-5 py-5 xl:w-3/4 bg-light ${className}`
-          : `container mt-12 px-5 py-5 lg:px-16 mx-auto w-3/4 bg-light`
+          ? `container w-5/6 mx-4 md:w-full px-5 py-5 xl:w-3/4 bg-dark_light ${className}`
+          : `container mt-12 px-5 py-5 lg:px-16 mx-auto w-3/4 bg-dark_light`
       }
     >
       <div

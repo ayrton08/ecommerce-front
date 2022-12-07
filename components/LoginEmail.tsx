@@ -42,7 +42,7 @@ export const LoginEmail = ({ handler }: HandlerEmail) => {
                 name="email"
                 onChange={handleChange}
                 type="email"
-                className="bg-white"
+                className="bg-white placeholder:text-gray-500"
                 disabled={false}
               />
               {!errors.email && <span className="w-full h-[24px] my-2"></span>}

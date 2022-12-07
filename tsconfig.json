@@ -16,6 +16,11 @@
     "incremental": true,
     "baseUrl": "."
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "cypress/e2e/auth.test.js"
+  ],
   "exclude": ["node_modules"]
 }
