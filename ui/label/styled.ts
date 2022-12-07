@@ -10,7 +10,7 @@ export const ContainerInput: FC<any> = tw.label`
 `;
 
 export const Label: FC<TitleProps | any> = tw.span`
-    w-28 bg-gray-400/70
+    w-28 bg-dark/60 text-white
 `;
 
 export const LabelPrimary: FC<TitleProps | any> = tw.span`

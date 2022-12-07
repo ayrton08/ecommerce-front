@@ -54,3 +54,7 @@ export const FacebookIcon = () => {
 export const PasteIcon = () => {
   return <i className="bx bx-paste text-white bx-sm"></i>;
 };
+
+export const ErrorIcon = () => {
+  return <i className="bx bx-error-alt text-white"></i>;
+};

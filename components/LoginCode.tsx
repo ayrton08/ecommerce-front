@@ -6,7 +6,7 @@ import { Basic, Button, ButtonDark, UserField } from "ui";
 import { LoginCodeProps } from "interface/signin";
 import { CardTitle } from "ui/label/styled";
 import { ContainerCard } from "ui/wrappers/styled";
-import { PasteIcon } from "ui/icons/boxicons";
+import { CartIcon, ErrorIcon, PasteIcon } from "ui/icons/boxicons";
 import * as yup from "yup";
 import { useLogin } from "hooks";
 
@@ -34,7 +34,8 @@ export const LoginCode = ({ email, onClick }: LoginCodeProps) => {
   const { getToken } = useLogin();
 
   const handlerCode = async (e: any) => {
-    await getToken({ ...e });
+    const res = await getToken({ ...e });
+    return res;
   };
 
   return (
@@ -46,8 +47,11 @@ export const LoginCode = ({ email, onClick }: LoginCodeProps) => {
       <ContainerCard>
         <Formik
           initialValues={initialValues}
-          onSubmit={async ({ code }) => {
-            handlerCode({ email, code });
+          onSubmit={async ({ code }, { setFieldError }) => {
+            const res = await handlerCode({ email, code });
+            if (res === undefined) {
+              setFieldError("code", "Error: Invalid code");
+            }
           }}
           validationSchema={schema}
         >
