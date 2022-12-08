@@ -1,11 +1,10 @@
 import { useEffect } from "react";
+import Router from "next/router";
 import Head from "next/head";
 
 import { Header } from "components";
-import { useMe } from "hooks/useData";
 import { User } from "ui";
-import { useLogin } from "hooks";
-import Router from "next/router";
+import { useLogin, useMe } from "hooks";
 
 export default function Profile() {
   const data = useMe("/me");

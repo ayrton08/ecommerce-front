@@ -1,15 +1,13 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import Head from "next/head";
 import { useEffect, useState } from "react";
+import Head from "next/head";
+import Router from "next/router";
 
-import { Header } from "components";
-import { useLogin, useOrders } from "hooks";
+import { Header, OrdersMobile } from "components";
+import { useOrders } from "hooks";
 import { Loader, Order } from "ui";
 import { OrdersWrapp } from "ui/wrappers/OrdersWrapp";
-import { convertSecondsToDate } from "helpers/convertSecondsToDate";
-import Router from "next/router";
-import { isUserLogged } from "helpers/localStorage";
-const Moment = require("moment");
+import { convertSecondsToDate, isUserLogged } from "helpers";
 
 export default function Orders() {
   const [selected, setSelected] = useState<string>("Chose");
@@ -37,7 +35,7 @@ export default function Orders() {
       {!allOrders ? (
         <Loader />
       ) : (
-        <div className="flex flex-col w-full absolute top-32 h-full">
+        <div className="flex px-2 flex-col w-full absolute top-32 h-full">
           <div className="form-control w-36 max-w-xs self-end mr-6">
             <select
               className="select select-primary "
@@ -50,6 +48,20 @@ export default function Orders() {
               <option value="All">All</option>
             </select>
           </div>
+          <OrdersMobile>
+            {orders?.map((order: any) => {
+              const date = convertSecondsToDate(order.createdAt._seconds);
+              return (
+                <Order
+                  key={order.createdAt._seconds}
+                  createdAt={date}
+                  status={order.status}
+                  linkToPay={order.aditionalInfo.linkToPay}
+                />
+              );
+            })}
+          </OrdersMobile>
+
           <OrdersWrapp>
             {orders?.map((order: any) => {
               const date = convertSecondsToDate(order.createdAt._seconds);

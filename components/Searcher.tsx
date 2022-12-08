@@ -34,9 +34,10 @@ export const Searcher = () => {
             placeholder="Search"
             onChange={handleChange}
             name="search"
+            data-test="search-input"
           />
 
-          <ButtonSearchPrimary type="submit" aria-label="button search">
+          <ButtonSearchPrimary type="submit" aria-label="button search" data-test="btn-search">
             <SearchIconLight />
           </ButtonSearchPrimary>
         </Form>

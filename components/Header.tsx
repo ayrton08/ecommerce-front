@@ -31,7 +31,11 @@ export const Header = () => {
     <section className="header">
       <ModalMenu></ModalMenu>
       <ContainerHeader>
-        <Link className="btn btn-ghost normal sm:hidden min-w-[38px]" href="/" aria-label="Button Home">
+        <Link
+          className="btn btn-ghost normal sm:hidden min-w-[38px]"
+          href="/"
+          aria-label="Button Home"
+        >
           <LogoIcon className="w-12 " />
         </Link>
 

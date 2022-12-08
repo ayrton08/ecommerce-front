@@ -15,7 +15,7 @@
 }
 
 .bg {
-  @apply bg-gradient-to-r from-pink-300 via-purple-300 to-indigo-400;
+  @apply bg-gradient-to-r from-pink-400 via-purple-400 to-indigo-500;
 }
 
 .btn-search {
@@ -85,7 +85,11 @@
   border-radius: 4px;
 }
 .glass-header {
-  background: rgba(230, 230, 230, 0.53);
+  background: linear-gradient(
+    to right top,
+    rgb(251, 146, 60),
+    rgb(251, 113, 133)
+  );
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(5.5px);
@@ -104,7 +108,7 @@ p {
 }
 
 .glass-efect {
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.7);
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(15px);

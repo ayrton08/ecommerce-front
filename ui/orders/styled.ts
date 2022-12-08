@@ -7,9 +7,9 @@ export const ContainerOrder: FC<any> = tw.tr`
 
 export const ItemOrder: FC<any> = tw.td`
 ${(props) => props.className}
-    order-item font-bold
+    order-item font-bold px-1 md:px-2
 `;
 
 export const ItemLinkOrder = tw(ItemOrder)`
-    flex justify-evenly
+    flex justify-evenly px-0 md:px-2
 `;

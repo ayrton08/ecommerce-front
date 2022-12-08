@@ -6,6 +6,7 @@ export const ContainerHeader: FC<any> = tw.div`
 `;
 
 export const ContainerCard: FC<any> = tw.div`
+    ${(props) => props.className}
     card-actions items-center justify-center 
 `;
 

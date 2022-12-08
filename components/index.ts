@@ -5,3 +5,5 @@ export * from "./Product";
 export * from "./ProductFeatured";
 export * from "./Pagination";
 export * from "./Searcher";
+export * from "./OrdersMobile";
+export * from "./Orders";

@@ -11,7 +11,7 @@ export * from "./field/Field";
 export * from "./footer/Footer";
 export * from "./Link";
 export * from "./loaders/Loader";
-export * from "./orders/Order";
+export * from "../components/Orders";
 export * from "./Toast";
 
 export * from "./wrappers/Basic";

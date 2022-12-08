@@ -8,11 +8,13 @@ import Image from "next/image";
 import { TrashIcon } from "ui/icons/boxicons";
 import { Loader } from "ui";
 import Link from "next/link";
+import { CardTitle } from "ui/label/styled";
+import { Divider, DividerItems } from "ui/divider/styled";
 
 export const Cart = () => {
   const data = useMe("/me");
   const { removeProduct } = useCleanCart();
-  const { decrement } = useCart();
+  const { decrement, setTotalItemsCart } = useCart();
   const { efect, cleanCart } = useCleanCart();
   const { total, totalItems, setTotal, setTotalItems } = useTotalCart(
     data?.data?.cart
@@ -36,7 +38,7 @@ export const Cart = () => {
     }
   }, [url]);
 
-  const handler = async () => {
+  const onPay = async () => {
     setDisableButton(true);
     const orderCreated = await createOrder({ ...order }, productId);
     setUrl(orderCreated.url);
@@ -44,13 +46,14 @@ export const Cart = () => {
     setDisableButton(false);
   };
 
-  const removeElement = async (index: any, orders: any, id: string) => {
+  const removeProductCart = async (index: any, orders: any, id: string) => {
     const newFruits = currentOrders.filter((_, i) => i !== index);
     setCurrentOrders(newFruits);
     await removeProduct(orders, id);
   };
 
   const handlerCleanCart = () => {
+    setTotalItemsCart(0);
     cleanCart();
     setTotal(0);
     setTotalItems(0);
@@ -66,52 +69,50 @@ export const Cart = () => {
       <CartLogo className="w-[350px] px-10 self-center" />
 
       <div className="flex flex-col p-4   w-full ">
-        <h2 className="card-title self-center mb-4">Cart</h2>
+        <CardTitle>Cart</CardTitle>
         <div className="form-control flex items-center h-full">
-          {currentOrders?.map((order: any, index: any) => {
-            return (
-              <div key={index} className="w-full" id={order.objectID}>
-                <div className="divider h-max m-0"></div>
+          {currentOrders?.map((order: any, index: any) => (
+            <div key={index} className="w-full" id={order.objectID}>
+              <div className="divider h-max m-0"></div>
 
-                <div className="w-full flex items-center  p-2 hover:bg-dark_light rounded-sm">
-                  <Link href={"/item/" + order.objectID}>
-                    <Image
-                      src={order.Images[0].url}
-                      alt="product cart"
-                      width={100}
-                      height={100}
-                      className="w-16 h-16 mr-4 flex justify-center rounded-md"
-                    />
-                  </Link>
-                  <div className="flex w-full items-center justify-between">
-                    <div className="indicator">
-                      <span className="mr-3 ">{order.Name}</span>
-                      <span className="indicator-item badge badge-primary ">
-                        {order.cantidad}
-                      </span>
-                    </div>
-                    <div className="w-32 flex justify-evenly md:justify-between items-center">
-                      <span className="text-black w-max">
-                        $ {order["Unit cost"]}
-                      </span>
-                      <Button
-                        className="w-max mt-0 px-2  btn-danger text-xs btn-sm"
-                        onClick={() => {
-                          decrement(order.cantidad);
-                          removeElement(index, currentOrders, order.objectID);
-                        }}
-                      >
-                        <TrashIcon />
-                      </Button>
-                    </div>
+              <div className="w-full flex items-center  p-2 hover:bg-dark_light rounded-sm">
+                <Link href={"/item/" + order.objectID}>
+                  <Image
+                    src={order.Images[0].url}
+                    alt="product cart"
+                    width={100}
+                    height={100}
+                    className="w-16 h-16 mr-4 flex justify-center rounded-md"
+                  />
+                </Link>
+                <div className="flex w-full items-center justify-between">
+                  <div className="indicator">
+                    <span className="mr-3 ">{order.Name}</span>
+                    <span className="indicator-item badge badge-primary ">
+                      {order.cantidad}
+                    </span>
+                  </div>
+                  <div className="w-32 flex justify-evenly md:justify-between items-center">
+                    <span className="text-black w-max">
+                      $ {order["Unit cost"]}
+                    </span>
+                    <Button
+                      className="w-max mt-0 px-2  btn-danger text-xs btn-sm"
+                      onClick={() => {
+                        decrement(order.cantidad);
+                        removeProductCart(index, currentOrders, order.objectID);
+                      }}
+                    >
+                      <TrashIcon />
+                    </Button>
                   </div>
                 </div>
               </div>
-            );
-          })}
+            </div>
+          ))}
           <div className="divider h-max m-0 mb-6"></div>
         </div>
-        <div className="flex  w-full items-center justify-between">
+        <div className="flex w-full items-center justify-between">
           <div className="bg-black/50 text-white w-full justify-between  py-2 px-4 rounded-md mr-4 h-full">
             <div className="relative">
               <span className=" w-14  p-1 rounded-md">Products:</span>
@@ -119,12 +120,12 @@ export const Cart = () => {
                 {currentOrders?.length}
               </span>
             </div>
-            <div className="divider m-0"></div>
+            <DividerItems />
             <div className="relative">
               <span className="mr-5 w-14  p-1 rounded-md">Items:</span>
               <span className="text-white absolute right-4">{totalItems}</span>
             </div>
-            <div className="divider m-0"></div>
+            <DividerItems />
 
             <div className="relative">
               <span className="mr-5 w-14  p-1 rounded-md">Total:</span>
@@ -135,7 +136,7 @@ export const Cart = () => {
           </div>
           <div className="flex flex-col gap-3 w-max">
             <Button
-              onClick={handler}
+              onClick={onPay}
               className="btn-success text-white"
               disabled={totalItems === 0 ? true : disableButton}
             >

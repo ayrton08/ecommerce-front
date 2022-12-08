@@ -23,6 +23,7 @@ export const ButtonSearch: FC<any> = tw.button`
 `;
 
 export const ButtonDanger: FC<any> = tw.button`
+    ${(props) => props.className}
     btn-danger px-4 py-2 text-white font-bold text-sm rounded-md 
 `;
 

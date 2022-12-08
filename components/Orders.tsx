@@ -1,8 +1,8 @@
 import React from "react";
 import { ButtonDanger, ButtonPrimary } from "ui/button/Button";
 import { LabelPrimary } from "ui/label/styled";
-import { Link } from "../Link";
-import { ContainerOrder, ItemLinkOrder, ItemOrder } from "./styled";
+import { Link } from "../ui/Link";
+import { ContainerOrder, ItemLinkOrder, ItemOrder } from "../ui/orders/styled";
 
 export const Order = ({
   index,
@@ -13,8 +13,8 @@ export const Order = ({
 }: any) => {
   return (
     <ContainerOrder>
-      <ItemOrder>{index}</ItemOrder>
-      <ItemOrder>{orderId}</ItemOrder>
+      {index && <ItemOrder>{index}</ItemOrder>}
+      {orderId && <ItemOrder>{orderId}</ItemOrder>}
       <ItemOrder>{createdAt}</ItemOrder>
       <ItemOrder>{status}</ItemOrder>
       <ItemLinkOrder>
@@ -23,7 +23,7 @@ export const Order = ({
             <ButtonPrimary>
               <Link href={linkToPay} label="Pay" />
             </ButtonPrimary>
-            <ButtonDanger>Cancel</ButtonDanger>
+            <ButtonDanger className="hidden md:flex">Cancel</ButtonDanger>
           </>
         ) : (
           <LabelPrimary>Shipping process...</LabelPrimary>
