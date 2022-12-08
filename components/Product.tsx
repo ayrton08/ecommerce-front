@@ -22,14 +22,14 @@ export const Product = ({
       className={
         !detail
           ? `container w-5/6 mx-4 md:w-full px-5 py-5 xl:w-3/4 bg-dark_light ${className}`
-          : `container mt-12 px-5 py-5 lg:px-16 mx-auto w-3/4 bg-dark_light`
+          : `container mt-20 mb-10 px-5 py-5 lg:px-8 w-5/6 sm:w-3/4 xl:w-2/4  bg-dark_light`
       }
     >
       <div
         className={
           !detail
-            ? "lg:w-4/5 mx-auto flex flex-col md:flex-row"
-            : "lg:w-full mx-auto flex flex-col md:flex-row"
+            ? "lg:w-4/5  flex flex-col md:flex-row"
+            : "lg:w-full  flex flex-col md:flex-row"
         }
       >
         <Image
@@ -51,7 +51,7 @@ export const Product = ({
           }
         >
           {detail && (
-            <h2 className="text-sm title-font text-gray-500 tracking-widest">
+            <h2 className="text-sm title-font text-dark tracking-widest">
               {category}
             </h2>
           )}
@@ -75,7 +75,9 @@ export const Product = ({
             {!detail ? description?.substring(0, 300) + "..." : description}
           </p>
           <div className="flex justify-between mt-6">
-            <div className="stat-value flex justify-center items-center text-2xl md:text-4xl">${price}</div>
+            <div className="stat-value flex justify-center items-center text-2xl md:text-4xl">
+              ${price}
+            </div>
 
             <div className="flex flex-col md:flex-row gap-2">
               {!detail && (

@@ -26,7 +26,7 @@ export const Order = ({
             <ButtonDanger className="hidden md:flex">Cancel</ButtonDanger>
           </>
         ) : (
-          <LabelPrimary>Shipping process...</LabelPrimary>
+          <LabelPrimary>Shipping...</LabelPrimary>
         )}
       </ItemLinkOrder>
     </ContainerOrder>
