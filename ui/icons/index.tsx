@@ -11,6 +11,11 @@ import Visa from "./visa.svg";
 import Master from "./master.svg";
 import MercadoPago from "./mp.svg";
 import Cash from "./cash.svg";
+import Suport from "./suport.svg";
+
+const SuportImage = ({ className }: any) => {
+  return <Suport className={className} />;
+};
 
 const CashIcon = ({ className }: any) => {
   return <Cash className={className} />;
@@ -89,6 +94,7 @@ const MenuIcon = ({ className }: any) => {
 };
 
 export {
+  SuportImage,
   AvatarIcon,
   CartLogo,
   ComputerIcon,

@@ -27,7 +27,7 @@ export default function Orders() {
   let index = 1;
 
   return (
-    <div className="container-page flex-center">
+    <div className=" flex-center">
       <Head>
         <title>Cart</title>
       </Head>

@@ -7,3 +7,4 @@ export * from "./Pagination";
 export * from "./Searcher";
 export * from "./OrdersMobile";
 export * from "./Orders";
+export * from "./MyTextarea";

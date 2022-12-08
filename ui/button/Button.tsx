@@ -28,6 +28,7 @@ export const ButtonDanger: FC<any> = tw.button`
 `;
 
 export const ButtonPrimary: FC<any> = tw.button`
+    ${(props) => props.className}
     btn-success px-4 py-2 text-white font-bold rounded-md text-sm  
 `;
 
