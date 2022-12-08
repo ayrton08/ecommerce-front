@@ -9,7 +9,7 @@
     "lint": "next lint",
     "cypress:open": "cypress open",
     "cypress:run": "cypress run",
-    "test": "jest"
+    "test": "jest --watch"
   },
   "dependencies": {
     "@next/bundle-analyzer": "^13.0.5",
