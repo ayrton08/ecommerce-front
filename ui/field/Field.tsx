@@ -14,11 +14,11 @@ export const UserField = ({ label, children, ...props }: FieldType) => {
 
         {children}
       </ContainerInput>
-      <ErrorMessage
+      {/* <ErrorMessage
         name={props.name as string}
         component="span"
         className="error"
-      />
+      /> */}
     </>
   );
 };

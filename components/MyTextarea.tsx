@@ -22,11 +22,11 @@ export const MyTextarea = ({ label, className, ...props }: Props) => {
         id="message"
         rows={5}
       />
-      <ErrorMessage
+      {/* <ErrorMessage
         name={props.name as string}
         component="span"
         className="error"
-      />
+      /> */}
     </div>
   );
 };

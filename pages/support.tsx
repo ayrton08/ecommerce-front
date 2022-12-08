@@ -17,7 +17,7 @@ export default function suport() {
       </Head>
       <Header />
       <div className="flex flex-col md:flex-row w-full justify-evenly mt-32 ">
-        <SuportImage />
+        <SuportImage className="w-[500px]" />
 
         <ContactForm />
       </div>

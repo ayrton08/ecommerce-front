@@ -4,7 +4,7 @@ import { Formik, Form } from "formik";
 import { useSendMail } from "hooks/useSendMail";
 
 import { MyTextarea } from "components";
-import { ButtonPrimary, Loader, UserField } from "../ui";
+import { Button, ButtonPrimary, Loader, UserField } from "../ui";
 import { CardTitle } from "ui/label/styled";
 
 export interface InitialValue {
@@ -12,6 +12,17 @@ export interface InitialValue {
   user_email: string;
   message: string;
 }
+
+const schema = Yup.object({
+  user_name: Yup.string()
+    .required("Name is required")
+    .min(2, "The minimum of characters must be 2")
+    .max(15, "The maximum characters must be 15"),
+  user_email: Yup.string().email("Check the email format").required(),
+  message: Yup.string()
+    .required()
+    .min(10, "Must contain at least 10 characters"),
+});
 
 const initialValue: InitialValue = {
   user_name: "",
@@ -32,18 +43,9 @@ export const ContactForm = () => {
         <Formik
           initialValues={initialValue}
           onSubmit={(values, { resetForm }) => {
-            sendEmail(form.current, resetForm);
+            form.current && sendEmail(form.current, resetForm);
           }}
-          validationSchema={Yup.object({
-            user_name: Yup.string()
-              .required("Name is required")
-              .min(2, "The minimum of characters must be 2")
-              .max(15, "The maximum characters must be 15"),
-            user_email: Yup.string().email("Check the email format").required(),
-            message: Yup.string()
-              .required()
-              .min(10, "Must contain at least 10 characters"),
-          })}
+          validationSchema={schema}
         >
           {({ values }) => (
             <>
@@ -70,8 +72,8 @@ export const ContactForm = () => {
                   id="message"
                   className="bg-dark"
                 />
-                <ButtonPrimary className="w-full" type="submit">
-                  Send
+                <ButtonPrimary className="w-full h-[45px]" type="submit">
+                  SEND
                 </ButtonPrimary>
               </Form>
             </>
@@ -79,7 +81,11 @@ export const ContactForm = () => {
         </Formik>
       </div>
 
-      {isSending && <Loader />}
+      {isSending && (
+        <div className="fixed top-0 bottom-0 right-0 left-0 bg-dark">
+          <Loader />
+        </div>
+      )}
     </section>
   );
 };

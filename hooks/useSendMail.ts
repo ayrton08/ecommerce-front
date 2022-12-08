@@ -1,7 +1,6 @@
 import { useState } from "react";
 import emailjs from "@emailjs/browser";
 import { FormikState } from "formik";
-// import { InitialValue } from "../components";
 
 interface UseSendMail {
   isSending: boolean;
@@ -19,10 +18,10 @@ export const useSendMail = (): UseSendMail => {
 
     emailjs
       .sendForm(
-        process.env.REACT_APP_SERVICE_ID!,
-        process.env.REACT_APP_TEMPLATE_ID!,
+        process.env.NEXT_PUBLIC_SERVICE_ID!,
+        process.env.NEXT_PUBLIC_TEMPLATE_ID!,
         values,
-        process.env.REACT_APP_PUBLIC_KEY!
+        process.env.NEXT_PUBLIC_PUBLIC_KEY!
       )
       .then(
         (result) => {

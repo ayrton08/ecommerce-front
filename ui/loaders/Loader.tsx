@@ -1,6 +1,6 @@
 export const Loader = ({ sm }: any) => {
   return (
-    <div role="status" className={sm ? "" : "absolute top-1/2"}>
+    <div role="status" className={sm ? "" : "absolute top-1/2 left-1/2"}>
       <svg
         aria-hidden="true"
         className={`${
