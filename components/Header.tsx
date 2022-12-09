@@ -15,6 +15,7 @@ import {
   OrdersIconPrimary,
   ProfileIconPrimary,
   SupportIcon,
+  SupportIconPrimary,
 } from "ui/icons/boxicons";
 
 export const Header = () => {
@@ -101,7 +102,7 @@ export const Header = () => {
                   </li>
                   <li>
                     <Link className="items-center" href="/support">
-                      <SupportIcon />
+                      <SupportIconPrimary />
                       Support
                     </Link>
                   </li>

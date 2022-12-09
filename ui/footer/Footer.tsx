@@ -17,7 +17,7 @@ export const Footer = () => {
       <SectionFooter>
         <TitleFooter>Company</TitleFooter>
         <Link label="About us" />
-        <Link label="Contact" />
+        <Link label="Contact" href="/support" />
         <Link label="Jobs" />
         <Link label="Press kit" />
       </SectionFooter>

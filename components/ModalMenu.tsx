@@ -8,6 +8,7 @@ import {
   LogoutIcon,
   OrdersIcon,
   ProfileIcon,
+  SupportIcon,
 } from "ui/icons/boxicons";
 
 export const ModalMenu = () => {
@@ -47,6 +48,12 @@ export const ModalMenu = () => {
           <Link href={"/orders"} className="w-full">
             <Button className="btn-color gap-4">
               <OrdersIcon />
+              Orders
+            </Button>
+          </Link>
+          <Link href={"/support"} className="w-full">
+            <Button className="btn-color gap-4">
+              <SupportIcon className="text-white" />
               Orders
             </Button>
           </Link>

@@ -59,6 +59,9 @@ export const ErrorIcon = () => {
   return <i className="bx bx-error-alt text-white"></i>;
 };
 
-export const SupportIcon = () => {
-  return <i className="bx bx-support bx-sm text-primary"></i>;
+export const SupportIconPrimary = () => {
+  return <i className={`bx bx-support bx-sm text-primary`}></i>;
+};
+export const SupportIcon = ({ className }: any) => {
+  return <i className={`bx bx-support bx-sm text-white ${className}`}></i>;
 };

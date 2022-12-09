@@ -6,7 +6,7 @@ export const Link = ({ label, href, className }: LinkType) => {
     <LinkNext
       href={href || ""}
       className={`link link-hover ${className}`}
-      target="_blank"
+      // target="_blank"
     >
       {label}
     </LinkNext>
