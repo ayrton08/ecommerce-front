@@ -1,20 +1,31 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import emailjs from "@emailjs/browser";
 import { FormikState } from "formik";
 
+type Status = "sendig" | "notSendig" | "sent";
+
 interface UseSendMail {
-  isSending: boolean;
+  isSending: Status;
   sendEmail: (
     e: any,
     callback?: (nextState?: Partial<FormikState<any>> | undefined) => void
   ) => void;
+  setIsSending: any;
 }
 
 export const useSendMail = (): UseSendMail => {
-  const [isSending, setIsSending] = useState(false);
+  const [isSending, setIsSending] = useState<Status>("notSendig");
+
+  useEffect(() => {
+    if (isSending === "sent") {
+      setTimeout(() => {
+        setIsSending("notSendig");
+      }, 5000);
+    }
+  }, [isSending]);
 
   const sendEmail = (values: any, callback: any) => {
-    setIsSending(true);
+    setIsSending("sendig");
 
     emailjs
       .sendForm(
@@ -26,11 +37,11 @@ export const useSendMail = (): UseSendMail => {
       .then(
         (result) => {
           callback();
-          setIsSending(false);
+          setIsSending("sent");
         },
         (error) => {
           callback();
-          setIsSending(false);
+          setIsSending("sent");
         }
       );
   };
@@ -38,5 +49,6 @@ export const useSendMail = (): UseSendMail => {
   return {
     isSending,
     sendEmail,
+    setIsSending,
   };
 };

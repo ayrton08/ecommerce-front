@@ -2,7 +2,7 @@
 import { LoginIcon } from "../ui/icons";
 import { Basic } from "../ui/wrappers/Basic";
 import { UserField } from "ui/field/Field";
-import { Button } from "ui/button/Button";
+import { Button } from "ui/button/styled";
 
 import { Formik, Form } from "formik";
 import { HandlerEmail } from "interface/signin";
@@ -45,9 +45,12 @@ export const LoginEmail = ({ handler }: HandlerEmail) => {
                 className="bg-white placeholder:text-gray-500"
                 disabled={false}
                 data-test="email-input"
+                error
               />
               {!errors.email && <span className="w-full h-[24px] my-2"></span>}
-              <Button type="submit" data-test="btn-email">Next</Button>
+              <Button type="submit" data-test="btn-email">
+                Next
+              </Button>
             </Form>
           )}
         </Formik>

@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { Button } from "ui/button/Button";
+import { Button } from "ui/button/styled";
 import { ProductType } from "interface/product";
 import Image from "next/image";
 import { Loader } from "ui";

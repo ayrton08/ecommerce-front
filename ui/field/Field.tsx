@@ -3,7 +3,12 @@ import { FieldType } from "interface/ui";
 import { ContainerInput, Label } from "ui/label/styled";
 import { Field } from "./styled";
 
-export const UserField = ({ label, children, ...props }: FieldType) => {
+export const UserField = ({
+  label,
+  children,
+  error = false,
+  ...props
+}: FieldType) => {
   const [field, meta] = useField(props as any);
 
   return (
@@ -14,11 +19,13 @@ export const UserField = ({ label, children, ...props }: FieldType) => {
 
         {children}
       </ContainerInput>
-      {/* <ErrorMessage
-        name={props.name as string}
-        component="span"
-        className="error"
-      /> */}
+      {error && (
+        <ErrorMessage
+          name={props.name as string}
+          component="span"
+          className="error"
+        />
+      )}
     </>
   );
 };

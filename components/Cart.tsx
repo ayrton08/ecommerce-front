@@ -1,5 +1,5 @@
 import { CartLogo } from "../ui/icons";
-import { Button } from "ui/button/Button";
+import { Button } from "ui/button/styled";
 import { useCart, useCleanCart, useMe, useTotalCart } from "hooks";
 import { useEffect, useState } from "react";
 import { createNewOrder } from "helpers/createOrder";

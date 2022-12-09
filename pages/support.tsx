@@ -1,8 +1,7 @@
 import { ContactForm } from "components/ContactForm";
 import { Header } from "components/Header";
 import Head from "next/head";
-import { NotFoundIcon, SuportImage } from "ui/icons";
-import { Basic } from "ui/wrappers/Basic";
+import { SuportImage } from "ui/icons";
 
 export default function suport() {
   return (
@@ -16,8 +15,8 @@ export default function suport() {
         />
       </Head>
       <Header />
-      <div className="flex flex-col md:flex-row w-full justify-evenly mt-32 ">
-        <SuportImage className="w-[500px]" />
+      <div className="flex flex-col md:flex-row w-full justify-evenly mt-32 px-4">
+        <SuportImage className="md:w-[500px] mb-4" />
 
         <ContactForm />
       </div>

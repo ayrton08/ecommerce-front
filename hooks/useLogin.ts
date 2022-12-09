@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useRecoilState } from "recoil";
 import { loginStatus } from "store/atoms";
 import axios from "axios";
-import { getTokenJWT } from "lib/api";
+import { fetchApi, getTokenJWT } from "lib/api";
 import { isUserLogged } from "helpers/localStorage";
 const BASE_URL = "https://e-commerce-backend-jade.vercel.app/api";
 

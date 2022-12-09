@@ -4,7 +4,7 @@ export * from "./wrappers/User";
 export * from "../components/Cart";
 export * from "./wrappers/Featured";
 export * from "./wrappers/Categories";
-export * from "./button/Button";
+export * from "./button/styled";
 export * from "./CartIndicator";
 export * from "./Category";
 export * from "./field/Field";

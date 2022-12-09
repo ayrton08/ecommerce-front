@@ -24,7 +24,7 @@ export const MyTextarea = ({ label, className, ...props }: Props) => {
       />
       {/* <ErrorMessage
         name={props.name as string}
-        component="span"
+        component="div"
         className="error"
       /> */}
     </div>

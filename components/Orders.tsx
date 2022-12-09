@@ -1,5 +1,5 @@
 import React from "react";
-import { ButtonDanger, ButtonPrimary } from "ui/button/Button";
+import { ButtonDanger, ButtonPrimary } from "ui/button/styled";
 import { LabelPrimary } from "ui/label/styled";
 import { Link } from "../ui/Link";
 import { ContainerOrder, ItemLinkOrder, ItemOrder } from "../ui/orders/styled";

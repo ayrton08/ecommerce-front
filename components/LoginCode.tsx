@@ -69,6 +69,7 @@ export const LoginCode = ({ email, onClick }: LoginCodeProps) => {
                 id="code"
                 value={values.code}
                 data-test="code-input"
+                error
               >
                 <Button
                   data-test="btn-code"
