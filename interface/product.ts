@@ -9,4 +9,5 @@ export interface ProductType {
   category?: string;
   onClick?: any;
   disable?: boolean;
+  recomended?: boolean;
 }

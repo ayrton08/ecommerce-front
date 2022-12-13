@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import * as Yup from "yup";
 import { Formik, Form, ErrorMessage } from "formik";
 import { useSendMail } from "hooks/useSendMail";
@@ -52,11 +52,7 @@ export const ContactForm = () => {
         >
           {({ values, errors, touched }) => (
             <>
-              <Form
-                ref={form}
-                className="flex flex-col"
-                onFocus={() => console.log(errors)}
-              >
+              <Form ref={form} className="flex flex-col">
                 <UserField
                   placeholder=""
                   name="fullname"

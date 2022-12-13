@@ -18,5 +18,6 @@ export const LabelPrimary: FC<TitleProps | any> = tw.span`
 `;
 
 export const CardTitle: FC<any> = tw.h2`
+    ${(props) => props.className}
     card-title text-dark text-3xl
 `;

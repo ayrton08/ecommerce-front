@@ -11,11 +11,15 @@ export const ProductFeatured = ({
   price,
   id,
   category,
+  className,
+  recomended,
 }: ProductType) => {
   return (
-    <div className="card-result mx-4 my-4">
+    <div className={`card-result  mx-4 my-4 ${recomended ? "w-60" : "w-80"}`}>
       <Link
-        className="block relative h-48 rounded overflow-hidden"
+        className={`block relative ${
+          recomended ? "h-24" : "h-48"
+        } rounded overflow-hidden`}
         href={"/item/" + id}
       >
         <Image
@@ -26,7 +30,7 @@ export const ProductFeatured = ({
           height={500}
         />
       </Link>
-      <div className="mt-4">
+      <div className={` bg-light p-2 rounded-b-md ${recomended && "py-0"}`}>
         <span className="text-dark text-xs tracking-widest title-font mb-1">
           {category}
         </span>
@@ -36,7 +40,15 @@ export const ProductFeatured = ({
         <p className="mt-1 flex justify-between items-center">
           <span className="font-bold text-xl">${price}</span>
           <Link href={"/item/" + id}>
-            <Button className="w-28 btn-md text-xs mt-0">View More</Button>
+            <Button
+              className={`${
+                recomended
+                  ? "w-20 p-0 btn-sm text-xs mt-0 "
+                  : "w-28 btn-md text-xs mt-0"
+              }`}
+            >
+              View More
+            </Button>
           </Link>
         </p>
       </div>

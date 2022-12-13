@@ -11,11 +11,15 @@
 }
 
 .card-result {
-  @apply lg:w-1/4 md:w-1/2 p-4 w-full glass-efect  transition-all duration-500 ease-in-out hover:bg-dark_light hover:text-white transform hover:-translate-y-1 hover:scale-105;
+  @apply  transition-all duration-500 ease-in-out hover:bg-dark_light hover:text-white transform hover:-translate-y-1 hover:scale-105;
 }
 
 .bg {
   @apply bg-gradient-to-r from-pink-400 via-purple-400 to-indigo-500;
+}
+
+.bg-top {
+  @apply bg-gradient-to-b from-pink-400 via-purple-400 to-pink-400;
 }
 
 .btn-search {

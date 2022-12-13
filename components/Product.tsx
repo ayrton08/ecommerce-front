@@ -4,6 +4,7 @@ import { Button } from "ui/button/styled";
 import { ProductType } from "interface/product";
 import Image from "next/image";
 import { Loader } from "ui";
+import { Divider, DividerItems } from "ui/divider/styled";
 
 export const Product = ({
   description,
@@ -21,14 +22,14 @@ export const Product = ({
     <div
       className={
         !detail
-          ? `container w-5/6 mx-4 md:w-full px-5 py-5 xl:w-3/4 bg-dark_light ${className}`
+          ? `container w-4/5 mx-4 md:w-full px-5 py-5 xl:w-4/5  ${className} bg-dark_light mb-5 md:bg-transparent `
           : `container mt-20 mb-10 px-5 py-5 lg:px-8 w-5/6 sm:w-3/4 xl:w-2/4  bg-dark_light`
       }
     >
       <div
         className={
           !detail
-            ? "lg:w-4/5  flex flex-col md:flex-row"
+            ? "  flex flex-col md:flex-row mb-4"
             : "lg:w-full  flex flex-col md:flex-row"
         }
       >
@@ -96,6 +97,7 @@ export const Product = ({
           </div>
         </div>
       </div>
+      <DividerItems className="hidden md:flex "></DividerItems>
     </div>
   );
 };

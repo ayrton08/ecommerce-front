@@ -6,5 +6,6 @@ export const Divider: FC<any> = tw.div`
 `;
 
 export const DividerItems: FC<any> = tw.div`
+    ${(props) => props.className}
     divider m-0
 `;

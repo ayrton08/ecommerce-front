@@ -51,8 +51,8 @@ export default function Search() {
         </Basic>
       )}
       {data?.pagination.total !== 0 && (
-        <div className={`relative pb-20 w-full`}>
-          <div className="flex flex-col gap-5 items-center mt-32 mb-8">
+        <div className={`relative pb-20 w-full `}>
+          <div className="flex flex-col items-center mt-32 mb-8">
             {leakedProducts?.map((product: any) => (
               <Product
                 detail={false}
