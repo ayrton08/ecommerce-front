@@ -64,7 +64,7 @@ export default function ItemId() {
             disable={disableButton}
           />
           <div className="hidden w-80 xl:flex relative">
-            <div className="fixed order pt-10 overflow-auto top-32 bottom-60 right-0 w-80 bg-light rounded-l-2xl z-40 p-2 flex flex-col justify-items-start items-center">
+            <div className="fixed order pt-10 overflow-auto top-32 bottom-60 right-0 w-80 bg-light rounded-l-2xl z-20 p-2 flex flex-col justify-items-start items-center">
               <CardTitle className="absolute top-2">Featured</CardTitle>
               {data?.results?.map((product: any) => (
                 <ProductFeatured
