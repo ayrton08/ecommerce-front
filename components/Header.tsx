@@ -14,12 +14,19 @@ import {
   LogoutIcon,
   OrdersIconPrimary,
   ProfileIconPrimary,
-  SupportIcon,
   SupportIconPrimary,
 } from "ui/icons/boxicons";
+import { updateCart } from "lib/api";
 
 export const Header = () => {
   const data = useMe("/me");
+
+  useEffect(() => {
+    if (!data?.data?.cart) {
+      updateCart({ cart: [] });
+    }
+  }, [data]);
+
   const { logged, setLogged } = useLogin();
   const { total, totalItems } = useTotalCart(data?.data?.cart);
   const { totalItemsCart } = useCart(totalItems);

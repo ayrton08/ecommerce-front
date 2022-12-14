@@ -9,7 +9,7 @@ import { TrashIcon } from "ui/icons/boxicons";
 import { Loader } from "ui";
 import Link from "next/link";
 import { CardTitle } from "ui/label/styled";
-import { Divider, DividerItems } from "ui/divider/styled";
+import { DividerItems } from "ui/divider/styled";
 
 export const Cart = () => {
   const data = useMe("/me");

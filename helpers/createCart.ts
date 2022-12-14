@@ -6,7 +6,7 @@ export const createCart = (user: UserType) => {
   if (profile) {
     profile.filter((prop) => {
       if (prop === "cart") {
-        return;
+        return true;
       } else {
         user.cart = [];
       }
