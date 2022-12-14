@@ -11,11 +11,26 @@
 }
 
 .card-result {
-  @apply  transition-all duration-500 ease-in-out hover:bg-dark_light hover:text-white transform hover:-translate-y-1 hover:scale-105;
+  @apply transition-all duration-500 ease-in-out hover:bg-dark_light hover:text-white transform hover:-translate-y-1 hover:scale-105;
 }
 
-.bg {
+/* .bg {
   @apply bg-gradient-to-r from-pink-400 via-purple-400 to-indigo-500;
+} */
+.bg {
+  background: #8a2387; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #f27121,
+    #e94057,
+    #8a2387
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #f27121,
+    #e94057,
+    #8a2387
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 .bg-top {
