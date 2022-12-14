@@ -54,7 +54,7 @@ export const ModalMenu = () => {
           <Link href={"/support"} className="w-full">
             <Button className="btn-color gap-4">
               <SupportIcon className="text-white" />
-              Orders
+              Support
             </Button>
           </Link>
           <Link href={"/"} className="w-full">
