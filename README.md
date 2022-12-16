@@ -9,6 +9,13 @@ _Desktop_
 <img  src="https://raw.githubusercontent.com/ayrton08/e-commerce_front/main/assets/pic3.png" width="32%" height='240px'>
 </p>
 
+_Mobile_
+<p align="center" width="100%">
+<img  src="https://raw.githubusercontent.com/ayrton08/e-commerce_front/main/assets/mob1.png" width="32%" height='240px'>
+<img  src="https://raw.githubusercontent.com/ayrton08/e-commerce_front/main/assets/mob2.png" width="32%" height='240px'>
+<img  src="https://raw.githubusercontent.com/ayrton08/e-commerce_front/main/assets/mob3.png" width="32%" height='240px'>
+</p>
+
 ### Link to WebApp
 
 [Deploy](https://aj-market.vercel.app/)
