@@ -11,9 +11,9 @@ _Desktop_
 
 _Mobile_
 <p align="center" width="100%">
-<img  src="https://raw.githubusercontent.com/ayrton08/e-commerce_front/main/assets/mob1.png" width="32%" height='240px'>
-<img  src="https://raw.githubusercontent.com/ayrton08/e-commerce_front/main/assets/mob2.png" width="32%" height='240px'>
-<img  src="https://raw.githubusercontent.com/ayrton08/e-commerce_front/main/assets/mob3.png" width="32%" height='240px'>
+<img  src="https://raw.githubusercontent.com/ayrton08/e-commerce_front/main/assets/mob1.png" width="20%" height='350px'>
+<img  src="https://raw.githubusercontent.com/ayrton08/e-commerce_front/main/assets/mob2.png" width="20%" height='350px'>
+<img  src="https://raw.githubusercontent.com/ayrton08/e-commerce_front/main/assets/mob3.png" width="20%" height='350px'>
 </p>
 
 ### Link to WebApp
