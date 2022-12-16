@@ -2,10 +2,11 @@
 
 Market is the frontend of an ecommerce
 
+_Desktop_
 <p align="center" width="100%">
-<img  src="https://raw.githubusercontent.com/ayrton08/e-commerce_front/main/assets/p1.png" width="32%" height='240px'>
-<img  src="https://raw.githubusercontent.com/ayrton08/e-commerce_front/main/assets/p2.png" width="32%" height='240px'>
-<img  src="https://raw.githubusercontent.com/ayrton08/e-commerce_front/main/assets/p3.png" width="32%" height='240px'>
+<img  src="https://raw.githubusercontent.com/ayrton08/e-commerce_front/main/assets/pic1.png" width="32%" height='240px'>
+<img  src="https://raw.githubusercontent.com/ayrton08/e-commerce_front/main/assets/pic2.png" width="32%" height='240px'>
+<img  src="https://raw.githubusercontent.com/ayrton08/e-commerce_front/main/assets/pic3.png" width="32%" height='240px'>
 </p>
 
 ### Link to WebApp
