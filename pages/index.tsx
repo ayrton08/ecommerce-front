@@ -67,7 +67,7 @@ export default function Home() {
       <Divider />
       <ContainerPayments>
         <CardTitle>Payment Methods</CardTitle>
-        <ContainerCard>
+        <ContainerCard className="md:justify-evenly md:w-1/2 ">
           <VisaIcon />
           <MasterIcon />
           <MercadoPagoIcon />

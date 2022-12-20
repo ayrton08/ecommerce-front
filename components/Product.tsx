@@ -88,7 +88,7 @@ export const Product = ({
               )}
               <Button
                 onClick={onClick}
-                className="w-max sm:w-32 btn-success border-0 py-2 disabled focus:outline-none text-white rounded-lg"
+                className="w-32 btn-success border-0 py-2 disabled focus:outline-none text-white rounded-lg"
                 disabled={disable}
               >
                 {disable ? <Loader sm /> : "Add to cart"}

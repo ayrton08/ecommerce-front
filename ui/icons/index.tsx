@@ -18,18 +18,18 @@ const SuportImage = ({ className }: any) => {
 };
 
 const CashIcon = ({ className }: any) => {
-  return <Cash className={className} />;
+  return <Cash className={`${className} w-14 md:w-16 lg:w-24`} />;
 };
 
 const MercadoPagoIcon = ({ className }: any) => {
-  return <MercadoPago className={className} />;
+  return <MercadoPago className={`${className} w-14 md:w-16 lg:w-24`} />;
 };
 
 const MasterIcon = ({ className }: any) => {
-  return <Master className={className} />;
+  return <Master className={`${className} w-14 md:w-16 lg:w-24`} />;
 };
 const VisaIcon = ({ className }: any) => {
-  return <Visa className={className} />;
+  return <Visa className={`${className} w-14 md:w-16 lg:w-24`} />;
 };
 const NoResultsIcons = ({ className }: any) => {
   return <Results className={className} />;

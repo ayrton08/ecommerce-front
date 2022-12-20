@@ -11,5 +11,5 @@ export const ContainerCard: FC<any> = tw.div`
 `;
 
 export const ContainerPayments = tw(ContainerCard)`
-    flex flex-col justify-center items-center mb-8
+    flex flex-col justify-center items-center mb-8 gap-8
 `;
