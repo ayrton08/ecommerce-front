@@ -30,7 +30,7 @@ export const ProductFeatured = ({
           height={500}
         />
       </Link>
-      <div className={` bg-light p-2 rounded-b-md ${recomended && "py-0"}`}>
+      <div className={` bg-white p-2 rounded-b-md ${recomended && "py-0"}`}>
         <span className="text-dark text-xs tracking-widest title-font mb-1">
           {category}
         </span>

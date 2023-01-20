@@ -14,23 +14,8 @@
   @apply transition-all duration-500 ease-in-out hover:bg-dark_light hover:text-white transform hover:-translate-y-1 hover:scale-105;
 }
 
-/* .bg {
-  @apply bg-gradient-to-r from-pink-400 via-purple-400 to-indigo-500;
-} */
 .bg {
-  background: #8a2387; /* fallback for old browsers */
-  background: -webkit-linear-gradient(
-    to right,
-    #f27121,
-    #e94057,
-    #8a2387
-  ); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(
-    to right,
-    #f27121,
-    #e94057,
-    #8a2387
-  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background-color: antiquewhite;
 }
 
 .bg-top {
@@ -101,7 +86,6 @@
   backdrop-filter: blur(20px);
   box-shadow: 0 8px 15px 0 rgba(0, 0, 0, 0.37);
   border: 1px solid rgba(255, 255, 255, 0.18);
-  border-radius: 4px;
 }
 .glass-header {
   background: linear-gradient(
@@ -127,7 +111,7 @@ p {
 }
 
 .glass-efect {
-  background: rgba(255, 255, 255, 0.7);
+  background: linear-gradient(to right, rgb(196, 181, 253), rgb(167, 139, 250));
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(15px);
