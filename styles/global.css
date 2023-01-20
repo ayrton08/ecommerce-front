@@ -11,7 +11,7 @@
 }
 
 .card-result {
-  @apply transition-all duration-500 ease-in-out hover:bg-dark_light hover:text-white transform hover:-translate-y-1 hover:scale-105;
+  @apply transition-all duration-500 ease-in-out hover:bg-dark_light transform hover:-translate-y-1 hover:scale-105;
 }
 
 .bg {
