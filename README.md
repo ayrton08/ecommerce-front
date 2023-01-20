@@ -3,17 +3,11 @@
 Market is the frontend of an ecommerce
 
 _Desktop_
-<p align="center" width="100%">
-<img  src="https://raw.githubusercontent.com/ayrton08/e-commerce_front/main/assets/pic1.png" width="32%" height='240px'>
-<img  src="https://raw.githubusercontent.com/ayrton08/e-commerce_front/main/assets/pic2.png" width="32%" height='240px'>
-<img  src="https://raw.githubusercontent.com/ayrton08/e-commerce_front/main/assets/pic3.png" width="32%" height='240px'>
-</p>
 
-_Mobile_
 <p align="center" width="100%">
-<img  src="https://raw.githubusercontent.com/ayrton08/e-commerce_front/main/assets/mob1.png" width="20%" height='350px'>
-<img  src="https://raw.githubusercontent.com/ayrton08/e-commerce_front/main/assets/mob2.png" width="20%" height='350px'>
-<img  src="https://raw.githubusercontent.com/ayrton08/e-commerce_front/main/assets/mob3.png" width="20%" height='350px'>
+<img  src="https://res.cloudinary.com/apx-m7-dwf/image/upload/v1674216325/ecommerce_preview/pic1_o7zuax.png" width="32%" height='240px'>
+<img  src="https://res.cloudinary.com/apx-m7-dwf/image/upload/v1674216324/ecommerce_preview/pic2_vm2xss.png" width="32%" height='240px'>
+<img  src="https://res.cloudinary.com/apx-m7-dwf/image/upload/v1674216322/ecommerce_preview/pic3_sp83ac.png" width="32%" height='240px'>
 </p>
 
 ### Link to WebApp
