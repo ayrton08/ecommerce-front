@@ -17,7 +17,6 @@ export default function Home() {
       <Head>
         <title>Home</title>
       </Head>
-      <Header />
 
       <Banner />
       {products ? (

@@ -30,7 +30,6 @@ export default function Signin() {
       <Head>
         <title>Signin</title>
       </Head>
-      <Header />
 
       {!status ? (
         <LoginEmail handler={handlerEmail} />

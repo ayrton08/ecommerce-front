@@ -14,7 +14,6 @@ export default function suport() {
           key="title"
         />
       </Head>
-      <Header />
       <div className="flex flex-col md:flex-row w-full justify-evenly mt-32 px-4">
         <SuportImage className="md:w-[500px] mb-4" />
 

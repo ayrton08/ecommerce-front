@@ -31,7 +31,6 @@ export default function Orders() {
       <Head>
         <title>Cart</title>
       </Head>
-      <Header />
       {!allOrders ? (
         <Loader />
       ) : (

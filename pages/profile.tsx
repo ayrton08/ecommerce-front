@@ -22,7 +22,6 @@ export default function Profile() {
       <Head>
         <title>{data?.data?.name || "Profile"}</title>
       </Head>
-      <Header />
       <User userName={data?.data?.name || "User"}></User>
     </div>
   );

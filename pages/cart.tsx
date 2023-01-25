@@ -26,7 +26,6 @@ export default function CartPage() {
           key="title"
         />
       </Head>
-      <Header />
       <Cart />
     </div>
   );
