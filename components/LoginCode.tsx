@@ -85,14 +85,14 @@ export const LoginCode = ({ email, onClick }: LoginCodeProps) => {
               {!errors.code && <span className="w-full h-[24px] my-2"></span>}
               <Button type="submit">Ingresar</Button>
               <div className="lg:absolute bottom-6 right-10 lg:w-[367px] flex items-center pt-4 ">
-                <span className="w-full text-center bg-white/60 justify-center rounded-l-md h-[64px] font-bold flex flex-col">
+                <span className="w-full text-center bg-dark justify-center rounded-l-md h-[64px] font-bold flex flex-col">
                   We send your code to{" "}
-                  <code className="text-primary">{email}</code>
+                  <span className="text-green-500">{email}</span>
                 </span>
                 <ButtonDark
                   onClick={onClick}
                   type="button"
-                  className="w-20 rounded-l-none  h-[64px]"
+                  className="w-20 rounded-l-none bg-primaryA h-[64px]"
                 >
                   Change email
                 </ButtonDark>

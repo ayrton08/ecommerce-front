@@ -14,7 +14,6 @@ export default function Thanks() {
   }, [logged]);
   return (
     <div className="flex-col-center">
-      <Header />
       <Payment />
     </div>
   );

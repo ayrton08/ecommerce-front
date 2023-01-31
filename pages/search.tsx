@@ -40,7 +40,6 @@ export default function Search() {
       <Head>
         <title>Search</title>
       </Head>
-      <Header />
 
       {data?.pagination?.total === 0 && (
         <Basic

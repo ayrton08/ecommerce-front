@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from "react";
-import Link from "next/link";
+import avatar from "../ui/icons/avatar.svg";
 
 import { AvatarIcon, LogoIcon, MenuIcon } from "../ui/icons";
 import { isUserLogged, removeToken } from "helpers/localStorage";
@@ -13,10 +13,25 @@ import { ModalMenu } from "./ModalMenu";
 import {
   LogoutIcon,
   OrdersIconPrimary,
+  ProfileIcon,
   ProfileIconPrimary,
+  SupportIcon,
   SupportIconPrimary,
 } from "ui/icons/boxicons";
 import { updateCart } from "lib/api";
+import {
+  Avatar,
+  Button,
+  Container,
+  Dropdown,
+  Grid,
+  Link,
+  Navbar,
+  Text,
+  useTheme,
+} from "@nextui-org/react";
+import { AcmeLogo } from "ui/icons/Icon";
+import { OrdersIcon, CartIcon } from "../ui/icons/boxicons";
 
 export const Header = () => {
   const data = useMe("/me");
@@ -37,112 +52,189 @@ export const Header = () => {
   }, [data]);
 
   return (
-    <section className="header">
+    <>
       <ModalMenu></ModalMenu>
-      <ContainerHeader>
-        <Link
-          className="btn btn-ghost normal sm:hidden min-w-[38px]"
-          href="/"
-          aria-label="Button Home"
-        >
-          <LogoIcon className="w-12 " />
-        </Link>
 
-        <div className="hidden sm:flex w-max md:w-[260px] justify-start">
-          <Link className="btn btn-ghost normal-case text-xl " href="/">
-            <LogoIcon className="mr-2 w-8" />
-            market
+      <Navbar isBordered variant="sticky" maxWidth="fluid">
+        <Navbar.Brand className="flex gap-4">
+          <AcmeLogo />
+          <Link href="/" aria-label="Button Home">
+            <Text b hideIn="xs">
+              MARKET
+            </Text>
           </Link>
-        </div>
+        </Navbar.Brand>
+        <Navbar.Content
+          hideIn="xs"
+          css={{
+            justifyContent: "center",
+            width: "100%",
+          }}
+        >
+          <Searcher />
+        </Navbar.Content>
+        <Navbar.Content>
+          <Text
+            h1
+            size={20}
+            css={{
+              textGradient: "45deg, initial -20%, pink600 50%",
+            }}
+            weight="bold"
+          >
+            {data?.data?.name}
+          </Text>
 
-        <Searcher />
-
-        <div className="flex-none">
           {logged && (
-            <label className="md:btn-ghost hidden md:btn mr-2">
-              <Link href="/profile" passHref>
-                <h3 className="text-primary text-md">{data?.data?.name}</h3>
-              </Link>
-            </label>
-          )}
-          {logged && (
-            <div className=" dropdown-end items-center mt-1 sm:dropdown hidden md:dropdown-end mr-2">
-              <CartIndicator totalItems={totalItemsCart} total={total} />
-            </div>
-          )}
-
-          {logged && (
-            <label
-              tabIndex={0}
-              className="btn btn-ghost btn-circle avatar sm:hidden"
-            >
-              <MenuIcon />
-            </label>
-          )}
-
-          <div className=" dropdown-end hidden sm:dropdown mr-2">
-            {logged && (
-              <>
-                <label
-                  tabIndex={0}
-                  className="btn btn-ghost btn-circle avatar mt-1"
+            <Dropdown isBordered>
+              <Dropdown.Button>
+                <Avatar
+                  size="md"
+                  bordered
+                  color="gradient"
+                  src="https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png"
+                />
+              </Dropdown.Button>
+              <Dropdown.Menu aria-label="Static Actions" color="primary">
+                <Dropdown.Item
+                  key="profile"
+                  css={{ display: "flex", alignContent: "center" }}
+                  icon={<ProfileIcon />}
                 >
-                  <div className="w-10 rounded-full">
-                    <AvatarIcon></AvatarIcon>
-                  </div>
-                </label>
-                <ul
-                  tabIndex={0}
-                  className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
+                  <Link className="items-center text-white" href="/profile">
+                    Profile
+                  </Link>
+                </Dropdown.Item>
+
+                <Dropdown.Item key="cart" icon={<CartIcon />}>
+                  <Link className="items-center text-white" href="/cart">
+                    Cart
+                  </Link>
+                </Dropdown.Item>
+
+                <Dropdown.Item key="orders" icon={<OrdersIcon />}>
+                  <Link className="items-center text-white" href="/orders">
+                    Orders
+                  </Link>
+                </Dropdown.Item>
+
+                <Dropdown.Item key="suport" icon={<SupportIcon />}>
+                  <Link className="items-center text-white" href="/support">
+                    Suport
+                  </Link>
+                </Dropdown.Item>
+
+                <Dropdown.Item
+                  key="logout"
+                  withDivider
+                  color="error"
+                  icon={<LogoutIcon />}
                 >
-                  <li>
-                    <Link className="items-center" href="/profile">
-                      <ProfileIconPrimary />
-                      Profile
-                    </Link>
-                  </li>
-                  <li>
-                    <Link className="items-center" href="/orders">
-                      <OrdersIconPrimary />
-                      Orders
-                    </Link>
-                  </li>
-                  <li>
-                    <Link className="items-center" href="/support">
-                      <SupportIconPrimary />
-                      Support
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href={"/"}
-                      onClick={() => {
-                        removeToken();
-                        setLogged(false);
-                      }}
-                      className="btn-danger text-white font-bold"
-                    >
-                      <LogoutIcon />
-                      Logout
-                    </Link>
-                  </li>
-                </ul>
-              </>
-            )}
-          </div>
+                  <Link
+                    href={"/"}
+                    onClick={() => {
+                      removeToken();
+                      setLogged(false);
+                    }}
+                    className="text-danger font-bold"
+                  >
+                    Logout
+                  </Link>
+                </Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
+          )}
           {!logged && (
-            <div className="sm:flex justify-end items-end md:w-[260px] animate__animated animate__fadeIn">
-              <Link
-                className="block  rounded-md btn-color px-5 py-2 text-sm font-medium text-white transition "
-                href="/signin"
-                data-test="btn-login"
-              >
-                Login
-              </Link>
-            </div>
+            <Link
+              className="block rounded-md btn-color px-5 py-2 text-sm font-medium text-white transition "
+              href="/signin"
+              data-test="btn-login"
+            >
+              Login
+            </Link>
           )}
-        </div>
-      </ContainerHeader>
-    </section>
+        </Navbar.Content>
+      </Navbar>
+    </>
+
+    // <section className="header">
+
+    //     <div className="flex-none">
+    //       {logged && (
+    //         <label className="md:btn-ghost hidden md:btn mr-2">
+    //           <Link href="/profile" passHref>
+    //             <h3 className="text-primary text-md">{data?.data?.name}</h3>
+    //           </Link>
+    //         </label>
+    //       )}
+    //       {logged && (
+    //         <div className=" dropdown-end items-center mt-1 sm:dropdown hidden md:dropdown-end mr-2">
+    //           <CartIndicator totalItems={totalItemsCart} total={total} />
+    //         </div>
+    //       )}
+
+    //       {logged && (
+    //         <label
+    //           tabIndex={0}
+    //           className="btn btn-ghost btn-circle avatar sm:hidden"
+    //         >
+    //           <MenuIcon />
+    //         </label>
+    //       )}
+
+    //       <div className=" dropdown-end hidden sm:dropdown mr-2">
+    //         {logged && (
+    //           <>
+    //             <label
+    //               tabIndex={0}
+    //               className="btn btn-ghost btn-circle avatar mt-1"
+    //             >
+    //               <div className="w-10 rounded-full">
+    //                 <AvatarIcon></AvatarIcon>
+    //               </div>
+    //             </label>
+    //             <ul
+    //               tabIndex={0}
+    //               className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
+    //             >
+    //               <li>
+    //                 <Link className="items-center" href="/profile">
+    //                   <ProfileIconPrimary />
+    //                   Profile
+    //                 </Link>
+    //               </li>
+    //               <li>
+    //                 <Link className="items-center" href="/orders">
+    //                   <OrdersIconPrimary />
+    //                   Orders
+    //                 </Link>
+    //               </li>
+    //               <li>
+    //                 <Link className="items-center" href="/support">
+    //                   <SupportIconPrimary />
+    //                   Support
+    //                 </Link>
+    //               </li>
+    //               <li>
+    //                 <Link
+    //                   href={"/"}
+    //                   onClick={() => {
+    //                     removeToken();
+    //                     setLogged(false);
+    //                   }}
+    //                   className="btn-danger text-white font-bold"
+    //                 >
+    //                   <LogoutIcon />
+    //                   Logout
+    //                 </Link>
+    //               </li>
+    //             </ul>
+    //           </>
+    //         )}
+    //       </div>
+    //
+    //     </div>
+    //   </ContainerHeader>
+    // </section>
   );
 };

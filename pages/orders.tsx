@@ -27,18 +27,17 @@ export default function Orders() {
   let index = 1;
 
   return (
-    <div className=" flex-center">
+    <div className=" flex-center bg-gradient-to-bl from-indigo-700 via-indigo-400 to-indigo-700">
       <Head>
         <title>Cart</title>
       </Head>
-      <Header />
       {!allOrders ? (
         <Loader />
       ) : (
         <div className="flex px-2 flex-col w-full absolute top-32 h-full">
-          <div className="form-control w-36 max-w-xs self-end mr-6">
+          <div className="form-control w-36 max-w-xs self-end mr-6 ">
             <select
-              className="select select-primary "
+              className="select select-primary bg-black/60"
               value={selected}
               onChange={handlerChange}
             >

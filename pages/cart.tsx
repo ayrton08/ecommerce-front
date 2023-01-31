@@ -17,7 +17,7 @@ export default function CartPage() {
   }, [logged]);
 
   return (
-    <div className="flex-center px-4 sm:px-0">
+    <>
       <Head>
         <title>Cart</title>
         <meta
@@ -26,8 +26,9 @@ export default function CartPage() {
           key="title"
         />
       </Head>
-      <Header />
-      <Cart />
-    </div>
+      <div className="flex-center container-page px-4 sm:px-0 bg-gradient-to-bl from-indigo-700 via-indigo-400 to-indigo-700">
+        <Cart />
+      </div>
+    </>
   );
 }

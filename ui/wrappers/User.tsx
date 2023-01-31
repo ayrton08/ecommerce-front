@@ -21,7 +21,7 @@ export const User = ({ children, userName }: any) => {
   const [editOn, setEditOn] = useState(false);
   const profileWithCart = createCart({ ...data?.data });
   return (
-    <div className=" card flex flex-col mt-20 mb-6 sm:mt-16 shadow-xl  bg-black/20  py-8 px-4  z-30 glass-efect animate__animated animate__fadeIn">
+    <div className=" card flex flex-col  mb-6 shadow-2xl  bg-black/20  py-8 px-4  z-30 animate__animated animate__fadeIn">
       <figure>
         <AvatarIcon className="w-36" />
       </figure>

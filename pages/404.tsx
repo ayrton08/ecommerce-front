@@ -14,7 +14,6 @@ export default function notFound() {
           key="title"
         />
       </Head>
-      <Header />
       <Basic
         icon={<NotFoundIcon className="w-full" />}
         color="bg-red-600/40 self-center"

@@ -27,7 +27,7 @@
 }
 
 .btn-color {
-  @apply bg-primaryA hover:bg-dark;
+  @apply bg-primaryA hover:bg-primaryA/90;
 }
 
 .text-color {
@@ -40,10 +40,6 @@
 
 .btn-success {
   @apply bg-successfull hover:bg-dark;
-}
-
-.order-item {
-  @apply bg-light;
 }
 
 .flex-col-center {
@@ -59,7 +55,8 @@
 }
 
 .container-page {
-  min-height: calc(100vh - 222px);
+  min-height: calc(100vh - 298px);
+  background-color: white;
 }
 
 .order::-webkit-scrollbar {
@@ -72,7 +69,7 @@
 }
 
 .order::-webkit-scrollbar-thumb {
-  background-color: #6c63ff;
+  background-color: #171723;
   border-radius: 20px;
 }
 

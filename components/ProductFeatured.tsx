@@ -15,7 +15,7 @@ export const ProductFeatured = ({
   recomended,
 }: ProductType) => {
   return (
-    <div className={`card-result  mx-4 my-4 ${recomended ? "w-60" : "w-80"}`}>
+    <div className={`card-result rounded-lg mx-4 my-4 shadow-2xl ${recomended ? "w-60" : "w-80"}`}>
       <Link
         className={`block relative ${
           recomended ? "h-24" : "h-48"

@@ -5,7 +5,7 @@ import { SuportImage } from "ui/icons";
 
 export default function suport() {
   return (
-    <div className="flex-col-center container-page">
+    <div className="flex-col-center container-page bg-gradient-to-bl from-indigo-700 via-indigo-400 to-indigo-700">
       <Head>
         <title>Suport</title>
         <meta
@@ -14,7 +14,6 @@ export default function suport() {
           key="title"
         />
       </Head>
-      <Header />
       <div className="flex flex-col md:flex-row w-full justify-evenly mt-32 px-4">
         <SuportImage className="md:w-[500px] mb-4" />
 
