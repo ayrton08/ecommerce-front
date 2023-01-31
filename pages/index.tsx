@@ -13,7 +13,7 @@ export default function Home() {
   const products = useProducts();
 
   return (
-    <div className="pt-40">
+    <div className="pt-40 bg-white">
       <Head>
         <title>Home</title>
       </Head>

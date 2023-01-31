@@ -22,7 +22,7 @@ export const ModalMenu = () => {
   return (
     <>
       <input type="checkbox" id="my-modal-3" className="modal-toggle" />
-      <div className="modal bg-black/80 z-40">
+      <div className="modal bg-white z-40">
         <div className="modal-box w-3/4 h-max flex flex-col gap-4 items-end pt-3 px-4">
           <label
             htmlFor="my-modal-3"

@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from "react";
-import Link from "next/link";
+import avatar from "../ui/icons/avatar.svg";
 
 import { AvatarIcon, LogoIcon, MenuIcon } from "../ui/icons";
 import { isUserLogged, removeToken } from "helpers/localStorage";
@@ -13,16 +13,27 @@ import { ModalMenu } from "./ModalMenu";
 import {
   LogoutIcon,
   OrdersIconPrimary,
+  ProfileIcon,
   ProfileIconPrimary,
+  SupportIcon,
   SupportIconPrimary,
 } from "ui/icons/boxicons";
 import { updateCart } from "lib/api";
-import { Button, Navbar, Text, useTheme } from "@nextui-org/react";
+import {
+  Avatar,
+  Button,
+  Container,
+  Dropdown,
+  Grid,
+  Link,
+  Navbar,
+  Text,
+  useTheme,
+} from "@nextui-org/react";
 import { AcmeLogo } from "ui/icons/Icon";
+import { OrdersIcon, CartIcon } from "../ui/icons/boxicons";
 
 export const Header = () => {
-  const { theme, isDark } = useTheme();
-
   const data = useMe("/me");
 
   useEffect(() => {
@@ -41,59 +52,110 @@ export const Header = () => {
   }, [data]);
 
   return (
-    <Navbar isBordered variant={"sticky"} maxWidth="fluid">
-      <Navbar.Brand>
-        <Link
-          className="btn btn-ghost normal  min-w-[38px]"
-          href="/"
-          aria-label="Button Home"
-        >
+    <>
+      <ModalMenu></ModalMenu>
+
+      <Navbar isBordered variant="sticky" maxWidth="fluid">
+        <Navbar.Brand className="flex gap-4">
           <AcmeLogo />
-          <Text b color="inherit" hideIn="xs">
-            MARKET
+          <Link href="/" aria-label="Button Home">
+            <Text b hideIn="xs">
+              MARKET
+            </Text>
+          </Link>
+        </Navbar.Brand>
+        <Navbar.Content
+          hideIn="xs"
+          css={{
+            justifyContent: "center",
+            width: "100%",
+          }}
+        >
+          <Searcher />
+        </Navbar.Content>
+        <Navbar.Content>
+          <Text
+            h1
+            size={20}
+            css={{
+              textGradient: "45deg, initial -20%, pink600 50%",
+            }}
+            weight="bold"
+          >
+            {data?.data?.name}
           </Text>
-        </Link>
-      </Navbar.Brand>
-      <Navbar.Content
-        hideIn="xs"
-        css={{
-          justifyContent: "center",
-          width: "100%",
-        }}
-      >
-        <Searcher />
-      </Navbar.Content>
-      <Navbar.Content>
-        <Navbar.Link color="inherit" href="#">
-          Login
-        </Navbar.Link>
-        <Navbar.Item>
-          <Button auto flat as={Link} href="#">
-            Sign Up
-          </Button>
-        </Navbar.Item>
-      </Navbar.Content>
-    </Navbar>
+
+          <Dropdown isBordered>
+            <Dropdown.Button>
+              <Avatar
+                size="md"
+                bordered
+                color="gradient"
+                src="https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png"
+              />
+            </Dropdown.Button>
+            <Dropdown.Menu aria-label="Static Actions" color="primary">
+              <Dropdown.Item
+                key="profile"
+                css={{ display: "flex", alignContent: "center" }}
+                icon={<ProfileIcon />}
+              >
+                <Link className="items-center text-white" href="/profile">
+                  Profile
+                </Link>
+              </Dropdown.Item>
+
+              <Dropdown.Item key="cart" icon={<CartIcon />}>
+                <Link className="items-center text-white" href="/cart">
+                  Cart
+                </Link>
+              </Dropdown.Item>
+
+              <Dropdown.Item key="orders" icon={<OrdersIcon />}>
+                <Link className="items-center text-white" href="/profile">
+                  Orders
+                </Link>
+              </Dropdown.Item>
+
+              <Dropdown.Item key="suport" icon={<SupportIcon />}>
+                <Link className="items-center text-white" href="/suport">
+                  Suport
+                </Link>
+              </Dropdown.Item>
+
+              <Dropdown.Item
+                key="logout"
+                withDivider
+                color="error"
+                icon={<LogoutIcon />}
+              >
+                <Link
+                  href={"/"}
+                  onClick={() => {
+                    removeToken();
+                    setLogged(false);
+                  }}
+                  className="text-danger font-bold"
+                >
+                  Logout
+                </Link>
+              </Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
+          {!logged && (
+            <Link
+              className="block rounded-md btn-color px-5 py-2 text-sm font-medium text-white transition "
+              href="/signin"
+              data-test="btn-login"
+            >
+              Login
+            </Link>
+          )}
+        </Navbar.Content>
+      </Navbar>
+    </>
 
     // <section className="header">
-    //   <ModalMenu></ModalMenu>
-    //   <ContainerHeader>
-    //     <Link
-    //       className="btn btn-ghost normal sm:hidden min-w-[38px]"
-    //       href="/"
-    //       aria-label="Button Home"
-    //     >
-    //       <LogoIcon className="w-12 " />
-    //     </Link>
-
-    //     <div className="hidden sm:flex w-max md:w-[260px] justify-start">
-    //       <Link className="btn btn-ghost normal-case text-xl " href="/">
-    //         <LogoIcon className="mr-2 w-8" />
-    //         market
-    //       </Link>
-    //     </div>
-
-    //     <Searcher />
 
     //     <div className="flex-none">
     //       {logged && (
@@ -168,17 +230,7 @@ export const Header = () => {
     //           </>
     //         )}
     //       </div>
-    //       {!logged && (
-    //         <div className="sm:flex justify-end items-end md:w-[260px] animate__animated animate__fadeIn">
-    //           <Link
-    //             className="block  rounded-md btn-color px-5 py-2 text-sm font-medium text-white transition "
-    //             href="/signin"
-    //             data-test="btn-login"
-    //           >
-    //             Login
-    //           </Link>
-    //         </div>
-    //       )}
+    //
     //     </div>
     //   </ContainerHeader>
     // </section>
