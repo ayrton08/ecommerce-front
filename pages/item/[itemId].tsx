@@ -47,7 +47,6 @@ export default function ItemId() {
       <Head>
         <title>Search</title>
       </Head>
-      <Header />
 
       {product ? (
         <>
