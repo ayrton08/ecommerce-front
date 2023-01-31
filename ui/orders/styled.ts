@@ -2,7 +2,7 @@ import tw from "tailwind-styled-components";
 import { FC } from "react";
 
 export const ContainerOrder: FC<any> = tw.tr`
-    hover:bg-dark_light relative
+    hover:bg-dark_light relative text-black
 `;
 
 export const ItemOrder: FC<any> = tw.td`

@@ -85,63 +85,65 @@ export const Header = () => {
             {data?.data?.name}
           </Text>
 
-          <Dropdown isBordered>
-            <Dropdown.Button>
-              <Avatar
-                size="md"
-                bordered
-                color="gradient"
-                src="https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png"
-              />
-            </Dropdown.Button>
-            <Dropdown.Menu aria-label="Static Actions" color="primary">
-              <Dropdown.Item
-                key="profile"
-                css={{ display: "flex", alignContent: "center" }}
-                icon={<ProfileIcon />}
-              >
-                <Link className="items-center text-white" href="/profile">
-                  Profile
-                </Link>
-              </Dropdown.Item>
-
-              <Dropdown.Item key="cart" icon={<CartIcon />}>
-                <Link className="items-center text-white" href="/cart">
-                  Cart
-                </Link>
-              </Dropdown.Item>
-
-              <Dropdown.Item key="orders" icon={<OrdersIcon />}>
-                <Link className="items-center text-white" href="/profile">
-                  Orders
-                </Link>
-              </Dropdown.Item>
-
-              <Dropdown.Item key="suport" icon={<SupportIcon />}>
-                <Link className="items-center text-white" href="/suport">
-                  Suport
-                </Link>
-              </Dropdown.Item>
-
-              <Dropdown.Item
-                key="logout"
-                withDivider
-                color="error"
-                icon={<LogoutIcon />}
-              >
-                <Link
-                  href={"/"}
-                  onClick={() => {
-                    removeToken();
-                    setLogged(false);
-                  }}
-                  className="text-danger font-bold"
+          {logged && (
+            <Dropdown isBordered>
+              <Dropdown.Button>
+                <Avatar
+                  size="md"
+                  bordered
+                  color="gradient"
+                  src="https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png"
+                />
+              </Dropdown.Button>
+              <Dropdown.Menu aria-label="Static Actions" color="primary">
+                <Dropdown.Item
+                  key="profile"
+                  css={{ display: "flex", alignContent: "center" }}
+                  icon={<ProfileIcon />}
                 >
-                  Logout
-                </Link>
-              </Dropdown.Item>
-            </Dropdown.Menu>
-          </Dropdown>
+                  <Link className="items-center text-white" href="/profile">
+                    Profile
+                  </Link>
+                </Dropdown.Item>
+
+                <Dropdown.Item key="cart" icon={<CartIcon />}>
+                  <Link className="items-center text-white" href="/cart">
+                    Cart
+                  </Link>
+                </Dropdown.Item>
+
+                <Dropdown.Item key="orders" icon={<OrdersIcon />}>
+                  <Link className="items-center text-white" href="/orders">
+                    Orders
+                  </Link>
+                </Dropdown.Item>
+
+                <Dropdown.Item key="suport" icon={<SupportIcon />}>
+                  <Link className="items-center text-white" href="/support">
+                    Suport
+                  </Link>
+                </Dropdown.Item>
+
+                <Dropdown.Item
+                  key="logout"
+                  withDivider
+                  color="error"
+                  icon={<LogoutIcon />}
+                >
+                  <Link
+                    href={"/"}
+                    onClick={() => {
+                      removeToken();
+                      setLogged(false);
+                    }}
+                    className="text-danger font-bold"
+                  >
+                    Logout
+                  </Link>
+                </Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
+          )}
           {!logged && (
             <Link
               className="block rounded-md btn-color px-5 py-2 text-sm font-medium text-white transition "

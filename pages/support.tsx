@@ -5,7 +5,7 @@ import { SuportImage } from "ui/icons";
 
 export default function suport() {
   return (
-    <div className="flex-col-center container-page">
+    <div className="flex-col-center container-page bg-gradient-to-bl from-indigo-700 via-indigo-400 to-indigo-700">
       <Head>
         <title>Suport</title>
         <meta

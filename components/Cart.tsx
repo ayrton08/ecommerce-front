@@ -64,7 +64,7 @@ export const Cart = () => {
     <Loader />
   ) : (
     <div
-      className={`card flex w-full  lg:flex-col shadow-xl sm:w-2/3 xl:w-1/2 py-8 md:px-8 mt-32 mb-12 gap-8 z-10 glass-efect animate__animated  ${efect}`}
+      className={`card flex w-full  lg:flex-col shadow-2xl sm:w-2/3 xl:w-1/2 py-8 md:px-8  gap-8 z-10 bg-black/30 animate__animated  ${efect}`}
     >
       <CartLogo className="w-[350px] px-10 self-center" />
 
