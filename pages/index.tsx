@@ -1,19 +1,19 @@
-import Head from "next/head";
-import { useProducts } from "hooks";
+import Head from 'next/head';
+import { useProducts } from 'hooks';
 
-import { ProductFeatured, Header } from "components";
-import { Banner, Featured, Categories, Category } from "ui";
-import { CashIcon, MasterIcon, MercadoPagoIcon, VisaIcon } from "ui/icons";
-import { ContainerCard, ContainerPayments } from "ui/wrappers/styled";
-import { CardTitle } from "ui/label/styled";
-import { Progress } from "ui/loaders/styled";
-import { Divider } from "ui/divider/styled";
+import { ProductFeatured, Header } from 'components';
+import { Banner, Featured, Categories, Category } from 'ui';
+import { CashIcon, MasterIcon, MercadoPagoIcon, VisaIcon } from 'ui/icons';
+import { ContainerCard, ContainerPayments } from 'ui/wrappers/styled';
+import { CardTitle } from 'ui/label/styled';
+import { Progress } from 'ui/loaders/styled';
+import { Divider } from 'ui/divider/styled';
 
 export default function Home() {
   const products = useProducts();
 
   return (
-    <div className="pt-40 bg-white">
+    <div className="pt-40 bg-[#e0e0e0]">
       <Head>
         <title>Home</title>
       </Head>
@@ -25,7 +25,7 @@ export default function Home() {
             <ProductFeatured
               key={product.Name}
               title={product.Name}
-              price={product["Unit cost"]}
+              price={product['Unit cost']}
               picture={product.Images[0].url}
               id={product.objectID}
               category={product.Type}
