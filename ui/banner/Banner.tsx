@@ -1,21 +1,21 @@
-import React from "react";
+import React from 'react';
 
-import { Carousel } from "flowbite-react";
-import { Container } from "./styled";
-import Image from "next/image";
+import { Carousel } from 'flowbite-react';
+import { Container } from './styled';
+import Image from 'next/image';
 
 export const Banner = () => {
   return (
     <Container>
-      <Carousel className="rounded-none" indicators={false}>
+      {/* <Carousel className="rounded-none" indicators={false}> */}
         <Image
           alt="Banner Promocion"
-          src="https://img.freepik.com/vector-gratis/banner-mega-venta-su-tienda-linea-estilo-realista-telefono-mapa-carrito-bolso-regalo-ilustracion-vectorial_548887-132.jpg?w=1380&t=st=1668637080~exp=1668637680~hmac=8ec77f121c72687f2679e0962cf767ed0df7aa6e3a98ea7eb62bd5baf5380a30"
-          className="w-max h-full"
-          height={1000}
-          width={1000}
+          src="/wallpaper.png"
+          className="w-full h-full object-cover"
+          height={2000}
+          width={2000}
         />
-        <Image
+        {/* <Image
           alt="Banner Promocion"
           src="https://img.freepik.com/vector-gratis/banner-plantilla-tienda-online-carrito-compras-compras-cajas-entrega-supermercado-ilustracion-vectorial_548887-104.jpg?w=1380&t=st=1668637252~exp=1668637852~hmac=5342dd8439ac0239dd72f2721c6c6b676e4ef573e40bfe0d97b342804e0fdd70"
           className="w-max h-full"
@@ -35,8 +35,8 @@ export const Banner = () => {
           className="w-max h-full"
           height={1000}
           width={1000}
-        />
-      </Carousel>
+        /> */}
+      {/* </Carousel> */}
     </Container>
   );
 };
