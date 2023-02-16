@@ -8,14 +8,14 @@ export const Banner = () => {
   return (
     <Container>
       {/* <Carousel className="rounded-none" indicators={false}> */}
-        <Image
-          alt="Banner Promocion"
-          src="/wallpaper.png"
-          className="w-full h-full object-cover"
-          height={2000}
-          width={2000}
-        />
-        {/* <Image
+      <Image
+        alt="Banner Promocion"
+        src="/wallpaper.png"
+        className="w-full h-full object-cover"
+        height={2000}
+        width={2000}
+      />
+      {/* <Image
           alt="Banner Promocion"
           src="https://img.freepik.com/vector-gratis/banner-plantilla-tienda-online-carrito-compras-compras-cajas-entrega-supermercado-ilustracion-vectorial_548887-104.jpg?w=1380&t=st=1668637252~exp=1668637852~hmac=5342dd8439ac0239dd72f2721c6c6b676e4ef573e40bfe0d97b342804e0fdd70"
           className="w-max h-full"
