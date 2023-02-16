@@ -1,5 +1,5 @@
 /** @type {import('next').NextConfig} */
-const withSvgr = require("next-svgr");
+const withSvgr = require('next-svgr');
 
 const nextConfig = withSvgr({
   reactStrictMode: true,
@@ -10,19 +10,24 @@ const nextConfig = withSvgr({
   images: {
     remotePatterns: [
       {
-        protocol: "https",
-        hostname: "dl.airtable.com",
-        pathname: "/.attachments/**",
+        protocol: 'https',
+        hostname: 'dl.airtable.com',
+        pathname: '/.attachments/**',
       },
       {
-        protocol: "https",
-        hostname: "img.freepik.com",
-        pathname: "/vector-gratis/**",
+        protocol: 'https',
+        hostname: 'img.freepik.com',
+        pathname: '/vector-gratis/**',
       },
       {
-        protocol: "https",
-        hostname: "cdn-icons-png.flaticon.com",
-        pathname: "/*/**",
+        protocol: 'https',
+        hostname: 'cdn-icons-png.flaticon.com',
+        pathname: '/*/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'martech.org',
+        pathname: '/*/**',
       },
     ],
   },
