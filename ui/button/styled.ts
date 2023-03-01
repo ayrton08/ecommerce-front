@@ -1,7 +1,7 @@
-import tw from "tailwind-styled-components";
-import { FC } from "react";
+import tw from 'tailwind-styled-components';
+import { FC } from 'react';
 
-import { ButtonProps } from "interface/ui";
+import { ButtonProps } from 'interface/ui';
 
 export const Button: FC<ButtonProps> = tw.button`
     btn w-full btn-color border-0
@@ -14,7 +14,7 @@ export const ButtonDark: FC<ButtonProps> = tw.button`
 `;
 
 export const ButtonSearchPrimary: FC<any> = tw.button`
-    btn-search btn-color
+    btn-search btn-color rounded-r-3xl
 `;
 
 export const ButtonSearch: FC<any> = tw.button`

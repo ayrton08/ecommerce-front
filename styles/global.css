@@ -23,7 +23,7 @@
 }
 
 .btn-search {
-  @apply absolute flex justify-center items-center right-0 top-0 bottom-0 w-16 rounded-r-lg;
+  @apply absolute flex justify-center items-center right-0 top-0 bottom-0 w-16 rounded-r-3xl;
 }
 
 .btn-color {
@@ -118,4 +118,9 @@ p {
 
 .screen {
   height: calc(100vh - 222px);
+}
+
+:root {
+  --nextui--navbarBlurBackgroundColor: '#0099ff';
+  --nextui--navbarBlur: 'none';
 }

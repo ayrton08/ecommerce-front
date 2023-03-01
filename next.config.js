@@ -29,6 +29,11 @@ const nextConfig = withSvgr({
         hostname: 'martech.org',
         pathname: '/*/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+        pathname: '/*/**',
+      },
     ],
   },
 });

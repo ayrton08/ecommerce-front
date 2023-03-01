@@ -10,8 +10,8 @@ export const Banner = () => {
       {/* <Carousel className="rounded-none" indicators={false}> */}
       <Image
         alt="Banner Promocion"
-        src="/wallpaper.png"
-        className="w-full h-full object-cover"
+        src="/wave.svg"
+        className="w-full h-full lg:object-cover"
         height={2000}
         width={2000}
       />
