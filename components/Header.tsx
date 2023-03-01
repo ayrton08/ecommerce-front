@@ -1,15 +1,14 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect } from "react";
-import avatar from "../ui/icons/avatar.svg";
+import avatar from '../ui/icons/avatar.svg';
 
-import { AvatarIcon, LogoIcon, MenuIcon } from "../ui/icons";
-import { isUserLogged, removeToken } from "helpers/localStorage";
-import { useMe, useTotalCart, useCart, useLogin } from "hooks";
-import { CartIndicator } from "ui";
-import { Searcher } from "./Searcher";
-import { ContainerHeader } from "ui/wrappers/styled";
-import { ModalMenu } from "./ModalMenu";
+import { AvatarIcon, LogoIcon, MenuIcon } from '../ui/icons';
+import { isUserLogged, removeToken } from 'helpers/localStorage';
+import { useMe, useTotalCart, useCart, useLogin } from 'hooks';
+import { CartIndicator } from 'ui';
+import { Searcher } from './Searcher';
+import { ContainerHeader } from 'ui/wrappers/styled';
+import { ModalMenu } from './ModalMenu';
 import {
   LogoutIcon,
   OrdersIconPrimary,
@@ -17,8 +16,8 @@ import {
   ProfileIconPrimary,
   SupportIcon,
   SupportIconPrimary,
-} from "ui/icons/boxicons";
-import { updateCart } from "lib/api";
+} from 'ui/icons/boxicons';
+import { updateCart } from 'lib/api';
 import {
   Avatar,
   Button,
@@ -29,12 +28,13 @@ import {
   Navbar,
   Text,
   useTheme,
-} from "@nextui-org/react";
-import { AcmeLogo } from "ui/icons/Icon";
-import { OrdersIcon, CartIcon } from "../ui/icons/boxicons";
+} from '@nextui-org/react';
+import { AcmeLogo } from 'ui/icons/Icon';
+import { OrdersIcon, CartIcon } from '../ui/icons/boxicons';
+import { useState, useEffect } from 'react';
 
 export const Header = () => {
-  const data = useMe("/me");
+  const data = useMe('/me');
 
   useEffect(() => {
     if (!data?.data?.cart) {
@@ -51,15 +51,39 @@ export const Header = () => {
     setLogged(logged);
   }, [data]);
 
+  const top = typeof window === 'undefined' ? {} : screenTop;
+
+  const [scrollPosition, setScrollPosition] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const position = window.pageYOffset;
+      setScrollPosition(position);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
     <>
       <ModalMenu></ModalMenu>
 
-      <Navbar isBordered variant="sticky" maxWidth="fluid">
-        <Navbar.Brand className="flex gap-4">
-          <AcmeLogo />
+      <Navbar
+        disableShadow
+        variant="sticky"
+        maxWidth="fluid"
+        className={` ${
+          scrollPosition > 0 ? 'bg-[#0099ff] pt-0 opacity-90' : 'pt-4'
+        }`}
+      >
+        <Navbar.Brand className="flex gap-4 nav">
           <Link href="/" aria-label="Button Home">
-            <Text b hideIn="xs">
+            <Text b hideIn="xs" className='flex items-center gap-4 text-lg'>
+              <AcmeLogo />
               MARKET
             </Text>
           </Link>
@@ -67,8 +91,8 @@ export const Header = () => {
         <Navbar.Content
           hideIn="xs"
           css={{
-            justifyContent: "center",
-            width: "100%",
+            justifyContent: 'center',
+            width: '100%',
           }}
         >
           <Searcher />
@@ -78,7 +102,7 @@ export const Header = () => {
             h1
             size={20}
             css={{
-              textGradient: "45deg, initial -20%, pink600 50%",
+              textGradient: '45deg, initial -20%, pink600 50%',
             }}
             weight="bold"
           >
@@ -98,7 +122,7 @@ export const Header = () => {
               <Dropdown.Menu aria-label="Static Actions" color="primary">
                 <Dropdown.Item
                   key="profile"
-                  css={{ display: "flex", alignContent: "center" }}
+                  css={{ display: 'flex', alignContent: 'center' }}
                   icon={<ProfileIcon />}
                 >
                   <Link className="items-center text-white" href="/profile">
@@ -131,7 +155,7 @@ export const Header = () => {
                   icon={<LogoutIcon />}
                 >
                   <Link
-                    href={"/"}
+                    href={'/'}
                     onClick={() => {
                       removeToken();
                       setLogged(false);
@@ -146,7 +170,7 @@ export const Header = () => {
           )}
           {!logged && (
             <Link
-              className="block rounded-md btn-color px-5 py-2 text-sm font-medium text-white transition "
+              className="block rounded-3xl btn-color px-6 py-3 md:text-md font-medium text-white transition "
               href="/signin"
               data-test="btn-login"
             >

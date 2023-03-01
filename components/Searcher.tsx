@@ -1,13 +1,13 @@
-import Router from "next/router";
-import { Form, Formik } from "formik";
-import { ButtonSearchPrimary } from "../ui/button/styled";
-import { FieldSearch } from "../ui/field/styled";
-import { SearchIconLight } from "../ui/icons/boxicons";
+import Router from 'next/router';
+import { Form, Formik } from 'formik';
+import { ButtonSearchPrimary } from '../ui/button/styled';
+import { FieldSearch } from '../ui/field/styled';
+import { SearchIconLight } from '../ui/icons/boxicons';
 
-import * as yup from "yup";
+import * as yup from 'yup';
 
 const initialValues = {
-  search: "",
+  search: '',
 };
 
 const schema = yup.object({
@@ -17,7 +17,7 @@ const schema = yup.object({
 export const Searcher = () => {
   const handler = (path: string) => {
     Router.push({
-      pathname: "/search",
+      pathname: '/search',
       query: { q: path },
     });
   };
@@ -28,7 +28,7 @@ export const Searcher = () => {
       validationSchema={schema}
     >
       {({ handleChange }) => (
-        <Form className="form-control mr-2 self-center sm:w-1/2 max-w-[450px]  sm:flex relative">
+        <Form className="form-control mr-2 self-center sm:w-1/2 max-w-[500px] sm:flex relative">
           <FieldSearch
             type="text"
             placeholder="Search"
@@ -37,7 +37,11 @@ export const Searcher = () => {
             data-test="search-input"
           />
 
-          <ButtonSearchPrimary type="submit" aria-label="button search" data-test="btn-search">
+          <ButtonSearchPrimary
+            type="submit"
+            aria-label="button search"
+            data-test="btn-search"
+          >
             <SearchIconLight />
           </ButtonSearchPrimary>
         </Form>
