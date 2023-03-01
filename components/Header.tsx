@@ -76,12 +76,14 @@ export const Header = () => {
         disableShadow
         variant="sticky"
         maxWidth="fluid"
-        className={` ${scrollPosition > 0 ? 'bg-[#0099ff] pt-0 opacity-90' : 'pt-4'}`}
+        className={` ${
+          scrollPosition > 0 ? 'bg-[#0099ff] pt-0 opacity-90' : 'pt-4'
+        }`}
       >
         <Navbar.Brand className="flex gap-4 nav">
-          <AcmeLogo />
           <Link href="/" aria-label="Button Home">
-            <Text b hideIn="xs">
+            <Text b hideIn="xs" className='flex items-center gap-4 text-lg'>
+              <AcmeLogo />
               MARKET
             </Text>
           </Link>
