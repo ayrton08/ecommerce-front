@@ -36,7 +36,7 @@ export const Product = ({
           alt="ecommerce"
           className={
             detail
-              ? 'md:w-full w-full md:min-w-[210px] md:h-[450px] h-64 object-cover object-center rounded self-center p-5'
+              ? 'md:w-full w-full md:min-w-[210px] md:h-[450px] h-64 object-contain object-center rounded self-center p-5'
               : 'md:w-52 w-full min-w-[210px] md:h-52 h-44 object-cover object-center rounded self-center'
           }
           src={picture}

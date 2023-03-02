@@ -22,7 +22,7 @@ export const Order = ({
             <ButtonPrimary>
               <Link href={linkToPay} label="Pay" />
             </ButtonPrimary>
-            <ButtonDanger className="hidden md:flex">Cancel</ButtonDanger>
+            {/* <ButtonDanger className="hidden md:flex">Cancel</ButtonDanger> */}
           </>
         ) : (
           <LabelPrimary>Shipping...</LabelPrimary>
