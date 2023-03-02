@@ -46,13 +46,12 @@ export default function Search() {
           icon={<NoResultsIcons className="w-full" />}
           color="bg-red-600/40 md:w-1/2 lg:w-1/3 h-full"
         >
-          <h2 className="card-title">No Results with {q}!</h2>
+          <h2 className="card-title">No results with {q}!</h2>
         </Basic>
       )}
       {data?.pagination.total !== 0 && (
         <div className={`relative pb-20 w-full `}>
           <div className="flex flex-col  text-start items-center mt-8 xl:mt-10 mb-8">
-
             <div className="w-4/5 pb-5 grid gap-2">
               <h4 className="text-black text-3xl font-bold">{q}</h4>
               <span className="text-primaryA">

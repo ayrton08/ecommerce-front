@@ -73,7 +73,7 @@ export const Cart = () => {
         <CartLogo className="w-96 h-96 px-10 self-center" />
       </div>
 
-      <div className="flex flex-col p-2 md:p-4  w-full max-w-[800px] h-2/3 bg-black/30 rounded-r-3xl">
+      <div className="flex flex-col p-2 md:p-10  w-full max-w-[800px] h-2/3 bg-black/30 rounded-r-3xl">
         <CardTitle>Cart</CardTitle>
 
         {currentOrders?.length > 0 && (

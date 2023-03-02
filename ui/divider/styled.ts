@@ -1,8 +1,8 @@
-import tw from "tailwind-styled-components";
-import { FC } from "react";
+import tw from 'tailwind-styled-components';
+import { FC } from 'react';
 
 export const Divider: FC<any> = tw.div`
-    divider px-8
+    divider px-8 
 `;
 
 export const DividerItems: FC<any> = tw.div`

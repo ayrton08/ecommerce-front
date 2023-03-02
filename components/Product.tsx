@@ -4,7 +4,6 @@ import { Button } from 'ui/button/styled';
 import { ProductType } from 'interface/product';
 import Image from 'next/image';
 import { Loader } from 'ui';
-import { Divider, DividerItems } from 'ui/divider/styled';
 
 export const Product = ({
   description,
@@ -23,7 +22,7 @@ export const Product = ({
       className={
         !detail
           ? `flex w-4/5  md:w-full px-5 py-5 xl:w-4/5  ${className}  bg-transparent text-black border-t-2`
-          : `container mt-20 mb-10 px-5 py-5 lg:px-8 w-5/6 sm:w-3/4 xl:w-2/4  bg-dark_light`
+          : `container  mb-10 px-5 py-5 lg:px-8 w-5/6 sm:w-3/4 xl:w-3/4 text-black`
       }
     >
       <div
