@@ -92,16 +92,6 @@ export default function Home() {
           src="https://cdn-icons-png.flaticon.com/512/2669/2669013.png"
         />
       </Categories>
-      <Divider />
-      <ContainerPayments>
-        <CardTitle>Payment Methods</CardTitle>
-        <ContainerCard className="md:justify-evenly md:w-1/2 ">
-          <VisaIcon />
-          <MasterIcon />
-          <MercadoPagoIcon />
-          <CashIcon className="w-20" />
-        </ContainerCard>
-      </ContainerPayments>
     </div>
   );
 }

@@ -1,35 +1,35 @@
-import NotFound from "./404.svg";
-import Avatar from "./avatar.svg";
-import Login from "./login.svg";
-import Logo from "./logo.svg";
-import Payment from "./payment.svg";
-import Cart from "./cart-logo.svg";
-import Computer from "./tecs/computer.svg";
-import Home from "./home.svg";
-import Results from "./no-results.svg";
-import Visa from "./visa.svg";
-import Master from "./master.svg";
-import MercadoPago from "./mp.svg";
-import Cash from "./cash.svg";
-import Suport from "./suport.svg";
+import NotFound from './404.svg';
+import Avatar from './avatar.svg';
+import Login from './login.svg';
+import Logo from './logo.svg';
+import Payment from './payment.svg';
+import Cart from './cart-logo.svg';
+import Computer from './tecs/computer.svg';
+import Home from './home.svg';
+import Results from './no-results.svg';
+import Visa from './visa.svg';
+import Master from './master.svg';
+import MercadoPago from './mp.svg';
+import Cash from './cash.svg';
+import Suport from './suport.svg';
 
 const SuportImage = ({ className }: any) => {
   return <Suport className={className} />;
 };
 
 const CashIcon = ({ className }: any) => {
-  return <Cash className={`${className} w-14 md:w-16 lg:w-24`} />;
+  return <Cash className={`${className} w-14`} />;
 };
 
 const MercadoPagoIcon = ({ className }: any) => {
-  return <MercadoPago className={`${className} w-14 md:w-16 lg:w-24`} />;
+  return <MercadoPago className={`${className} w-14`} />;
 };
 
 const MasterIcon = ({ className }: any) => {
-  return <Master className={`${className} w-14 md:w-16 lg:w-24`} />;
+  return <Master className={`${className} w-14`} />;
 };
 const VisaIcon = ({ className }: any) => {
-  return <Visa className={`${className} w-14 md:w-16 lg:w-24`} />;
+  return <Visa className={`${className} w-14`} />;
 };
 const NoResultsIcons = ({ className }: any) => {
   return <Results className={className} />;

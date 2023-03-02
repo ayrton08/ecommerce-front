@@ -77,7 +77,7 @@ export const Header = () => {
         variant="sticky"
         maxWidth="fluid"
         className={` ${
-          scrollPosition > 0 ? 'bg-[#0099ff] pt-0 opacity-90' : 'pt-4'
+          scrollPosition > 0 ? 'bg-black/80 pt-0 opacity-95' : ''
         }`}
       >
         <Navbar.Brand className="flex gap-4 nav">
@@ -100,7 +100,7 @@ export const Header = () => {
         <Navbar.Content>
           <Text
             h1
-            size={20}
+            size={17}
             css={{
               textGradient: '45deg, initial -20%, pink600 50%',
             }}
@@ -111,12 +111,12 @@ export const Header = () => {
 
           {logged && (
             <Dropdown isBordered>
-              <Dropdown.Button>
+              <Dropdown.Button className="px-0">
                 <Avatar
                   size="md"
                   bordered
-                  color="gradient"
-                  src="https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png"
+                  color="success"
+                  src="https://qlu.ac.pa/wp-content/uploads/2019/04/kisspng-avatar-user-medicine-s.png"
                 />
               </Dropdown.Button>
               <Dropdown.Menu

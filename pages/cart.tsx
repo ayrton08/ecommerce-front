@@ -1,18 +1,18 @@
-import { useEffect } from "react";
-import Router from "next/router";
-import Head from "next/head";
+import { useEffect } from 'react';
+import Router from 'next/router';
+import Head from 'next/head';
 
-import { Header } from "components/Header";
-import { useLogin, useMe } from "hooks";
-import { Cart, Loader } from "ui";
-import { isUserLogged } from "helpers/localStorage";
+import { Header } from 'components/Header';
+import { useLogin, useMe } from 'hooks';
+import { Cart, Loader } from 'ui';
+import { isUserLogged } from 'helpers/localStorage';
 
 export default function CartPage() {
   const logged = isUserLogged();
 
   useEffect(() => {
     if (!logged) {
-      Router.push("/signin");
+      Router.push('/signin');
     }
   }, [logged]);
 
@@ -26,7 +26,7 @@ export default function CartPage() {
           key="title"
         />
       </Head>
-      <div className="flex-center container-page px-4 sm:px-0 bg-gradient-to-bl from-indigo-700 via-indigo-400 to-indigo-700">
+      <div className="flex-center container-page px-4 sm:px-0">
         <Cart />
       </div>
     </>
