@@ -34,6 +34,11 @@ const nextConfig = withSvgr({
         hostname: 'images.unsplash.com',
         pathname: '/*/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'media-www.canadiantire.ca',
+        pathname: '/*/**',
+      },
     ],
   },
 });

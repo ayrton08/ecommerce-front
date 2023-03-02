@@ -1,4 +1,4 @@
-import { CardTitle } from "ui/label/styled";
+import { CardTitle } from 'ui/label/styled';
 
 export const OrdersWrapp = ({ children, status }: any) => {
   return (
@@ -6,7 +6,6 @@ export const OrdersWrapp = ({ children, status }: any) => {
       <table className="table w-full">
         <thead>
           <tr>
-            <th></th>
             <th>Order Id</th>
             <th>Created at</th>
             <th>Status</th>

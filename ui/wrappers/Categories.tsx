@@ -10,7 +10,7 @@ export const Categories = ({ children }: any) => {
         <div className="flex justify-center text-center w-full mb-20">
           <CardTitle>Categories</CardTitle>
         </div>
-        <div className="flex flex-wrap -m-2 justify-center">{children}</div>
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-y-10 justify-center">{children}</div>
       </div>
     </section>
   );

@@ -24,7 +24,6 @@ import {
   Container,
   Dropdown,
   Grid,
-  Link,
   Navbar,
   Text,
   useTheme,
@@ -32,6 +31,7 @@ import {
 import { AcmeLogo } from 'ui/icons/Icon';
 import { OrdersIcon, CartIcon } from '../ui/icons/boxicons';
 import { useState, useEffect } from 'react';
+import Link from 'next/link';
 
 export const Header = () => {
   const data = useMe('/me');
@@ -77,12 +77,12 @@ export const Header = () => {
         variant="sticky"
         maxWidth="fluid"
         className={` ${
-          scrollPosition > 0 ? 'bg-[#0099ff] pt-0 opacity-90' : 'pt-4'
+          scrollPosition > 0 ? 'bg-black/80 pt-0 opacity-95' : ''
         }`}
       >
         <Navbar.Brand className="flex gap-4 nav">
           <Link href="/" aria-label="Button Home">
-            <Text b hideIn="xs" className='flex items-center gap-4 text-lg'>
+            <Text b hideIn="xs" className="flex items-center gap-4 text-lg">
               <AcmeLogo />
               MARKET
             </Text>
@@ -100,7 +100,7 @@ export const Header = () => {
         <Navbar.Content>
           <Text
             h1
-            size={20}
+            size={17}
             css={{
               textGradient: '45deg, initial -20%, pink600 50%',
             }}
@@ -111,39 +111,63 @@ export const Header = () => {
 
           {logged && (
             <Dropdown isBordered>
-              <Dropdown.Button>
+              <Dropdown.Button className="px-0">
                 <Avatar
                   size="md"
                   bordered
-                  color="gradient"
-                  src="https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png"
+                  color="success"
+                  src="https://qlu.ac.pa/wp-content/uploads/2019/04/kisspng-avatar-user-medicine-s.png"
                 />
               </Dropdown.Button>
-              <Dropdown.Menu aria-label="Static Actions" color="primary">
+              <Dropdown.Menu
+                aria-label="Static Actions"
+                className="grid gap-2 bg-primaryA"
+              >
+                <Dropdown.Item key="user" className="h-full">
+                  <div className="flex flex-col">
+                    <Text b color="inherit" css={{ d: 'flex' }}>
+                      Signed in as
+                    </Text>
+                    <Text b color="success" css={{ d: 'flex' }}>
+                      {data?.data?.email}
+                    </Text>
+                  </div>
+                </Dropdown.Item>
                 <Dropdown.Item
+                  withDivider
                   key="profile"
-                  css={{ display: 'flex', alignContent: 'center' }}
+                  css={{
+                    display: 'flex',
+                    alignContent: 'center',
+                    width: '100px',
+                  }}
                   icon={<ProfileIcon />}
                 >
-                  <Link className="items-center text-white" href="/profile">
+                  <Link
+                    className="items-center grid text-white"
+                    href="/profile"
+                  >
                     Profile
                   </Link>
                 </Dropdown.Item>
 
                 <Dropdown.Item key="cart" icon={<CartIcon />}>
-                  <Link className="items-center text-white" href="/cart">
+                  <Link className="items-center grid text-white" href="/cart">
                     Cart
                   </Link>
                 </Dropdown.Item>
 
                 <Dropdown.Item key="orders" icon={<OrdersIcon />}>
-                  <Link className="items-center text-white" href="/orders">
+                  <Link className="items-center grid text-white" href="/orders">
                     Orders
                   </Link>
                 </Dropdown.Item>
 
                 <Dropdown.Item key="suport" icon={<SupportIcon />}>
-                  <Link className="items-center text-white" href="/support">
+                  <Link
+                    className="items-center grid text-white"
+                    href="/support"
+                  >
                     Suport
                   </Link>
                 </Dropdown.Item>
@@ -160,7 +184,7 @@ export const Header = () => {
                       removeToken();
                       setLogged(false);
                     }}
-                    className="text-danger font-bold"
+                    className="text-danger grid font-bold"
                   >
                     Logout
                   </Link>

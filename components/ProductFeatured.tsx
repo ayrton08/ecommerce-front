@@ -16,7 +16,7 @@ export const ProductFeatured = ({
 }: ProductType) => {
   return (
     <div
-      className={`card-result rounded-lg mx-4 my-4 shadow-2xl ${
+      className={` rounded-lg mx-4 my-4 shadow-2xl ${
         recomended ? 'w-60 ' : 'w-80'
       }`}
     >
@@ -28,7 +28,7 @@ export const ProductFeatured = ({
       >
         <Image
           alt="ecommerce"
-          className="object-cover object-center w-full h-full block"
+          className="object-contain object-center h-full block"
           src={picture}
           width={500}
           height={500}
@@ -42,12 +42,12 @@ export const ProductFeatured = ({
           {title}
         </h2>
         <p className="mt-1 flex justify-between items-center">
-          <span className="font-bold text-xl w-1/2 h-full flex justify-center items-center border-2 border-primaryA rounded-bl-lg bg-primaryA/20 text-black">
+          <span className="font-bold text-xl w-1/2 h-full flex justify-center items-center  rounded-bl-lg bg-primaryA/50 text-black font-mono">
             ${price}
           </span>
           <Link
             href={'/item/' + id}
-            className="flex w-1/2 h-full bg-primaryA text-white items-center justify-center font-bold rounded-br-lg"
+            className="flex w-1/2 h-full bg-primaryA text-white items-center justify-center font-bold rounded-br-lg hover:bg-primaryA/90"
           >
             View More
           </Link>

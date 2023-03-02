@@ -11,7 +11,7 @@
 }
 
 .card-result {
-  @apply transition-all duration-500 ease-in-out hover:bg-dark_light transform hover:-translate-y-1 hover:scale-105;
+  @apply transition-all duration-500 ease-in-out  transform hover:-translate-y-1 hover:scale-125;
 }
 
 .bg {
@@ -31,7 +31,7 @@
 }
 
 .text-color {
-  @apply hover:text-dark text-primaryA font-bold;
+  @apply hover:text-black  font-bold;
 }
 
 .btn-danger {
@@ -55,7 +55,7 @@
 }
 
 .container-page {
-  min-height: calc(100vh - 298px);
+  min-height: calc(100vh - 315px);
   background-color: white;
 }
 

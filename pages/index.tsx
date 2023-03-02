@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import Head from 'next/head';
 import { useProducts } from 'hooks';
 
@@ -10,6 +11,8 @@ import { Progress } from 'ui/loaders/styled';
 import { Divider } from 'ui/divider/styled';
 
 import Image from 'next/image';
+
+import shipping from '../ui/icons/shipping.svg';
 
 export default function Home() {
   const products = useProducts();
@@ -26,7 +29,7 @@ export default function Home() {
         <title>Home</title>
       </Head>
 
-      <div className="pb-32 relative">
+      <div className="pb-10 sm:pb-32 relative">
         <Image
           alt="Banner Promocion"
           src="/wave.svg"
@@ -34,7 +37,7 @@ export default function Home() {
           height={2000}
           width={2000}
         />
-        <div className="flex w-full absolute top-1/3  justify-evenly">
+        <div className="hidden sm:flex w-full absolute top-1/3 justify-evenly">
           {images.map((img) => (
             <img
               alt="product"
@@ -42,9 +45,30 @@ export default function Home() {
               key={img}
               width={400}
               height={400}
-              className="w-1/3 px-2 md:px-8 max-w-[500px]"
+              className="w-1/3 px-2 md:px-8 max-w-[500px] animate__animated animate__zoomIn"
             />
           ))}
+        </div>
+      </div>
+
+      <div className="flex flex-col gap-4 px-4 md:px-0 md:flex-row w-full justify-around lg:justify-evenly text-black md:text-lg font-bold md:py-16 pb-10 ">
+        <div className="border-b-4 border-r-4 border-[#0099ff] shadow-md">
+          <div className="flex gap-4 px-6 py-4 border-4 mb-1 mr-1 border-primaryA/50">
+            <span>Shipping all over the country</span>
+            <i className="bx bxs-package bx-sm"></i>
+          </div>
+        </div>
+        <div className="border-b-4 border-r-4 border-[#0099ff] shadow-md">
+          <div className="flex gap-4 px-6 py-4 border-4 mb-1 mr-1 border-primaryA/50">
+            <span>Discounts of 10% 20% and 30%</span>
+            <i className="bx bxs-discount bx-sm"></i>
+          </div>
+        </div>
+        <div className="border-b-4 border-r-4 border-[#0099ff] shadow-md">
+          <div className="flex gap-4 px-6 py-4 border-4 mb-1 mr-1 border-primaryA/50">
+            <span>Offers of the week</span>
+            <i className="bx bxs-offer bx-sm"></i>
+          </div>
         </div>
       </div>
 
@@ -92,16 +116,6 @@ export default function Home() {
           src="https://cdn-icons-png.flaticon.com/512/2669/2669013.png"
         />
       </Categories>
-      <Divider />
-      <ContainerPayments>
-        <CardTitle>Payment Methods</CardTitle>
-        <ContainerCard className="md:justify-evenly md:w-1/2 ">
-          <VisaIcon />
-          <MasterIcon />
-          <MercadoPagoIcon />
-          <CashIcon className="w-20" />
-        </ContainerCard>
-      </ContainerPayments>
     </div>
   );
 }
