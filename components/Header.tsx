@@ -82,7 +82,7 @@ export const Header = () => {
       >
         <Navbar.Brand className="flex gap-4 nav">
           <Link href="/" aria-label="Button Home">
-            <Text b hideIn="xs" className='flex items-center gap-4 text-lg'>
+            <Text b hideIn="xs" className="flex items-center gap-4 text-lg">
               <AcmeLogo />
               MARKET
             </Text>
@@ -119,10 +119,28 @@ export const Header = () => {
                   src="https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png"
                 />
               </Dropdown.Button>
-              <Dropdown.Menu aria-label="Static Actions" color="primary">
+              <Dropdown.Menu
+                aria-label="Static Actions"
+                className="grid gap-2 bg-primaryA"
+              >
+                <Dropdown.Item key="user" className="h-full">
+                  <div className="flex flex-col">
+                    <Text b color="inherit" css={{ d: 'flex' }}>
+                      Signed in as
+                    </Text>
+                    <Text b color="success" css={{ d: 'flex' }}>
+                      {data?.data?.email}
+                    </Text>
+                  </div>
+                </Dropdown.Item>
                 <Dropdown.Item
+                  withDivider
                   key="profile"
-                  css={{ display: 'flex', alignContent: 'center' }}
+                  css={{
+                    display: 'flex',
+                    alignContent: 'center',
+                    width: '100px',
+                  }}
                   icon={<ProfileIcon />}
                 >
                   <Link className="items-center text-white" href="/profile">
