@@ -24,7 +24,6 @@ import {
   Container,
   Dropdown,
   Grid,
-  Link,
   Navbar,
   Text,
   useTheme,
@@ -32,6 +31,7 @@ import {
 import { AcmeLogo } from 'ui/icons/Icon';
 import { OrdersIcon, CartIcon } from '../ui/icons/boxicons';
 import { useState, useEffect } from 'react';
+import Link from 'next/link';
 
 export const Header = () => {
   const data = useMe('/me');
@@ -143,25 +143,31 @@ export const Header = () => {
                   }}
                   icon={<ProfileIcon />}
                 >
-                  <Link className="items-center text-white" href="/profile">
+                  <Link
+                    className="items-center grid text-white"
+                    href="/profile"
+                  >
                     Profile
                   </Link>
                 </Dropdown.Item>
 
                 <Dropdown.Item key="cart" icon={<CartIcon />}>
-                  <Link className="items-center text-white" href="/cart">
+                  <Link className="items-center grid text-white" href="/cart">
                     Cart
                   </Link>
                 </Dropdown.Item>
 
                 <Dropdown.Item key="orders" icon={<OrdersIcon />}>
-                  <Link className="items-center text-white" href="/orders">
+                  <Link className="items-center grid text-white" href="/orders">
                     Orders
                   </Link>
                 </Dropdown.Item>
 
                 <Dropdown.Item key="suport" icon={<SupportIcon />}>
-                  <Link className="items-center text-white" href="/support">
+                  <Link
+                    className="items-center grid text-white"
+                    href="/support"
+                  >
                     Suport
                   </Link>
                 </Dropdown.Item>
@@ -178,7 +184,7 @@ export const Header = () => {
                       removeToken();
                       setLogged(false);
                     }}
-                    className="text-danger font-bold"
+                    className="text-danger grid font-bold"
                   >
                     Logout
                   </Link>

@@ -28,7 +28,7 @@ export const ProductFeatured = ({
       >
         <Image
           alt="ecommerce"
-          className="object-contain object-center w-full h-full block"
+          className="object-contain object-center h-full block"
           src={picture}
           width={500}
           height={500}

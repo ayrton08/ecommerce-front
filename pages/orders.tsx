@@ -1,22 +1,22 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect, useState } from "react";
-import Head from "next/head";
-import Router from "next/router";
+import { useEffect, useState } from 'react';
+import Head from 'next/head';
+import Router from 'next/router';
 
-import { Header, OrdersMobile } from "components";
-import { useOrders } from "hooks";
-import { Loader, Order } from "ui";
-import { OrdersWrapp } from "ui/wrappers/OrdersWrapp";
-import { convertSecondsToDate, isUserLogged } from "helpers";
+import { Header, OrdersMobile } from 'components';
+import { useOrders } from 'hooks';
+import { Loader, Order } from 'ui';
+import { OrdersWrapp } from 'ui/wrappers/OrdersWrapp';
+import { convertSecondsToDate, isUserLogged } from 'helpers';
 
 export default function Orders() {
-  const [selected, setSelected] = useState<string>("Chose");
+  const [selected, setSelected] = useState<string>('Chose');
   const { orders, allOrders } = useOrders(selected);
   const logged = isUserLogged();
 
   useEffect(() => {
     if (!logged) {
-      Router.push("/signin");
+      Router.push('/signin');
     }
   }, [logged]);
 
@@ -24,18 +24,22 @@ export default function Orders() {
     setSelected(event.target.value);
   };
 
+  useEffect(() => {
+    setSelected('Pending');
+  }, []);
+
   let index = 1;
 
   return (
-    <div className=" flex-center bg-gradient-to-bl from-indigo-700 via-indigo-400 to-indigo-700">
+    <div className=" container-page bg-white">
       <Head>
         <title>Cart</title>
       </Head>
       {!allOrders ? (
         <Loader />
       ) : (
-        <div className="flex px-2 flex-col w-full absolute top-32 h-full">
-          <div className="form-control w-36 max-w-xs self-end mr-6 ">
+        <div className="flex px-2 flex-col w-full absolute top-32 h-3/4">
+          <div className="form-control w-36 max-w-xs self-end mr-6">
             <select
               className="select select-primary bg-black/60"
               value={selected}
