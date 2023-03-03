@@ -9,7 +9,7 @@ export const OrdersWrapp = ({ children, status }: any) => {
             <th>Order Id</th>
             <th>Created at</th>
             <th>Status</th>
-            <th>Link to Pay</th>
+            <th className="text-center">Link to Pay</th>
           </tr>
         </thead>
         <tbody>{children}</tbody>

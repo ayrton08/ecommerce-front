@@ -17,7 +17,7 @@ export const ProductFeatured = ({
   return (
     <div
       className={` rounded-lg mx-4 my-4 shadow-2xl ${
-        recomended ? 'w-60 ' : 'w-80'
+        recomended ? 'w-60 ' : 'md:min-w-72 '
       }`}
     >
       <Link

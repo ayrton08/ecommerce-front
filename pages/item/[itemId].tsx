@@ -5,13 +5,11 @@ import { useMe, useProduct } from 'hooks/useData';
 import { Product } from 'components/Product';
 import { Toast } from 'ui/Toast';
 import { Loader } from 'ui/loaders/Loader';
-import { Header } from 'components/Header';
 import { useCart } from 'hooks/userCart';
 import { isUserLogged } from 'helpers/localStorage';
 import { CardTitle } from 'ui/label/styled';
 import { usePagination } from 'hooks/usePagination';
 import { ProductFeatured } from 'components';
-import { Divider } from '../../ui/divider/styled';
 
 export default function ItemId() {
   const router = useRouter();
@@ -19,16 +17,7 @@ export default function ItemId() {
   const product = useProduct(productId);
   const user = useMe('/me');
 
-  const {
-    data,
-    leakedProducts,
-    numberOfPages,
-    currentPage,
-    totalPage,
-    setOffSet,
-    setCurrentPage,
-  } = usePagination(product?.product?.Type as string);
-  console.log(data);
+  const { data } = usePagination(product?.product?.Type as string);
 
   const currentCart = user?.data?.cart;
 
@@ -64,7 +53,9 @@ export default function ItemId() {
             disable={disableButton}
           />
           <div className="grid justify-items-center border-t-2 pt-6">
-            <CardTitle className="px-2 text-center" >Other products that might interest you</CardTitle>
+            <CardTitle className="px-2 text-center">
+              Other products that might interest you
+            </CardTitle>
             <div className="order py-10 overflow-auto z-20 p-2 flex flex-col md:flex-row flex-wrap justify-center items-center">
               {data?.results?.map((product: any) => (
                 <ProductFeatured
