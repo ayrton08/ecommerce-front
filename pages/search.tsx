@@ -38,7 +38,7 @@ export default function Search() {
   return (
     <div className="container-page flex-center">
       <Head>
-        <title>Search</title>
+        <title>{q} | Market</title>
       </Head>
 
       {data?.pagination?.total === 0 && (

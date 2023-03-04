@@ -71,7 +71,7 @@ export default function Orders() {
               return (
                 <Order
                   key={order.createdAt._seconds}
-                  orderId={order.productId}
+                  orderId={order.aditionalInfo.items[0].Name}
                   createdAt={date}
                   status={order.status}
                   linkToPay={order.aditionalInfo.linkToPay}
