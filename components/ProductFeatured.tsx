@@ -42,12 +42,12 @@ export const ProductFeatured = ({
           {title}
         </h2>
         <p className="mt-1 flex justify-between items-center">
-          <span className="font-bold text-xl w-1/2 h-full flex justify-center items-center  rounded-bl-lg bg-primaryA/50 text-black font-mono">
+          <span className="font-bold text-xl w-1/2 h-full flex justify-center items-center  rounded-bl-lg bg-primaryA/40 text-black font-mono">
             ${price}
           </span>
           <Link
             href={'/item/' + id}
-            className="flex w-1/2 h-full bg-primaryA text-white items-center justify-center font-bold rounded-br-lg hover:bg-primaryA/90"
+            className="flex hover:text-green-400 w-1/2 h-full bg-primaryA text-white items-center justify-center font-bold rounded-br-lg hover:bg-primaryA/90"
           >
             View More
           </Link>
