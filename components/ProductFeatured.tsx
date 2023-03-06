@@ -3,7 +3,6 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 import { ProductType } from 'interface/product';
-import { Button } from 'ui/button/styled';
 
 export const ProductFeatured = ({
   title,
@@ -16,7 +15,7 @@ export const ProductFeatured = ({
 }: ProductType) => {
   return (
     <div
-      className={` rounded-lg mx-4 my-4 shadow-2xl ${
+      className={` rounded-lg border mx-4 my-4 shadow-2xl ${
         recomended ? 'w-60 ' : 'md:min-w-72 '
       }`}
     >
