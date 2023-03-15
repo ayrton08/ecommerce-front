@@ -5,12 +5,7 @@ import { createTheme, NextUIProvider } from '@nextui-org/react';
 import { Header } from '../components/Header';
 
 const theme = createTheme({
-  type: 'dark', // it could be "light" or "dark"
-  theme: {
-    colors: {
-      background: '#0099ff',
-    },
-  },
+  type: 'light', // it could be "light" or "dark"
 });
 
 function MyApp({ Component, pageProps }: any) {

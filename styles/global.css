@@ -119,8 +119,3 @@ p {
 .screen {
   height: calc(100vh - 222px);
 }
-
-:root {
-  --nextui--navbarBlurBackgroundColor: '#0099ff';
-  --nextui--navbarBlur: 'none';
-}
