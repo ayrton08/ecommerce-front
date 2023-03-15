@@ -15,7 +15,7 @@ export const ProductFeatured = ({
 }: ProductType) => {
   return (
     <div
-      className={` rounded-lg border mx-4 my-4 shadow-2xl ${
+      className={` rounded-lg border mx-4 my-4 shadow-xl ${
         recomended ? 'w-60 ' : 'md:min-w-72 '
       }`}
     >
@@ -46,7 +46,7 @@ export const ProductFeatured = ({
           </span>
           <Link
             href={'/item/' + id}
-            className="flex hover:text-green-400 w-1/2 h-full bg-primaryA text-white items-center justify-center font-bold rounded-br-lg hover:bg-primaryA/90"
+            className="flex w-1/2 h-full bg-primaryA/70 text-white items-center justify-center font-bold rounded-br-lg hover:bg-primaryA/90"
           >
             View More
           </Link>

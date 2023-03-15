@@ -1,33 +1,10 @@
-/* eslint-disable react-hooks/rules-of-hooks */
-/* eslint-disable react-hooks/exhaustive-deps */
-import avatar from '../ui/icons/avatar.svg';
-
-import { AvatarIcon, LogoIcon, MenuIcon } from '../ui/icons';
 import { isUserLogged, removeToken } from 'helpers/localStorage';
 import { useMe, useTotalCart, useCart, useLogin } from 'hooks';
-import { CartIndicator } from 'ui';
 import { Searcher } from './Searcher';
-import { ContainerHeader } from 'ui/wrappers/styled';
 import { ModalMenu } from './ModalMenu';
-import {
-  LogoutIcon,
-  OrdersIconPrimary,
-  ProfileIcon,
-  ProfileIconPrimary,
-  SupportIcon,
-  SupportIconPrimary,
-} from 'ui/icons/boxicons';
+import { LogoutIcon, ProfileIcon, SupportIcon } from 'ui/icons/boxicons';
 import { updateCart } from 'lib/api';
-import {
-  Avatar,
-  Button,
-  Container,
-  Dropdown,
-  Grid,
-  Navbar,
-  Text,
-  useTheme,
-} from '@nextui-org/react';
+import { Avatar, Dropdown, Navbar, Text } from '@nextui-org/react';
 import { AcmeLogo } from 'ui/icons/Icon';
 import { OrdersIcon, CartIcon } from '../ui/icons/boxicons';
 import { useState, useEffect } from 'react';
@@ -51,8 +28,6 @@ export const Header = () => {
     setLogged(logged);
   }, [data]);
 
-  const top = typeof window === 'undefined' ? {} : screenTop;
-
   const [scrollPosition, setScrollPosition] = useState(0);
 
   useEffect(() => {
@@ -73,12 +48,12 @@ export const Header = () => {
       <ModalMenu></ModalMenu>
 
       <Navbar
-        disableShadow
+        style={{
+          backgroundColor: scrollPosition > 0 ? 'black' : 'white',
+        }}
         variant="sticky"
         maxWidth="fluid"
-        className={` ${
-          scrollPosition > 0 ? 'bg-black/80 pt-0 opacity-95' : ''
-        }`}
+        disableShadow
       >
         <Navbar.Brand className="flex gap-4 nav">
           <Link href="/" aria-label="Button Home">
