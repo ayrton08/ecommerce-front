@@ -3,7 +3,7 @@ import { CardTitle } from 'ui/label/styled';
 export const Featured = ({ children }: any) => {
   return (
     <section
-      className="text-gray-600 body-font animate__animated animate__backInUp"
+      className="text-gray-600 body-font animate__animated animate__fadeIn"
       id="featured"
     >
       <div className="container  pb-10 mx-auto ">
