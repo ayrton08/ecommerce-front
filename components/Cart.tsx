@@ -61,7 +61,6 @@ export const Cart = () => {
     setCurrentOrders([]);
   };
 
-  console.log(currentOrders);
 
   return !currentOrders ? (
     <Loader />

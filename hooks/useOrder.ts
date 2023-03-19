@@ -9,7 +9,6 @@ export const useOrders = (selected: string) => {
   const allOrders = data?.orders;
   const [orders, setOrders] = useState<[] | null>();
 
-  console.log(orders);
 
   const pendigOrders = allOrders?.filter(
     (order: OrderCart) => order.status === 'pending'

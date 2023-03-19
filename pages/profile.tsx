@@ -12,8 +12,6 @@ export default function Profile() {
 
   const logged = isUserLogged();
 
-  console.log(logged);
-
   useEffect(() => {
     if (!logged) {
       Router.push('/signin');

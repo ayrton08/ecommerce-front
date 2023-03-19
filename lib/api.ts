@@ -55,7 +55,6 @@ export const getTokenJWT = async (info: any) => {
 };
 
 export const updateUserData = async (info: any) => {
-  console.log(info);
   try {
     if (info.email === "") {
       delete info.email;
