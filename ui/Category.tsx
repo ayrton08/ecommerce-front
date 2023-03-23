@@ -1,4 +1,4 @@
-import { CategoryType } from 'interface/ui';
+import { CategoryType } from 'interfaces/ui';
 import Image from 'next/image';
 import Router from 'next/router';
 

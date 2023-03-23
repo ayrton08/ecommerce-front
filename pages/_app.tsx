@@ -5,6 +5,7 @@ import { createTheme, NextUIProvider } from '@nextui-org/react';
 import { CssBaseline, ThemeProvider } from '@mui/material';
 import { Header } from '../components/ui/Header';
 import { lightTheme } from '../themes/light-theme';
+import { CartProvider } from 'context';
 
 const theme = createTheme({
   type: 'light',
@@ -12,17 +13,19 @@ const theme = createTheme({
 
 function MyApp({ Component, pageProps }: any) {
   return (
-    <RecoilRoot>
-      <ThemeProvider theme={lightTheme}>
-        <CssBaseline />
+    <CartProvider>
+      <RecoilRoot>
+        <ThemeProvider theme={lightTheme}>
+          <CssBaseline />
 
-        <NextUIProvider theme={theme}>
-          <Header />
-          <Component {...pageProps} />
-          <Footer />
-        </NextUIProvider>
-      </ThemeProvider>
-    </RecoilRoot>
+          <NextUIProvider theme={theme}>
+            <Header />
+            <Component {...pageProps} />
+            <Footer />
+          </NextUIProvider>
+        </ThemeProvider>
+      </RecoilRoot>
+    </CartProvider>
   );
 }
 

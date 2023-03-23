@@ -1,6 +1,6 @@
 import { getToken } from "helpers/localStorage";
-import { CreateOrder } from "interface/cart";
-import { LoginEmailType } from "interface/signin";
+import { CreateOrder } from "interfaces/cart";
+import { LoginEmailType } from "interfaces/signin";
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL!;
 

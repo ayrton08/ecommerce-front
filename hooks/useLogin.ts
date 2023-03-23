@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { BodyFetch, LoginEmailType } from "interface/signin";
+import { BodyFetch, LoginEmailType } from "interfaces/signin";
 import { useState } from "react";
 import { useRecoilState } from "recoil";
 import { loginStatus } from "store/atoms";

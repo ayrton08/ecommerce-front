@@ -2,9 +2,6 @@ import { useEffect } from 'react';
 import Router from 'next/router';
 import Head from 'next/head';
 
-import { Header } from 'components/Header';
-import { useLogin, useMe } from 'hooks';
-import { Cart, Loader } from 'ui';
 import { isUserLogged } from 'helpers/localStorage';
 import {
   Typography,
@@ -13,19 +10,19 @@ import {
   Grid,
   Divider,
   Button,
+  Card,
 } from '@mui/material';
-import { Card } from 'flowbite-react';
-import { CartList } from 'components/CartList';
-import { OrderSummary } from 'components/OrderSummary';
+import { CartList } from 'components/cart/CartList';
+import { OrderSummary } from 'components/cart/OrderSummary';
 
-export default function CartPage() {
-  const logged = isUserLogged();
+const CartPage = () => {
+  // const logged = isUserLogged();
 
-  useEffect(() => {
-    if (!logged) {
-      Router.push('/signin');
-    }
-  }, [logged]);
+  // useEffect(() => {
+  //   if (!logged) {
+  //     Router.push('/signin');
+  //   }
+  // }, [logged]);
 
   return (
     <>
@@ -75,4 +72,6 @@ export default function CartPage() {
       {/* <Cart /> */}
     </>
   );
-}
+};
+
+export default CartPage;

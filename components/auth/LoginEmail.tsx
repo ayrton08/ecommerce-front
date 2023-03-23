@@ -5,7 +5,7 @@ import { UserField } from "ui/field/Field";
 import { Button } from "ui/button/styled";
 
 import { Formik, Form } from "formik";
-import { HandlerEmail } from "interface/signin";
+import { HandlerEmail } from "interfaces/signin";
 import { ContainerCard } from "ui/wrappers/styled";
 import { CardTitle } from "ui/label/styled";
 import * as yup from "yup";

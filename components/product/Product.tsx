@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
 import { Button } from 'ui/button/styled';
-import { ProductType } from 'interface/product';
+import { ProductType } from 'interfaces/product';
 import Image from 'next/image';
 import { Loader } from 'ui';
 

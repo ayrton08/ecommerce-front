@@ -1,5 +1,5 @@
 import { ErrorMessage, useField } from "formik";
-import { FieldType } from "interface/ui";
+import { FieldType } from "interfaces/ui";
 import { ContainerInput, Label } from "ui/label/styled";
 import { Field } from "./styled";
 

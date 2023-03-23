@@ -1,23 +1,29 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Router, { useRouter } from 'next/router';
 import Head from 'next/head';
 import { useMe, useProduct } from 'hooks/useData';
-import { Product } from 'components/Product';
 import { Toast } from 'ui/Toast';
 import { Loader } from 'ui/loaders/Loader';
 import { useCart } from 'hooks/userCart';
 import { isUserLogged } from 'helpers/localStorage';
 import { CardTitle } from 'ui/label/styled';
 import { usePagination } from 'hooks/usePagination';
-import { ProductFeatured } from 'components';
+import { Product, ProductFeatured } from 'components';
+import { CartContext } from 'context';
+import { GetStaticPaths, GetStaticProps } from 'next';
+import axios from 'axios';
+import { IProduct } from '../../interfaces/product';
+import { ICartProduct } from '../../interfaces/cart';
 
-export default function ItemId() {
-  const router = useRouter();
-  const productId = router.query.itemId as string;
-  const product = useProduct(productId);
+const ProductPage = () => {
+  const { addProductToCart } = useContext(CartContext);
+
+  const { query } = useRouter();
+  const product: ICartProduct = useProduct(query.itemId as string);
+
   const user = useMe('/me');
 
-  const { data } = usePagination(product?.product?.Type as string);
+  const { data } = usePagination(product?.type);
 
   const currentCart = user?.data?.cart;
 
@@ -28,8 +34,11 @@ export default function ItemId() {
     if (!logged) {
       return Router.push('/signin');
     }
-    await addToCart(currentCart, product.product);
-    Toast(`${product?.product?.Name} agregado al carrito`);
+    await addToCart(currentCart, product);
+
+    addProductToCart(product);
+
+    Toast(`${product?.name} agregado al carrito`);
   };
 
   return (
@@ -42,13 +51,13 @@ export default function ItemId() {
         <>
           <Product
             detail
-            description={product.product.Description}
-            id={product.product.objectID}
-            picture={product.product.Images[0].url}
-            price={product.product['Unit cost']}
-            title={product.product.Name}
+            description={product.description}
+            id={product.objectID}
+            picture={product.images}
+            price={product.price}
+            title={product.name}
             className="h-full w-2/3"
-            category={product.product.Type}
+            category={product.type}
             onClick={handler}
             disable={disableButton}
           />
@@ -56,7 +65,7 @@ export default function ItemId() {
             <CardTitle className="px-2 text-center">
               Other products that might interest you
             </CardTitle>
-            <div className="order py-10 overflow-auto z-20 p-2 flex flex-col md:flex-row flex-wrap justify-center items-center">
+            {/* <div className="order py-10 overflow-auto z-20 p-2 flex flex-col md:flex-row flex-wrap justify-center items-center">
               {data?.results?.map((product: any) => (
                 <ProductFeatured
                   key={product.Name}
@@ -68,7 +77,7 @@ export default function ItemId() {
                   recomended
                 />
               ))}
-            </div>
+            </div> */}
           </div>
         </>
       ) : (
@@ -76,4 +85,6 @@ export default function ItemId() {
       )}
     </div>
   );
-}
+};
+
+export default ProductPage;

@@ -1,4 +1,4 @@
-import { UserType } from "interface/user";
+import { UserType } from "interfaces/user";
 
 export const createCart = (user: UserType) => {
   const profile = Object.keys(user);

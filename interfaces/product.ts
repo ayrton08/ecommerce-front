@@ -1,3 +1,13 @@
+export interface IProduct {
+  description: string;
+  name: string;
+  type: string;
+  images: string;
+  price: number;
+  objectID: string;
+  total: number;
+}
+
 export interface ProductType {
   description?: string;
   title: string;

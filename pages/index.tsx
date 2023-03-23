@@ -1,17 +1,15 @@
-/* eslint-disable @next/next/no-img-element */
 import Head from 'next/head';
-import { useProducts } from 'hooks';
 
+import axios from 'axios';
 import { ProductFeatured } from 'components';
 import { Featured, Categories, Category } from 'ui';
-import { Progress } from 'ui/loaders/styled';
 import { Divider } from 'ui/divider/styled';
 import { GetServerSideProps } from 'next';
 import { FC } from 'react';
-import axios from 'axios';
+import { IProduct } from '../interfaces/product';
 
 interface Props {
-  products: any;
+  products: IProduct[];
 }
 
 const HomePage: FC<Props> = ({ products }) => {
@@ -42,22 +40,18 @@ const HomePage: FC<Props> = ({ products }) => {
         </div>
       </div>
 
-      {products ? (
-        <Featured>
-          {products?.results?.map((product: any) => (
-            <ProductFeatured
-              key={product.Name}
-              title={product.Name}
-              price={product['Unit cost']}
-              picture={product.Images[0].url}
-              id={product.objectID}
-              category={product.Type}
-            />
-          ))}
-        </Featured>
-      ) : (
-        <Progress />
-      )}
+      <Featured>
+        {products.map((product: IProduct) => (
+          <ProductFeatured
+            key={product.objectID}
+            title={product.name}
+            price={product.price}
+            picture={product.images}
+            id={product.objectID}
+            category={product.type}
+          />
+        ))}
+      </Featured>
 
       <Divider />
       <Categories>
@@ -97,9 +91,17 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     'https://e-commerce-backend-jade.vercel.app/api/products'
   );
 
+  if (data.error)
+    return {
+      redirect: {
+        destination: '/',
+        permanent: true,
+      },
+    };
+
   return {
     props: {
-      products: data,
+      products: data.results,
     },
   };
 };

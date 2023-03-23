@@ -1,5 +1,5 @@
 import { sortByDate } from 'helpers/sortByDate';
-import { OrderCart } from 'interface/cart';
+import { OrderCart } from 'interfaces/cart';
 import { fetchApi } from 'lib/api';
 import { useEffect, useState } from 'react';
 import useSWR from 'swr';

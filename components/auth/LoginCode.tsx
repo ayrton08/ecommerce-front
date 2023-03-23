@@ -3,7 +3,7 @@ import { Formik, Form } from "formik";
 
 import { LoginIcon } from "../../ui/icons";
 import { Basic, Button, ButtonDark, UserField } from "ui";
-import { LoginCodeProps } from "interface/signin";
+import { LoginCodeProps } from "interfaces/signin";
 import { CardTitle } from "ui/label/styled";
 import { ContainerCard } from "ui/wrappers/styled";
 import { CartIcon, ErrorIcon, PasteIcon } from "ui/icons/boxicons";

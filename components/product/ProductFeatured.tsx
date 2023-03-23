@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 
-import { ProductType } from 'interface/product';
+import { ProductType } from 'interfaces/product';
 
 export const ProductFeatured = ({
   title,
@@ -23,7 +23,7 @@ export const ProductFeatured = ({
         className={`block relative ${
           recomended ? 'h-24' : 'h-48'
         } rounded-t-lg overflow-hidden`}
-        href={'/item/' + id}
+        href={'/product/' + id}
       >
         <Image
           alt="ecommerce"
@@ -45,7 +45,7 @@ export const ProductFeatured = ({
             ${price}
           </span>
           <Link
-            href={'/item/' + id}
+            href={'/product/' + id}
             className="flex w-1/2 h-full bg-primaryA/70 text-white items-center justify-center font-bold rounded-br-lg hover:bg-primaryA/90"
           >
             View More

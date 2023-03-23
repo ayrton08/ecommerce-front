@@ -9,6 +9,8 @@ import { AcmeLogo } from 'ui/icons/Icon';
 import { OrdersIcon, CartIcon } from '../../ui/icons/boxicons';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { Badge, IconButton } from '@mui/material';
+import { ShoppingCartOutlined } from '@mui/icons-material';
 
 export const Header = () => {
   const data = useMe('/me');
@@ -73,16 +75,17 @@ export const Header = () => {
           <Searcher />
         </Navbar.Content>
         <Navbar.Content>
-          <Text
-            h1
-            size={17}
-            css={{
-              textGradient: '45deg, initial -20%, pink600 50%',
-            }}
-            weight="bold"
-          >
+          <Text h1 size={17} weight="medium">
             {data?.data?.name}
           </Text>
+
+          <Link href="/cart">
+            <IconButton>
+              <Badge badgeContent={2} color="secondary">
+                <ShoppingCartOutlined color="primary" />
+              </Badge>
+            </IconButton>
+          </Link>
 
           {logged && (
             <Dropdown isBordered>
