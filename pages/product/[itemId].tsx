@@ -14,6 +14,7 @@ import { GetStaticPaths, GetStaticProps } from 'next';
 import axios from 'axios';
 import { IProduct } from '../../interfaces/product';
 import { ICartProduct } from '../../interfaces/cart';
+import { ShopLayout } from '../../components/layouts/ShopLayout';
 
 const ProductPage = () => {
   const { addProductToCart } = useContext(CartContext);
@@ -42,11 +43,7 @@ const ProductPage = () => {
   };
 
   return (
-    <div className="container-page flex-col-center pt-8">
-      <Head>
-        <title>Search</title>
-      </Head>
-
+    <ShopLayout title={product?.name} pageDescription={product?.description}>
       {product ? (
         <>
           <Product
@@ -83,7 +80,7 @@ const ProductPage = () => {
       ) : (
         <Loader />
       )}
-    </div>
+    </ShopLayout>
   );
 };
 

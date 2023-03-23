@@ -19,12 +19,10 @@ interface Props {
 export const CartList: FC<Props> = ({ editable = false }) => {
   const { cart } = useContext(CartContext);
 
-  console.log({ cart });
-
   return (
     <>
       {cart.map((product) => (
-        <Grid container key={product.name} spacing={2} sx={{ mb: 1 }}>
+        <Grid container key={product.name} spacing={4} sx={{ mb: 2 }}>
           <Grid item xs={3}>
             <Link component={NextLink} href={`/product/${product.objectID}`}>
               <CardActionArea>
@@ -40,9 +38,6 @@ export const CartList: FC<Props> = ({ editable = false }) => {
           <Grid item xs={7}>
             <Box display="flex" flexDirection="column">
               <Typography variant="body1">{product.name}</Typography>
-              <Typography variant="body1">
-                Talla: <strong>M</strong>{' '}
-              </Typography>
 
               {editable ? (
                 <ItemCounter />

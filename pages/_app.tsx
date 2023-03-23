@@ -6,12 +6,14 @@ import { CssBaseline, ThemeProvider } from '@mui/material';
 import { Header } from '../components/ui/Header';
 import { lightTheme } from '../themes/light-theme';
 import { CartProvider } from 'context';
+import cookie from 'js-cookie';
 
 const theme = createTheme({
   type: 'light',
 });
 
 function MyApp({ Component, pageProps }: any) {
+  console.log('cart', cookie.get('cart'));
   return (
     <CartProvider>
       <RecoilRoot>
@@ -19,9 +21,9 @@ function MyApp({ Component, pageProps }: any) {
           <CssBaseline />
 
           <NextUIProvider theme={theme}>
-            <Header />
+            {/* <Header /> */}
             <Component {...pageProps} />
-            <Footer />
+            {/* <Footer /> */}
           </NextUIProvider>
         </ThemeProvider>
       </RecoilRoot>
