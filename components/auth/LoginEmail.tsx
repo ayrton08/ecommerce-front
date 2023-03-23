@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import { LoginIcon } from "../ui/icons";
-import { Basic } from "../ui/wrappers/Basic";
+import { LoginIcon } from "../../ui/icons";
+import { Basic } from "../../ui/wrappers/Basic";
 import { UserField } from "ui/field/Field";
 import { Button } from "ui/button/styled";
 

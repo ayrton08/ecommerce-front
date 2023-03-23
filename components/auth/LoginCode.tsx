@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import { Formik, Form } from "formik";
 
-import { LoginIcon } from "../ui/icons";
+import { LoginIcon } from "../../ui/icons";
 import { Basic, Button, ButtonDark, UserField } from "ui";
 import { LoginCodeProps } from "interface/signin";
 import { CardTitle } from "ui/label/styled";

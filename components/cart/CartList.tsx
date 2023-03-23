@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { initialData } from '../database/products';
+import { initialData } from '../../database/products';
 import {
   Box,
   Button,

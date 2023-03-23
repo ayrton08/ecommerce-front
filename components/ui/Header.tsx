@@ -6,7 +6,7 @@ import { LogoutIcon, ProfileIcon, SupportIcon } from 'ui/icons/boxicons';
 import { updateCart } from 'lib/api';
 import { Avatar, Dropdown, Navbar, Text } from '@nextui-org/react';
 import { AcmeLogo } from 'ui/icons/Icon';
-import { OrdersIcon, CartIcon } from '../ui/icons/boxicons';
+import { OrdersIcon, CartIcon } from '../../ui/icons/boxicons';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 

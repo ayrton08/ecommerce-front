@@ -1,9 +1,9 @@
-import 'styles/global.css';
+import '../styles/global.css';
 import { Footer } from 'ui';
 import { RecoilRoot } from 'recoil';
 import { createTheme, NextUIProvider } from '@nextui-org/react';
 import { CssBaseline, ThemeProvider } from '@mui/material';
-import { Header } from '../components/Header';
+import { Header } from '../components/ui/Header';
 import { lightTheme } from '../themes/light-theme';
 
 const theme = createTheme({
