@@ -1,5 +1,4 @@
-import { ContactForm } from 'components/ContactForm';
-import { Header } from 'components/Header';
+import { ContactForm, Header } from 'components';
 import Head from 'next/head';
 import { SuportImage } from 'ui/icons';
 
