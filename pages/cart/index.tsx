@@ -19,7 +19,7 @@ const CartPage = () => {
       </Typography>
 
       <Grid container spacing={4}>
-        <Grid  item xs={12} sm={7}>
+        <Grid item xs={12} sm={7}>
           <CartList editable />
         </Grid>
 

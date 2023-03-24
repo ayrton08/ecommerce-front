@@ -1,14 +1,22 @@
+import { ICartProduct } from 'interfaces';
 import { FC, useReducer, useEffect } from 'react';
 import { CartContext, cartReducer } from './';
 import cookie from 'js-cookie';
-import { ICartProduct } from 'interfaces';
 
 export interface ICartState {
   cart: ICartProduct[];
+  numberOfItems: number;
+  subTotal: number;
+  tax: number;
+  total: number;
 }
 
 const CART_INITIAL_STATE: ICartState = {
   cart: [],
+  numberOfItems: 0,
+  subTotal: 0,
+  tax: 0,
+  total: 0,
 };
 
 export const CartProvider = ({ children }: any) => {
@@ -19,8 +27,6 @@ export const CartProvider = ({ children }: any) => {
       const cookieProducts = cookie.get('cart')
         ? JSON.parse(cookie.get('cart')!)
         : [];
-
-      console.log(cookieProducts);
       dispatch({
         type: '[Cart] - LoadCart from cookies | storage',
         payload: cookieProducts,
@@ -37,6 +43,29 @@ export const CartProvider = ({ children }: any) => {
     if (state.cart.length > 0) {
       cookie.set('cart', JSON.stringify(state.cart));
     }
+  }, [state.cart]);
+
+  useEffect(() => {
+    const numberOfItems = state.cart.reduce(
+      (prev, current) => current.quantity + prev,
+      0
+    );
+
+    const subTotal = state.cart.reduce(
+      (prev, current) => current.price * current.quantity + prev,
+      0
+    );
+
+    const taxRate = Number(process.env.NEXT_PUBLIC_TAX_RATE || 0);
+
+    const ordenSummary = {
+      numberOfItems,
+      subTotal,
+      tax: subTotal * taxRate,
+      total: subTotal * (taxRate + 1),
+    };
+
+    dispatch({ type: '[Cart] - Update order summary', payload: ordenSummary });
   }, [state.cart]);
 
   const addProductToCart = (product: ICartProduct) => {
@@ -76,11 +105,21 @@ export const CartProvider = ({ children }: any) => {
     });
   };
 
+  const updateCartQuantity = (product: ICartProduct) => {
+    dispatch({ type: '[Cart] - Change cart quantity', payload: product });
+  };
+
+  const removeCartProduct = (product: ICartProduct) => {
+    dispatch({ type: '[Cart] - Remove product in cart', payload: product });
+  };
+
   return (
     <CartContext.Provider
       value={{
         ...state,
         addProductToCart,
+        updateCartQuantity,
+        removeCartProduct,
       }}
     >
       {children}

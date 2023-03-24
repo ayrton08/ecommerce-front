@@ -34,7 +34,7 @@ export const ShopLayout: FC<Props> = ({
       <main
         className="container-page"
         style={{
-          margin: '80px auto',
+          margin: '10px auto',
           maxWidth: '1440px',
           padding: '0px 20px',
         }}

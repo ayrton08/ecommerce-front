@@ -1,7 +1,7 @@
 export interface ICartProduct {
-  description: string;
+  description?: string;
   name: string;
-  type: string;
+  type?: string;
   images: string;
   price: number;
   objectID: string;

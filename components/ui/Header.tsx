@@ -1,5 +1,5 @@
 import { isUserLogged, removeToken } from 'helpers/localStorage';
-import { useMe, useTotalCart, useCart, useLogin } from 'hooks';
+import { useLogin, useMe, useTotalCart } from 'hooks';
 import { Searcher } from './Searcher';
 import { ModalMenu } from './ModalMenu';
 import { LogoutIcon, ProfileIcon, SupportIcon } from 'ui/icons/boxicons';
@@ -7,10 +7,11 @@ import { updateCart } from 'lib/api';
 import { Avatar, Dropdown, Navbar, Text } from '@nextui-org/react';
 import { AcmeLogo } from 'ui/icons/Icon';
 import { OrdersIcon, CartIcon } from '../../ui/icons/boxicons';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import Link from 'next/link';
 import { Badge, IconButton } from '@mui/material';
 import { ShoppingCartOutlined } from '@mui/icons-material';
+import { CartContext } from 'context';
 
 export const Header = () => {
   const data = useMe('/me');
@@ -23,7 +24,6 @@ export const Header = () => {
 
   const { logged, setLogged } = useLogin();
   const { total, totalItems } = useTotalCart(data?.data?.cart);
-  const { totalItemsCart } = useCart(totalItems);
 
   useEffect(() => {
     const logged = isUserLogged();
@@ -44,6 +44,8 @@ export const Header = () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
+
+  const { numberOfItems } = useContext(CartContext);
 
   return (
     <>
@@ -81,7 +83,7 @@ export const Header = () => {
 
           <Link href="/cart">
             <IconButton>
-              <Badge badgeContent={2} color="secondary">
+              <Badge badgeContent={numberOfItems} color="secondary">
                 <ShoppingCartOutlined color="primary" />
               </Badge>
             </IconButton>

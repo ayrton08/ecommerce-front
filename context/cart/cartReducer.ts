@@ -1,6 +1,5 @@
 import { ICartProduct } from 'interfaces';
-import { ICartState } from '.';
-import { IProduct } from '../../interfaces/product';
+import { ICartState } from './';
 
 type ICartType =
   | {
@@ -10,6 +9,23 @@ type ICartType =
   | {
       type: '[Cart] - Update products in cart';
       payload: ICartProduct[];
+    }
+  | {
+      type: '[Cart] - Change cart quantity';
+      payload: ICartProduct;
+    }
+  | {
+      type: '[Cart] - Remove product in cart';
+      payload: ICartProduct;
+    }
+  | {
+      type: '[Cart] - Update order summary';
+      payload: {
+        numberOfItems: number;
+        subTotal: number;
+        tax: number;
+        total: number;
+      };
     };
 
 export const cartReducer = (
@@ -27,6 +43,33 @@ export const cartReducer = (
       return {
         ...state,
         cart: [...action.payload],
+      };
+
+    case '[Cart] - Change cart quantity':
+      return {
+        ...state,
+        cart: state.cart.map((product) => {
+          if (product.objectID !== action.payload.objectID) return product;
+
+          // if (product.size !== action.payload.size) return product;
+
+          return action.payload;
+        }),
+      };
+
+    case '[Cart] - Remove product in cart':
+      return {
+        ...state,
+
+        cart: state.cart.filter(
+          (product) => product.objectID !== action.payload.objectID
+          // product.size === action.payload.size
+        ),
+      };
+    case '[Cart] - Update order summary':
+      return {
+        ...state,
+        ...action.payload,
       };
 
     default:
