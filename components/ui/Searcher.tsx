@@ -1,8 +1,8 @@
 import Router from 'next/router';
 import { Form, Formik } from 'formik';
-import { ButtonSearchPrimary } from '../ui/button/styled';
-import { FieldSearch } from '../ui/field/styled';
-import { SearchIconLight } from '../ui/icons/boxicons';
+import { ButtonSearchPrimary } from '../../ui/button/styled';
+import { FieldSearch } from '../../ui/field/styled';
+import { SearchIconLight } from '../../ui/icons/boxicons';
 
 import * as yup from 'yup';
 

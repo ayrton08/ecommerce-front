@@ -1,4 +1,4 @@
-import { CartTotals } from "interface/ui";
+import { CartTotals } from "interfaces/ui";
 import Link from "next/link";
 
 export const CartIndicator = ({ totalItems, total }: CartTotals) => {

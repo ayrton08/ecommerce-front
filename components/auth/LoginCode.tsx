@@ -1,25 +1,25 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import { Formik, Form } from "formik";
+import { Formik, Form } from 'formik';
 
-import { LoginIcon } from "../ui/icons";
-import { Basic, Button, ButtonDark, UserField } from "ui";
-import { LoginCodeProps } from "interface/signin";
-import { CardTitle } from "ui/label/styled";
-import { ContainerCard } from "ui/wrappers/styled";
-import { CartIcon, ErrorIcon, PasteIcon } from "ui/icons/boxicons";
-import * as yup from "yup";
-import { useLogin } from "hooks";
+import { LoginIcon } from '../../ui/icons';
+import { Basic, Button, ButtonDark, UserField } from 'ui';
+import { LoginCodeProps } from 'interfaces/signin';
+import { CardTitle } from 'ui/label/styled';
+import { ContainerCard } from 'ui/wrappers/styled';
+import { CartIcon, ErrorIcon, PasteIcon } from 'ui/icons/boxicons';
+import * as yup from 'yup';
+import { useLogin } from 'hooks';
 
 const initialValues = {
-  code: "",
+  code: '',
 };
 
 const schema = yup.object({
   code: yup
     .number()
-    .min(5, "Code has to have 5 characters")
-    .min(6, "Code has to have 5 characters")
-    .required("Code is required"),
+    .min(5, 'Code has to have 5 characters')
+    .min(6, 'Code has to have 5 characters')
+    .required('Code is required'),
 });
 
 export const LoginCode = ({ email, onClick }: LoginCodeProps) => {
@@ -28,7 +28,7 @@ export const LoginCode = ({ email, onClick }: LoginCodeProps) => {
     const copiedText = Number(value);
     const code = isNaN(copiedText);
     if (!code) {
-      setFieldValue("code", copiedText);
+      setFieldValue('code', copiedText);
     }
   };
   const { getToken } = useLogin();
@@ -50,7 +50,7 @@ export const LoginCode = ({ email, onClick }: LoginCodeProps) => {
           onSubmit={async ({ code }, { setFieldError }) => {
             const res = await handlerCode({ email, code });
             if (res === undefined) {
-              setFieldError("code", "Error: Invalid code");
+              setFieldError('code', 'Error: Invalid code');
             }
           }}
           validationSchema={schema}
@@ -65,7 +65,7 @@ export const LoginCode = ({ email, onClick }: LoginCodeProps) => {
                 onChange={handleChange}
                 type="number"
                 className="bg-white"
-                autoComplete={"false"}
+                autoComplete={'false'}
                 id="code"
                 value={values.code}
                 data-test="code-input"
@@ -86,7 +86,7 @@ export const LoginCode = ({ email, onClick }: LoginCodeProps) => {
               <Button type="submit">Ingresar</Button>
               <div className="lg:absolute bottom-6 right-10 lg:w-[367px] flex items-center pt-4 ">
                 <span className="w-full text-center bg-dark justify-center rounded-l-md h-[64px] font-bold flex flex-col">
-                  We send your code to{" "}
+                  We send your code to{' '}
                   <span className="text-green-500">{email}</span>
                 </span>
                 <ButtonDark

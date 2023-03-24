@@ -1,7 +1,7 @@
 import tw from 'tailwind-styled-components';
 import { FC } from 'react';
 
-import { ButtonProps } from 'interface/ui';
+import { ButtonProps } from 'interfaces/ui';
 
 export const Button: FC<ButtonProps> = tw.button`
     btn w-full btn-color border-0

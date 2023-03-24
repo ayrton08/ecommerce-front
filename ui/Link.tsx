@@ -1,4 +1,4 @@
-import { LinkType } from "interface/ui";
+import { LinkType } from "interfaces/ui";
 import LinkNext from "next/link";
 
 export const Link = ({ label, href, className }: LinkType) => {

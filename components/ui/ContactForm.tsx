@@ -1,12 +1,12 @@
-import { useRef } from "react";
-import * as Yup from "yup";
-import { Formik, Form, ErrorMessage } from "formik";
-import { useSendMail } from "hooks/useSendMail";
+import { useRef } from 'react';
+import * as Yup from 'yup';
+import { Formik, Form, ErrorMessage } from 'formik';
+import { useSendMail } from 'hooks/useSendMail';
 
-import { MyTextarea } from "components";
-import { ButtonPrimary, Loader, UserField } from "../ui";
-import { CardTitle } from "ui/label/styled";
-import { Alert } from "ui/Alert";
+import { MyTextarea } from 'components';
+import { ButtonPrimary, Loader, UserField } from '../../ui';
+import { CardTitle } from 'ui/label/styled';
+import { Alert } from 'ui/Alert';
 
 export interface InitialValue {
   fullname: string;
@@ -16,21 +16,21 @@ export interface InitialValue {
 
 const schema = Yup.object().shape({
   fullname: Yup.string()
-    .required("Name is required")
-    .min(2, "The minimum of characters must be 2")
-    .max(15, "The maximum characters must be 15"),
+    .required('Name is required')
+    .min(2, 'The minimum of characters must be 2')
+    .max(15, 'The maximum characters must be 15'),
   email: Yup.string()
-    .email("Check the email format")
-    .required("Email is required"),
+    .email('Check the email format')
+    .required('Email is required'),
   message: Yup.string()
-    .required("Message is required")
-    .min(10, "Must contain at least 10 characters"),
+    .required('Message is required')
+    .min(10, 'Must contain at least 10 characters'),
 });
 
 const initialValue: InitialValue = {
-  fullname: "",
-  email: "",
-  message: "",
+  fullname: '',
+  email: '',
+  message: '',
 };
 
 export const ContactForm = () => {
@@ -63,7 +63,7 @@ export const ContactForm = () => {
                 />
                 {errors.fullname && touched.fullname ? (
                   <ErrorMessage
-                    name={"fullname"}
+                    name={'fullname'}
                     component="span"
                     className="error"
                   />
@@ -80,7 +80,7 @@ export const ContactForm = () => {
                 />
                 {errors.email && touched.email ? (
                   <ErrorMessage
-                    name={"email"}
+                    name={'email'}
                     component="span"
                     className="error"
                   />
@@ -95,7 +95,7 @@ export const ContactForm = () => {
                 />
                 {errors.message && touched.message ? (
                   <ErrorMessage
-                    name={"message"}
+                    name={'message'}
                     component="span"
                     className="error"
                   />
@@ -111,13 +111,13 @@ export const ContactForm = () => {
         </Formik>
       </div>
 
-      {isSending === "sendig" && (
+      {isSending === 'sendig' && (
         <div className="flex justify-center fixed top-0 bottom-0 right-0 left-0 bg-dark">
           <Loader />
         </div>
       )}
 
-      {isSending === "sent" && <Alert message="Email sent successfull" />}
+      {isSending === 'sent' && <Alert message="Email sent successfull" />}
     </section>
   );
 };

@@ -1,26 +1,24 @@
-/* eslint-disable @next/next/no-img-element */
 import Head from 'next/head';
-import { useProducts } from 'hooks';
 
+import axios from 'axios';
 import { ProductFeatured } from 'components';
 import { Featured, Categories, Category } from 'ui';
-import { Progress } from 'ui/loaders/styled';
 import { Divider } from 'ui/divider/styled';
 import { GetServerSideProps } from 'next';
 import { FC } from 'react';
-import axios from 'axios';
+import { IProduct } from '../interfaces/product';
+import { ShopLayout } from '../components/layouts/ShopLayout';
 
 interface Props {
-  products: any;
+  products: IProduct[];
 }
 
 const HomePage: FC<Props> = ({ products }) => {
   return (
-    <div className="bg-white">
-      <Head>
-        <title>Market | Home</title>
-      </Head>
-
+    <ShopLayout
+      title="Market | Home"
+      pageDescription="Find the best products in Market "
+    >
       <div className="flex  flex-col gap-4 px-4 md:px-0 md:flex-row w-full justify-around lg:justify-evenly text-black md:text-lg font-bold md:py-16 pb-10 ">
         <div className="border-b-4 border-r-4 border-[#0099ff] shadow-md">
           <div className="flex gap-4 px-6 py-4 border-4 mb-1 mr-1 border-primaryA/50">
@@ -42,22 +40,18 @@ const HomePage: FC<Props> = ({ products }) => {
         </div>
       </div>
 
-      {products ? (
-        <Featured>
-          {products?.results?.map((product: any) => (
-            <ProductFeatured
-              key={product.Name}
-              title={product.Name}
-              price={product['Unit cost']}
-              picture={product.Images[0].url}
-              id={product.objectID}
-              category={product.Type}
-            />
-          ))}
-        </Featured>
-      ) : (
-        <Progress />
-      )}
+      <Featured>
+        {products.map((product: IProduct) => (
+          <ProductFeatured
+            key={product.objectID}
+            title={product.name}
+            price={product.price}
+            picture={product.images}
+            id={product.objectID}
+            category={product.type}
+          />
+        ))}
+      </Featured>
 
       <Divider />
       <Categories>
@@ -86,7 +80,7 @@ const HomePage: FC<Props> = ({ products }) => {
           src="https://cdn-icons-png.flaticon.com/512/2669/2669013.png"
         />
       </Categories>
-    </div>
+    </ShopLayout>
   );
 };
 
@@ -97,9 +91,17 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     'https://e-commerce-backend-jade.vercel.app/api/products'
   );
 
+  if (data.error)
+    return {
+      redirect: {
+        destination: '/',
+        permanent: true,
+      },
+    };
+
   return {
     props: {
-      products: data,
+      products: data.results,
     },
   };
 };

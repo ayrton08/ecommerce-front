@@ -1,5 +1,5 @@
 import { sortByDate } from 'helpers/sortByDate';
-import { OrderCart } from 'interface/cart';
+import { OrderCart } from 'interfaces/cart';
 import { fetchApi } from 'lib/api';
 import { useEffect, useState } from 'react';
 import useSWR from 'swr';
@@ -9,7 +9,6 @@ export const useOrders = (selected: string) => {
   const allOrders = data?.orders;
   const [orders, setOrders] = useState<[] | null>();
 
-  console.log(orders);
 
   const pendigOrders = allOrders?.filter(
     (order: OrderCart) => order.status === 'pending'

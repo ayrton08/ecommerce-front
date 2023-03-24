@@ -1,6 +1,6 @@
-import { CartLogo } from '../ui/icons';
+import { CartLogo } from '../../ui/icons';
 import { Button } from 'ui/button/styled';
-import { useCart, useCleanCart, useMe, useTotalCart } from 'hooks';
+import { useCleanCart, useMe, useTotalCart } from 'hooks';
 import { useEffect, useState } from 'react';
 import { createNewOrder } from 'helpers/createOrder';
 import { createOrder } from 'lib/api';
@@ -14,7 +14,6 @@ import { DividerItems } from 'ui/divider/styled';
 export const Cart = () => {
   const data = useMe('/me');
   const { removeProduct } = useCleanCart();
-  const { decrement, setTotalItemsCart } = useCart();
   const { efect, cleanCart } = useCleanCart();
   const { total, totalItems, setTotal, setTotalItems } = useTotalCart(
     data?.data?.cart
@@ -54,14 +53,11 @@ export const Cart = () => {
 
   const handlerCleanCart = () => {
     if (currentOrders.length === 0) return;
-    setTotalItemsCart(0);
     cleanCart();
     setTotal(0);
     setTotalItems(0);
     setCurrentOrders([]);
   };
-
-  console.log(currentOrders);
 
   return !currentOrders ? (
     <Loader />
@@ -106,7 +102,6 @@ export const Cart = () => {
                       <Button
                         className="w-max mt-0 px-2  btn-danger text-xs btn-sm"
                         onClick={() => {
-                          decrement(order.cantidad);
                           removeProductCart(
                             index,
                             currentOrders,

@@ -1,3 +1,13 @@
+export interface ICartProduct {
+  description?: string;
+  name: string;
+  type?: string;
+  images: string;
+  price: number;
+  objectID: string;
+  quantity: number;
+}
+
 export interface OrderCart {
   aditionalInfo: AditionalInfo;
   productId: string;
@@ -37,7 +47,7 @@ export interface Item {
   objectID: string;
   Name: string;
   Color: string[];
-  "Gross sales": number;
+  'Gross sales': number;
   unit_price: number;
   category_id: string;
   Description: string;
@@ -46,31 +56,31 @@ export interface Item {
   Materials: string[];
   currency_id: string;
   description: string;
-  "Unit cost": number;
-  "Size (WxLxH)": string;
-  "Total units sold": number;
+  'Unit cost': number;
+  'Size (WxLxH)': string;
+  'Total units sold': number;
 }
 
 export interface OrderType {
   Notes?: string;
   Color: string[];
-  "Gross sales": number;
+  'Gross sales': number;
   objectID: string;
   Vendor: string[];
   Type: string;
-  "Unit cost": number;
+  'Unit cost': number;
   Images: any[];
   Description: string;
   Link: string;
-  "Total units sold": number;
+  'Total units sold': number;
   cantidad: number;
   Settings: string[];
   Materials: string[];
-  "Size (WxLxH)": string;
+  'Size (WxLxH)': string;
   Name: string;
   Designer: string[];
   Orders?: string[];
-  "In stock"?: boolean;
+  'In stock'?: boolean;
 }
 
 export interface CartWrapperType {

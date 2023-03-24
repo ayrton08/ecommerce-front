@@ -1,22 +1,26 @@
-import 'styles/global.css';
-import { Footer } from 'ui';
+import '../styles/global.css';
 import { RecoilRoot } from 'recoil';
-import { createTheme, NextUIProvider } from '@nextui-org/react';
-import { Header } from '../components/Header';
+import { createTheme } from '@nextui-org/react';
+import { CssBaseline, ThemeProvider } from '@mui/material';
+import { lightTheme } from '../themes/light-theme';
+import { CartProvider } from 'context';
 
 const theme = createTheme({
-  type: 'light', // it could be "light" or "dark"
+  type: 'light',
 });
 
 function MyApp({ Component, pageProps }: any) {
   return (
-    <RecoilRoot>
-      <NextUIProvider theme={theme}>
-        <Header />
-        <Component {...pageProps} />
-        <Footer />
-      </NextUIProvider>
-    </RecoilRoot>
+    <CartProvider>
+      <RecoilRoot>
+        <ThemeProvider theme={lightTheme}>
+          <CssBaseline />
+          {/* <NextUIProvider theme={theme}> */}
+          <Component {...pageProps} />
+          {/* </NextUIProvider> */}
+        </ThemeProvider>
+      </RecoilRoot>
+    </CartProvider>
   );
 }
 

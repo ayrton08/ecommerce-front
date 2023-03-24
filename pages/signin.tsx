@@ -5,7 +5,7 @@ import Router from "next/router";
 
 import { useLogin } from "hooks";
 import { LoginEmail, Header, LoginCode } from "components";
-import { LoginEmailType } from "interface/signin";
+import { LoginEmailType } from "interfaces/signin";
 
 export default function Signin() {
   const [email, setEmail] = useState<any>();
