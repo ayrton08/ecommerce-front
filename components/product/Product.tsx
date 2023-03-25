@@ -82,14 +82,17 @@ export const Product = ({
           )}
           <Button
             onClick={onClick}
-            className="w-full btn-success border-0 py-2 my-6 disabled focus:outline-none text-white text-lg font-bold rounded-3xl"
+            color="primary"
+            className="w-full bg-successfull py-2 my-6  focus:outline-none text-white text-lg font-bold rounded-3xl"
             disabled={disable}
           >
             {disable ? <Loader sm /> : 'Add to cart'}
           </Button>
           <p
             className={
-              !detail ? 'leading-relaxed hidden md:flex ' : 'leading-relaxed h-full'
+              !detail
+                ? 'leading-relaxed hidden md:flex '
+                : 'leading-relaxed h-full pt-4'
             }
           >
             {!detail ? description + '...' : description}
