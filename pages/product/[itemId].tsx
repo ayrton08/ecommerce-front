@@ -85,11 +85,11 @@ const ProductPage = () => {
             category={product.type}
             onClick={onAddProduct}
           />
-          <div className="grid justify-items-center border-t-2 pt-6">
+          {/* <div className="grid justify-items-center border-t-2 pt-6">
             <CardTitle className="px-2 text-center">
               Other products that might interest you
             </CardTitle>
-            {/* <div className="order py-10 overflow-auto z-20 p-2 flex flex-col md:flex-row flex-wrap justify-center items-center">
+            <div className="order py-10 overflow-auto z-20 p-2 flex flex-col md:flex-row flex-wrap justify-center items-center">
               {data?.results?.map((product: any) => (
                 <ProductFeatured
                   key={product.Name}
@@ -101,8 +101,8 @@ const ProductPage = () => {
                   recomended
                 />
               ))}
-            </div> */}
-          </div>
+            </div>
+          </div> */}
         </>
       ) : (
         <Loader />
