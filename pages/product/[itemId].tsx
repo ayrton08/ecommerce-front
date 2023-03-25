@@ -21,11 +21,11 @@ const ProductPage = () => {
 
   const user = useMe('/me');
 
-  const { data } = usePagination(product?.type);
+  // const { data } = usePagination(product?.type);
 
-  const currentCart = user?.data?.cart;
+  // const currentCart = user?.data?.cart;
 
-  const logged = isUserLogged();
+  // const logged = isUserLogged();
 
   // const handler = async () => {
   //   if (!logged) {
@@ -67,6 +67,8 @@ const ProductPage = () => {
     }
     // router.push('/cart');
   };
+
+  console.log(product?.description);
 
   return (
     <ShopLayout title={product?.name} pageDescription={product?.description}>

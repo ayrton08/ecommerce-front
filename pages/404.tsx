@@ -1,7 +1,7 @@
-import { Header } from "components/Header";
-import Head from "next/head";
-import { NotFoundIcon } from "ui/icons";
-import { Basic } from "ui/wrappers/Basic";
+import { Header } from 'components';
+import Head from 'next/head';
+import { NotFoundIcon } from 'ui/icons';
+import { Basic } from 'ui/wrappers/Basic';
 
 export default function notFound() {
   return (

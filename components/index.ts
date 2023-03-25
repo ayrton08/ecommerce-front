@@ -8,3 +8,4 @@ export * from './ui/Searcher';
 export * from './cart/OrdersMobile';
 export * from './cart/Orders';
 export * from './ui/MyTextarea';
+export * from './ui/ContactForm';
