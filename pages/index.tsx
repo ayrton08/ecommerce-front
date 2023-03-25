@@ -4,7 +4,7 @@ import axios from 'axios';
 import { ProductFeatured } from 'components';
 import { Featured, Categories, Category } from 'ui';
 import { Divider } from 'ui/divider/styled';
-import { GetServerSideProps } from 'next';
+import { GetServerSideProps, GetStaticProps } from 'next';
 import { FC } from 'react';
 import { IProduct } from '../interfaces/product';
 import { ShopLayout } from '../components/layouts/ShopLayout';
@@ -84,15 +84,6 @@ const HomePage: FC<Props> = ({ products }) => {
   );
 };
 
-export default HomePage;
-
-// You should use getStaticProps when:
-//- The data required to render the page is available at build time ahead of a user’s request.
-//- The data comes from a headless CMS.
-//- The data can be publicly cached (not user-specific).
-//- The page must be pre-rendered (for SEO) and be very fast — getStaticProps generates HTML and JSON files, both of which can be cached by a CDN for performance.
-import { GetStaticProps } from 'next';
-
 export const getStaticProps: GetStaticProps = async (ctx) => {
   const { data } = await axios.get(
     'https://e-commerce-backend-jade.vercel.app/api/products'
@@ -112,3 +103,5 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
     },
   };
 };
+
+export default HomePage;
