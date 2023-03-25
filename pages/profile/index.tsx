@@ -2,11 +2,10 @@ import { useEffect } from 'react';
 import Router from 'next/router';
 import Head from 'next/head';
 
-import { Header } from 'components';
 import { User } from 'ui';
-import { useLogin, useMe } from 'hooks';
-import { isUserLogged } from '../helpers/localStorage';
-import { ShopLayout } from '../components/layouts/ShopLayout';
+import { useMe } from 'hooks';
+import { ShopLayout } from '../../components/layouts/ShopLayout';
+import { isUserLogged } from 'helpers';
 
 export default function Profile() {
   const data = useMe('/me');
