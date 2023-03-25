@@ -68,8 +68,6 @@ const ProductPage = () => {
     // router.push('/cart');
   };
 
-  console.log(product?.description);
-
   return (
     <ShopLayout title={product?.name} pageDescription={product?.description}>
       {product ? (
