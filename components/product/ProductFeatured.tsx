@@ -6,12 +6,11 @@ import { ProductType } from 'interfaces/product';
 
 export const ProductFeatured = ({
   title,
-  picture,
   price,
   id,
   category,
-  className,
   recomended,
+  image,
 }: ProductType) => {
   return (
     <div
@@ -28,7 +27,7 @@ export const ProductFeatured = ({
         <Image
           alt="ecommerce"
           className="object-contain object-center h-full block"
-          src={picture}
+          src={image}
           width={500}
           height={500}
         />

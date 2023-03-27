@@ -46,7 +46,7 @@ const HomePage: FC<Props> = ({ products }) => {
             key={product.objectID}
             title={product.name}
             price={product.price}
-            picture={product.images}
+            image={product.images}
             id={product.objectID}
             category={product.type}
           />

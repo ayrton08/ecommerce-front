@@ -4,6 +4,10 @@ import { ProductType } from 'interfaces/product';
 import Image from 'next/image';
 import { Loader } from 'ui';
 import { Button } from '@mui/material';
+import { ItemCounter } from '../cart/ItemCounter';
+import { useContext, useState } from 'react';
+import { ICartProduct } from 'interfaces';
+import { CartContext } from 'context';
 
 export const Product = ({
   description,
@@ -11,9 +15,31 @@ export const Product = ({
   price,
   title,
   category,
-  onClick,
   disable,
+  id,
 }: ProductType) => {
+  const { addProductToCart } = useContext(CartContext);
+
+  const [tempCartProduct, setTempCartProduct] = useState<ICartProduct>({
+    images: image,
+    price,
+    name: title,
+    quantity: 1,
+    objectID: id,
+  });
+
+  const onUpdateQuantity = (quantity: number) => {
+    setTempCartProduct((currentProduct) => ({
+      ...currentProduct,
+      quantity,
+    }));
+  };
+
+  const onAddProduct = () => {
+    addProductToCart(tempCartProduct);
+    // router.push('/cart');
+  };
+
   return (
     <div className="lg:w-full pt-6 flex flex-col md:flex-row">
       <Image
@@ -35,16 +61,22 @@ export const Product = ({
           </h1>
           <div className="stat-value flex text-2xl md:text-4xl">${price}</div>
         </div>
-
+        <ItemCounter
+          currentValue={tempCartProduct.quantity}
+          maxValue={5}
+          updatedQuantity={onUpdateQuantity}
+        />
         <Button
-          onClick={onClick}
+          onClick={onAddProduct}
           color="primary"
           className="w-full bg-successfull py-2 my-6  focus:outline-none text-white text-lg font-bold rounded-3xl"
           disabled={disable}
         >
           {disable ? <Loader sm /> : 'Add to cart'}
         </Button>
-        <p className={'leading-relaxed h-full min-h-[300px]'}>{description}</p>
+        <p className={'leading-relaxed h-full min-h-[300px] md:min-h-[100px] '}>
+          {description}
+        </p>
       </div>
     </div>
   );
