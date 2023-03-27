@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 export const SearchIconDark = () => {
   return <i className={`bx bx-search bx-sm mt-1 text-dark`}></i>;
@@ -9,10 +9,10 @@ export const SearchIconLight = () => {
 };
 
 export const ProfileIcon = () => {
-  return <i className={"bx bx-user-circle bx-sm text-white"}></i>;
+  return <i className={'bx bx-user-circle bx-sm text-white'}></i>;
 };
 export const ProfileIconPrimary = () => {
-  return <i className={"bx bx-user-circle bx-sm text-primary"}></i>;
+  return <i className={'bx bx-user-circle bx-sm text-primary'}></i>;
 };
 
 export const OrdersIcon = () => {
@@ -24,7 +24,7 @@ export const OrdersIconPrimary = () => {
 };
 
 export const LogoutIcon = () => {
-  return <i className="bx bx-log-out text-white bx-sm"></i>;
+  return <i className="bx bx-log-out text-red bx-sm"></i>;
 };
 
 export const CartIcon = () => {
@@ -63,5 +63,5 @@ export const SupportIconPrimary = () => {
   return <i className={`bx bx-support bx-sm text-primary`}></i>;
 };
 export const SupportIcon = ({ className }: any) => {
-  return <i className={`bx bx-support bx-sm text-white ${className}`}></i>;
+  return <i className={`bx bx-support bx-sm text-white  ${className}`}></i>;
 };
