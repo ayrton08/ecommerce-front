@@ -67,6 +67,7 @@ export default function Search() {
                   price={product.price}
                   images={product.images}
                   description={product.description}
+                  id={product.objectID}
                 />
 
                 // <Product

@@ -73,10 +73,9 @@ const ProductPage = () => {
       {product ? (
         <>
           <Product
-            detail
             description={product.description}
             id={product.objectID}
-            picture={product.images}
+            image={product.images}
             price={product.price}
             title={product.name}
             className="h-full w-2/3"

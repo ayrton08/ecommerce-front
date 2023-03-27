@@ -1,13 +1,14 @@
 import React, { FC } from 'react';
 import { makeStyles } from '@mui/styles';
 import Image from 'next/image';
-import { Button } from '@mui/material';
+import { Button, Link } from '@mui/material';
 
 interface Props {
   title: string;
   images: string;
   price: number;
   description: string;
+  id: string;
 }
 
 export const ProductSearched: FC<Props> = ({
@@ -15,6 +16,7 @@ export const ProductSearched: FC<Props> = ({
   price,
   title,
   description,
+  id,
 }) => {
   return (
     <div className="flex flex-col md:flex-row relative  shadow-lg rounded-lg mx-2 md:mx-20 border border-light ">
@@ -23,7 +25,7 @@ export const ProductSearched: FC<Props> = ({
         height={300}
         alt={title}
         src={images}
-        className="md:w-52 w-full min-w-[200px] md:h-52 h-44 object-cover object-center  rounded-t-lg md:rounded-l-lg self-center"
+        className="md:w-52 w-full min-w-[200px] md:h-52 h-44 object-cover object-center  rounded-t-lg md:rounded-tr-none md:rounded-l-lg self-center"
       />
 
       <div className="flex px-4 flex-col pt-4 gap-4">
@@ -32,10 +34,12 @@ export const ProductSearched: FC<Props> = ({
         <div className="flex justify-between pb-2">
           <div className="font-bold text-lg">$ {price}</div>
           <Button
-            className="md:absolute md:bottom-3 px-4 py-1 md:right-3 bg-blue-500"
+            className="md:absolute md:bottom-3 px-4 py-1 md:right-3 bg-blue-500 hover:bg-blue-600"
             variant="outlined"
           >
-            View more
+            <Link className="text-white font-bold" href={'/product/' + id}>
+              View more
+            </Link>
           </Button>
         </div>
       </div>
