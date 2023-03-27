@@ -29,7 +29,9 @@ export const useGetProductBySearch = (
   offset?: number,
   limit?: number
 ) => {
-  const path = `/search?q=${query}&offset=${offset || 0}&limit=${limit || 12}`;
+  const path = `/products?search=${query}&offset=${offset || 0}&limit=${
+    limit || 12
+  }`;
   const { data, error } = useSWR(path, fetchApi);
 
   if (error?.status) return false;

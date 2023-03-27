@@ -53,11 +53,12 @@ export const Header = () => {
 
       <Navbar
         style={{
-          backgroundColor: scrollPosition > 0 ? 'black' : 'white',
+          // backgroundColor: scrollPosition > 0 ? 'black' : 'white',
         }}
         variant="sticky"
         maxWidth="fluid"
         disableShadow
+        className={scrollPosition > 0 ? 'bg-black/80' : 'bg-white'}
       >
         <Navbar.Brand className="flex gap-4 nav">
           <Link href="/" aria-label="Button Home">

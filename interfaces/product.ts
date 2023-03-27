@@ -12,7 +12,7 @@ export interface ProductType {
   description?: string;
   title: string;
   price: number;
-  picture: string;
+  image: string;
   id: string;
   className?: string;
   detail?: boolean;

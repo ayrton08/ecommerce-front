@@ -1,17 +1,22 @@
-/* eslint-disable react-hooks/rules-of-hooks */
-import Head from 'next/head';
 import Router, { useRouter } from 'next/router';
 
-import { useCart, useMe } from 'hooks';
-import { Product, Header, Pagination } from 'components/';
+import { useCart, useGetProductBySearch, useMe } from 'hooks';
+import { Product, Pagination } from 'components/';
 import { Loader, Basic, Toast } from 'ui';
 import { NoResultsIcons } from 'ui/icons';
 import { usePagination } from 'hooks/usePagination';
 import { isUserLogged } from 'helpers/localStorage';
+import { ShopLayout } from '../../components/layouts/ShopLayout';
+import { IProduct } from '../../interfaces/product';
+import { ProductSearched } from '../../components/product/ProductSearched';
 
 export default function Search() {
   const router = useRouter();
-  const { q } = router.query;
+  const { q } = router.query as { q: string };
+
+  const products = useGetProductBySearch(q);
+
+  console.log({ products });
 
   const {
     data,
@@ -36,11 +41,7 @@ export default function Search() {
   };
 
   return (
-    <div className="container-page flex-center">
-      <Head>
-        <title>{q} | Market</title>
-      </Head>
-
+    <ShopLayout title={q + ' | Market'} pageDescription="">
       {data?.pagination?.total === 0 && (
         <Basic
           icon={<NoResultsIcons className="w-full" />}
@@ -55,25 +56,34 @@ export default function Search() {
             <div className="w-4/5 pb-5 grid gap-2">
               <h4 className="text-black text-3xl font-bold">{q}</h4>
               <span className="text-primaryA">
-                {data?.pagination.total} Results
+                {data?.pagination.total} results
               </span>
             </div>
+            <div className="flex flex-wrap gap-4">
+              {products?.results.map((product: IProduct) => (
+                <ProductSearched
+                  key={product.objectID}
+                  title={product.name}
+                  price={product.price}
+                  images={product.images}
+                  description={product.description}
+                  id={product.objectID}
+                />
 
-            {leakedProducts?.map((product: any) => (
-              <Product
-                detail={false}
-                key={product.objectID}
-                title={product.Name}
-                description={product.Description}
-                price={product['Unit cost']}
-                picture={product.Images[0].url || ''}
-                id={product.objectID}
-                onClick={() => {
-                  handler(product);
-                }}
-                disable={disableButton}
-              />
-            ))}
+                // <Product
+                //   key={product.objectID}
+                //   title={product.name}
+                //   description={product.description}
+                //   price={product.price}
+                //   picture={product.images}
+                //   id={product.objectID}
+                //   onClick={() => {
+                //     handler(product);
+                //   }}
+                //   disable={disableButton}
+                // />
+              ))}
+            </div>
             {data?.pagination?.total && (
               <div className="absolute bottom-0 flex justify-center mb-8">
                 <Pagination
@@ -98,6 +108,6 @@ export default function Search() {
         </div>
       )}
       {!data && <Loader />}
-    </div>
+    </ShopLayout>
   );
 }
