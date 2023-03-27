@@ -14,7 +14,7 @@ export const ButtonDark: FC<ButtonProps> = tw.button`
 `;
 
 export const ButtonSearchPrimary: FC<any> = tw.button`
-    btn-search btn-color rounded-r-3xl
+    btn-search bg-blue-500 rounded-r-3xl
 `;
 
 export const ButtonSearch: FC<any> = tw.button`

@@ -49,7 +49,7 @@ export const Header = () => {
 
   return (
     <>
-      <ModalMenu></ModalMenu>
+      <ModalMenu />
 
       <Navbar
         style={{
@@ -77,7 +77,7 @@ export const Header = () => {
           <Searcher />
         </Navbar.Content>
         <Navbar.Content>
-          <Text h1 size={17} weight="medium">
+          <Text h1 size={19} weight="bold">
             {data?.data?.name}
           </Text>
 
@@ -95,15 +95,17 @@ export const Header = () => {
                 <Avatar
                   size="md"
                   bordered
-                  color="success"
+                  color="primary"
                   src="https://qlu.ac.pa/wp-content/uploads/2019/04/kisspng-avatar-user-medicine-s.png"
                 />
               </Dropdown.Button>
               <Dropdown.Menu
                 aria-label="Static Actions"
-                className="grid gap-2 bg-primaryA"
+                className="grid gap-2 bg-black/80 "
+                color="primary"
+                variant="solid"
               >
-                <Dropdown.Item key="user" className="h-full">
+                <Dropdown.Item key="user" className="h-full text-white">
                   <div className="flex flex-col">
                     <Text b color="inherit" css={{ d: 'flex' }}>
                       Signed in as
@@ -124,16 +126,10 @@ export const Header = () => {
                   icon={<ProfileIcon />}
                 >
                   <Link
-                    className="items-center grid text-white"
+                    className="items-center grid text-white "
                     href="/profile"
                   >
                     Profile
-                  </Link>
-                </Dropdown.Item>
-
-                <Dropdown.Item key="cart" icon={<CartIcon />}>
-                  <Link className="items-center grid text-white" href="/cart">
-                    Cart
                   </Link>
                 </Dropdown.Item>
 
@@ -164,7 +160,7 @@ export const Header = () => {
                       removeToken();
                       setLogged(false);
                     }}
-                    className="text-danger grid font-bold"
+                    className="text-danger hover:text-white grid font-bold"
                   >
                     Logout
                   </Link>
