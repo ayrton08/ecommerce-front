@@ -35,17 +35,15 @@ const columns: GridColDef[] = [
     },
   },
   {
-    field: 'orden',
+    field: 'order',
     headerName: 'See order',
     width: 200,
     sortable: false,
     renderCell: (params: GridCellParams) => {
-      return (
-        <Link
-          component={NextLink}
-          href={`/orders/${params.row.id}`}
-          underline="always"
-        >
+      return params.row.paid ? (
+        <Chip color="secondary" label="Shipping" variant="outlined" />
+      ) : (
+        <Link component={NextLink} href={params.row.order} underline="always">
           Go to order
         </Link>
       );
@@ -58,8 +56,9 @@ const columns: GridColDef[] = [
   },
 ];
 
-export default function Orders() {
+const PageOrders = () => {
   const { orders } = useOrders();
+
   const logged = isUserLogged();
 
   const rows = orders?.map((order: any) => ({
@@ -67,6 +66,7 @@ export default function Orders() {
     paid: order.status === 'closed' ? true : false,
     fullname: order.aditionalInfo.items[0].Name,
     date: convertSecondsToDate(order.createdAt._seconds),
+    order: order.aditionalInfo.linkToPay,
   }));
 
   useEffect(() => {
@@ -90,4 +90,6 @@ export default function Orders() {
       )}
     </ShopLayout>
   );
-}
+};
+
+export default PageOrders;

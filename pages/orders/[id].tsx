@@ -13,12 +13,24 @@ import {
   Link,
   Chip,
 } from '@mui/material';
+import axios from 'axios';
 import { CartList } from 'components/cart/CartList';
 import { OrderSummary } from 'components/cart/OrderSummary';
 import { ShopLayout } from 'components/layouts/ShopLayout';
+import { fetchApi } from 'lib/api';
+import { GetServerSideProps } from 'next';
 import NextLink from 'next/link';
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
+import useSWR from 'swr';
 
 const OrderPage = () => {
+  const { query } = useRouter();
+
+  const { id } = query;
+
+  const { data, error } = useSWR(`/order/${id}`, fetchApi);
+
   return (
     <ShopLayout
       title="Resumen de la orden 12512541"

@@ -3,7 +3,7 @@ import { useLogin, useMe } from 'hooks';
 import { ModalMenu } from './ModalMenu';
 import { Dropdown, Text, Navbar, Avatar } from '@nextui-org/react';
 import { AcmeLogo } from 'ui/icons/Icon';
-import { useState, useEffect, useContext } from 'react';
+import { useEffect, useContext } from 'react';
 import Link from 'next/link';
 import { CartContext } from 'context';
 import { Searcher } from './Searcher';
@@ -19,47 +19,27 @@ import {
 export const Header = () => {
   const data = useMe('/me');
 
-  // useEffect(() => {
-  //   if (!data?.data?.cart) {
-  //     updateCart({ cart: [] });
-  //   }
-  // }, [data]);
-
   const { logged, setLogged } = useLogin();
-  // const { total, totalItems } = useTotalCart(data?.data?.cart);
 
   useEffect(() => {
     const logged = isUserLogged();
     setLogged(logged);
   }, [data, setLogged]);
 
-  const [scrollPosition, setScrollPosition] = useState(0);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const position = window.pageYOffset;
-      setScrollPosition(position);
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
-
   const { numberOfItems } = useContext(CartContext);
-
-  console.log(scrollPosition);
 
   return (
     <>
       <ModalMenu />
 
-      <div className="bg-black/90 h-[74px] flex px-6 sticky top-0 w-full z-50">
+      <div className="bg-black/90 h-[74px] flex px-6 sticky top-0 w-full z-50 justify-between">
         <Navbar.Brand className="flex gap-4 nav">
           <Link href="/" aria-label="Button Home">
-            <Text b hideIn="xs" className="flex items-center gap-4 text-lg text-white">
+            <Text
+              b
+              hideIn="xs"
+              className="flex items-center gap-4 text-lg text-white"
+            >
               <AcmeLogo />
               MARKET
             </Text>
@@ -75,7 +55,7 @@ export const Header = () => {
           <Searcher />
         </Navbar.Content>
         <Navbar.Content>
-          <Text h1 size={19} weight="bold" color='white' >
+          <Text h1 size={19} weight="bold" color="white">
             {data?.data?.name}
           </Text>
 
