@@ -1,6 +1,6 @@
 import '../styles/global.css';
 import { RecoilRoot } from 'recoil';
-import { createTheme } from '@nextui-org/react';
+import { createTheme, NextUIProvider } from '@nextui-org/react';
 import { CssBaseline, ThemeProvider } from '@mui/material';
 import { lightTheme } from '../themes/light-theme';
 import { CartProvider } from 'context';
@@ -15,9 +15,9 @@ function MyApp({ Component, pageProps }: any) {
       <RecoilRoot>
         <ThemeProvider theme={lightTheme}>
           <CssBaseline />
-          {/* <NextUIProvider theme={theme}> */}
-          <Component {...pageProps} />
-          {/* </NextUIProvider> */}
+          <NextUIProvider theme={theme}>
+            <Component {...pageProps} />
+          </NextUIProvider>
         </ThemeProvider>
       </RecoilRoot>
     </CartProvider>
