@@ -157,42 +157,7 @@ p {
 }
 
 .summary-card {
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(7, 154, 240, 0.1);
   box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.2);
 }
 
-.product-card {
-  display: flex;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
-.product-image {
-  width: 160px;
-  height: 160px;
-  object-fit: contain;
-  margin-right: 20px;
-}
-
-.product-info {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  height: 100%;
-}
-
-.product-title {
-  font-size: 20px;
-  margin-bottom: 5px;
-}
-
-.product-description {
-  font-size: 16px;
-  margin-bottom: 10px;
-}
-
-.product-price {
-  font-size: 20px;
-  font-weight: 700;
-  color: #b12704;
-}

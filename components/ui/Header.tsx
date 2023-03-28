@@ -1,49 +1,30 @@
 import { isUserLogged, removeToken } from 'helpers/localStorage';
-import { useLogin, useMe, useTotalCart } from 'hooks';
-import { Searcher } from './Searcher';
+import { useLogin, useMe } from 'hooks';
 import { ModalMenu } from './ModalMenu';
-import { LogoutIcon, ProfileIcon, SupportIcon } from 'ui/icons/boxicons';
-import { updateCart } from 'lib/api';
-import { Avatar, Dropdown, Navbar, Text } from '@nextui-org/react';
+import { Dropdown, Text, Navbar, Avatar } from '@nextui-org/react';
 import { AcmeLogo } from 'ui/icons/Icon';
-import { OrdersIcon, CartIcon } from '../../ui/icons/boxicons';
-import { useState, useEffect, useContext } from 'react';
+import { useEffect, useContext } from 'react';
 import Link from 'next/link';
+import { CartContext } from 'context';
+import { Searcher } from './Searcher';
 import { Badge, IconButton } from '@mui/material';
 import { ShoppingCartOutlined } from '@mui/icons-material';
-import { CartContext } from 'context';
+import {
+  LogoutIcon,
+  OrdersIcon,
+  ProfileIcon,
+  SupportIcon,
+} from 'ui/icons/boxicons';
 
 export const Header = () => {
   const data = useMe('/me');
 
-  useEffect(() => {
-    if (!data?.data?.cart) {
-      updateCart({ cart: [] });
-    }
-  }, [data]);
-
   const { logged, setLogged } = useLogin();
-  const { total, totalItems } = useTotalCart(data?.data?.cart);
 
   useEffect(() => {
     const logged = isUserLogged();
     setLogged(logged);
-  }, [data]);
-
-  const [scrollPosition, setScrollPosition] = useState(0);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const position = window.pageYOffset;
-      setScrollPosition(position);
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
+  }, [data, setLogged]);
 
   const { numberOfItems } = useContext(CartContext);
 
@@ -51,18 +32,14 @@ export const Header = () => {
     <>
       <ModalMenu />
 
-      <Navbar
-        style={{
-          // backgroundColor: scrollPosition > 0 ? 'black' : 'white',
-        }}
-        variant="sticky"
-        maxWidth="fluid"
-        disableShadow
-        className={scrollPosition > 0 ? 'bg-black/80' : 'bg-white'}
-      >
+      <div className="bg-black/90 h-[74px] flex px-6 sticky top-0 w-full z-50 justify-between">
         <Navbar.Brand className="flex gap-4 nav">
           <Link href="/" aria-label="Button Home">
-            <Text b hideIn="xs" className="flex items-center gap-4 text-lg">
+            <Text
+              b
+              hideIn="xs"
+              className="flex items-center gap-4 text-lg text-white"
+            >
               <AcmeLogo />
               MARKET
             </Text>
@@ -78,14 +55,14 @@ export const Header = () => {
           <Searcher />
         </Navbar.Content>
         <Navbar.Content>
-          <Text h1 size={19} weight="bold">
+          <Text h1 size={19} weight="bold" color="white">
             {data?.data?.name}
           </Text>
 
           <Link href="/cart">
             <IconButton>
               <Badge badgeContent={numberOfItems} color="secondary">
-                <ShoppingCartOutlined color="primary" />
+                <ShoppingCartOutlined color="info" />
               </Badge>
             </IconButton>
           </Link>
@@ -179,7 +156,7 @@ export const Header = () => {
             </Link>
           )}
         </Navbar.Content>
-      </Navbar>
+      </div>
     </>
 
     // <section className="header">

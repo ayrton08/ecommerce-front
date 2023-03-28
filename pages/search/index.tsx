@@ -16,8 +16,6 @@ export default function Search() {
 
   const products = useGetProductBySearch(q);
 
-  console.log({ products });
-
   const {
     data,
     leakedProducts,
