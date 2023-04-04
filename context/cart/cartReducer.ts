@@ -1,4 +1,5 @@
 import { ICartProduct } from 'interfaces';
+import { IShippingAddress } from 'interfaces/order';
 import { ICartState } from './';
 
 type ICartType =
@@ -26,6 +27,17 @@ type ICartType =
         tax: number;
         total: number;
       };
+    }
+  | {
+      type: '[Cart] - Load address from cookies';
+      payload: IShippingAddress;
+    }
+  | {
+      type: '[Cart] - Update address';
+      payload: IShippingAddress;
+    }
+  | {
+      type: '[Cart] - Order complete';
     };
 
 export const cartReducer = (
@@ -36,6 +48,7 @@ export const cartReducer = (
     case '[Cart] - LoadCart from cookies | storage':
       return {
         ...state,
+        isLoaded: true,
         cart: [...action.payload],
       };
 
@@ -60,16 +73,34 @@ export const cartReducer = (
     case '[Cart] - Remove product in cart':
       return {
         ...state,
-
         cart: state.cart.filter(
-          (product) => product.objectID !== action.payload.objectID
-          // product.size === action.payload.size
+          (product) =>
+            !(
+              (product.objectID === action.payload.objectID)
+              // product.size === action.payload.size
+            )
         ),
       };
     case '[Cart] - Update order summary':
       return {
         ...state,
         ...action.payload,
+      };
+    case '[Cart] - Update address':
+    case '[Cart] - Load address from cookies':
+      return {
+        ...state,
+        shippingAddress: action.payload,
+      };
+
+    case '[Cart] - Order complete':
+      return {
+        ...state,
+        cart: [],
+        numberOfItems: 0,
+        subTotal: 0,
+        tax: 0,
+        total: 0,
       };
 
     default:

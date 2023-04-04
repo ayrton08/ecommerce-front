@@ -32,7 +32,7 @@ export const Header = () => {
     <>
       <ModalMenu />
 
-      <div className="bg-black/90 h-[74px] flex px-6 sticky top-0 w-full z-50 justify-between">
+      <div className="bg-black/80 h-[74px] flex px-6 sticky top-0 w-full z-50 justify-between">
         <Navbar.Brand className="flex gap-4 nav">
           <Link href="/" aria-label="Button Home">
             <Text
