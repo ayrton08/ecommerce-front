@@ -6,8 +6,11 @@ import { User } from 'ui';
 import { useMe } from 'hooks';
 import { ShopLayout } from '../../components/layouts/ShopLayout';
 import { isUserLogged } from 'helpers';
+import { GetServerSideProps } from 'next';
+import { fetchApi } from '../../api/';
+import { getSession } from 'next-auth/react';
 
-export default function Profile() {
+const ProfilePage = () => {
   const data = useMe('/me');
 
   const logged = isUserLogged();
@@ -28,4 +31,25 @@ export default function Profile() {
       </div>
     </ShopLayout>
   );
-}
+};
+
+export const getServerSideProps: GetServerSideProps = async ({ req }) => {
+  const session: any = await getSession({ req });
+
+  console.log({ session });
+
+  if (!session) {
+    return {
+      redirect: {
+        destination: '/auth/login?page=/orders/history',
+        permanent: false,
+      },
+    };
+  }
+
+  return {
+    props: {},
+  };
+};
+
+export default ProfilePage;
