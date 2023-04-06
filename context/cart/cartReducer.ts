@@ -23,8 +23,6 @@ type ICartType =
       type: '[Cart] - Update order summary';
       payload: {
         numberOfItems: number;
-        subTotal: number;
-        tax: number;
         total: number;
       };
     }
@@ -98,8 +96,6 @@ export const cartReducer = (
         ...state,
         cart: [],
         numberOfItems: 0,
-        subTotal: 0,
-        tax: 0,
         total: 0,
       };
 

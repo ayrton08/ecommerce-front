@@ -5,8 +5,6 @@ interface IContextProps {
   isLoaded: boolean;
   cart: ICartProduct[];
   numberOfItems: number;
-  subTotal: number;
-  tax: number;
   total: number;
 
   shippingAddress?: IShippingAddress;

@@ -1,29 +1,23 @@
 import { IUser } from './user';
 
 export interface IOrder {
-  _id?: string;
+  objectID?: string;
   user?: IUser | string;
   orderItems: IOrderItem[];
   shippingAddress: IShippingAddress;
   paymentResult?: string;
-
   numberOfItems: number;
-  subTotal: number;
-  tax: number;
   total: number;
   isPaid: boolean;
   paidAt?: string;
 }
 
 export interface IOrderItem {
-  _id: string;
-  title: string;
-  // size: ISize;
+  id: string;
+  name: string;
   quantity: number;
-  slug: string;
   images: string;
   price: number;
-  gender: string;
 }
 
 export interface IShippingAddress {

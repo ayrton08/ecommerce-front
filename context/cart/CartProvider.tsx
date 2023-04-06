@@ -11,8 +11,6 @@ export interface ICartState {
   isLoaded: boolean;
   cart: ICartProduct[];
   numberOfItems: number;
-  subTotal: number;
-  tax: number;
   total: number;
   shippingAddress?: IShippingAddress;
 }
@@ -21,8 +19,6 @@ const CART_INITIAL_STATE: ICartState = {
   isLoaded: false,
   cart: [],
   numberOfItems: 0,
-  subTotal: 0,
-  tax: 0,
   total: 0,
   shippingAddress: undefined,
 };
@@ -59,18 +55,14 @@ export const CartProvider = ({ children }: any) => {
       0
     );
 
-    const subTotal = state.cart.reduce(
+    const total = state.cart.reduce(
       (prev, current) => current.price * current.quantity + prev,
       0
     );
 
-    const taxRate = Number(process.env.NEXT_PUBLIC_TAX_RATE || 0);
-
     const ordenSummary = {
       numberOfItems,
-      subTotal,
-      tax: subTotal * taxRate,
-      total: subTotal * (taxRate + 1),
+      total,
     };
 
     dispatch({ type: '[Cart] - Update order summary', payload: ordenSummary });
@@ -139,29 +131,28 @@ export const CartProvider = ({ children }: any) => {
     message: string;
   }> => {
     if (!state.shippingAddress) {
-      throw new Error('No hay direccion de entrega');
+      throw new Error('There is no delivery address');
     }
 
     const body: IOrder = {
-      orderItems: state.cart.map((p) => ({
-        ...p,
+      orderItems: state.cart.map((order) => ({
+        ...order,
+        id: order.objectID,
       })),
       shippingAddress: state.shippingAddress,
       numberOfItems: state.numberOfItems,
-      subTotal: state.subTotal,
-      tax: state.tax,
       total: state.total,
       isPaid: false,
     };
 
     try {
-      const { data } = await fetchApi.post<IOrder>('/orders', body);
+      const { data } = await fetchApi.post<IOrder>('/order', body);
 
       dispatch({ type: '[Cart] - Order complete' });
 
       return {
         hasError: false,
-        message: data._id!,
+        message: data.objectID!,
       };
     } catch (error) {
       if (axios.isAxiosError(error)) {
