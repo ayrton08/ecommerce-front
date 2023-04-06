@@ -1,24 +1,14 @@
-import { isUserLogged, removeToken } from "helpers/localStorage";
-import { useLogin } from "hooks";
-import Link from "next/link";
-import { useEffect } from "react";
-import { Button, ButtonDanger } from "ui";
+import Link from 'next/link';
+import { Button } from 'ui';
 import {
   CartIcon,
   LogoutIcon,
   OrdersIcon,
   ProfileIcon,
   SupportIcon,
-} from "ui/icons/boxicons";
+} from 'ui/icons/boxicons';
 
 export const ModalMenu = () => {
-  const { logged, setLogged } = useLogin();
-
-  const handlerLogout = () => {
-    removeToken();
-    setLogged(false);
-  };
-
   return (
     <>
       <input type="checkbox" id="my-modal-3" className="modal-toggle" />
@@ -31,35 +21,35 @@ export const ModalMenu = () => {
             x
           </label>
 
-          <Link href={"/profile"} className="w-full">
+          <Link href={'/profile'} className="w-full">
             <Button className="btn-color gap-4">
               <ProfileIcon />
               Profile
             </Button>
           </Link>
 
-          <Link href={"/cart"} className="w-full">
+          <Link href={'/cart'} className="w-full">
             <Button className="btn-color gap-4">
               <CartIcon />
               Cart
             </Button>
           </Link>
 
-          <Link href={"/orders"} className="w-full">
+          <Link href={'/orders'} className="w-full">
             <Button className="btn-color gap-4">
               <OrdersIcon />
               Orders
             </Button>
           </Link>
-          <Link href={"/support"} className="w-full">
+          <Link href={'/support'} className="w-full">
             <Button className="btn-color gap-4">
               <SupportIcon className="text-white" />
               Support
             </Button>
           </Link>
-          <Link href={"/"} className="w-full">
+          <Link href={'/'} className="w-full">
             <Button
-              onClick={handlerLogout}
+              // onClick={handlerLogout}
               className="btn-danger text-white font-bold gap-4"
             >
               <LogoutIcon />

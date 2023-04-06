@@ -1,4 +1,4 @@
-import { MouseEventHandler } from "react";
+import { MouseEventHandler } from 'react';
 
 export interface LoginCodeProps {
   email: string;
@@ -8,10 +8,6 @@ export interface LoginCodeProps {
 
 export interface LoginEmailType {
   email: string;
-}
-
-export interface HandlerEmail {
-  handler: (args: LoginEmailType) => Promise<any>;
 }
 
 export type BodyFetch = {

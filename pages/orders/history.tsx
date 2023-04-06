@@ -96,16 +96,16 @@ const PageOrders: NextPage<Props> = ({ orders }) => {
 };
 
 export const getServerSideProps: GetServerSideProps = async ({ req }) => {
-  const session = req.cookies.token;
+  // const session = req.cookies.token;
 
-  if (!session) {
-    return {
-      redirect: {
-        destination: '/auth/login?page=/orders/history',
-        permanent: false,
-      },
-    };
-  }
+  // if (!session) {
+  //   return {
+  //     redirect: {
+  //       destination: '/auth/login?page=/orders/history',
+  //       permanent: false,
+  //     },
+  //   };
+  // }
 
   const token = {
     token: req.cookies.token,

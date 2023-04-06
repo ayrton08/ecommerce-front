@@ -22,6 +22,10 @@ export const AuthProvider: FC<any> = ({ children }) => {
 
   const { data, status } = useSession();
 
+  console.log({ data, status });
+
+  console.log({ state });
+
   useEffect(() => {
     if (status === 'authenticated') {
       console.log(data.user);

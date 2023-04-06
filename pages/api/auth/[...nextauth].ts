@@ -1,7 +1,7 @@
 import NextAuth from 'next-auth';
 import GithubProvider from 'next-auth/providers/github';
 import Credentials from 'next-auth/providers/credentials';
-// import { dbUsers } from 'database';
+import fetchApi from '../../../api/fetchApi';
 
 export const authOptions = {
   providers: [
@@ -13,24 +13,17 @@ export const authOptions = {
           type: 'email',
           placeholder: 'correo@google.com',
         },
-        password: {
-          label: 'Contraseña',
-          type: 'password',
-          placeholder: 'Contraseña',
-        },
       },
       async authorize(credentials) {
-        console.log(credentials);
+        // console.log(credentials);
 
+        const { data } = await fetchApi.post('/auth/user', {
+          email: credentials?.email,
+        });
         return {
-          name: 'Ayrton',
-          id: '',
+          id: data.userId,
+          email: data.email.toLocaleLowerCase(),
         };
-
-        // return await dbUsers.checkUserEmailPassword(
-        //   credentials!.email,
-        //   credentials!.password
-        // );
       },
     }),
     GithubProvider({
@@ -39,15 +32,29 @@ export const authOptions = {
     }),
   ],
 
+  pages: {
+    signIn: '/signIn',
+    newUser: '/signIn',
+  },
+
+  session: {
+    maxAge: 2592000,
+    strategy: 'jwt',
+    updateAge: 86400,
+  },
+
   callbacks: {
     async jwt({ token, account, user }: any) {
-      console.log({ token, account, user });
-
       if (account) {
         token.accessToken = account.access_token;
 
         switch (account.type) {
           case 'oauth':
+            const { data } = await fetchApi.post('/auth/user', {
+              email: user.email,
+            });
+            token.user = { ...data };
+
             break;
           case 'credentials':
             token.user = user;
@@ -67,4 +74,4 @@ export const authOptions = {
   },
 };
 
-export default NextAuth(authOptions);
+export default NextAuth(authOptions as any);

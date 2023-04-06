@@ -1,5 +1,3 @@
-/* eslint-disable react-hooks/rules-of-hooks */
-import { isUserLogged } from 'helpers/localStorage';
 import { fetchApi } from 'lib/api';
 import useSWR from 'swr';
 import useSWRInmutable from 'swr/immutable';
