@@ -1,7 +1,7 @@
 import { IUser } from './user';
 
 export interface IOrder {
-  objectID?: string;
+  id?: string;
   user?: IUser | string;
   orderItems: IOrderItem[];
   shippingAddress: IShippingAddress;

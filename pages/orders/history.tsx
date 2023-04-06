@@ -9,6 +9,9 @@ import { Chip, Grid, Link, Typography } from '@mui/material';
 
 import { DataGrid, GridCellParams, GridColDef } from '@mui/x-data-grid';
 import NextLink from 'next/link';
+import { GetServerSideProps, NextPage } from 'next';
+import { fetchApi } from 'api';
+import { IOrder } from '../../interfaces/order';
 
 const columns: GridColDef[] = [
   {
@@ -56,17 +59,21 @@ const columns: GridColDef[] = [
   },
 ];
 
-const PageOrders = () => {
-  const { orders } = useOrders();
+interface Props {
+  orders: IOrder[];
+}
+
+const PageOrders: NextPage<Props> = ({ orders }) => {
+  // const { orders } = useOrders();
+  console.log(orders);
 
   const logged = isUserLogged();
 
-  const rows = orders?.map((order: any) => ({
-    id: order.createdAt._seconds,
-    paid: order.status === 'closed' ? true : false,
-    fullname: order.aditionalInfo.items[0].Name,
-    date: convertSecondsToDate(order.createdAt._seconds),
-    order: order.aditionalInfo.linkToPay,
+  const rows = orders.map((order, index) => ({
+    id: order.id,
+    paid: order.isPaid,
+    fullname: `${order.shippingAddress.firstName} ${order.shippingAddress.lastName}`,
+    order: order.id,
   }));
 
   useEffect(() => {
@@ -90,6 +97,35 @@ const PageOrders = () => {
       )}
     </ShopLayout>
   );
+};
+
+export const getServerSideProps: GetServerSideProps = async ({ req }) => {
+  const session = req.cookies.token;
+
+  if (!session) {
+    return {
+      redirect: {
+        destination: '/auth/login?page=/orders/history',
+        permanent: false,
+      },
+    };
+  }
+
+  const token = {
+    token: req.cookies.token,
+  };
+
+  const { data } = await fetchApi.get('/orders', {
+    headers: {
+      Cookie: JSON.stringify(token),
+    },
+  });
+
+  return {
+    props: {
+      orders: data.orders,
+    },
+  };
 };
 
 export default PageOrders;

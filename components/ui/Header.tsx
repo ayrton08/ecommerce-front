@@ -112,7 +112,7 @@ export const Header = () => {
                 </Dropdown.Item>
 
                 <Dropdown.Item key="orders" icon={<OrdersIcon />}>
-                  <Link className="items-center grid text-white" href="/orders">
+                  <Link className="items-center grid text-white" href="/orders/history">
                     Orders
                   </Link>
                 </Dropdown.Item>

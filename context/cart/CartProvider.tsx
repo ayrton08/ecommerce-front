@@ -146,13 +146,13 @@ export const CartProvider = ({ children }: any) => {
     };
 
     try {
-      const { data } = await fetchApi.post<IOrder>('/order', body);
+      const { data } = await fetchApi.post<IOrder>('/orders', body);
 
       dispatch({ type: '[Cart] - Order complete' });
 
       return {
         hasError: false,
-        message: data.objectID!,
+        message: data.id!,
       };
     } catch (error) {
       if (axios.isAxiosError(error)) {

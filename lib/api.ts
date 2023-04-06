@@ -1,6 +1,7 @@
 import { getToken } from 'helpers/localStorage';
 import { CreateOrder } from 'interfaces/cart';
 import { LoginEmailType } from 'interfaces/signin';
+import cookies from 'js-cookie';
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL!;
 
@@ -48,6 +49,7 @@ export const getTokenJWT = async (info: any) => {
     });
 
     localStorage.setItem('token', data.token);
+    cookies.set('token', data.token);
     return data.token;
   } catch (error) {
     console.error(error);
