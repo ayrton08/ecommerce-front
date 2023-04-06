@@ -1,7 +1,7 @@
-import { ErrorMessage, useField } from "formik";
-import { FieldType } from "interfaces/ui";
-import { ContainerInput, Label } from "ui/label/styled";
-import { Field } from "./styled";
+import { ErrorMessage, useField } from 'formik';
+import { FieldType } from 'interfaces/ui';
+import { ContainerInput, Label } from 'ui/label/styled';
+import { Field } from './styled';
 
 export const UserField = ({
   label,
@@ -13,12 +13,6 @@ export const UserField = ({
 
   return (
     <>
-      <ContainerInput>
-        <Label htmlFor={props.id || props.name}>{label}</Label>
-        <Field {...field} {...props} />
-
-        {children}
-      </ContainerInput>
       {error && (
         <ErrorMessage
           name={props.name as string}
@@ -26,6 +20,12 @@ export const UserField = ({
           className="error"
         />
       )}
+      <ContainerInput>
+        <Label htmlFor={props.id || props.name}>{label}</Label>
+        <Field {...field} {...props} />
+
+        {children}
+      </ContainerInput>
     </>
   );
 };

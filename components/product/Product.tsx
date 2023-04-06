@@ -68,8 +68,8 @@ export const Product = ({
         />
         <Button
           onClick={onAddProduct}
-          color="primary"
-          className="w-full bg-successfull py-2 my-6  focus:outline-none text-white text-lg font-bold rounded-3xl"
+          fullWidth
+          className="bg-successfull hover:bg-green-600 py-2 my-6  focus:outline-none text-white text-lg font-bold rounded-3xl"
           disabled={disable}
         >
           {disable ? <Loader sm /> : 'Add to cart'}

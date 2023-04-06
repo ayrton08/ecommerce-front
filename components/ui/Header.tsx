@@ -1,9 +1,8 @@
-import { isUserLogged, removeToken } from 'helpers/localStorage';
-import { useLogin, useMe } from 'hooks';
+import { useMe } from 'hooks';
 import { ModalMenu } from './ModalMenu';
 import { Dropdown, Text, Navbar, Avatar } from '@nextui-org/react';
 import { AcmeLogo } from 'ui/icons/Icon';
-import { useEffect, useContext } from 'react';
+import { useContext } from 'react';
 import Link from 'next/link';
 import { CartContext } from 'context';
 import { Searcher } from './Searcher';
@@ -15,24 +14,20 @@ import {
   ProfileIcon,
   SupportIcon,
 } from 'ui/icons/boxicons';
+import { AuthContext } from 'context/auth';
 
 export const Header = () => {
   const data = useMe('/me');
 
-  const { logged, setLogged } = useLogin();
-
-  useEffect(() => {
-    const logged = isUserLogged();
-    setLogged(logged);
-  }, [data, setLogged]);
-
   const { numberOfItems } = useContext(CartContext);
+
+  const { user, isLoggedIn, logout } = useContext(AuthContext);
 
   return (
     <>
       <ModalMenu />
 
-      <div className="bg-black/90 h-[74px] flex px-6 sticky top-0 w-full z-50 justify-between">
+      <div className="bg-black/80 h-[74px] flex px-6 sticky top-0 w-full z-50 justify-between">
         <Navbar.Brand className="flex gap-4 nav">
           <Link href="/" aria-label="Button Home">
             <Text
@@ -67,7 +62,7 @@ export const Header = () => {
             </IconButton>
           </Link>
 
-          {logged && (
+          {isLoggedIn ? (
             <Dropdown isBordered>
               <Dropdown.Button className="px-0">
                 <Avatar
@@ -112,7 +107,10 @@ export const Header = () => {
                 </Dropdown.Item>
 
                 <Dropdown.Item key="orders" icon={<OrdersIcon />}>
-                  <Link className="items-center grid text-white" href="/orders">
+                  <Link
+                    className="items-center grid text-white"
+                    href="/orders/history"
+                  >
                     Orders
                   </Link>
                 </Dropdown.Item>
@@ -134,10 +132,11 @@ export const Header = () => {
                 >
                   <Link
                     href={'/'}
-                    onClick={() => {
-                      removeToken();
-                      setLogged(false);
-                    }}
+                    onClick={logout}
+                    // onClick={() => {
+                    //   removeToken();
+                    //   setLogged(false);
+                    // }}
                     className="text-danger hover:text-white grid font-bold"
                   >
                     Logout
@@ -145,8 +144,7 @@ export const Header = () => {
                 </Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>
-          )}
-          {!logged && (
+          ) : (
             <Link
               className="block rounded-3xl btn-color px-6 py-3 md:text-md font-medium text-white transition "
               href="/signin"
@@ -158,85 +156,5 @@ export const Header = () => {
         </Navbar.Content>
       </div>
     </>
-
-    // <section className="header">
-
-    //     <div className="flex-none">
-    //       {logged && (
-    //         <label className="md:btn-ghost hidden md:btn mr-2">
-    //           <Link href="/profile" passHref>
-    //             <h3 className="text-primary text-md">{data?.data?.name}</h3>
-    //           </Link>
-    //         </label>
-    //       )}
-    //       {logged && (
-    //         <div className=" dropdown-end items-center mt-1 sm:dropdown hidden md:dropdown-end mr-2">
-    //           <CartIndicator totalItems={totalItemsCart} total={total} />
-    //         </div>
-    //       )}
-
-    //       {logged && (
-    //         <label
-    //           tabIndex={0}
-    //           className="btn btn-ghost btn-circle avatar sm:hidden"
-    //         >
-    //           <MenuIcon />
-    //         </label>
-    //       )}
-
-    //       <div className=" dropdown-end hidden sm:dropdown mr-2">
-    //         {logged && (
-    //           <>
-    //             <label
-    //               tabIndex={0}
-    //               className="btn btn-ghost btn-circle avatar mt-1"
-    //             >
-    //               <div className="w-10 rounded-full">
-    //                 <AvatarIcon></AvatarIcon>
-    //               </div>
-    //             </label>
-    //             <ul
-    //               tabIndex={0}
-    //               className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
-    //             >
-    //               <li>
-    //                 <Link className="items-center" href="/profile">
-    //                   <ProfileIconPrimary />
-    //                   Profile
-    //                 </Link>
-    //               </li>
-    //               <li>
-    //                 <Link className="items-center" href="/orders">
-    //                   <OrdersIconPrimary />
-    //                   Orders
-    //                 </Link>
-    //               </li>
-    //               <li>
-    //                 <Link className="items-center" href="/support">
-    //                   <SupportIconPrimary />
-    //                   Support
-    //                 </Link>
-    //               </li>
-    //               <li>
-    //                 <Link
-    //                   href={"/"}
-    //                   onClick={() => {
-    //                     removeToken();
-    //                     setLogged(false);
-    //                   }}
-    //                   className="btn-danger text-white font-bold"
-    //                 >
-    //                   <LogoutIcon />
-    //                   Logout
-    //                 </Link>
-    //               </li>
-    //             </ul>
-    //           </>
-    //         )}
-    //       </div>
-    //
-    //     </div>
-    //   </ContainerHeader>
-    // </section>
   );
 };

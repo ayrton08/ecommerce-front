@@ -1,8 +1,8 @@
-import Router, { useRouter } from 'next/router';
+import { useRouter } from 'next/router';
 
-import { useCart, useGetProductBySearch, useMe } from 'hooks';
-import { Product, Pagination } from 'components/';
-import { Loader, Basic, Toast } from 'ui';
+import { useGetProductBySearch, useMe } from 'hooks';
+import { Pagination } from 'components/';
+import { Loader, Basic } from 'ui';
 import { NoResultsIcons } from 'ui/icons';
 import { usePagination } from 'hooks/usePagination';
 import { isUserLogged } from 'helpers/localStorage';
@@ -27,16 +27,7 @@ export default function Search() {
   } = usePagination(q as string);
 
   const user = useMe('/me');
-  const { disableButton, addToCart } = useCart();
   const logged = isUserLogged();
-
-  const handler = async (product: any) => {
-    if (!logged) {
-      return Router.push('/signin');
-    }
-    await addToCart(user.data.cart, product);
-    Toast(`${product.Name} added to cart`);
-  };
 
   return (
     <ShopLayout title={q + ' | Market'} pageDescription="">
@@ -67,19 +58,6 @@ export default function Search() {
                   description={product.description}
                   id={product.objectID}
                 />
-
-                // <Product
-                //   key={product.objectID}
-                //   title={product.name}
-                //   description={product.description}
-                //   price={product.price}
-                //   picture={product.images}
-                //   id={product.objectID}
-                //   onClick={() => {
-                //     handler(product);
-                //   }}
-                //   disable={disableButton}
-                // />
               ))}
             </div>
             {data?.pagination?.total && (
