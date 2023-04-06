@@ -15,9 +15,9 @@ function MyApp({ Component, pageProps }: any) {
       <RecoilRoot>
         <ThemeProvider theme={lightTheme}>
           <CssBaseline />
-          <NextUIProvider theme={theme}>
-            <Component {...pageProps} />
-          </NextUIProvider>
+          {/* <NextUIProvider theme={theme}> */}
+          <Component {...pageProps} />
+          {/* </NextUIProvider> */}
         </ThemeProvider>
       </RecoilRoot>
     </CartProvider>

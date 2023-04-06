@@ -4,7 +4,8 @@ import { FC } from 'react';
 import { ButtonProps } from 'interfaces/ui';
 
 export const Button: FC<ButtonProps> = tw.button`
-    btn w-full btn-color border-0
+rounded-3xl bg-blue-500 text-white font-bold text-lg hover:bg-blue-600 py-2
+
     ${(props) => props.className}
 `;
 

@@ -2,8 +2,7 @@
 import { useEffect } from 'react';
 import Router from 'next/router';
 
-import { useOrders } from 'hooks';
-import { convertSecondsToDate, isUserLogged } from 'helpers';
+import { isUserLogged } from 'helpers';
 import { ShopLayout } from '../../components/layouts/ShopLayout';
 import { Chip, Grid, Link, Typography } from '@mui/material';
 
@@ -64,9 +63,6 @@ interface Props {
 }
 
 const PageOrders: NextPage<Props> = ({ orders }) => {
-  // const { orders } = useOrders();
-  console.log(orders);
-
   const logged = isUserLogged();
 
   const rows = orders.map((order, index) => ({

@@ -25,9 +25,9 @@ const CartPage = () => {
     }
   }, [cart, isLoaded, router]);
 
-  // if (!isLoaded || cart.length === 0) {
-  //   return <></>;
-  // }
+  if (!isLoaded || cart.length === 0) {
+    return <></>;
+  }
 
   return (
     <ShopLayout title="Cart" pageDescription="Store shopping cart">
@@ -43,15 +43,14 @@ const CartPage = () => {
         <Grid item xs={12} sm={5}>
           <Card className="summary-card">
             <CardContent>
-              <Typography variant="h2">Orden</Typography>
+              <Typography variant="h2">Order</Typography>
               <Divider sx={{ my: 1 }} />
 
               <OrderSummary />
 
               <Box sx={{ mt: 3 }}>
                 <Button
-                  color="secondary"
-                  className="circular-btn"
+                  className="rounded-3xl bg-blue-500 text-white font-bold text-lg hover:bg-blue-600"
                   fullWidth
                   href="checkout/address"
                 >
