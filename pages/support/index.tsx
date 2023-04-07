@@ -1,7 +1,7 @@
 import { ContactForm, Header } from 'components';
 import Head from 'next/head';
 import { SuportImage } from 'ui/icons';
-import { ShopLayout } from '../components/layouts/ShopLayout';
+import { ShopLayout } from '../../components/layouts/ShopLayout';
 
 export default function suport() {
   return (
