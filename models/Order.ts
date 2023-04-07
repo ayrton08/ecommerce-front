@@ -15,12 +15,20 @@ export default class Order {
     this.order.id = id;
   }
   async save() {
-    this.ref.set(this.order);
+    try {
+      this.ref.set(this.order);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   async pull() {
-    const snap = await this.ref.get();
-    return snap.data();
+    try {
+      const snap = await this.ref.get();
+      return snap.data();
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   async updateStatusPaid(status: boolean): Promise<void> {
@@ -34,22 +42,31 @@ export default class Order {
   // }
 
   static async getOrdersByUser(user: string): Promise<IOrder[] | []> {
-    const results = await collection.where('user', '==', user).get();
-    const orders: any = [];
-    results.forEach((doc) => {
-      orders.push(doc.data());
-    });
-    return orders;
+    try {
+      const results = await collection.where('user', '==', user).get();
+      const orders: any = [];
+      results.forEach((doc) => {
+        orders.push(doc.data());
+      });
+      return orders;
+    } catch (error) {
+      console.log(error);
+      return [];
+    }
   }
 
   static async findById(id: string): Promise<any> {
-    const docRef = collection.doc(id);
-    const doc = await docRef.get();
+    try {
+      const docRef = collection.doc(id);
+      const doc = await docRef.get();
 
-    if (doc.exists) {
-      return doc.data();
-    } else {
-      return null;
+      if (doc.exists) {
+        return doc.data();
+      } else {
+        return null;
+      }
+    } catch (error) {
+      console.log(error);
     }
   }
 
