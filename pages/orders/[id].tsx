@@ -161,8 +161,6 @@ export const getServerSideProps: GetServerSideProps = async ({
 
   const order = await Order.findById(id.toString());
 
-  console.log({ order });
-
   if (!order) {
     return {
       redirect: {

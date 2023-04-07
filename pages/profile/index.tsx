@@ -8,7 +8,10 @@ const ProfilePage = () => {
   const data = useMe('/me');
 
   return (
-    <ShopLayout title={data?.data?.name} pageDescription={data?.data?.name}>
+    <ShopLayout
+      title={data?.data?.name || 'Profile'}
+      pageDescription={data?.data?.name}
+    >
       <div className="flex-col-center container-page pt-12 pb-4 px-4 sm:px-0">
         <User userName={data?.data?.name || 'User'}></User>
       </div>

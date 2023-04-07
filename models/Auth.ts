@@ -88,7 +88,6 @@ export class Auth {
     const user = await collection.where('email', '==', email).get();
 
     if (!user.empty) {
-      console.log('user', user.docs[0].data());
       return user.docs[0].data();
     }
 
