@@ -13,16 +13,11 @@ import {
   Link,
   Chip,
 } from '@mui/material';
-import axios from 'axios';
 import { CartList } from 'components/cart/CartList';
 import { OrderSummary } from 'components/cart/OrderSummary';
 import { ShopLayout } from 'components/layouts/ShopLayout';
-import { fetchApi } from 'api';
 import { GetServerSideProps, NextPage } from 'next';
 import NextLink from 'next/link';
-import { useRouter } from 'next/router';
-import { useEffect } from 'react';
-import useSWR from 'swr';
 import { IOrder } from '../../interfaces/order';
 import { getSession } from 'next-auth/react';
 import { Order } from 'models';

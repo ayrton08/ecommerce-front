@@ -32,7 +32,7 @@ export const ShopLayout: FC<Props> = ({
       <Header />
 
       <main
-        className="container-page"
+        className="container-page "
         style={{
           margin: '10px auto',
           maxWidth: '1440px',

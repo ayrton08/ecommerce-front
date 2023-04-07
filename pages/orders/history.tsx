@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect } from 'react';
 import Router from 'next/router';
 
@@ -9,10 +8,8 @@ import { Chip, Grid, Link, Typography } from '@mui/material';
 import { DataGrid, GridCellParams, GridColDef } from '@mui/x-data-grid';
 import NextLink from 'next/link';
 import { GetServerSideProps, NextPage } from 'next';
-import { fetchApi } from 'api';
 import { IOrder } from '../../interfaces/order';
 import { getSession } from 'next-auth/react';
-import { findOrders } from '../../controllers/order-controller';
 import { Order } from 'models';
 
 const columns: GridColDef[] = [
@@ -109,16 +106,6 @@ export const getServerSideProps: GetServerSideProps = async ({ req }) => {
       },
     };
   }
-
-  // const token = {
-  //   token: req.cookies.token,
-  // };
-
-  // const { data } = await fetchApi.get('/orders', {
-  //   headers: {
-  //     Cookie: JSON.stringify(token),
-  //   },
-  // });
 
   const orders = await Order.getOrdersByUser(session.user.id);
 

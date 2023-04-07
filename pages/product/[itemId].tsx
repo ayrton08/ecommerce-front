@@ -1,15 +1,10 @@
 import React, { useContext, useState } from 'react';
-import Router, { useRouter } from 'next/router';
-import Head from 'next/head';
+import { useRouter } from 'next/router';
 import { useMe, useProduct } from 'hooks/useData';
 import { Toast } from 'ui/Toast';
 import { Loader } from 'ui/loaders/Loader';
-import { isUserLogged } from 'helpers/localStorage';
-import { CardTitle } from 'ui/label/styled';
-import { usePagination } from 'hooks/usePagination';
-import { Product, ProductFeatured } from 'components';
+import { Product } from 'components';
 import { CartContext } from 'context';
-import axios from 'axios';
 import { IProduct } from '../../interfaces/product';
 import { ICartProduct } from '../../interfaces/cart';
 import { ShopLayout } from '../../components/layouts/ShopLayout';
@@ -22,10 +17,6 @@ const ProductPage = () => {
   const user = useMe('/me');
 
   // const { data } = usePagination(product?.type);
-
-  // const currentCart = user?.data?.cart;
-
-  // const logged = isUserLogged();
 
   // const handler = async () => {
   //   if (!logged) {

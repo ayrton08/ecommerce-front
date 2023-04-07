@@ -2,19 +2,20 @@ import { airtableBase } from '../lib/airtable';
 import { products } from '../lib/algolia';
 import { IProduct, IProductResponse } from '../interfaces/product';
 
-export const findProductById = async (id: string) => {
-  const result: IProductResponse = await products.getObject(id);
+export const findProductById = async (query: string) => {
+  // const result: IProductResponse = await products.getObject(id);
+  const results = await products.search(query);
 
-  const product: IProduct = {
-    description: result.Description,
-    images: result.Images[0].url,
-    name: result.Name,
-    price: result['Unit cost'],
-    type: result.Type,
-    objectID: result.objectID,
-  };
+  const productsFounded = results.hits.map((product: any) => ({
+    description: product.Description,
+    images: product.Images[0].url,
+    name: product.Name,
+    price: product['Unit cost'],
+    type: product.Type,
+    id: product.objectID,
+  }));
 
-  return product;
+  return productsFounded;
 };
 
 export const findProductsWithPagination = async (

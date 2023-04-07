@@ -15,16 +15,13 @@ const schema = yup.object({
 });
 
 export const Searcher = () => {
-  const handler = (path: string) => {
-    Router.push({
-      pathname: '/search',
-      query: { q: path },
-    });
+  const onSearch = (path: string) => {
+    Router.push(`/search/${path}`);
   };
   return (
     <Formik
       initialValues={initialValues}
-      onSubmit={(values) => handler(values.search)}
+      onSubmit={(values) => onSearch(values.search)}
       validationSchema={schema}
     >
       {({ handleChange }) => (

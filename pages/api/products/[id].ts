@@ -13,13 +13,13 @@ const schema = Yup.object()
   .strict();
 
 export async function get(req: NextApiRequest, res: NextApiResponse) {
-  const productId = req.query.productId as string;
+  const productId = req.query.id as string;
 
   try {
     const product = await findProductById(productId);
 
     res.status(201).send({ error: null, product });
-  } catch (error) {
+  } catch (error: any) {
     res.status(404).send({
       error: { code: 404, message: error.message },
     });
