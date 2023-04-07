@@ -1,5 +1,4 @@
 export * from './banner/Banner';
-export * from './Payment';
 export * from './wrappers/User';
 export * from './wrappers/Featured';
 export * from './wrappers/Categories';
