@@ -37,7 +37,7 @@ const SearchPage: NextPage<Props> = ({ products, query }) => {
             color=" w-full  h-full lg:mt-20"
           >
             <h2 className="card-title md:text-3xl">
-              No results with: <span className='text-blue-500'>{query}</span>
+              No results with: <span className="text-blue-500">{query}</span>
             </h2>
           </Basic>
         </div>
@@ -88,7 +88,6 @@ const SearchPage: NextPage<Props> = ({ products, query }) => {
 };
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
-  console.log({ params });
   const { query = '' } = params as { query: string };
 
   if (query.length === 0) {

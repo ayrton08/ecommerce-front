@@ -16,7 +16,6 @@ export async function getMerchantOrder(id: any) {
 export async function createPreference(data: any) {
   try {
     const res = await mercadopago.preferences.create(data);
-    console.log({ res });
     return res.body;
   } catch (error: any) {
     console.error(error.message);

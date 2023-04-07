@@ -1,7 +1,3 @@
-import { useEffect } from 'react';
-import Router from 'next/router';
-
-import { isUserLogged } from 'helpers';
 import { ShopLayout } from '../../components/layouts/ShopLayout';
 import { Chip, Grid, Link, Typography } from '@mui/material';
 
@@ -63,20 +59,12 @@ interface Props {
 }
 
 const PageOrders: NextPage<Props> = ({ orders }) => {
-  const logged = isUserLogged();
-
   const rows = orders.map((order, index) => ({
     id: order.id,
     paid: order.isPaid,
     fullname: `${order.shippingAddress.firstName} ${order.shippingAddress.lastName}`,
     order: order.id,
   }));
-
-  useEffect(() => {
-    if (!logged) {
-      Router.push('/signin');
-    }
-  }, [logged]);
 
   return (
     <ShopLayout title="Orders" pageDescription="Orders page">
