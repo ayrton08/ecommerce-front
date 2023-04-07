@@ -3,7 +3,7 @@ import { IOrder } from 'interfaces';
 import { Order } from '../models';
 import { JwtPayload } from 'jsonwebtoken';
 import { getMerchantOrder } from 'lib/mercadopago';
-import { sendEmail } from 'lib/sendGrid';
+import { getSession } from 'next-auth/react';
 
 type Response =
   | {
@@ -13,28 +13,30 @@ type Response =
       };
     }
   | {
+      error: null;
       order: IOrder;
     }
   | {
+      error: null;
       orders: IOrder[];
     };
 
 export const createOrder = async (
   req: NextApiRequest,
-  res: NextApiResponse<Response>,
-  token: JwtPayload
+  res: NextApiResponse<Response>
 ) => {
   try {
+    const { user }: any = await getSession({ req });
     const newOrder = new Order({
       ...req.body,
       isPaid: false,
-      user: token.userId,
+      user: user.id,
     });
 
     await newOrder.save();
 
     return res.status(201).json({ error: null, order: newOrder.order });
-  } catch (error) {
+  } catch (error: any) {
     console.log(error);
     res.status(400).json({ error: { code: 400, message: error.message } });
   }
@@ -42,14 +44,14 @@ export const createOrder = async (
 
 export const findOrders = async (
   req: NextApiRequest,
-  res: NextApiResponse<Response>,
-  token: JwtPayload
+  res: NextApiResponse<Response>
 ) => {
   try {
-    const orders = await Order.getOrdersByUser(token.userId);
+    const { user }: any = await getSession({ req });
+    const orders = await Order.getOrdersByUser(user.id);
 
     return res.status(201).json({ error: null, orders });
-  } catch (error) {
+  } catch (error: any) {
     console.log(error);
     res.status(400).json({ error: { code: 400, message: error.message } });
   }
@@ -62,11 +64,10 @@ export const getOrderById = async (
   const { id } = req.query;
 
   try {
-    console.log('en el try');
-    const order = await Order.findById(id.toString());
+    const order = await Order.findById(id!.toString());
 
     return res.status(201).json({ error: null, order });
-  } catch (error) {
+  } catch (error: any) {
     console.log(error);
     res.status(400).json({ error: { code: 400, message: error.message } });
   }

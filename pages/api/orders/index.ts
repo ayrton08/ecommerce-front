@@ -30,28 +30,20 @@ import { JwtPayload } from 'jsonwebtoken';
 //   .noUnknown()
 //   .strict();
 
-async function post(
-  req: NextApiRequest,
-  res: NextApiResponse,
-  user: JwtPayload
-) {
-  return createOrder(req, res, user);
+async function post(req: NextApiRequest, res: NextApiResponse) {
+  return createOrder(req, res);
 }
 
-async function get(
-  req: NextApiRequest,
-  res: NextApiResponse,
-  user: JwtPayload
-) {
-  return findOrders(req, res, user);
+async function get(req: NextApiRequest, res: NextApiResponse) {
+  return findOrders(req, res);
 }
 
-const postAuth = authMiddleware(post);
-const getAuth = authMiddleware(get);
+// const postAuth = authMiddleware(post);
+// const getAuth = authMiddleware(get);
 
 const handler = methods({
-  post: postAuth,
-  get: getAuth,
+  post,
+  get,
 });
 
 export default validationMiddleware(handler, null, null);

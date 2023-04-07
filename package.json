@@ -47,6 +47,7 @@
     "next": "13.0.3",
     "next-auth": "^4.20.1",
     "next-svgr": "^0.0.2",
+    "parse-bearer-token": "^1.0.1",
     "postcss": "^8.4.19",
     "random-seed": "^0.3.0",
     "react": "18.2.0",

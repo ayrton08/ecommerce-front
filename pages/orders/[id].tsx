@@ -24,6 +24,8 @@ import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import useSWR from 'swr';
 import { IOrder } from '../../interfaces/order';
+import { getSession } from 'next-auth/react';
+import { Order } from 'models';
 
 interface Props {
   order: IOrder;
@@ -151,7 +153,7 @@ export const getServerSideProps: GetServerSideProps = async ({
 }) => {
   const { id = '' } = query;
 
-  const session = req.cookies.token;
+  const session: any = await getSession({ req });
 
   if (!session) {
     return {
@@ -162,17 +164,9 @@ export const getServerSideProps: GetServerSideProps = async ({
     };
   }
 
-  const token = {
-    token: req.cookies.token,
-  };
+  const order = await Order.findById(id.toString());
 
-  const { data } = await fetchApi.get(`/orders/${id}`, {
-    headers: {
-      Cookie: JSON.stringify(token),
-    },
-  });
-
-  const order = data.order;
+  console.log({ order });
 
   if (!order) {
     return {
@@ -183,14 +177,14 @@ export const getServerSideProps: GetServerSideProps = async ({
     };
   }
 
-  // if (order.user !== session.user._id) {
-  //   return {
-  //     redirect: {
-  //       destination: '/orders/history',
-  //       permanent: false,
-  //     },
-  //   };
-  // }
+  if (order.user !== session.user.id) {
+    return {
+      redirect: {
+        destination: '/orders/history',
+        permanent: false,
+      },
+    };
+  }
 
   return {
     props: {
