@@ -12,6 +12,11 @@ import Master from './master.svg';
 import MercadoPago from './mp.svg';
 import Cash from './cash.svg';
 import Suport from './suport.svg';
+import Google from './google.svg';
+
+const GoogleIcon = ({ className }: any) => {
+  return <Google className={className} />;
+};
 
 const SuportImage = ({ className }: any) => {
   return <Suport className={className} />;
@@ -109,4 +114,5 @@ export {
   PaymentIcon,
   VisaIcon,
   CashIcon,
+  GoogleIcon,
 };
