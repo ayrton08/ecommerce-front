@@ -30,33 +30,37 @@ const SearchPage: NextPage<Props> = ({ products, query }) => {
 
   return (
     <ShopLayout title={query + ' | Market'} pageDescription="">
-      {products.length === 0 && (
-        <Basic
-          icon={<NoResultsIcons className="w-full" />}
-          color="bg-red-600/40 md:w-1/2 lg:w-1/3 h-full"
-        >
-          <h2 className="card-title">No results with {query}!</h2>
-        </Basic>
-      )}
-      <div className={`relative pb-20 w-full `}>
-        <div className="flex flex-col  text-start items-center mt-8 xl:mt-10 mb-8">
-          <div className="w-4/5 pb-5 grid gap-2">
-            <h4 className="text-black text-3xl font-bold">{query}</h4>
-            <span className="text-primaryA">{products.length} results</span>
-          </div>
-          <div className="flex flex-wrap gap-4">
-            {products.map((product: IProduct) => (
-              <ProductSearched
-                key={product.objectID}
-                title={product.name}
-                price={product.price}
-                images={product.images}
-                description={product.description}
-                id={product.objectID}
-              />
-            ))}
-          </div>
-          {/* {data?.pagination?.total && (
+      {products.length === 0 ? (
+        <div className="w-full flex ">
+          <Basic
+            icon={<NoResultsIcons className="w-full" />}
+            color=" w-full  h-full lg:mt-20"
+          >
+            <h2 className="card-title md:text-3xl">
+              No results with: <span className='text-blue-500'>{query}</span>
+            </h2>
+          </Basic>
+        </div>
+      ) : (
+        <div className={`relative pb-20 w-full `}>
+          <div className="flex flex-col  text-start items-center mt-8 xl:mt-10 mb-8">
+            <div className="w-4/5 pb-5 grid gap-2">
+              <h4 className="text-black text-3xl font-bold">{query}</h4>
+              <span className="text-primaryA">{products.length} results</span>
+            </div>
+            <div className="flex flex-wrap gap-4">
+              {products.map((product: IProduct) => (
+                <ProductSearched
+                  key={product.objectID}
+                  title={product.name}
+                  price={product.price}
+                  images={product.images}
+                  description={product.description}
+                  id={product.objectID}
+                />
+              ))}
+            </div>
+            {/* {data?.pagination?.total && (
             <div className="absolute bottom-0 flex justify-center mb-8">
               <Pagination
                 currentPage={[...numberOfPages]}
@@ -76,8 +80,9 @@ const SearchPage: NextPage<Props> = ({ products, query }) => {
               />
             </div>
           )} */}
+          </div>
         </div>
-      </div>
+      )}
     </ShopLayout>
   );
 };
