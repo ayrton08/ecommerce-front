@@ -22,13 +22,10 @@ export const AuthProvider: FC<any> = ({ children }) => {
 
   const { data, status } = useSession();
 
-  console.log({ data, status });
-
-  console.log({ state });
+  console.log({ data });
 
   useEffect(() => {
     if (status === 'authenticated') {
-      console.log(data.user);
       dispatch({ type: '[Auth] - Login', payload: data.user as IUser });
     }
   }, [data, status]);

@@ -25,7 +25,7 @@ export async function get(req: NextApiRequest, res: NextApiResponse) {
         total: products[0].total,
       },
     });
-  } catch (error) {
+  } catch (error: any) {
     res.status(400).send({ error: { code: 400, message: error.message } });
   }
 }

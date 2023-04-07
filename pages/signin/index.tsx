@@ -5,7 +5,7 @@ import { useLogin } from 'hooks';
 import { LoginEmail, LoginCode } from 'components';
 import { LoginEmailType } from 'interfaces/signin';
 import { ShopLayout } from '../../components/layouts/ShopLayout';
-import { getProviders } from 'next-auth/react';
+import { getProviders, getSession } from 'next-auth/react';
 import { AuthContext } from '../../context/auth/AuthContext';
 
 export default function Signin() {
@@ -47,3 +47,22 @@ export default function Signin() {
     </ShopLayout>
   );
 }
+
+export const getServerSideProps: any = async ({ req, query }: any) => {
+  const session = await getSession({ req });
+
+  const { page = '/' } = query;
+
+  if (session) {
+    return {
+      redirect: {
+        destination: page,
+        permanent: false,
+      },
+    };
+  }
+
+  return {
+    props: {},
+  };
+};

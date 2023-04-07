@@ -1,8 +1,8 @@
-import type { NextApiRequest, NextApiResponse } from "next";
-import methods from "micro-method-router";
+import type { NextApiRequest, NextApiResponse } from 'next';
+import methods from 'micro-method-router';
 
-import { authMiddleware, validationMiddleware } from "middlewares";
-import { findUserById } from "controllers/user-controller";
+import { authMiddleware, validationMiddleware } from 'middlewares';
+import { findUserById } from 'controllers/user-controller';
 
 async function get(
   req: NextApiRequest,
@@ -30,13 +30,13 @@ async function patch(
     user.push();
 
     res.status(200).send({ error: null, data: { ...user.data } });
-  } catch (error) {
+  } catch (error: any) {
     res.status(400).send({ error: { code: 400, message: error.message } });
   }
 }
 
-const patchMe = authMiddleware(patch);
-const getMe = authMiddleware(get);
+const patchMe = authMiddleware(patch as any);
+const getMe = authMiddleware(get as any);
 
 const handler = methods({
   patch: patchMe,

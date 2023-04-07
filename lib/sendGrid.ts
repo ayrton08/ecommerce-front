@@ -1,6 +1,6 @@
-import sgMail from "@sendgrid/mail";
+import sgMail from '@sendgrid/mail';
 
-sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+sgMail.setApiKey(process.env.SENDGRID_API_KEY!);
 
 interface SendEmail {
   addressee: string;
@@ -15,14 +15,14 @@ export const sendEmail = async ({
 }: SendEmail): Promise<void> => {
   const msg = {
     to: addressee,
-    from: "ayrtonjuarez90@gmail.com",
+    from: 'ayrtonjuarez90@gmail.com',
     subject: `${title}`,
     text: `${message}`,
     html: message,
   };
   try {
     await sgMail.send(msg);
-    console.log("Email sent");
+    console.log('Email sent');
   } catch (error) {
     console.error(error);
   }

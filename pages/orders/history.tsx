@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect } from 'react';
 import Router from 'next/router';
 
@@ -9,8 +8,9 @@ import { Chip, Grid, Link, Typography } from '@mui/material';
 import { DataGrid, GridCellParams, GridColDef } from '@mui/x-data-grid';
 import NextLink from 'next/link';
 import { GetServerSideProps, NextPage } from 'next';
-import { fetchApi } from 'api';
 import { IOrder } from '../../interfaces/order';
+import { getSession } from 'next-auth/react';
+import { Order } from 'models';
 
 const columns: GridColDef[] = [
   {
@@ -96,30 +96,22 @@ const PageOrders: NextPage<Props> = ({ orders }) => {
 };
 
 export const getServerSideProps: GetServerSideProps = async ({ req }) => {
-  // const session = req.cookies.token;
+  const session: any = await getSession({ req });
 
-  // if (!session) {
-  //   return {
-  //     redirect: {
-  //       destination: '/auth/login?page=/orders/history',
-  //       permanent: false,
-  //     },
-  //   };
-  // }
+  if (!session) {
+    return {
+      redirect: {
+        destination: '/auth/login?page=/orders/history',
+        permanent: false,
+      },
+    };
+  }
 
-  const token = {
-    token: req.cookies.token,
-  };
-
-  const { data } = await fetchApi.get('/orders', {
-    headers: {
-      Cookie: JSON.stringify(token),
-    },
-  });
+  const orders = await Order.getOrdersByUser(session.user.id);
 
   return {
     props: {
-      orders: data.orders,
+      orders,
     },
   };
 };

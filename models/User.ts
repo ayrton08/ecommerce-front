@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { firestore } from '../lib/firestore';
 
 const collection = firestore.collection('user');
@@ -20,7 +19,7 @@ export class User {
     this.data = snap.data();
   }
 
-  static async createNewUser(data) {
+  static async createNewUser(data: any) {
     const newUserSnap = await collection.add(data);
     const newUser = new User(newUserSnap.id);
     newUser.data = data;

@@ -1,4 +1,4 @@
-import { User } from "../models/User";
+import { User } from '../models/User';
 
 export const findUserById = async (userId: string): Promise<User> => {
   const user = new User(userId);
@@ -6,7 +6,7 @@ export const findUserById = async (userId: string): Promise<User> => {
   return user;
 };
 
-export const updateAddress = async (token, address) => {
+export const updateAddress = async (token: any, address: any) => {
   const user = new User(token.userId);
 
   await user.pull();

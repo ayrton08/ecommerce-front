@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { firestore } from '../lib/firestore';
 import isAfter from 'date-fns/isAfter';
 
@@ -43,7 +42,7 @@ export class Auth {
     }
   }
 
-  static async createNewAuth(data) {
+  static async createNewAuth(data: any) {
     const newAuthSnap = await collection.add(data);
     const newAuth = new Auth(newAuthSnap.id);
     newAuth.data = data;
@@ -54,7 +53,7 @@ export class Auth {
     return email.trim().toLowerCase();
   }
 
-  static async findByEmailAndCode(email: string, code: number) {
+  static async findByEmailAndCode(email: string, code: number | null) {
     const cleanEmail = Auth.cleanEmail(email);
     const result = await collection
       .where('email', '==', cleanEmail)

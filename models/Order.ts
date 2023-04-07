@@ -28,14 +28,14 @@ export default class Order {
     await this.save();
   }
 
-  async setLinkToPay(link: string): Promise<void> {
-    this.order.linkToPay = link;
-    await this.save();
-  }
+  // async setLinkToPay(link: string): Promise<void> {
+  //   this.order.linkToPay = link;
+  //   await this.save();
+  // }
 
   static async getOrdersByUser(user: string): Promise<IOrder[] | []> {
     const results = await collection.where('user', '==', user).get();
-    const orders = [];
+    const orders: any = [];
     results.forEach((doc) => {
       orders.push(doc.data());
     });

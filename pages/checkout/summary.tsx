@@ -110,8 +110,7 @@ const SummaryPage = () => {
               <Box sx={{ mt: 3 }} display="flex" flexDirection="column">
                 <Button
                   disabled={isPosting}
-                  color="secondary"
-                  className="circular-btn"
+                  className="rounded-3xl bg-blue-500 text-white font-bold text-base hover:bg-blue-600"
                   fullWidth
                   onClick={onCreateOrder}
                 >
