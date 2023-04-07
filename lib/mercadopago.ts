@@ -4,21 +4,21 @@ mercadopago.configure({
   access_token: process.env.MERCADO_PAGO,
 });
 
-export async function getMerchantOrder(id) {
+export async function getMerchantOrder(id: any) {
   try {
     const res = await mercadopago.merchant_orders.get(id);
     return res.body;
-  } catch (error) {
+  } catch (error: any) {
     console.error(error.message);
   }
 }
 
-export async function createPreference(data) {
+export async function createPreference(data: any) {
   try {
     const res = await mercadopago.preferences.create(data);
     console.log({ res });
     return res.body;
-  } catch (error) {
+  } catch (error: any) {
     console.error(error.message);
   }
 }

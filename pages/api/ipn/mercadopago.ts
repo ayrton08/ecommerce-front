@@ -1,7 +1,7 @@
-import type { NextApiRequest, NextApiResponse } from "next";
-import methods from "micro-method-router";
+import type { NextApiRequest, NextApiResponse } from 'next';
+import methods from 'micro-method-router';
 
-import { updateStatusPayment } from "controllers/order-controller";
+import { updateStatusPayment } from 'controllers/order-controller';
 
 export default methods({
   async post(req: NextApiRequest, res: NextApiResponse) {
@@ -12,7 +12,7 @@ export default methods({
       await updateStatusPayment(topic, id);
 
       res.status(200).send(true);
-    } catch (error) {
+    } catch (error: any) {
       console.log(error.message);
       res.status(200).send(true);
     }

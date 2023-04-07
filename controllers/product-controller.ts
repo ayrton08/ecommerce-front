@@ -22,23 +22,23 @@ export const findProductsWithPagination = async (
   search: string,
   limit: number,
   offset: number
-): Promise<IProduct[]> => {
+): Promise<any> => {
   const results = await products.search(search, {
     length: limit,
     offset: offset,
   });
 
-  const allProducts = results.hits.map((p: IProductResponse) => ({
-    description: p.Description,
-    name: p.Name,
-    type: p.Type,
-    images: p.Images[0].url,
-    price: p['Unit cost'],
-    objectID: p.objectID,
-    total: results.nbHits,
-  }));
+  // const allProducts = results.hits.map((p: IProductResponse) => ({
+  //   description: p.Description,
+  //   name: p.Name,
+  //   type: p.Type,
+  //   images: p.Images[0].url,
+  //   price: p['Unit cost'],
+  //   objectID: p.objectID,
+  //   total: results.nbHits,
+  // }));
 
-  return allProducts;
+  // return allProducts;
 };
 
 export const syncAlgoliaWithAirtable = async (limit: any, res: any) => {

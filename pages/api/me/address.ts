@@ -1,9 +1,9 @@
-import type { NextApiRequest, NextApiResponse } from "next";
-import methods from "micro-method-router";
-import * as Yup from "yup";
+import type { NextApiRequest, NextApiResponse } from 'next';
+import methods from 'micro-method-router';
+import * as Yup from 'yup';
 
-import { authMiddleware, validationMiddleware } from "middlewares";
-import { updateAddress } from "controllers/user-controller";
+import { authMiddleware, validationMiddleware } from 'middlewares';
+import { updateAddress } from 'controllers/user-controller';
 
 const schema = Yup.object()
   .shape({
@@ -29,12 +29,12 @@ async function patch(
   try {
     const user = await updateAddress(token, address);
     res.status(200).send({ error: null, data: { ...user.data } });
-  } catch (error) {
+  } catch (error: any) {
     res.status(400).send({ error: { code: 400, message: error.message } });
   }
 }
 
-const patchAuth = authMiddleware(patch);
+const patchAuth = authMiddleware(patch as any);
 
 const handler = methods({
   patch: patchAuth,
