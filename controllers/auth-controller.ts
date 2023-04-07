@@ -33,7 +33,7 @@ export async function findOrCreateAuth(email: string): Promise<Auth> {
     code: '',
     expires: new Date(),
   });
-  return newAuth.data.data;
+  return newAuth!.data.data;
 }
 
 export const createToken = async (email: string, code: number) => {

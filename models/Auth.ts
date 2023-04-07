@@ -14,13 +14,22 @@ export class Auth {
   }
 
   async pull() {
-    const snap = await this.ref.get();
-    this.data = snap.data();
+    try {
+      const snap = await this.ref.get();
+      this.data = snap.data();
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   async push() {
-    this.ref.update(this.data);
+    try {
+      this.ref.update(this.data);
+    } catch (error) {
+      console.log(error);
+    }
   }
+
   isCodeExpired() {
     const now = new Date();
     const expired = this.data.expires.toDate();
@@ -28,25 +37,33 @@ export class Auth {
   }
 
   static async findByEmail(email: string) {
-    const cleanEmail = Auth.cleanEmail(email);
+    try {
+      const cleanEmail = Auth.cleanEmail(email);
 
-    const result = await collection.where('email', '==', cleanEmail).get();
+      const result = await collection.where('email', '==', cleanEmail).get();
 
-    if (result.docs.length) {
-      const first = result.docs[0];
-      const newAuth = new Auth(first.id);
-      newAuth.data = first.data();
-      return newAuth;
-    } else {
-      return null;
+      if (result.docs.length) {
+        const first = result.docs[0];
+        const newAuth = new Auth(first.id);
+        newAuth.data = first.data();
+        return newAuth;
+      } else {
+        return null;
+      }
+    } catch (error) {
+      console.error(error);
     }
   }
 
   static async createNewAuth(data: any) {
-    const newAuthSnap = await collection.add(data);
-    const newAuth = new Auth(newAuthSnap.id);
-    newAuth.data = data;
-    return newAuth;
+    try {
+      const newAuthSnap = await collection.add(data);
+      const newAuth = new Auth(newAuthSnap.id);
+      newAuth.data = data;
+      return newAuth;
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   static cleanEmail(email: string) {
@@ -54,43 +71,55 @@ export class Auth {
   }
 
   static async findByEmailAndCode(email: string, code: number | null) {
-    const cleanEmail = Auth.cleanEmail(email);
-    const result = await collection
-      .where('email', '==', cleanEmail)
-      .where('code', '==', code)
-      .get();
+    try {
+      const cleanEmail = Auth.cleanEmail(email);
+      const result = await collection
+        .where('email', '==', cleanEmail)
+        .where('code', '==', code)
+        .get();
 
-    if (result.empty) {
-      return null;
-    } else {
-      const doc = result.docs[0];
-      const auth = new Auth(doc.id);
-      auth.data = doc.data();
-      return auth;
+      if (result.empty) {
+        return null;
+      } else {
+        const doc = result.docs[0];
+        const auth = new Auth(doc.id);
+        auth.data = doc.data();
+        return auth;
+      }
+    } catch (error) {
+      console.log(error);
     }
   }
 
   static async deleteUsedCode(code: number) {
-    const result = await collection.where('code', '==', code).get();
+    try {
+      const result = await collection.where('code', '==', code).get();
 
-    if (result.empty) {
-      return null;
-    } else {
-      const doc = result.docs[0];
-      const auth = new Auth(doc.id);
-      auth.data = doc.data();
-      auth.data.code = null;
-      await auth.push();
-      return true;
+      if (result.empty) {
+        return null;
+      } else {
+        const doc = result.docs[0];
+        const auth = new Auth(doc.id);
+        auth.data = doc.data();
+        auth.data.code = null;
+        await auth.push();
+        return true;
+      }
+    } catch (error) {
+      console.log(error);
     }
   }
   static async checkUserEmail(email: string) {
-    const user = await collection.where('email', '==', email).get();
+    try {
+      const user = await collection.where('email', '==', email).get();
 
-    if (!user.empty) {
-      return user.docs[0].data();
+      if (!user.empty) {
+        return user.docs[0].data();
+      }
+
+      return null;
+    } catch (error) {
+      console.log(error);
     }
-
-    return null;
   }
 }
