@@ -8,6 +8,7 @@ import { ContainerCard } from 'ui/wrappers/styled';
 import { PasteIcon } from 'ui/icons/boxicons';
 import * as yup from 'yup';
 import { useLogin } from 'hooks';
+import { signIn } from 'next-auth/react';
 
 const initialValues = {
   code: '',
@@ -33,8 +34,11 @@ export const LoginCode = ({ email, onClick }: LoginCodeProps) => {
   const { getToken } = useLogin();
 
   const handlerCode = async (e: any) => {
-    const res = await getToken({ ...e });
-    return res;
+    // const res = await getToken({ ...e });
+
+    await signIn('credentials', { ...e });
+
+    // return res;
   };
 
   return (

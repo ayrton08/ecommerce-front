@@ -10,6 +10,7 @@ import { AuthContext } from '../../context/auth/AuthContext';
 
 export default function Signin() {
   const [email, setEmail] = useState<any>();
+
   const [status, setStatus] = useState(false);
 
   const { isLoggedIn } = useContext(AuthContext);

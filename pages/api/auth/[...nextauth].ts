@@ -2,9 +2,7 @@ import NextAuth from 'next-auth';
 import GithubProvider from 'next-auth/providers/github';
 import GoogleProvider from 'next-auth/providers/google';
 import Credentials from 'next-auth/providers/credentials';
-import fetchApi from '../../../api/fetchApi';
-import { Auth } from 'models/Auth';
-import { findOrCreateAuth } from 'controllers/auth-controller';
+import { createToken, findOrCreateAuth } from 'controllers/auth-controller';
 
 export const authOptions = {
   providers: [
@@ -16,18 +14,21 @@ export const authOptions = {
           type: 'email',
           placeholder: 'correo@google.com',
         },
+        code: {
+          label: 'Code',
+          type: 'text',
+          placeholder: '****',
+        },
       },
       async authorize(credentials) {
-        // console.log(credentials);
-
-        // const user = await findOrCreateAuth(credentials?.email!);
-
-        // console.log({ user });
+        const { email, id } = await createToken(
+          credentials?.email!,
+          Number(credentials?.code!)
+        );
 
         return {
-          id: 'user.userId',
-          email: 'user.email.toLocaleLowerCase()',
-          name: 'Ayrton',
+          id,
+          email,
         };
       },
     }),

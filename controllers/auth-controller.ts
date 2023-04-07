@@ -36,7 +36,13 @@ export async function findOrCreateAuth(email: string): Promise<Auth> {
   return newAuth!.data.data;
 }
 
-export const createToken = async (email: string, code: number) => {
+export const createToken = async (
+  email: string,
+  code: number
+): Promise<{
+  id: string;
+  email: string;
+}> => {
   const auth = await Auth.findByEmailAndCode(email, code);
   const codeUsed = await Auth.findByEmailAndCode(email, null);
 
@@ -55,10 +61,11 @@ export const createToken = async (email: string, code: number) => {
   if (expires) {
     throw new Error('expired code');
   }
-  const token = generate({ userId: auth.data.userId });
+  // const token = generate({ userId: auth.data.userId });
   await Auth.deleteUsedCode(code);
 
   return {
-    token,
+    id: auth.data.userId,
+    email: auth.data.email,
   };
 };
