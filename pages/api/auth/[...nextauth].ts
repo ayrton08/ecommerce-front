@@ -2,6 +2,8 @@ import NextAuth from 'next-auth';
 import GithubProvider from 'next-auth/providers/github';
 import Credentials from 'next-auth/providers/credentials';
 import fetchApi from '../../../api/fetchApi';
+import { Auth } from 'models/Auth';
+import { findOrCreateAuth } from 'controllers/auth-controller';
 
 export const authOptions = {
   providers: [
@@ -17,12 +19,14 @@ export const authOptions = {
       async authorize(credentials) {
         // console.log(credentials);
 
-        const { data } = await fetchApi.post('/auth/user', {
-          email: credentials?.email,
-        });
+        // const user = await findOrCreateAuth(credentials?.email!);
+
+        // console.log({ user });
+
         return {
-          id: data.userId,
-          email: data.email.toLocaleLowerCase(),
+          id: 'user.userId',
+          email: 'user.email.toLocaleLowerCase()',
+          name: 'Ayrton',
         };
       },
     }),
@@ -50,10 +54,13 @@ export const authOptions = {
 
         switch (account.type) {
           case 'oauth':
-            const { data } = await fetchApi.post('/auth/user', {
-              email: user.email,
-            });
-            token.user = { ...data };
+            const data = await findOrCreateAuth(user.email);
+
+            const userData = {
+              id: data.data.userId,
+              email: data.data.email,
+            };
+            token.user = { ...userData };
 
             break;
           case 'credentials':

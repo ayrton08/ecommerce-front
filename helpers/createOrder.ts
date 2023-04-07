@@ -1,7 +1,6 @@
 import { ICartProduct } from 'interfaces';
 
 export const createNewOrder = (orderProduct: ICartProduct[], total: number) => {
-  console.log({ orderProduct });
   const order = {
     items: [
       total,

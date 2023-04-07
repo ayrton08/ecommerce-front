@@ -33,23 +33,4 @@ const ProfilePage = () => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async ({ req }) => {
-  const session: any = await getSession({ req });
-
-  console.log({ session });
-
-  if (!session) {
-    return {
-      redirect: {
-        destination: '/auth/login?page=/orders/history',
-        permanent: false,
-      },
-    };
-  }
-
-  return {
-    props: {},
-  };
-};
-
 export default ProfilePage;

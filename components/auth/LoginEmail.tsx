@@ -85,8 +85,13 @@ export const LoginEmail = ({ handler, providers }: Props) => {
                 color="primary"
                 sx={{ mb: 1 }}
                 onClick={() => signIn(provider.id)}
+                className="bg-black/90 flex gap-2 rounded-3xl font-bold text-white hover:bg-black/80"
               >
-                {provider.name}
+                <i
+                  className="bx bxl-github bx-sm"
+                  style={{ color: '#ffffff' }}
+                />
+                <span>{provider.name}</span>
               </Button>
             );
           })}

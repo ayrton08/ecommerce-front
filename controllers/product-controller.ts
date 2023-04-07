@@ -26,7 +26,6 @@ export const findProductsWithPagination = async (
     length: limit,
     offset: offset,
   });
-  console.log(results);
 
   const allProducts = results.hits.map((p: IProductResponse) => ({
     description: p.Description,
@@ -41,7 +40,7 @@ export const findProductsWithPagination = async (
   return allProducts;
 };
 
-export const syncAlgoliaWithAirtable = async (limit, res) => {
+export const syncAlgoliaWithAirtable = async (limit: any, res: any) => {
   airtableBase('Products')
     .select({
       pageSize: limit,

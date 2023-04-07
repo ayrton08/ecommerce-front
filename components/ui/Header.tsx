@@ -17,7 +17,7 @@ import {
 import { AuthContext } from 'context/auth';
 
 export const Header = () => {
-  const data = useMe('/me');
+  // const data = useMe('/me');
 
   const { numberOfItems } = useContext(CartContext);
 
@@ -50,9 +50,9 @@ export const Header = () => {
           <Searcher />
         </Navbar.Content>
         <Navbar.Content>
-          <Text h1 size={19} weight="bold" color="white">
+          {/* <Text h1 size={19} weight="bold" color="white">
             {data?.data?.name}
-          </Text>
+          </Text> */}
 
           <Link href="/cart">
             <IconButton>
@@ -84,7 +84,7 @@ export const Header = () => {
                       Signed in as
                     </Text>
                     <Text b color="success" css={{ d: 'flex' }}>
-                      {data?.data?.email}
+                      {user!.email}
                     </Text>
                   </div>
                 </Dropdown.Item>
@@ -133,10 +133,6 @@ export const Header = () => {
                   <Link
                     href={'/'}
                     onClick={logout}
-                    // onClick={() => {
-                    //   removeToken();
-                    //   setLogged(false);
-                    // }}
                     className="text-danger hover:text-white grid font-bold"
                   >
                     Logout
