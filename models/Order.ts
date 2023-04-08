@@ -31,9 +31,18 @@ export default class Order {
     }
   }
 
-  async updateStatusPaid(status: boolean): Promise<void> {
-    this.order.isPaid = status;
-    await this.save();
+  static async updateStatusPaid(id: string): Promise<{
+    userId: string;
+  }> {
+    const order = collection.doc(id);
+
+    await order.update({ isPaid: true });
+
+    const user = (await order.get()).data();
+
+    return {
+      userId: user!.user,
+    };
   }
 
   // async setLinkToPay(link: string): Promise<void> {

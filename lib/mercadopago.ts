@@ -4,7 +4,7 @@ mercadopago.configure({
   access_token: process.env.MERCADO_PAGO,
 });
 
-export async function getMerchantOrder(id: any) {
+export async function getMerchantOrder(id: string) {
   try {
     const res = await mercadopago.merchant_orders.get(id);
     return res.body;

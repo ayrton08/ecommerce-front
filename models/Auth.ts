@@ -109,9 +109,9 @@ export class Auth {
       console.log(error);
     }
   }
-  static async checkUserEmail(email: string) {
+  static async getUserId(id: string) {
     try {
-      const user = await collection.where('email', '==', email).get();
+      const user = await collection.where('userId', '==', id).get();
 
       if (!user.empty) {
         return user.docs[0].data();

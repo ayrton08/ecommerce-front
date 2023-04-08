@@ -21,6 +21,8 @@ import NextLink from 'next/link';
 import { IOrder } from '../../interfaces/order';
 import { getSession } from 'next-auth/react';
 import { Order } from 'models';
+import { fetchApi } from 'api';
+import { useRouter } from 'next/router';
 
 interface Props {
   order: IOrder;
@@ -28,6 +30,16 @@ interface Props {
 
 const OrderPage: NextPage<Props> = ({ order }) => {
   const { shippingAddress } = order;
+
+  const router = useRouter();
+
+  const onPayment = async () => {
+    const { data } = await fetchApi.post('/orders/payment', { id: order.id });
+    if (data.error) {
+      // todo: mostrar modal que algo salio mal
+    }
+    router.push(data.link);
+  };
 
   return (
     <ShopLayout
@@ -127,6 +139,7 @@ const OrderPage: NextPage<Props> = ({ order }) => {
                   />
                 ) : (
                   <Button
+                    onClick={onPayment}
                     fullWidth
                     className="rounded-3xl bg-blue-500 text-white font-bold text-lg hover:bg-blue-600"
                   >
