@@ -4,7 +4,7 @@ import { CartContext, cartReducer } from './';
 import cookie from 'js-cookie';
 import { IOrder, IShippingAddress } from 'interfaces/order';
 import cookies from 'js-cookie';
-import fetchApi from '../../api/fetchApi';
+import fetchApi from '../../fetcher/fetchApi';
 import axios from 'axios';
 
 export interface ICartState {

@@ -1,4 +1,4 @@
-import { fetchApi } from 'api';
+import { fetchApi } from 'fetcher';
 import { IUser } from 'interfaces/user';
 import { FC, useReducer, useEffect } from 'react';
 import { AuthContext, authReducer } from './';
