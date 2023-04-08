@@ -44,7 +44,7 @@ export const LoginCode = ({ email, onClick }: LoginCodeProps) => {
   return (
     <Basic
       icon={<LoginIcon className="w-2/3 lg:w-full self-center" />}
-      color="md:bg-dark_light relative "
+      // color="md:bg-dark_light relative "
     >
       <CardTitle>Login</CardTitle>
       <ContainerCard>
@@ -60,6 +60,7 @@ export const LoginCode = ({ email, onClick }: LoginCodeProps) => {
         >
           {({ values, handleChange, setFieldValue, errors }) => (
             <Form className="form-control" onClick={() => {}}>
+              {!errors.code && <span className="w-full h-[24px] my-2"></span>}
               <UserField
                 title="Your Code"
                 label="Code"
@@ -77,7 +78,7 @@ export const LoginCode = ({ email, onClick }: LoginCodeProps) => {
                 <Button
                   data-test="btn-code"
                   type="button"
-                  className="w-12"
+                  className="w-20 ml-1"
                   onClick={() => {
                     pasteCode(setFieldValue);
                   }}
@@ -85,20 +86,22 @@ export const LoginCode = ({ email, onClick }: LoginCodeProps) => {
                   <PasteIcon />
                 </Button>
               </UserField>
-              {!errors.code && <span className="w-full h-[24px] my-2"></span>}
-              <Button type="submit">Ingresar</Button>
-              <div className="lg:absolute bottom-6 right-10 lg:w-[367px] flex items-center pt-4 ">
-                <span className="w-full text-center bg-dark justify-center rounded-l-md h-[64px] font-bold flex flex-col">
+
+              <Button type="submit" className="mt-4">
+                Ingresar
+              </Button>
+              <div className=" flex items-center pt-4 ">
+                <span className="w-full text-center border border-blue-500 justify-center rounded-l-3xl h-[64px] font-bold flex flex-col">
                   We send your code to{' '}
                   <span className="text-green-500">{email}</span>
                 </span>
-                <ButtonDark
+                <Button
                   onClick={onClick}
                   type="button"
-                  className="w-20 rounded-l-none bg-primaryA h-[64px]"
+                  className="w-24 rounded-l-none h-[64px]"
                 >
                   Change email
-                </ButtonDark>
+                </Button>
               </div>
             </Form>
           )}

@@ -10,9 +10,9 @@ const theme = createTheme({
   type: 'light',
 });
 
-function MyApp({ Component, pageProps }: any) {
+function MyApp({ Component, pageProps: { session, ...pageProps } }: any) {
   return (
-    <SessionProvider>
+    <SessionProvider session={session}>
       <AuthProvider>
         <CartProvider>
           <ThemeProvider theme={lightTheme}>

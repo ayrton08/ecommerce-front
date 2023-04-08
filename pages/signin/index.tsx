@@ -36,6 +36,7 @@ export default function Signin() {
 
   useEffect(() => {
     getProviders().then((prov) => {
+      console.log({ prov });
       setProviders(prov!);
     });
   }, []);

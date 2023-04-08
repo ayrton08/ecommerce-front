@@ -21,7 +21,7 @@ import NextLink from 'next/link';
 import { IOrder } from '../../interfaces/order';
 import { getSession } from 'next-auth/react';
 import { Order } from 'models';
-import { fetchApi } from 'api';
+import { fetchApi } from 'fetcher';
 import { useRouter } from 'next/router';
 
 interface Props {
