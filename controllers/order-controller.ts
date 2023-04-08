@@ -96,7 +96,7 @@ export const makePayment = async (
     const pref = await createPreference({
       items,
       external_reference: order.id,
-      notification_url: 'http://localhost:3000/api/ipn/mercadopago',
+      notification_url: 'https://aj-market.vercel.app/api/ipn/mercadopago',
     });
 
     console.log({ pref });
