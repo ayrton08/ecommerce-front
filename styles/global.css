@@ -7,7 +7,7 @@
 }
 
 .error {
-  @apply bg-danger font-bold text-sm border-2 border-danger text-white rounded-md my-2 pl-2;
+  @apply text-sm border border-danger text-danger rounded-3xl my-2 pl-2 py-1;
 }
 
 .card-result {
@@ -160,4 +160,3 @@ p {
   border: 1px solid rgba(7, 154, 240, 0.1);
   box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.2);
 }
-

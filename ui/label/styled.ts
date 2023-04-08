@@ -6,11 +6,11 @@ interface TitleProps {
 }
 
 export const ContainerInput: FC<any> = tw.label`
-    input-group w-full rounded-3xl
+    flex w-full rounded-3xl
 `;
 
 export const Label: FC<TitleProps | any> = tw.span`
-    w-28 bg-dark/60 text-white rounded-l-3xl
+    w-28 bg-dark/60 text-white rounded-l-3xl flex text-center justify-center items-center
 `;
 
 export const LabelPrimary: FC<TitleProps | any> = tw.span`

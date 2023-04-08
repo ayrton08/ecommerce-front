@@ -4,7 +4,7 @@ import { FC } from 'react';
 import { ButtonProps } from 'interfaces/ui';
 
 export const Button: FC<ButtonProps> = tw.button`
-rounded-3xl bg-blue-500 w-full text-white font-bold text-lg hover:bg-blue-600 py-2
+flex justify-center items-center rounded-3xl transition-all duration-200 bg-blue-500 text-white font-bold text-base py-1 hover:bg-blue-600
 
     ${(props) => props.className}
 `;

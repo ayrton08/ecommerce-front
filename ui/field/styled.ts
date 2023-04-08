@@ -4,8 +4,8 @@ import { FC } from 'react';
 export const Field: FC<any> = tw.input`
     ${(props) =>
       props.disabled
-        ? 'input input-bordered w-full disabled:placeholder:text-black disabled:hover:cursor-default'
-        : `input input-bordered w-full bg-black/40 text-black placeholder:text-black h-[48px] ${props.className}`}
+        ? ' w-full disabled:placeholder:text-black disabled:hover:cursor-default'
+        : `input input-bordered rounded-r-3xl rounded-l-none w-full bg-black/40 text-black placeholder:text-black h-[48px]  ${props.className}`}
 `;
 
 export const FieldSearch: FC<any> = tw.input`
