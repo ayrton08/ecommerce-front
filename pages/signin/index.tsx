@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState, useContext } from 'react';
 
 import { useLogin } from 'hooks';
@@ -7,6 +6,7 @@ import { LoginEmailType } from 'interfaces/signin';
 import { ShopLayout } from '../../components/layouts/ShopLayout';
 import { getProviders, getSession } from 'next-auth/react';
 import { AuthContext } from '../../context/auth/AuthContext';
+import { useRouter } from 'next/router';
 
 export default function Signin() {
   const [email, setEmail] = useState<any>();
@@ -14,6 +14,14 @@ export default function Signin() {
   const [status, setStatus] = useState(false);
 
   const { isLoggedIn } = useContext(AuthContext);
+
+  const router = useRouter();
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      router.push('/');
+    }
+  }, [isLoggedIn, router]);
 
   const { getCode } = useLogin();
 
@@ -49,21 +57,21 @@ export default function Signin() {
   );
 }
 
-export const getServerSideProps: any = async ({ req, query }: any) => {
-  const session = await getSession({ req });
+// export const getServerSideProps: any = async ({ req, query }: any) => {
+//   const session = await getSession({ req });
 
-  const { page = '/' } = query;
+//   const { page = '/' } = query;
 
-  if (session) {
-    return {
-      redirect: {
-        destination: page,
-        permanent: false,
-      },
-    };
-  }
+//   if (session) {
+//     return {
+//       redirect: {
+//         destination: page,
+//         permanent: false,
+//       },
+//     };
+//   }
 
-  return {
-    props: {},
-  };
-};
+//   return {
+//     props: {},
+//   };
+// };
