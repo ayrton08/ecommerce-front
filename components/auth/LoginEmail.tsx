@@ -73,46 +73,47 @@ export const LoginEmail = ({ handler, providers }: Props) => {
           className="w-full"
         >
           <Divider sx={{ width: '100%', mb: 2 }} />
-          {Object.values(providers).map((provider: any) => {
-            if (provider.id === 'credentials')
-              return <div key="credentials"></div>;
+          {providers &&
+            Object.values(providers).map((provider: any) => {
+              if (provider.id === 'credentials')
+                return <div key="credentials"></div>;
 
-            if (provider.id === 'github') {
-              return (
-                <Button
-                  key={provider.id}
-                  variant="outlined"
-                  fullWidth
-                  color="primary"
-                  sx={{ mb: 1 }}
-                  onClick={() => signIn(provider.id)}
-                  className="bg-black/90 flex gap-2 rounded-3xl font-bold text-white hover:bg-black/80 text-sm"
-                >
-                  <i
-                    className="bx bxl-github bx-sm"
-                    style={{ color: '#ffffff' }}
-                  />
-                  <span>{provider.name}</span>
-                </Button>
-              );
-            }
-            if (provider.id === 'google') {
-              return (
-                <Button
-                  key={provider.id}
-                  variant="outlined"
-                  fullWidth
-                  color="primary"
-                  sx={{ mb: 1 }}
-                  onClick={() => signIn(provider.id)}
-                  className="bg-white flex gap-2 rounded-3xl font-bold  hover:bg-black/10 text-sm"
-                >
-                  <GoogleIcon className="w-6" />
-                  <span>{provider.name}</span>
-                </Button>
-              );
-            }
-          })}
+              if (provider.id === 'github') {
+                return (
+                  <Button
+                    key={provider.id}
+                    variant="outlined"
+                    fullWidth
+                    color="primary"
+                    sx={{ mb: 1 }}
+                    onClick={() => signIn(provider.id)}
+                    className="bg-black/90 flex gap-2 rounded-3xl font-bold text-white hover:bg-black/80 text-sm"
+                  >
+                    <i
+                      className="bx bxl-github bx-sm"
+                      style={{ color: '#ffffff' }}
+                    />
+                    <span>{provider.name}</span>
+                  </Button>
+                );
+              }
+              if (provider.id === 'google') {
+                return (
+                  <Button
+                    key={provider.id}
+                    variant="outlined"
+                    fullWidth
+                    color="primary"
+                    sx={{ mb: 1 }}
+                    onClick={() => signIn(provider.id)}
+                    className="bg-white flex gap-2 rounded-3xl font-bold  hover:bg-black/10 text-sm"
+                  >
+                    <GoogleIcon className="w-6" />
+                    <span>{provider.name}</span>
+                  </Button>
+                );
+              }
+            })}
         </Grid>
       </ContainerCard>
     </Basic>
