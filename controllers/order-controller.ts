@@ -2,8 +2,11 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import { IOrder } from 'interfaces';
 import { Order } from '../models';
 import { JwtPayload } from 'jsonwebtoken';
-import { getMerchantOrder } from 'lib/mercadopago';
-import { getSession } from 'next-auth/react';
+import { createPreference, getMerchantOrder } from 'lib/mercadopago';
+import { getSession, useSession } from 'next-auth/react';
+import { transformDataToPreference } from '../utils/transformDataToPreference';
+import { sendEmail } from 'lib/sendGrid';
+import { Auth } from 'models/Auth';
 
 type Response =
   | {
@@ -19,6 +22,10 @@ type Response =
   | {
       error: null;
       orders: IOrder[];
+    }
+  | {
+      error: null;
+      link: string;
     };
 
 export const createOrder = async (
@@ -73,75 +80,62 @@ export const getOrderById = async (
   }
 };
 
-// export const createOrder = async ({
-//   productId,
-//   token,
-//   aditionalInfo,
-// }: CreateOrder) => {
-//   const product = await products.getObject(productId);
+export const makePayment = async (
+  req: NextApiRequest,
+  res: NextApiResponse<Response>
+) => {
+  const { id } = req.body;
 
-//   if (!product) {
-//     throw new Error('Product not found');
-//   }
+  try {
+    const order: IOrder = await Order.findById(id!.toString());
 
-//   const order = await Order.createNewOrder({
-//     aditionalInfo,
-//     productId,
-//     userId: token.userId,
-//     status: 'pending',
-//     createdAt: new Date(),
-//   });
+    if (!order) throw new Error("Order doesn't exist");
 
-//   const pref = await createPreference({
-//     ...aditionalInfo,
-//     external_reference: order.id,
-//   });
+    const items = transformDataToPreference(order);
 
-//   await order.updateOrder(order.id, pref.init_point);
+    const pref = await createPreference({
+      items,
+      external_reference: order.id,
+      notification_url: 'https://aj-market.vercel.app/api/ipn/mercadopago',
+    });
 
-//   const orderId = order.id;
-//   const url = pref.init_point;
+    console.log({ pref });
 
-//   return {
-//     url,
-//     orderId,
-//   };
-// };
-
-// export const findOrderById = async (orderId: string): Promise<Order> => {
-//   const order = new Order(orderId);
-//   await order.pull();
-//   return order;
-// };
+    return res.status(201).json({ error: null, link: pref.init_point });
+  } catch (error: any) {
+    console.log(error);
+    res.status(400).json({ error: { code: 400, message: error.message } });
+  }
+};
 
 export const updateStatusPayment = async (
-  topic: string,
-  id: string
+  req: NextApiRequest,
+  res: NextApiResponse
 ): Promise<void> => {
+  const id = req.query.id as string;
+  const topic = req.query.topic as string;
+
   if (topic === 'merchant_order') {
     const order = await getMerchantOrder(id);
     if (order.order_status === 'paid') {
       const orderId = order.external_reference;
 
-      // const myOrder = await findOrderById(orderId);
+      const { userId } = await Order.updateStatusPaid(orderId);
 
-      // const user = await findUserById(myOrder.data.userId);
-
-      //   myOrder.data.status = 'closed';
-
-      //   if (myOrder.data.status === 'closed' && order.order_status === 'paid') {
-      //     try {
-      //       sendEmail({
-      //         addressee: user.data.email,
-      //         message: 'The payment was successful',
-      //         title: 'Payment status',
-      //       });
-      //     } catch (error) {
-      //       console.error(error.message);
-      //     }
-      //   }
-      //   await myOrder.push();
-      // }
+      if (userId) {
+        try {
+          const user = await Auth.getUserId(userId);
+          if (user) {
+            sendEmail({
+              addressee: user!.email,
+              message: 'The payment was successful',
+              title: 'Payment status',
+            });
+          }
+        } catch (error: any) {
+          console.error(error.message);
+        }
+      }
     }
   }
 };
