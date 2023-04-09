@@ -1,14 +1,14 @@
 import { Formik, Form } from 'formik';
 
 import { LoginIcon } from '../../ui/icons';
-import { Basic, Button, ButtonDark, UserField } from 'ui';
-import { LoginCodeProps } from 'interfaces/signin';
+import { Basic, Button, UserField } from 'ui';
 import { CardTitle } from 'ui/label/styled';
 import { ContainerCard } from 'ui/wrappers/styled';
 import { PasteIcon } from 'ui/icons/boxicons';
 import * as yup from 'yup';
-import { useLogin } from 'hooks';
 import { signIn } from 'next-auth/react';
+import { pasteCode } from 'utils/pasteClipBoard';
+import { FC, MouseEventHandler } from 'react';
 
 const initialValues = {
   code: '',
@@ -22,30 +22,18 @@ const schema = yup.object({
     .required('Code is required'),
 });
 
-export const LoginCode = ({ email, onClick }: LoginCodeProps) => {
-  const pasteCode = async (setFieldValue: any) => {
-    const value = await navigator.clipboard.readText();
-    const copiedText = Number(value);
-    const code = isNaN(copiedText);
-    if (!code) {
-      setFieldValue('code', copiedText);
-    }
-  };
-  const { getToken } = useLogin();
+export interface Props {
+  email: string;
+  onClick: MouseEventHandler;
+}
 
+export const LoginCode: FC<Props> = ({ email, onClick }) => {
   const handlerCode = async (e: any) => {
-    // const res = await getToken({ ...e });
-
     await signIn('credentials', { ...e });
-
-    // return res;
   };
 
   return (
-    <Basic
-      icon={<LoginIcon className="w-2/3 lg:w-full self-center" />}
-      // color="md:bg-dark_light relative "
-    >
+    <Basic icon={<LoginIcon className="w-2/3 lg:w-full self-center" />}>
       <CardTitle>Login</CardTitle>
       <ContainerCard>
         <Formik
