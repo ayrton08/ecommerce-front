@@ -7,32 +7,19 @@ import { ShopLayout } from '../../components/layouts/ShopLayout';
 import { getProviders, getSession } from 'next-auth/react';
 import { AuthContext } from '../../context/auth/AuthContext';
 import { useRouter } from 'next/router';
+import { GetServerSideProps } from 'next';
+import { getServerSession } from 'next-auth';
 
 export default function Signin() {
-  const [email, setEmail] = useState<any>();
-
-  const [status, setStatus] = useState(false);
-
-  const { isLoggedIn } = useContext(AuthContext);
-
-  const router = useRouter();
-
-  useEffect(() => {
-    if (isLoggedIn) {
-      router.push('/');
-    }
-  }, [isLoggedIn, router]);
+  const [providers, setProviders] = useState({});
+  const [email, setEmail] = useState<string>('');
 
   const { getCode } = useLogin();
 
   const handlerEmail = async ({ email }: LoginEmailType) => {
-    // await signIn('credentials', { email });
-    setStatus(true);
     setEmail(email);
     await getCode({ email });
   };
-
-  const [providers, setProviders] = useState({});
 
   useEffect(() => {
     getProviders().then((prov) => {
@@ -43,36 +30,33 @@ export default function Signin() {
 
   return (
     <ShopLayout title="Signin" pageDescription="Page to log in on the web">
-      {!status ? (
-        <>
-          <LoginEmail handler={handlerEmail} providers={providers} />
-        </>
+      {!email ? (
+        <LoginEmail handler={handlerEmail} providers={providers} />
       ) : (
-        <LoginCode
-          logged={isLoggedIn}
-          email={email}
-          onClick={() => setStatus(false)}
-        />
+        <LoginCode email={email} onClick={() => setEmail('')} />
       )}
     </ShopLayout>
   );
 }
 
-// export const getServerSideProps: any = async ({ req, query }: any) => {
-//   const session = await getSession({ req });
+export const getServerSideProps: GetServerSideProps = async ({
+  req,
+  query,
+}: any) => {
+  const session = await getSession({ req });
 
-//   const { page = '/' } = query;
+  const { page = '/' } = query;
 
-//   if (session) {
-//     return {
-//       redirect: {
-//         destination: page,
-//         permanent: false,
-//       },
-//     };
-//   }
+  if (session) {
+    return {
+      redirect: {
+        destination: page,
+        permanent: false,
+      },
+    };
+  }
 
-//   return {
-//     props: {},
-//   };
-// };
+  return {
+    props: {},
+  };
+};

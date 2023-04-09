@@ -1,8 +1,6 @@
-/* eslint-disable react-hooks/rules-of-hooks */
 import { GoogleIcon, LoginIcon } from '../../ui/icons';
 import { Basic } from '../../ui/wrappers/Basic';
 import { UserField } from 'ui/field/Field';
-// import { Button } from 'ui/button/styled';
 
 import { Formik, Form } from 'formik';
 import { ContainerCard } from 'ui/wrappers/styled';
@@ -11,6 +9,7 @@ import * as yup from 'yup';
 import { Divider, Grid } from '@mui/material';
 import { signIn } from 'next-auth/react';
 import { Button } from 'ui';
+import { FC } from 'react';
 
 const initialValues = {
   email: '',
@@ -25,12 +24,9 @@ interface Props {
   providers: any;
 }
 
-export const LoginEmail = ({ handler, providers }: Props) => {
+export const LoginEmail: FC<Props> = ({ handler, providers }) => {
   return (
-    <Basic
-      icon={<LoginIcon className="md:w-3/4 w-2/3  self-center" />}
-      // color="md:bg-dark_light"
-    >
+    <Basic icon={<LoginIcon className="md:w-3/4 w-2/3  self-center" />}>
       <CardTitle>Login</CardTitle>
       <ContainerCard>
         <Formik
@@ -40,7 +36,7 @@ export const LoginEmail = ({ handler, providers }: Props) => {
           }}
           validationSchema={schema}
         >
-          {({ handleChange, values, errors }) => (
+          {({ handleChange, errors }) => (
             <Form className="form-control w-full flex flex-col">
               {!errors.email && <span className="w-full h-[24px] my-2"></span>}
               <UserField
