@@ -2,13 +2,6 @@
 const withSvgr = require('next-svgr');
 
 const nextConfig = withSvgr({
-  functions: {
-    myFunction: {
-      memory: 512,
-      maxDuration: 30,
-    },
-  },
-
   reactStrictMode: true,
   swcMinify: true,
   compiler: {
