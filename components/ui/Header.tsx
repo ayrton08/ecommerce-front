@@ -15,6 +15,7 @@ import {
   SupportIcon,
 } from 'ui/icons/boxicons';
 import { AuthContext } from 'context/auth';
+import { Button } from 'ui';
 
 export const Header = () => {
   // const data = useMe('/me');
@@ -121,25 +122,18 @@ export const Header = () => {
                   key="logout"
                   withDivider
                   color="error"
+                  className="text-danger flex hover:text-white font-bold"
                   icon={<LogoutIcon />}
                 >
-                  <Link
-                    href={'/'}
-                    onClick={logout}
-                    className="text-danger hover:text-white grid font-bold"
-                  >
+                  <Link href={'/'} onClick={logout}>
                     Logout
                   </Link>
                 </Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>
           ) : (
-            <Link
-              className="block rounded-3xl btn-color px-6 py-3 md:text-md font-medium text-white transition "
-              href="/signin"
-              data-test="btn-login"
-            >
-              Login
+            <Link href="/signin" data-test="btn-login">
+              <Button className="py-2 px-4">Login</Button>
             </Link>
           )}
         </Navbar.Content>
