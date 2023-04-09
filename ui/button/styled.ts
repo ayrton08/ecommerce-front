@@ -5,7 +5,7 @@ import { ButtonProps } from 'interfaces/ui';
 
 export const Button: FC<ButtonProps> = tw.button`
 flex justify-center items-center rounded-3xl transition-all duration-200 bg-blue-500 text-white font-bold text-base py-1 hover:bg-blue-600
-focus:bg-blue-400 text-white font-bold py-2 px-4 rounded hover:shadow focus:shadow
+focus:bg-blue-400 text-white font-bold hover:shadow focus:shadow
 
     ${(props) => props.className}
 `;
