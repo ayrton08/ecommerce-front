@@ -99,8 +99,6 @@ export const makePayment = async (
       notification_url: 'https://aj-market.vercel.app/api/ipn/mercadopago',
     });
 
-    console.log({ pref });
-
     return res.status(201).json({ error: null, link: pref.init_point });
   } catch (error: any) {
     console.log(error);

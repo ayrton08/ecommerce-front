@@ -14,7 +14,7 @@ const ProductPage = () => {
   const { query } = useRouter();
   const product: IProduct = useProduct(query.itemId as string);
 
-  const user = useMe('/me');
+  // const user = useMe('/me');
 
   // const { data } = usePagination(product?.type);
 

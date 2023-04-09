@@ -7,7 +7,8 @@ export interface UserType {
 }
 export interface IUser {
   id: string;
-  name: string;
+  fullname: string;
+  image: string;
   email: string;
   password?: string;
   role: string;
