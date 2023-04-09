@@ -15,6 +15,7 @@ import {
   SupportIcon,
 } from 'ui/icons/boxicons';
 import { AuthContext } from 'context/auth';
+import { Button } from 'ui';
 
 export const Header = () => {
   // const data = useMe('/me');
@@ -27,7 +28,7 @@ export const Header = () => {
     <>
       <ModalMenu />
 
-      <div className="bg-black/80 h-[74px] flex px-6 sticky top-0 w-full z-50 justify-between">
+      <div className="bg-black/80 h-[65px] flex px-6 sticky top-0 w-full z-50 justify-between">
         <Navbar.Brand className="flex gap-4 nav">
           <Link href="/" aria-label="Button Home">
             <Text
@@ -50,9 +51,7 @@ export const Header = () => {
           <Searcher />
         </Navbar.Content>
         <Navbar.Content>
-          {/* <Text h1 size={19} weight="bold" color="white">
-            {data?.data?.name}
-          </Text> */}
+          <h3 className="text-white font-bold w-28">{user?.fullname || ''}</h3>
 
           <Link href="/cart">
             <IconButton>
@@ -65,12 +64,7 @@ export const Header = () => {
           {isLoggedIn ? (
             <Dropdown isBordered>
               <Dropdown.Button className="px-0">
-                <Avatar
-                  size="md"
-                  bordered
-                  color="primary"
-                  src="https://qlu.ac.pa/wp-content/uploads/2019/04/kisspng-avatar-user-medicine-s.png"
-                />
+                <Avatar size="md" bordered color="primary" src={user?.image} />
               </Dropdown.Button>
               <Dropdown.Menu
                 aria-label="Static Actions"
@@ -128,25 +122,18 @@ export const Header = () => {
                   key="logout"
                   withDivider
                   color="error"
+                  className="text-danger flex hover:text-white font-bold"
                   icon={<LogoutIcon />}
                 >
-                  <Link
-                    href={'/'}
-                    onClick={logout}
-                    className="text-danger hover:text-white grid font-bold"
-                  >
+                  <Link href={'/'} onClick={logout}>
                     Logout
                   </Link>
                 </Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>
           ) : (
-            <Link
-              className="block rounded-3xl btn-color px-6 py-3 md:text-md font-medium text-white transition "
-              href="/signin"
-              data-test="btn-login"
-            >
-              Login
+            <Link href="/signin" data-test="btn-login">
+              <Button className="py-2 px-4">Login</Button>
             </Link>
           )}
         </Navbar.Content>

@@ -25,8 +25,6 @@ export default function handler(
 
 async function test(req: NextApiRequest, res: NextApiResponse<Data>) {
   try {
-    console.log('api cookies', req.cookies);
-
     // const user = await findOrCreateAuth(req.body.email);
     return res.status(201).json(req.cookies as any);
   } catch (error: any) {

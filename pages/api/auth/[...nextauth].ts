@@ -3,6 +3,7 @@ import GithubProvider from 'next-auth/providers/github';
 import GoogleProvider from 'next-auth/providers/google';
 import Credentials from 'next-auth/providers/credentials';
 import { createToken, findOrCreateAuth } from 'controllers/auth-controller';
+import Image from 'next/image';
 
 export const authOptions = {
   providers: [
@@ -62,10 +63,12 @@ export const authOptions = {
         switch (account.type) {
           case 'oauth':
             const data = await findOrCreateAuth(user.email);
-
+            console.log({ user });
             const userData = {
               id: data.data.userId,
               email: data.data.email,
+              image: user.image,
+              fullname: user.name,
             };
             token.user = { ...userData };
 
