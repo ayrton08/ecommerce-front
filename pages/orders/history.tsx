@@ -89,7 +89,7 @@ export const getServerSideProps: GetServerSideProps = async ({ req }) => {
   if (!session) {
     return {
       redirect: {
-        destination: '/auth/login?page=/orders/history',
+        destination: '/signin?page=/orders/history',
         permanent: false,
       },
     };

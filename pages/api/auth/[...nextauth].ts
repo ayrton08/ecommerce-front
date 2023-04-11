@@ -63,7 +63,6 @@ export const authOptions = {
         switch (account.type) {
           case 'oauth':
             const data = await findOrCreateAuth(user.email);
-            console.log({ user });
             const userData = {
               id: data.data.userId,
               email: data.data.email,

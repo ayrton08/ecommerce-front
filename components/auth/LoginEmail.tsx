@@ -7,10 +7,10 @@ import { ContainerCard } from 'ui/wrappers/styled';
 import { CardTitle } from 'ui/label/styled';
 import * as yup from 'yup';
 import { Divider, Grid } from '@mui/material';
-import { signIn, useSession } from 'next-auth/react';
-import { Button, Loader } from 'ui';
-import { FC, useContext } from 'react';
-import { AuthContext } from '../../context/auth/AuthContext';
+import { signIn } from 'next-auth/react';
+import { Button } from 'ui';
+import { FC } from 'react';
+import { useRouter } from 'next/router';
 
 const initialValues = {
   email: '',
@@ -26,7 +26,14 @@ interface Props {
 }
 
 export const LoginEmail: FC<Props> = ({ handler, providers }) => {
-  const { status } = useSession();
+  const router = useRouter();
+
+  const onSignin = async (provider: string) => {
+    signIn(provider);
+    const destination = router.query.page?.toString() || '/';
+    router.replace(destination);
+  };
+
   return (
     <Basic icon={<LoginIcon className="md:w-3/4 w-2/3  self-center" />}>
       <CardTitle>Login</CardTitle>
@@ -78,16 +85,14 @@ export const LoginEmail: FC<Props> = ({ handler, providers }) => {
                 return (
                   <Button
                     key={provider.id}
-                    onClick={() => signIn(provider.id)}
+                    onClick={() => onSignin(provider.id)}
                     className="bg-black/90 flex gap-2 rounded-3xl font-bold text-white hover:bg-black/80 text-sm mb-3"
                   >
                     <i
                       className="bx bxl-github bx-sm"
                       style={{ color: '#ffffff' }}
                     />
-                    <span>
-                      {status === 'loading' ? <Loader /> : provider.name}
-                    </span>
+                    <span>{provider.name}</span>
                   </Button>
                 );
               }
@@ -95,7 +100,7 @@ export const LoginEmail: FC<Props> = ({ handler, providers }) => {
                 return (
                   <Button
                     key={provider.id}
-                    onClick={() => signIn(provider.id)}
+                    onClick={() => onSignin(provider.id)}
                     className="bg-white gap-2 hover:bg-black/10 text-sm text-black border border-black/40 "
                   >
                     <GoogleIcon className="w-6" />
