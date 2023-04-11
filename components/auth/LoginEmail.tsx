@@ -7,9 +7,10 @@ import { ContainerCard } from 'ui/wrappers/styled';
 import { CardTitle } from 'ui/label/styled';
 import * as yup from 'yup';
 import { Divider, Grid } from '@mui/material';
-import { signIn } from 'next-auth/react';
-import { Button } from 'ui';
-import { FC } from 'react';
+import { signIn, useSession } from 'next-auth/react';
+import { Button, Loader } from 'ui';
+import { FC, useContext } from 'react';
+import { AuthContext } from '../../context/auth/AuthContext';
 
 const initialValues = {
   email: '',
@@ -25,6 +26,7 @@ interface Props {
 }
 
 export const LoginEmail: FC<Props> = ({ handler, providers }) => {
+  const { status } = useSession();
   return (
     <Basic icon={<LoginIcon className="md:w-3/4 w-2/3  self-center" />}>
       <CardTitle>Login</CardTitle>
@@ -83,7 +85,9 @@ export const LoginEmail: FC<Props> = ({ handler, providers }) => {
                       className="bx bxl-github bx-sm"
                       style={{ color: '#ffffff' }}
                     />
-                    <span>{provider.name}</span>
+                    <span>
+                      {status === 'loading' ? <Loader /> : provider.name}
+                    </span>
                   </Button>
                 );
               }
