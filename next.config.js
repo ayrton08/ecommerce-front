@@ -39,6 +39,11 @@ const nextConfig = withSvgr({
         hostname: 'media-www.canadiantire.ca',
         pathname: '/*/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'lh3.googleusercontent.com',
+        pathname: '/*/**',
+      },
     ],
   },
 });
