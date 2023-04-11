@@ -28,13 +28,12 @@ export const CartList: FC<Props> = ({ editable = false }) => {
     product.quantity = newQuantityValue;
     updateCartQuantity(product);
   };
-
   return (
     <>
       {cart.map((product) => (
-        <Grid container key={product.objectID} spacing={2} sx={{ mb: 1 }}>
+        <Grid container key={product.id} spacing={2} sx={{ mb: 1 }}>
           <Grid item xs={3}>
-            <Link component={NextLink} href={`/product/${product.objectID}`}>
+            <Link component={NextLink} href={`/product/${product.id}`}>
               <CardActionArea>
                 <CardMedia
                   className="w-32 h-32"

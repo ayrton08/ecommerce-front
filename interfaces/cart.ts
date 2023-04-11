@@ -4,7 +4,7 @@ export interface ICartProduct {
   type?: string;
   images: string;
   price: number;
-  objectID: string;
+  id: string;
   quantity: number;
 }
 

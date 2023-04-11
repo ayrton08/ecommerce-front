@@ -60,7 +60,7 @@ export const cartReducer = (
       return {
         ...state,
         cart: state.cart.map((product) => {
-          if (product.objectID !== action.payload.objectID) return product;
+          if (product.id !== action.payload.id) return product;
 
           // if (product.size !== action.payload.size) return product;
 
@@ -74,7 +74,7 @@ export const cartReducer = (
         cart: state.cart.filter(
           (product) =>
             !(
-              (product.objectID === action.payload.objectID)
+              (product.id === action.payload.id)
               // product.size === action.payload.size
             )
         ),

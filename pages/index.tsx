@@ -1,13 +1,11 @@
-import Head from 'next/head';
-
-import axios from 'axios';
 import { ProductFeatured } from 'components';
 import { Featured, Categories, Category } from 'ui';
 import { Divider } from 'ui/divider/styled';
-import { GetServerSideProps, GetStaticProps } from 'next';
+import { GetStaticProps } from 'next';
 import { FC } from 'react';
 import { IProduct } from '../interfaces/product';
 import { ShopLayout } from '../components/layouts/ShopLayout';
+import { fetchApi } from 'fetcher';
 
 interface Props {
   products: IProduct[];
@@ -43,11 +41,11 @@ const HomePage: FC<Props> = ({ products }) => {
       <Featured>
         {products.map((product: IProduct) => (
           <ProductFeatured
-            key={product.objectID}
+            key={product.id}
             title={product.name}
             price={product.price}
             image={product.images}
-            id={product.objectID}
+            id={product.id}
             category={product.type}
           />
         ))}
@@ -85,9 +83,7 @@ const HomePage: FC<Props> = ({ products }) => {
 };
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
-  const { data } = await axios.get(
-    'https://e-commerce-backend-jade.vercel.app/api/products'
-  );
+  const { data } = await fetchApi('/products');
 
   if (data.error)
     return {

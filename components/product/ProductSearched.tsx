@@ -1,8 +1,7 @@
 import React, { FC } from 'react';
-import { makeStyles } from '@mui/styles';
 import Image from 'next/image';
-import { Link } from '@mui/material';
 import { Button } from 'ui';
+import Link from 'next/link';
 
 interface Props {
   title: string;

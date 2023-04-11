@@ -25,7 +25,7 @@ export const Product = ({
     price,
     name: title,
     quantity: 1,
-    objectID: id,
+    id,
   });
 
   const onUpdateQuantity = (quantity: number) => {

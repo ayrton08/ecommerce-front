@@ -1,5 +1,5 @@
 import { AddCircleOutline, RemoveCircleOutline } from '@mui/icons-material';
-import { Box, Grid, IconButton, Typography } from '@mui/material';
+import { Box, IconButton, Typography } from '@mui/material';
 import { FC } from 'react';
 
 interface Props {

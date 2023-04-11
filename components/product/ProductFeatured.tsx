@@ -30,6 +30,7 @@ export const ProductFeatured = ({
           src={image}
           width={500}
           height={500}
+          priority
         />
       </Link>
       <div className={` bg-white rounded-b-lg ${recomended && 'py-0'}`}>

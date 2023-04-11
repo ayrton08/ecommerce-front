@@ -69,9 +69,8 @@ export const CartProvider = ({ children }: any) => {
   }, [state.cart]);
 
   const addProductToCart = (product: ICartProduct) => {
-    const productInCart = state.cart.some(
-      (p) => p.objectID === product.objectID
-    );
+    console.log({ product });
+    const productInCart = state.cart.some((p) => p.id === product.id);
 
     if (!productInCart) {
       return dispatch({
@@ -80,19 +79,8 @@ export const CartProvider = ({ children }: any) => {
       });
     }
 
-    const productInCartButDifferentSize = state.cart.some(
-      (p) => p.objectID === product.objectID
-    );
-
-    if (!productInCartButDifferentSize) {
-      return dispatch({
-        type: '[Cart] - Update products in cart',
-        payload: [...state.cart, product],
-      });
-    }
-
     const updatedProducts = state.cart.map((p) => {
-      if (p.objectID !== product.objectID) return p;
+      if (p.id !== product.id) return p;
 
       p.quantity += product.quantity;
 
@@ -137,7 +125,7 @@ export const CartProvider = ({ children }: any) => {
     const body: IOrder = {
       orderItems: state.cart.map((order) => ({
         ...order,
-        id: order.objectID,
+        id: order.id,
       })),
       shippingAddress: state.shippingAddress,
       numberOfItems: state.numberOfItems,

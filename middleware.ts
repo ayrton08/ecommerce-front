@@ -14,7 +14,6 @@ export async function middleware(req: NextRequest) {
   // }
 
   if (!session) {
-    console.log({ session });
     const requestedPage = req.nextUrl.pathname;
 
     const url = req.nextUrl.clone();
