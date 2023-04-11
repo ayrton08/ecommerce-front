@@ -1,5 +1,4 @@
-import { useMe } from 'hooks';
-import { Text, Navbar, Avatar } from '@nextui-org/react';
+import { Text, Navbar } from '@nextui-org/react';
 import { AcmeLogo } from 'ui/icons/Icon';
 import { useContext } from 'react';
 import Link from 'next/link';
@@ -18,8 +17,6 @@ import { Button } from 'ui';
 import { Dropdown } from './Dropdown';
 
 export const Header = () => {
-  // const data = useMe('/me');
-
   const { numberOfItems } = useContext(CartContext);
 
   const { user, isLoggedIn, logout } = useContext(AuthContext);
@@ -88,11 +85,20 @@ export const Header = () => {
                 </Dropdown.Item>
               </Link>
               <Link className="items-center grid text-white" href="/support">
-                <Dropdown.Item key="orders" icon={<SupportIcon />} withDivider>
+                <Dropdown.Item
+                  key="orders"
+                  icon={<SupportIcon />}
+                  withDivider
+                  className="bg-gray-900"
+                >
                   Support
                 </Dropdown.Item>
               </Link>
-              <Link className="items-center grid text-white" href="/support">
+              <Link
+                className="items-center grid text-white"
+                href="/"
+                onClick={logout}
+              >
                 <Dropdown.Item
                   key="logout"
                   color="error"

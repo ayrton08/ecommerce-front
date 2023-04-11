@@ -1,7 +1,8 @@
 import React, { FC } from 'react';
 import { makeStyles } from '@mui/styles';
 import Image from 'next/image';
-import { Button, Link } from '@mui/material';
+import { Link } from '@mui/material';
+import { Button } from 'ui';
 
 interface Props {
   title: string;
@@ -33,10 +34,7 @@ export const ProductSearched: FC<Props> = ({
         <p>{description}</p>
         <div className="flex justify-between pb-2">
           <div className="font-bold text-lg">$ {price}</div>
-          <Button
-            className="md:absolute md:bottom-3 px-4 py-1 md:right-3 bg-blue-500 hover:bg-blue-600"
-            variant="outlined"
-          >
+          <Button className="md:absolute md:bottom-3 md:right-3 py-2 text-sm px-4">
             <Link className="text-white font-bold" href={'/product/' + id}>
               View more
             </Link>

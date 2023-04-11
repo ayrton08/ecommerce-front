@@ -86,7 +86,7 @@ Dropdown.Item = function DropdownItem({
       type="button"
       className={`${className ? `${className} ` : ''}${
         withDivider ? 'border-b border-gray-900' : ''
-      }w-full flex text-left items-center px-3 py-2 text-sm leading-5 text-white hover:bg-blue-500 hover:text-white`}
+      }w-full flex text-left items-center px-3 py-2 text-sm leading-5 bg-gray-900 text-white hover:bg-blue-500 hover:text-white`}
       role="menuitem"
       tabIndex="-1"
       id={`menu-item-${key}`}
