@@ -44,7 +44,7 @@ export const Product = ({
     <div className="lg:w-full pt-6 flex flex-col md:flex-row">
       <Image
         alt="ecommerce"
-        className="w-full h-64 md:h-[450px] object-cover object-center rounded self-center"
+        className="w-full h-64 md:h-[450px] object-contain object-center rounded self-center"
         src={image}
         width={300}
         height={300}

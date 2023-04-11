@@ -23,7 +23,7 @@ export const Header = () => {
 
   return (
     <div className="bg-black/80 h-[65px] flex px-6 sticky top-0 w-full z-50 justify-between">
-      <Navbar.Brand className="flex gap-4 nav">
+      <div className="flex gap-4 nav items-center w-1/3">
         <Link href="/" aria-label="Button Home">
           <Text
             b
@@ -34,17 +34,12 @@ export const Header = () => {
             MARKET
           </Text>
         </Link>
-      </Navbar.Brand>
-      <Navbar.Content
-        css={{
-          justifyContent: 'center',
-          width: '100%',
-        }}
-      >
+      </div>
+      <div className="w-1/3 flex items-center">
         <Searcher />
-      </Navbar.Content>
-      <Navbar.Content>
-        <h3 className="text-white font-bold w-28">{user?.fullname || ''}</h3>
+      </div>
+      <div className="w-1/3 flex gap-6 items-center justify-end">
+        <h3 className="text-white font-bold">{user?.fullname || ''}</h3>
 
         <Link href="/cart">
           <IconButton>
@@ -115,7 +110,7 @@ export const Header = () => {
             <Button className="py-2 px-4">Login</Button>
           </Link>
         )}
-      </Navbar.Content>
+      </div>
     </div>
   );
 };

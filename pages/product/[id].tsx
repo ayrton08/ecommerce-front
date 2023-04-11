@@ -17,20 +17,15 @@ interface Props {
   product: IProduct;
 }
 
-const ProductPage: NextPage<Props> = ({ product }) => {
-  // const router = useRouter();
+const ProductPage: NextPage<Props> = () => {
+  const router = useRouter();
   const { addProductToCart } = useContext(CartContext);
-  // const { query } = useRouter();
-  // const id = query.id;
+  const { query } = useRouter();
+  const id = query.id;
 
-  // const product = useProduct(`/${id}`);
+  const product = useProduct(`/${id}`);
 
-  // console.log({ product });
-  // useEffect(() => {
-  //   if (!product) {
-  //     router.push('/404');
-  //   }
-  // }, [product, router]);
+  console.log({ product });
 
   const [tempCartProduct, setTempCartProduct] = useState<ICartProduct>({
     id: product?.id,
@@ -54,16 +49,22 @@ const ProductPage: NextPage<Props> = ({ product }) => {
   return (
     <ShopLayout title={product?.name} pageDescription={product?.description}>
       <>
-        <Product
-          description={product.description}
-          id={product.id}
-          image={product.images}
-          price={product.price}
-          title={product.name}
-          className="h-full w-2/3"
-          category={product.type}
-          onClick={onAddProduct}
-        />
+        {product ? (
+          <Product
+            description={product.description}
+            id={product.id}
+            image={product.images}
+            price={product.price}
+            title={product.name}
+            className="h-full w-2/3"
+            category={product.type}
+            onClick={onAddProduct}
+          />
+        ) : (
+          <div className="fixed top-1/3 right-1/2">
+            <Loader />
+          </div>
+        )}
         {/* <div className="grid justify-items-center border-t-2 pt-6">
             <CardTitle className="px-2 text-center">
               Other products that might interest you
@@ -87,24 +88,22 @@ const ProductPage: NextPage<Props> = ({ product }) => {
   );
 };
 
-export const getStaticPaths: GetStaticPaths = async (ctx) => {
-  const productsIds = await getAllProductsId();
+// export const getStaticPaths: GetStaticPaths = async (ctx) => {
+//   const productsIds = await getAllProductsId();
 
-  const paths = productsIds.map(({ id }) => ({
-    params: { id },
-  }));
+//   const paths = productsIds.map(({ id }) => ({
+//     params: { id },
+//   }));
 
-  return {
-    paths,
-    fallback: false,
-  };
-};
+//   return {
+//     paths,
+//     fallback: 'blocking',
+//   };
+// };
 
 // export const getStaticProps: GetStaticProps = async ({ params }) => {
 //   const { id = '' } = params as { id: string };
 //   const product = await findProductById(id);
-
-//   // console.log(product);
 
 //   if (!product) {
 //     return {

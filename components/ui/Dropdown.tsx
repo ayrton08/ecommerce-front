@@ -37,7 +37,7 @@ export function Dropdown({ isBordered, children, user }: any) {
           alt=""
           width={50}
           height={50}
-          className="w-full rounded-full border-2 border-blue-500"
+          className="w-12 rounded-full border-2 border-blue-500"
         />
       </button>
 
