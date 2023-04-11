@@ -1,4 +1,3 @@
-import { Text, Navbar } from '@nextui-org/react';
 import { AcmeLogo } from 'ui/icons/Icon';
 import { useContext } from 'react';
 import Link from 'next/link';
@@ -25,14 +24,10 @@ export const Header = () => {
     <div className="bg-black/80 h-[65px] flex px-6 sticky top-0 w-full z-50 justify-between">
       <div className="flex gap-4 nav items-center w-1/3">
         <Link href="/" aria-label="Button Home">
-          <Text
-            b
-            hideIn="xs"
-            className="flex items-center gap-4 text-lg text-white"
-          >
+          <h2 className="flex items-center gap-4 text-lg text-white font-bold">
             <AcmeLogo />
             MARKET
-          </Text>
+          </h2>
         </Link>
       </div>
       <div className="w-1/3 flex items-center">
@@ -54,16 +49,12 @@ export const Header = () => {
             <Dropdown.Menu ariaLabel="Static Actions">
               <Dropdown.Item
                 key="user"
-                className="bg-black/30  w-full"
+                className="bg-black/30  w-full font-bold cursor-default hover:bg-black/30"
                 withDivider
               >
                 <div className="flex flex-col rounded-md  w-full ">
-                  <Text b color="inherit" css={{ d: 'flex' }}>
-                    Signed in as
-                  </Text>
-                  <Text b color="success" css={{ d: 'flex' }}>
-                    {user!.email}
-                  </Text>
+                  <span>Signed in as</span>
+                  <span className="text-green-500">{user!.email}</span>
                 </div>
               </Dropdown.Item>
               <Link className="items-center grid text-white " href="/profile">
