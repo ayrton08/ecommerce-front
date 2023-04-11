@@ -1,5 +1,5 @@
 import { AvatarIcon } from '../icons';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { Form, Formik } from 'formik';
 
 import { useMe } from 'hooks/useData';
@@ -7,27 +7,48 @@ import { updateUserData } from 'lib/api';
 import { createCart } from 'helpers/createCart';
 import { Button, UserField } from 'ui';
 import { EditIcon, SaveIcon } from 'ui/icons/boxicons';
+import { AuthContext } from 'context/auth';
+import Image from 'next/image';
+import cookies from 'js-cookie';
 
-const initialValues = {
-  name: '',
-  email: '',
-  address: '',
-  city: '',
-};
-
-export const User = ({ children, userName }: any) => {
-  // const data = useMe("/me");
-
+export const User = () => {
   const [editOn, setEditOn] = useState(false);
-  // const profileWithCart = createCart({ ...data?.data });
+
+  const { user } = useContext(AuthContext);
+
+  const [initialValues, setInitialValues] = useState({
+    fullname: cookies.get('firstName'),
+    email: user?.email,
+    address: cookies.get('address'),
+    city: cookies.get('city'),
+    zip: cookies.get('zip'),
+    phone: cookies.get('phone'),
+  });
+
+  const highResPicture = user?.image.replace('s96', 's800');
+
   return (
-    <div className=" card flex flex-col  mb-6 shadow-2xl  bg-black/20  py-8 px-4  z-30 animate__animated animate__fadeIn">
+    <div className=" w-full justify-around flex flex-col lg:flex-row   py-12 px-4  z-30 animate__animated animate__fadeIn">
       <figure>
-        <AvatarIcon className="w-36" />
+        {user ? (
+          <div className="flex flex-col items-center gap-4">
+            <Image
+              src={highResPicture || ''}
+              alt={user.fullname}
+              width={200}
+              height={200}
+              className="rounded-full border-2 border-blue-500 "
+            />
+            <h2 className="card-title text-3xl flex justify-center self-center mb-4">
+              {user?.fullname}
+            </h2>
+          </div>
+        ) : (
+          <AvatarIcon className="w-36" />
+        )}
       </figure>
-      <div className="flex flex-col p-4 justify-center">
-        <h2 className="card-title self-center mb-4">{userName}</h2>
-        <div className="card-actions justify-end">
+      <div className="flex flex-col p-4 justify-start">
+        <div className=" justify-end w-full h-full relative">
           <div className="form-control">
             <Formik
               initialValues={initialValues}
@@ -36,12 +57,11 @@ export const User = ({ children, userName }: any) => {
               }}
             >
               {({ handleChange }) => (
-                <Form className="flex flex-col gap-4">
+                <Form className="grid w-full lg:grid-cols-2 gap-6">
                   <UserField
                     label="Name"
-                    placeholder=""
                     disabled={!editOn}
-                    name="name"
+                    name="fullname"
                     onChange={handleChange}
                   ></UserField>
                   <UserField
@@ -65,10 +85,28 @@ export const User = ({ children, userName }: any) => {
                     name="city"
                     onChange={handleChange}
                   ></UserField>
+                  <UserField
+                    label="Zip"
+                    placeholder=""
+                    disabled={!editOn}
+                    name="zip"
+                    onChange={handleChange}
+                  ></UserField>
+                  <UserField
+                    label="Phone"
+                    placeholder=""
+                    disabled={!editOn}
+                    name="phone"
+                    onChange={handleChange}
+                  ></UserField>
                   <Button
                     onClick={() => setEditOn((value) => (value ? false : true))}
                     type={'submit'}
-                    className={editOn ? 'gap-4 ' : 'hidden'}
+                    className={
+                      editOn
+                        ? 'gap-4 lg:absolute w-full lg:bottom-0 lg:right-0 lg:w-28 py-2 bg-green-500 hover:bg-green-600'
+                        : 'hidden'
+                    }
                   >
                     <SaveIcon />
                     Save
@@ -79,7 +117,11 @@ export const User = ({ children, userName }: any) => {
             <Button
               onClick={() => setEditOn((value) => (value ? false : true))}
               type={'button'}
-              className={editOn ? 'hidden' : 'mt-4 gap-4'}
+              className={
+                editOn
+                  ? 'hidden'
+                  : 'gap-4 lg:absolute lg:bottom-0 lg:right-0 w-full lg:w-28 py-2 mt-6'
+              }
             >
               <EditIcon />
               Edit

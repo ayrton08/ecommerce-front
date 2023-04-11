@@ -1,10 +1,10 @@
-import { ChangeEventHandler } from "react";
+import { ChangeEventHandler } from 'react';
 
 export interface ButtonProps {
   onClick?: (args: any) => any;
   children: any;
   className?: string;
-  type?: "button" | "submit" | "reset";
+  type?: 'button' | 'submit' | 'reset';
   disabled?: boolean;
 }
 
@@ -16,22 +16,6 @@ export interface CartTotals {
 export interface CategoryType {
   label: string;
   src: string;
-}
-
-export interface FieldType {
-  title?: string;
-  label: string;
-  placeholder: string;
-  name?: string;
-  type?: string;
-  onChange?: ChangeEventHandler;
-  disabled?: string | boolean;
-  className?: string;
-  autoComplete?: string;
-  children?: any;
-  value?: any;
-  id?: string;
-  [x: string]: any;
 }
 
 export interface LinkType {
