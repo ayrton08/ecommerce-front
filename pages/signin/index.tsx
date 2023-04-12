@@ -14,15 +14,15 @@ export default function Signin() {
   const [providers, setProviders] = useState({});
   const [email, setEmail] = useState<string>('');
 
-  const { isLoggedIn } = useContext(AuthContext);
+  // const { isLoggedIn } = useContext(AuthContext);
 
-  const router = useRouter();
+  // const router = useRouter();
 
-  useEffect(() => {
-    if (isLoggedIn) {
-      router.push('/');
-    }
-  }, [isLoggedIn, router]);
+  // useEffect(() => {
+  //   if (isLoggedIn) {
+  //     router.push('/');
+  //   }
+  // }, [isLoggedIn, router]);
 
   const { getCode } = useLogin();
 
@@ -48,19 +48,19 @@ export default function Signin() {
   );
 }
 
-// export const getServerSideProps: GetServerSideProps = async ({ req }) => {
-//   const session = await getSession({ req });
+export const getServerSideProps: GetServerSideProps = async ({ req }) => {
+  const session = await getSession({ req });
 
-//   if (session) {
-//     return {
-//       redirect: {
-//         destination: '/',
-//         permanent: false,
-//       },
-//     };
-//   }
+  if (session) {
+    return {
+      redirect: {
+        destination: '/',
+        permanent: false,
+      },
+    };
+  }
 
-//   return {
-//     props: {},
-//   };
-// };
+  return {
+    props: {},
+  };
+};
