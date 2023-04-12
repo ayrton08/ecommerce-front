@@ -9,14 +9,14 @@ export const SearchIconLight = () => {
 };
 
 export const ProfileIcon = () => {
-  return <i className={'bx bx-user-circle bx-sm text-white'}></i>;
+  return <i className={'bx bx-user-circle bx-sm text-gray-300'}></i>;
 };
 export const ProfileIconPrimary = () => {
   return <i className={'bx bx-user-circle bx-sm text-primary'}></i>;
 };
 
 export const OrdersIcon = () => {
-  return <i className="bx bx-money-withdraw bx-sm text-white"></i>;
+  return <i className="bx bx-money-withdraw bx-sm text-gray-300"></i>;
 };
 
 export const OrdersIconPrimary = () => {
@@ -63,5 +63,5 @@ export const SupportIconPrimary = () => {
   return <i className={`bx bx-support bx-sm text-primary`}></i>;
 };
 export const SupportIcon = ({ className }: any) => {
-  return <i className={`bx bx-support bx-sm text-white  ${className}`}></i>;
+  return <i className={`bx bx-support bx-sm text-gray-300  ${className}`}></i>;
 };

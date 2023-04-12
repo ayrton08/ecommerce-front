@@ -1,6 +1,6 @@
 import { ContactForm, Header } from 'components';
 import Head from 'next/head';
-import { SuportImage } from 'ui/icons';
+import { SupportImage } from 'ui/icons';
 import { ShopLayout } from '../../components/layouts/ShopLayout';
 
 export default function suport() {
@@ -16,7 +16,7 @@ export default function suport() {
           />
         </Head>
         <div className="flex flex-col md:flex-row w-full justify-evenly mt-20 mb-10 md:mb-0 md:mt-0 px-4">
-          <SuportImage className="md:w-[500px] mb-4" />
+          <SupportImage className="md:w-[500px] mb-4" />
 
           <ContactForm />
         </div>
