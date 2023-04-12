@@ -6,9 +6,11 @@ export const findProductById = async (query: string) => {
   try {
     const response = await products.getObject<IProductResponse>(query);
 
+    if (!response.Name) return null;
+
     const product = {
       description: response.Description,
-      images: response.Images[0].url,
+      images: response.Images[0].url ? response.Images[0].url : '',
       name: response.Name,
       price: response['Unit cost'],
       type: response.Type,
