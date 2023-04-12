@@ -53,6 +53,7 @@ export const authOptions = {
     maxAge: 2592000,
     strategy: 'jwt',
     updateAge: 86400,
+    timeout: 10000,
   },
 
   callbacks: {

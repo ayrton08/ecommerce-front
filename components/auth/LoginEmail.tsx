@@ -35,7 +35,7 @@ export const LoginEmail: FC<Props> = ({ handler, providers }) => {
   };
 
   return (
-    <Basic icon={<LoginIcon className="md:w-3/4 w-2/3  self-center" />}>
+    <Basic icon={<LoginIcon className="md:w-3/4 w-2/3  self-center flex" />}>
       <CardTitle>Login</CardTitle>
       <ContainerCard>
         <Formik
