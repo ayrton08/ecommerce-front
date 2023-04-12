@@ -28,11 +28,11 @@ interface Props {
 export const LoginEmail: FC<Props> = ({ handler, providers }) => {
   const router = useRouter();
 
-  const onSignin = async (provider: string) => {
-    await signIn(provider);
-    const destination = router.query.page?.toString() || '/';
-    router.replace(destination);
-  };
+  // const onSignin = async (provider: string) => {
+  //   await signIn(provider);
+  //   const destination = router.query.page?.toString() || '/';
+  //   router.replace(destination);
+  // };
 
   return (
     <Basic icon={<LoginIcon className="md:w-3/4 w-2/3  self-center " />}>
@@ -85,7 +85,7 @@ export const LoginEmail: FC<Props> = ({ handler, providers }) => {
                 return (
                   <Button
                     key={provider.id}
-                    onClick={async () => await onSignin(provider.id)}
+                    onClick={() => signIn(provider.id)}
                     className="bg-black/90 flex gap-2 rounded-3xl font-bold text-white hover:bg-black/80 text-sm mb-3"
                   >
                     <i
@@ -100,7 +100,7 @@ export const LoginEmail: FC<Props> = ({ handler, providers }) => {
                 return (
                   <Button
                     key={provider.id}
-                    onClick={async () => await onSignin(provider.id)}
+                    onClick={() => signIn(provider.id)}
                     className="bg-white gap-2 hover:bg-black/10 text-sm text-black border border-black/40 "
                   >
                     <GoogleIcon className="w-6" />

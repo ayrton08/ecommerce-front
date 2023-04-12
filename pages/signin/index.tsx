@@ -49,15 +49,7 @@ export default function Signin() {
 }
 
 export const getServerSideProps: GetServerSideProps = async ({ req }) => {
-  const startTime = process.hrtime();
-
   const session = await getSession({ req });
-
-  console.log({ session });
-  const endTime = process.hrtime(startTime);
-
-  const elapsedTime = endTime[0] * 1000 + endTime[1] / 1000000;
-  console.log('time', elapsedTime);
 
   if (session) {
     return {
