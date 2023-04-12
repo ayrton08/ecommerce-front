@@ -29,7 +29,7 @@ export const LoginEmail: FC<Props> = ({ handler, providers }) => {
   const router = useRouter();
 
   const onSignin = async (provider: string) => {
-    signIn(provider);
+    await signIn(provider);
     const destination = router.query.page?.toString() || '/';
     router.replace(destination);
   };
