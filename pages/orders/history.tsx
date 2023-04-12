@@ -8,6 +8,8 @@ import { IOrder } from '../../interfaces/order';
 import { getSession } from 'next-auth/react';
 import { Order } from 'models';
 import { getServerSession } from 'next-auth';
+import { fetchApi } from 'fetcher';
+import { useEffect } from 'react';
 
 const columns: GridColDef[] = [
   {
@@ -95,6 +97,8 @@ export const getServerSideProps: GetServerSideProps = async ({ req }) => {
   }
 
   const orders = await Order.getOrdersByUser(session.user.id);
+
+  console.log({ session });
 
   return {
     props: {
