@@ -1,3 +1,4 @@
+import { signIn } from 'next-auth/react';
 import { GoogleIcon, LoginIcon } from '../../ui/icons';
 import { Basic } from '../../ui/wrappers/Basic';
 import { UserField } from 'ui/field/Field';
@@ -7,7 +8,6 @@ import { ContainerCard } from 'ui/wrappers/styled';
 import { CardTitle } from 'ui/label/styled';
 import * as yup from 'yup';
 import { Divider, Grid } from '@mui/material';
-import { signIn } from 'next-auth/react';
 import { Button } from 'ui';
 import { FC } from 'react';
 import { useRouter } from 'next/router';
@@ -28,14 +28,14 @@ interface Props {
 export const LoginEmail: FC<Props> = ({ handler, providers }) => {
   const router = useRouter();
 
-  const onSignin = async (provider: string) => {
-    signIn(provider);
-    const destination = router.query.page?.toString() || '/';
-    router.replace(destination);
-  };
+  // const onSignin = async (provider: string) => {
+  //   await signIn(provider);
+  //   const destination = router.query.page?.toString() || '/';
+  //   router.replace(destination);
+  // };
 
   return (
-    <Basic icon={<LoginIcon className="md:w-3/4 w-2/3  self-center" />}>
+    <Basic icon={<LoginIcon className="md:w-3/4 w-2/3  self-center " />}>
       <CardTitle>Login</CardTitle>
       <ContainerCard>
         <Formik
@@ -85,7 +85,7 @@ export const LoginEmail: FC<Props> = ({ handler, providers }) => {
                 return (
                   <Button
                     key={provider.id}
-                    onClick={() => onSignin(provider.id)}
+                    onClick={() => signIn(provider.id)}
                     className="bg-black/90 flex gap-2 rounded-3xl font-bold text-white hover:bg-black/80 text-sm mb-3"
                   >
                     <i
@@ -100,7 +100,7 @@ export const LoginEmail: FC<Props> = ({ handler, providers }) => {
                 return (
                   <Button
                     key={provider.id}
-                    onClick={() => onSignin(provider.id)}
+                    onClick={() => signIn(provider.id)}
                     className="bg-white gap-2 hover:bg-black/10 text-sm text-black border border-black/40 "
                   >
                     <GoogleIcon className="w-6" />

@@ -3,9 +3,8 @@ import GithubProvider from 'next-auth/providers/github';
 import GoogleProvider from 'next-auth/providers/google';
 import Credentials from 'next-auth/providers/credentials';
 import { createToken, findOrCreateAuth } from 'controllers/auth-controller';
-import Image from 'next/image';
 
-export const authOptions = {
+export default NextAuth({
   providers: [
     Credentials({
       name: 'Custom Login',
@@ -53,6 +52,7 @@ export const authOptions = {
     maxAge: 2592000,
     strategy: 'jwt',
     updateAge: 86400,
+    // timeout: 10000,
   },
 
   callbacks: {
@@ -88,6 +88,6 @@ export const authOptions = {
       return session;
     },
   },
-};
+});
 
-export default NextAuth(authOptions as any);
+// export default NextAuth(authOptions);

@@ -84,23 +84,26 @@ const HomePage: FC<Props> = ({ products }) => {
 };
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
-  const products = await findProductsWithPagination();
+  const { data } = await fetchApi('/products');
+  // const products = await findProductsWithPagination();
 
-  // if (data.error)
-  //   return {
-  //     redirect: {
-  //       destination: '/',
-  //       permanent: true,
-  //     },
-  //   };
+  // console.log(data.results);
 
-  const result = products.filter(
-    (product: any) => product.description && product
-  );
+  if (data.error)
+    return {
+      redirect: {
+        destination: '/',
+        permanent: true,
+      },
+    };
+
+  // const result = products.filter(
+  //   (product: any) => product.description && product
+  // );
 
   return {
     props: {
-      products: result,
+      products: data.results,
     },
   };
 };

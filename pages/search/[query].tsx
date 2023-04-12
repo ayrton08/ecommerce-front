@@ -83,7 +83,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
     };
   }
 
-  let products = await findProductByQuery(query);
+  const products = await findProductByQuery(query);
 
   return {
     props: {

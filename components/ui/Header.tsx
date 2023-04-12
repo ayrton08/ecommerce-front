@@ -21,22 +21,22 @@ export const Header = () => {
   const { user, isLoggedIn, logout } = useContext(AuthContext);
 
   return (
-    <div className="bg-black/80 h-[65px] flex px-6 sticky top-0 w-full z-50 justify-between">
-      <div className="flex gap-4 nav items-center w-1/3">
-        <Link href="/" aria-label="Button Home">
-          <h2 className="flex items-center gap-4 text-lg text-white font-bold">
-            <AcmeLogo />
+    <div className="bg-black/80 h-[65px] flex px-2 md:px-6 sticky top-0 w-full z-50 justify-between">
+      <div className="flex gap-4 nav items-center md:w-1/3">
+        <Link href="/" aria-label="Button Home" className="flex gap-4">
+          <AcmeLogo />
+          <h2 className="hidden md:flex items-center gap-4 text-lg text-white font-bold">
             MARKET
           </h2>
         </Link>
       </div>
-      <div className="w-1/3 flex items-center">
+      <div className="w-full md:w-1/3 flex items-center justify-center">
         <Searcher />
       </div>
-      <div className="w-1/3 flex gap-6 items-center justify-end">
-        <h3 className="text-white font-bold">{user?.fullname || ''}</h3>
+      <div className="md:w-1/3 flex gap-6 items-center justify-end">
+        <h3 className="hidden md:flex text-white font-bold">{user?.fullname || ''}</h3>
 
-        <Link href="/cart">
+        <Link href="/cart" className='hidden md:flex'>
           <IconButton>
             <Badge badgeContent={numberOfItems} color="secondary">
               <ShoppingCartOutlined color="info" />

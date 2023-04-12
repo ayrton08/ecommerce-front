@@ -4,14 +4,15 @@ import {
   Box,
   Grid,
   Divider,
-  Button,
   Card,
 } from '@mui/material';
 import { CartList } from 'components/cart/CartList';
 import { OrderSummary } from 'components/cart/OrderSummary';
 import { CartContext } from 'context';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useContext, useEffect } from 'react';
+import { Button } from 'ui';
 import { ShopLayout } from '../../components/layouts/ShopLayout';
 
 const CartPage = () => {
@@ -49,11 +50,8 @@ const CartPage = () => {
               <OrderSummary />
 
               <Box sx={{ mt: 3 }}>
-                <Button
-                  className="rounded-3xl bg-blue-500 text-white font-bold text-lg hover:bg-blue-600"
-                  fullWidth
-                  href="checkout/address"
-                >
+                <Button className="w-full">
+                  <Link href="checkout/address"></Link>
                   Checkout
                 </Button>
               </Box>

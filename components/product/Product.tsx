@@ -2,8 +2,7 @@ import Link from 'next/link';
 
 import { ProductType } from 'interfaces/product';
 import Image from 'next/image';
-import { Loader } from 'ui';
-import { Button } from '@mui/material';
+import { Button, Loader } from 'ui';
 import { ItemCounter } from '../cart/ItemCounter';
 import { useContext, useState } from 'react';
 import { ICartProduct } from 'interfaces';
@@ -68,7 +67,6 @@ export const Product = ({
         />
         <Button
           onClick={onAddProduct}
-          fullWidth
           className="bg-successfull hover:bg-green-600 py-2 my-6  focus:outline-none text-white text-lg font-bold rounded-3xl"
           disabled={disable}
         >
