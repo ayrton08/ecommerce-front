@@ -34,12 +34,17 @@ export const Header = () => {
         <Searcher />
       </div>
       <div className="md:w-1/3 flex gap-6 items-center justify-end">
-        <h3 className="hidden md:flex text-white font-bold">{user?.fullname || ''}</h3>
+        <h3 className="hidden md:flex text-white font-bold">
+          {user?.fullname || ''}
+        </h3>
 
-        <Link href="/cart" className='hidden md:flex'>
+        <Link href="/cart" className="hidden md:flex">
           <IconButton>
             <Badge badgeContent={numberOfItems} color="secondary">
-              <ShoppingCartOutlined color="info" />
+              <ShoppingCartOutlined
+                color="info"
+                className="hover:text-blue-500"
+              />
             </Badge>
           </IconButton>
         </Link>

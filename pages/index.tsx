@@ -19,23 +19,17 @@ const HomePage: FC<Props> = ({ products }) => {
       pageDescription="Find the best products in Market "
     >
       <div className="flex  flex-col gap-4 px-4 md:px-0 md:flex-row w-full justify-around lg:justify-evenly text-black md:text-lg font-bold md:py-16 pb-10 ">
-        <div className="border-b-4 border-r-4 border-[#0099ff] shadow-md">
-          <div className="flex gap-4 px-6 py-4 border-4 mb-1 mr-1 border-primaryA/50">
-            <span>Shipping all over the country</span>
-            <i className="bx bxs-package bx-sm"></i>
-          </div>
+        <div className="btn-grad text-xl gap-2 items-center">
+          <span>Shipping all over the country</span>
+          <i className="bx bxs-package bx-sm"></i>
         </div>
-        <div className="border-b-4 border-r-4 border-[#0099ff] shadow-md">
-          <div className="flex gap-4 px-6 py-4 border-4 mb-1 mr-1 border-primaryA/50">
-            <span>Discounts of 10% 20% and 30%</span>
-            <i className="bx bxs-discount bx-sm"></i>
-          </div>
+        <div className="btn-grad-orange text-xl gap-2 items-center">
+          <span>Discounts of 10% 20% and 30%</span>
+          <i className="bx bxs-discount bx-sm"></i>
         </div>
-        <div className="border-b-4 border-r-4 border-[#0099ff] shadow-md">
-          <div className="flex gap-4 px-6 py-4 border-4 mb-1 mr-1 border-primaryA/50">
-            <span>Offers of the week</span>
-            <i className="bx bxs-offer bx-sm"></i>
-          </div>
+        <div className="btn-grad-green text-xl gap-2 items-center">
+          <span>Offers of the week</span>
+          <i className="bx bxs-offer bx-md"></i>
         </div>
       </div>
 
@@ -85,9 +79,6 @@ const HomePage: FC<Props> = ({ products }) => {
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
   const { data } = await fetchApi('/products');
-  // const products = await findProductsWithPagination();
-
-  // console.log(data.results);
 
   if (data.error)
     return {
@@ -96,10 +87,6 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
         permanent: true,
       },
     };
-
-  // const result = products.filter(
-  //   (product: any) => product.description && product
-  // );
 
   return {
     props: {

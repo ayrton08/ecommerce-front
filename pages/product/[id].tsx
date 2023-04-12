@@ -17,15 +17,8 @@ interface Props {
   product: IProduct;
 }
 
-const ProductPage: NextPage<Props> = () => {
-  const router = useRouter();
+const ProductPage: NextPage<Props> = ({ product }) => {
   const { addProductToCart } = useContext(CartContext);
-  const { query } = useRouter();
-  const id = query.id;
-
-  const product = useProduct(`/${id}`);
-
-  console.log({ product });
 
   const [tempCartProduct, setTempCartProduct] = useState<ICartProduct>({
     id: product?.id,
@@ -88,38 +81,38 @@ const ProductPage: NextPage<Props> = () => {
   );
 };
 
-// export const getStaticPaths: GetStaticPaths = async (ctx) => {
-//   const productsIds = await getAllProductsId();
+export const getStaticPaths: GetStaticPaths = async (ctx) => {
+  const productsIds = await getAllProductsId();
 
-//   const paths = productsIds.map(({ id }) => ({
-//     params: { id },
-//   }));
+  const paths = productsIds.map(({ id }) => ({
+    params: { id },
+  }));
 
-//   return {
-//     paths,
-//     fallback: 'blocking',
-//   };
-// };
+  return {
+    paths,
+    fallback: 'blocking',
+  };
+};
 
-// export const getStaticProps: GetStaticProps = async ({ params }) => {
-//   const { id = '' } = params as { id: string };
-//   const product = await findProductById(id);
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+  const { id = '' } = params as { id: string };
+  const product = await findProductById(id);
 
-//   if (!product) {
-//     return {
-//       redirect: {
-//         destination: '/',
-//         permanent: false,
-//       },
-//     };
-//   }
+  if (!product) {
+    return {
+      redirect: {
+        destination: '/',
+        permanent: false,
+      },
+    };
+  }
 
-//   return {
-//     props: {
-//       product,
-//     },
-//     revalidate: 60 * 60 * 24,
-//   };
-// };
+  return {
+    props: {
+      product,
+    },
+    revalidate: 60 * 60 * 24,
+  };
+};
 
 export default ProductPage;

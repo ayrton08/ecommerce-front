@@ -11,15 +11,15 @@ import Visa from './visa.svg';
 import Master from './master.svg';
 import MercadoPago from './mp.svg';
 import Cash from './cash.svg';
-import Suport from './suport.svg';
+import Support from './support.svg';
 import Google from './google.svg';
 
 const GoogleIcon = ({ className }: any) => {
   return <Google className={className} />;
 };
 
-const SuportImage = ({ className }: any) => {
-  return <Suport className={className} />;
+const SupportImage = ({ className }: any) => {
+  return <Support className={className} />;
 };
 
 const CashIcon = ({ className }: any) => {
@@ -99,7 +99,7 @@ const MenuIcon = ({ className }: any) => {
 };
 
 export {
-  SuportImage,
+  SupportImage,
   AvatarIcon,
   CartLogo,
   ComputerIcon,
