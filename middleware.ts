@@ -13,16 +13,16 @@ export async function middleware(req: NextRequest) {
   //   }
   // }
 
-  if (!session) {
-    const requestedPage = req.nextUrl.pathname;
+  // if (!session) {
+  //   const requestedPage = req.nextUrl.pathname;
 
-    const url = req.nextUrl.clone();
+  //   const url = req.nextUrl.clone();
 
-    url.pathname = '/signin';
-    url.search = `page=${requestedPage}`;
+  //   url.pathname = '/signin';
+  //   url.search = `page=${requestedPage}`;
 
-    return NextResponse.redirect(url);
-  }
+  //   return NextResponse.redirect(url);
+  // }
 }
 
 export const config = {
