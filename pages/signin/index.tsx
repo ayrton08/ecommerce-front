@@ -48,10 +48,10 @@ export default function Signin() {
   );
 }
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
+export const getServerSideProps: GetServerSideProps = async ({ req }) => {
   const startTime = process.hrtime();
 
-  const session = await getSession(context);
+  const session = await getSession({ req });
 
   console.log({ session });
   const endTime = process.hrtime(startTime);
