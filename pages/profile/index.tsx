@@ -1,5 +1,4 @@
 import { User } from 'ui';
-import { useMe } from 'hooks';
 import { ShopLayout } from '../../components/layouts/ShopLayout';
 import { GetServerSideProps } from 'next';
 import { getSession } from 'next-auth/react';

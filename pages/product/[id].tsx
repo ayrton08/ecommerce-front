@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { useRouter } from 'next/router';
-import { useMe, useProduct } from 'hooks/useData';
+import { useProduct } from 'hooks/useData';
 import { Toast } from 'ui/Toast';
 import { Loader } from 'ui/loaders/Loader';
 import { Product } from 'components';

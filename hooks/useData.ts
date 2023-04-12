@@ -18,11 +18,6 @@ export const useProduct = (id: string) => {
   return data?.product;
 };
 
-export const useMe = (path: string) => {
-  const { data, error } = useSWR(path, fetchApi);
-  return data;
-};
-
 export const useGetProductBySearch = (
   query: string,
   offset?: number,

@@ -1,10 +1,11 @@
 import { ShopLayout } from '../../components/layouts/ShopLayout';
-import { Box, Button, Grid, TextField, Typography } from '@mui/material';
+import { Box, Grid, TextField, Typography } from '@mui/material';
 import { useForm } from 'react-hook-form';
 import cookies from 'js-cookie';
 import { useRouter } from 'next/router';
 import { useContext, useEffect } from 'react';
 import { CartContext } from '../../context';
+import { Button } from 'ui';
 
 type FormData = {
   firstName: string;
@@ -157,8 +158,8 @@ const AddressPage = () => {
           </Grid>
         </Grid>
 
-        <Box sx={{ marginTop: 5 }} display="flex" justifyContent="center">
-          <Button type="submit" className="circular-btn" size="large">
+        <Box sx={{ marginTop: 5 }} display="flex" justifyContent="end">
+          <Button type="submit" className="py-2 px-4">
             Revisar pedido
           </Button>
         </Box>

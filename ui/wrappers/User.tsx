@@ -2,9 +2,6 @@ import { AvatarIcon } from '../icons';
 import { useState, useContext } from 'react';
 import { Form, Formik } from 'formik';
 
-import { useMe } from 'hooks/useData';
-import { updateUserData } from 'lib/api';
-import { createCart } from 'helpers/createCart';
 import { Button, UserField } from 'ui';
 import { EditIcon, SaveIcon } from 'ui/icons/boxicons';
 import { AuthContext } from 'context/auth';
