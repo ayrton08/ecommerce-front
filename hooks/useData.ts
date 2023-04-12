@@ -1,3 +1,4 @@
+import { IProduct } from 'interfaces';
 import { fetchApi } from 'lib/api';
 import useSWR from 'swr';
 import useSWRInmutable from 'swr/immutable';
@@ -15,11 +16,6 @@ export const useProducts = () => {
 export const useProduct = (id: string) => {
   const { data, error } = useSWRInmutable('/products/' + id, fetchApi);
   return data?.product;
-};
-
-export const useMe = (path: string) => {
-  const { data, error } = useSWR(path, fetchApi);
-  return data;
 };
 
 export const useGetProductBySearch = (

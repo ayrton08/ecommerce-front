@@ -9,6 +9,7 @@ interface Props {
   pageDescription: string;
   imageFullUrl?: string;
   children: ReactNode;
+  className?: string;
 }
 
 export const ShopLayout: FC<Props> = ({
@@ -16,6 +17,7 @@ export const ShopLayout: FC<Props> = ({
   title,
   pageDescription,
   imageFullUrl,
+  className,
 }) => {
   return (
     <>
@@ -32,7 +34,7 @@ export const ShopLayout: FC<Props> = ({
       <Header />
 
       <main
-        className="container-page "
+        className={`container-page ${className}`}
         style={{
           margin: '10px auto',
           maxWidth: '1440px',

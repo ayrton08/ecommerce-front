@@ -48,24 +48,24 @@ export default function Signin() {
   );
 }
 
-// export const getServerSideProps: GetServerSideProps = async ({
-//   req,
-//   query,
-// }: any) => {
-//   const session = await getSession({ req });
+export const getServerSideProps: GetServerSideProps = async ({
+  req,
+  query,
+}: any) => {
+  const session = await getSession({ req });
 
-//   const { page = '/' } = query;
+  const { page = '/' } = query;
 
-//   if (session) {
-//     return {
-//       redirect: {
-//         destination: page,
-//         permanent: false,
-//       },
-//     };
-//   }
+  if (session) {
+    return {
+      redirect: {
+        destination: page,
+        permanent: false,
+      },
+    };
+  }
 
-//   return {
-//     props: {},
-//   };
-// };
+  return {
+    props: {},
+  };
+};

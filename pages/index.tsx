@@ -1,13 +1,12 @@
-import Head from 'next/head';
-
-import axios from 'axios';
 import { ProductFeatured } from 'components';
 import { Featured, Categories, Category } from 'ui';
 import { Divider } from 'ui/divider/styled';
-import { GetServerSideProps, GetStaticProps } from 'next';
+import { GetStaticProps } from 'next';
 import { FC } from 'react';
 import { IProduct } from '../interfaces/product';
 import { ShopLayout } from '../components/layouts/ShopLayout';
+import { fetchApi } from 'fetcher';
+import { findProductsWithPagination } from 'controllers/product-controller';
 
 interface Props {
   products: IProduct[];
@@ -43,11 +42,11 @@ const HomePage: FC<Props> = ({ products }) => {
       <Featured>
         {products.map((product: IProduct) => (
           <ProductFeatured
-            key={product.objectID}
+            key={product.id}
             title={product.name}
             price={product.price}
             image={product.images}
-            id={product.objectID}
+            id={product.id}
             category={product.type}
           />
         ))}
@@ -85,21 +84,23 @@ const HomePage: FC<Props> = ({ products }) => {
 };
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
-  const { data } = await axios.get(
-    'https://e-commerce-backend-jade.vercel.app/api/products'
-  );
+  const products = await findProductsWithPagination();
 
-  if (data.error)
-    return {
-      redirect: {
-        destination: '/',
-        permanent: true,
-      },
-    };
+  // if (data.error)
+  //   return {
+  //     redirect: {
+  //       destination: '/',
+  //       permanent: true,
+  //     },
+  //   };
+
+  const result = products.filter(
+    (product: any) => product.description && product
+  );
 
   return {
     props: {
-      products: data.results,
+      products: result,
     },
   };
 };

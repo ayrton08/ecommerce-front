@@ -1,16 +1,10 @@
-import { useRouter } from 'next/router';
-
-import { useGetProductBySearch, useMe } from 'hooks';
-import { Pagination } from 'components/';
-import { Loader, Basic } from 'ui';
+import { Basic } from 'ui';
 import { NoResultsIcons } from 'ui/icons';
-import { usePagination } from 'hooks/usePagination';
-import { isUserLogged } from 'helpers/localStorage';
 import { ShopLayout } from '../../components/layouts/ShopLayout';
 import { IProduct } from '../../interfaces/product';
 import { ProductSearched } from '../../components/product/ProductSearched';
 import { GetServerSideProps, NextPage } from 'next';
-import { findProductById } from '../../controllers/product-controller';
+import { findProductByQuery } from '../../controllers/product-controller';
 
 interface Props {
   products: IProduct[];
@@ -18,16 +12,6 @@ interface Props {
 }
 
 const SearchPage: NextPage<Props> = ({ products, query }) => {
-  // const {
-  //   data,
-  //   leakedProducts,
-  //   numberOfPages,
-  //   currentPage,
-  //   totalPage,
-  //   setOffSet,
-  //   setCurrentPage,
-  // } = usePagination(query as string);
-
   return (
     <ShopLayout title={query + ' | Market'} pageDescription="">
       {products.length === 0 ? (
@@ -51,12 +35,12 @@ const SearchPage: NextPage<Props> = ({ products, query }) => {
             <div className="flex flex-wrap gap-4">
               {products.map((product: IProduct) => (
                 <ProductSearched
-                  key={product.objectID}
+                  key={product.id}
                   title={product.name}
                   price={product.price}
                   images={product.images}
                   description={product.description}
-                  id={product.objectID}
+                  id={product.id}
                 />
               ))}
             </div>
@@ -99,7 +83,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
     };
   }
 
-  let products = await findProductById(query);
+  let products = await findProductByQuery(query);
 
   return {
     props: {

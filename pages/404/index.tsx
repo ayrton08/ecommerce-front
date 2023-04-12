@@ -1,10 +1,9 @@
-import { Header } from 'components';
-import Head from 'next/head';
 import { NotFoundIcon } from 'ui/icons';
 import { Basic } from 'ui/wrappers/Basic';
 import { ShopLayout } from 'components/layouts/ShopLayout';
+import { NextPage } from 'next';
 
-export default function notFound() {
+const NotFoundPage: NextPage = () => {
   return (
     <ShopLayout title="Page not found" pageDescription="page not found">
       <div className="flex-col-center">
@@ -17,4 +16,5 @@ export default function notFound() {
       </div>
     </ShopLayout>
   );
-}
+};
+export default NotFoundPage;

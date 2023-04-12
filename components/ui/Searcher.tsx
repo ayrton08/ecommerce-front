@@ -25,7 +25,7 @@ export const Searcher = () => {
       validationSchema={schema}
     >
       {({ handleChange }) => (
-        <Form className="form-control mr-2 self-center sm:w-1/2 max-w-[500px] sm:flex relative">
+        <Form className="form-control mr-2 self-center sm:w-full max-w-[500px] sm:flex relative">
           <FieldSearch
             type="text"
             placeholder="Search"

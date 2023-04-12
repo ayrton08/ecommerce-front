@@ -7,7 +7,7 @@ import { findProductById } from '../../../controllers/product-controller';
 
 const schema = Yup.object()
   .shape({
-    productId: Yup.string().required(),
+    id: Yup.string().required(),
   })
   .noUnknown()
   .strict();

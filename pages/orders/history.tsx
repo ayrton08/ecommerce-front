@@ -38,9 +38,7 @@ const columns: GridColDef[] = [
     width: 200,
     sortable: false,
     renderCell: (params: GridCellParams) => {
-      return params.row.paid ? (
-        <Chip color="secondary" label="Shipping" variant="outlined" />
-      ) : (
+      return (
         <Link component={NextLink} href={params.row.order} underline="always">
           Go to order
         </Link>
@@ -89,7 +87,7 @@ export const getServerSideProps: GetServerSideProps = async ({ req }) => {
   if (!session) {
     return {
       redirect: {
-        destination: '/auth/login?page=/orders/history',
+        destination: '/signin?page=/orders/history',
         permanent: false,
       },
     };

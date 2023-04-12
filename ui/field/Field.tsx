@@ -1,8 +1,24 @@
 import { InputAdornment, TextField } from '@mui/material';
 import { ErrorMessage, useField } from 'formik';
-import { FieldType } from 'interfaces/ui';
+import { ChangeEventHandler } from 'react';
 import { ContainerInput, Label } from 'ui/label/styled';
 import { Field } from './styled';
+
+export interface FieldType {
+  title?: string;
+  label: string;
+  placeholder?: string;
+  name?: string;
+  type?: string;
+  onChange?: ChangeEventHandler;
+  disabled?: string | boolean;
+  className?: string;
+  autoComplete?: string;
+  children?: any;
+  value?: any;
+  id?: string;
+  [x: string]: any;
+}
 
 export const UserField = ({
   label,

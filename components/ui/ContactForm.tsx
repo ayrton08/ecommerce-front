@@ -4,7 +4,7 @@ import { Formik, Form, ErrorMessage } from 'formik';
 import { useSendMail } from 'hooks/useSendMail';
 
 import { MyTextarea } from 'components';
-import { ButtonPrimary, Loader, UserField } from '../../ui';
+import { Button, ButtonPrimary, Loader, UserField } from '../../ui';
 import { CardTitle } from 'ui/label/styled';
 import { Alert } from 'ui/Alert';
 
@@ -102,9 +102,10 @@ export const ContactForm = () => {
                 ) : (
                   <span className="w-full h-[24px] my-2"></span>
                 )}
-                <ButtonPrimary className="w-full h-[45px]" type="submit">
-                  SEND
-                </ButtonPrimary>
+                <Button className="w-full flex gap-4 h-[45px] items-center" type="submit">
+                  <span>Send</span>
+                  <i className="bx bx-mail-send bx-sm"></i>
+                </Button>
               </Form>
             </>
           )}

@@ -4,7 +4,7 @@ export interface IProduct {
   type: string;
   images: string;
   price: number;
-  objectID: string;
+  id: string;
   total?: number;
 }
 
