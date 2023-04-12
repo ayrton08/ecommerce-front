@@ -7,6 +7,7 @@ import { GetServerSideProps, NextPage } from 'next';
 import { IOrder } from '../../interfaces/order';
 import { getSession } from 'next-auth/react';
 import { Order } from 'models';
+import { getServerSession } from 'next-auth';
 
 const columns: GridColDef[] = [
   {
