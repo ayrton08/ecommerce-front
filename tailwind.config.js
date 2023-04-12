@@ -24,15 +24,5 @@ module.exports = {
       dark_light: 'rgb(0 0 0 / 0.2)',
     },
   },
-  plugins: [require('daisyui'), require('flowbite/plugin')],
-  daisyui: {
-    styled: true,
-    themes: true,
-    base: true,
-    utils: true,
-    logs: true,
-    rtl: false,
-    prefix: '',
-    darkTheme: 'dark',
-  },
+  plugins: [require('flowbite/plugin')],
 };
