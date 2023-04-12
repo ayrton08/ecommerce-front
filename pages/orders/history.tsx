@@ -102,18 +102,4 @@ export const getServerSideProps: GetServerSideProps = async ({ req }) => {
   };
 };
 
-export const config = {
-  // Configura el tiempo límite de fallback en 10 segundos
-  fallback: {
-    // Permite que la página se genere después de 10 segundos si la generación de la página tarda demasiado
-    // Nota: El tiempo límite debe ser mayor que el tiempo que tarda en generarse la página
-    // de lo contrario, la página de fallback se generará incluso si la página real se generó con éxito.
-    timeout: 10000,
-    // Muestra una página de fallback mientras se genera la página real
-    // (opcional, pero se recomienda para proporcionar una mejor experiencia de usuario)
-    // Esta página de fallback se generará si la página real tarda demasiado.
-    fallback: <div>Generando la página...</div>,
-  },
-};
-
 export default PageOrders;

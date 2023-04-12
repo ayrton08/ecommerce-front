@@ -48,18 +48,13 @@ export default function Signin() {
   );
 }
 
-export const getServerSideProps: GetServerSideProps = async ({
-  req,
-  query,
-}: any) => {
-  const session = await getSession({ req });
-
-  const { page = '/' } = query;
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const session = await getSession(context);
 
   if (session) {
     return {
       redirect: {
-        destination: page,
+        destination: '/',
         permanent: false,
       },
     };
