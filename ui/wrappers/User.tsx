@@ -36,7 +36,7 @@ export const User = () => {
               height={200}
               className="rounded-full border-2 border-blue-500 "
             />
-            <h2 className="card-title text-3xl flex justify-center self-center mb-4">
+            <h2 className="card-title text-3xl flex justify-center self-center mb-4 font-bold">
               {user?.fullname}
             </h2>
           </div>

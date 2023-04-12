@@ -6,6 +6,7 @@ import { FC } from 'react';
 import { IProduct } from '../interfaces/product';
 import { ShopLayout } from '../components/layouts/ShopLayout';
 import { fetchApi } from 'fetcher';
+import { findProductsWithPagination } from 'controllers/product-controller';
 
 interface Props {
   products: IProduct[];
@@ -83,19 +84,23 @@ const HomePage: FC<Props> = ({ products }) => {
 };
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
-  const { data } = await fetchApi('/products');
+  const products = await findProductsWithPagination();
 
-  if (data.error)
-    return {
-      redirect: {
-        destination: '/',
-        permanent: true,
-      },
-    };
+  // if (data.error)
+  //   return {
+  //     redirect: {
+  //       destination: '/',
+  //       permanent: true,
+  //     },
+  //   };
+
+  const result = products.filter(
+    (product: any) => product.description && product
+  );
 
   return {
     props: {
-      products: data.results,
+      products: result,
     },
   };
 };

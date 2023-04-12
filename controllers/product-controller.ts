@@ -56,9 +56,9 @@ export const getAllProductsId = async () => {
 };
 
 export const findProductsWithPagination = async (
-  search: string,
-  limit: number,
-  offset: number
+  search: string = '',
+  limit?: number,
+  offset?: number
 ): Promise<any> => {
   const results = await products.search(search, {
     length: limit,
@@ -69,7 +69,7 @@ export const findProductsWithPagination = async (
     description: p.Description,
     name: p.Name,
     type: p.Type,
-    images: p.Images[0].url,
+    images: p.Images ? p.Images[0].url : '',
     price: p['Unit cost'],
     id: p.objectID,
     total: results.nbHits,
