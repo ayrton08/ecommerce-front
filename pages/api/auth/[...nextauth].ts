@@ -3,7 +3,6 @@ import GithubProvider from 'next-auth/providers/github';
 import GoogleProvider from 'next-auth/providers/google';
 import Credentials from 'next-auth/providers/credentials';
 import { createToken, findOrCreateAuth } from 'controllers/auth-controller';
-import Image from 'next/image';
 
 export const authOptions = {
   providers: [

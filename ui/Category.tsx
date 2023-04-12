@@ -5,8 +5,7 @@ import Router from 'next/router';
 export const Category = ({ label, src }: CategoryType) => {
   const handler = () => {
     Router.push({
-      pathname: '/search',
-      query: { q: label },
+      pathname: `/search/${label}`,
     });
   };
 
