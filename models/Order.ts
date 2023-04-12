@@ -52,7 +52,6 @@ export default class Order {
 
   static async getOrdersByUser(user: string): Promise<IOrder[] | []> {
     try {
-      console.log({ collection });
       const results = await collection.where('user', '==', user).get();
       const orders: any = [];
       results.forEach((doc) => {
