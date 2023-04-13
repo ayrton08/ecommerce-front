@@ -69,7 +69,6 @@ export const CartProvider = ({ children }: any) => {
   }, [state.cart]);
 
   const addProductToCart = (product: ICartProduct) => {
-    console.log({ product });
     const productInCart = state.cart.some((p) => p.id === product.id);
 
     if (!productInCart) {

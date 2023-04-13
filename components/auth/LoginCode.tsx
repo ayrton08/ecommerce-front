@@ -75,7 +75,7 @@ export const LoginCode: FC<Props> = ({ email, onClick }) => {
                 </Button>
               </UserField>
 
-              <Button type="submit" className="mt-4">
+              <Button type="submit" className="mt-4 w-full">
                 Ingresar
               </Button>
               <div className=" flex items-center pt-4 ">

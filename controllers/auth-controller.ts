@@ -18,7 +18,11 @@ export async function sendCode(email: string) {
   return true;
 }
 
-export async function findOrCreateAuth(email: string): Promise<Auth> {
+export async function findOrCreateAuth({
+  email,
+  image,
+  name,
+}: any): Promise<any> {
   const auth = await Auth.findByEmail(email);
 
   if (auth) {
@@ -32,8 +36,11 @@ export async function findOrCreateAuth(email: string): Promise<Auth> {
     userId: newUser.id,
     code: '',
     expires: new Date(),
+    image,
+    name,
   });
-  return newAuth!.data.data;
+
+  return newAuth!.data;
 }
 
 export const createToken = async (
@@ -42,6 +49,8 @@ export const createToken = async (
 ): Promise<{
   id: string;
   email: string;
+  image: string;
+  name: string;
 }> => {
   const auth = await Auth.findByEmailAndCode(email, code);
   const codeUsed = await Auth.findByEmailAndCode(email, null);
@@ -67,5 +76,7 @@ export const createToken = async (
   return {
     id: auth.data.userId,
     email: auth.data.email,
+    name: auth.data.name,
+    image: auth.data.image,
   };
 };
