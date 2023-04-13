@@ -1,7 +1,7 @@
 import { padding } from '@mui/system';
 import Head from 'next/head';
 import { FC, ReactNode } from 'react';
-import { Footer } from 'ui';
+import { Footer } from 'components/styled';
 import { Header } from '../ui/Header';
 
 interface Props {

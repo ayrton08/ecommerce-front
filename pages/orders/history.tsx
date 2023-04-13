@@ -75,7 +75,7 @@ const PageOrders: NextPage<Props> = ({ orders }) => {
 
       {orders && (
         <Grid container>
-          <Grid item xs={12} sx={{ height: 650, width: '100%' }}>
+          <Grid item xs={12} sx={{ height: 550, width: '100%' }}>
             <DataGrid rows={rows || []} columns={columns} rowBuffer={10} />
           </Grid>
         </Grid>

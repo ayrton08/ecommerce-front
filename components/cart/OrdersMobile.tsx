@@ -1,5 +1,5 @@
-import { CardTitle, Label } from 'ui/label/styled';
-import { ContainerCard } from 'ui/wrappers/styled';
+import { CardTitle, Label } from 'components/styled/label/styled';
+import { ContainerCard } from 'components/styled/wrappers/styled';
 
 export const OrdersMobile = ({ children }: any) => {
   return (

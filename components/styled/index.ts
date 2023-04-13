@@ -9,6 +9,5 @@ export * from './field/Field';
 export * from './footer/Footer';
 export * from './Link';
 export * from './loaders/Loader';
-export * from '../components/cart/Orders';
-export * from './Toast';
+export * from '../cart/Orders';
 export * from './wrappers/Basic';

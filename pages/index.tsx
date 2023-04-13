@@ -1,6 +1,6 @@
 import { ProductFeatured } from 'components';
-import { Featured, Categories, Category } from 'ui';
-import { Divider } from 'ui/divider/styled';
+import { Featured, Categories, Category } from 'components/styled';
+import { Divider } from 'components/styled/divider/styled';
 import { GetStaticProps } from 'next';
 import { FC } from 'react';
 import { IProduct } from '../interfaces/product';
@@ -21,11 +21,11 @@ const HomePage: FC<Props> = ({ products }) => {
       <div className="flex  flex-col gap-4 px-4 md:px-0 md:flex-row w-full justify-around lg:justify-evenly text-black md:text-lg font-bold md:py-16 pb-10 ">
         <div className="btn-grad text-xl gap-2 items-center">
           <span>Shipping all over the country</span>
-          <i className="bx bxs-package bx-sm"></i>
+          <i className="bx bxs-package bx-md"></i>
         </div>
         <div className="btn-grad-orange text-xl gap-2 items-center">
           <span>Discounts of 10% 20% and 30%</span>
-          <i className="bx bxs-discount bx-sm"></i>
+          <i className="bx bxs-discount bx-md"></i>
         </div>
         <div className="btn-grad-green text-xl gap-2 items-center">
           <span>Offers of the week</span>

@@ -32,13 +32,17 @@ export function Dropdown({ isBordered, children, user }: any) {
         aria-expanded="true"
         aria-haspopup="true"
       >
-        <Image
-          src={user.image}
-          alt=""
-          width={50}
-          height={50}
-          className="w-12 rounded-full border-2 border-blue-500"
-        />
+        {user.image ? (
+          <Image
+            src={user.image}
+            alt=""
+            width={50}
+            height={50}
+            className="w-12 rounded-full border-2 border-blue-500"
+          />
+        ) : (
+          <i className="bx bxs-user-circle bx-md text-blue-500 hover:text-blue-600" ></i>
+        )}
       </button>
 
       {isOpen && (

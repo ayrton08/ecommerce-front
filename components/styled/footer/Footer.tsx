@@ -1,16 +1,21 @@
 import React from 'react';
-import { FacebookIcon, TwitterIcon } from 'ui/icons/boxicons';
+import { FacebookIcon, TwitterIcon } from 'components/styled/icons/boxicons';
 import { Link } from '../Link';
 import LinkNext from 'next/link';
-import { ContainerFooter, TitleFooter } from './styled';
-import { CashIcon, MasterIcon, MercadoPagoIcon, VisaIcon } from 'ui/icons';
+import { TitleFooter } from './styled';
+import {
+  CashIcon,
+  MasterIcon,
+  MercadoPagoIcon,
+  VisaIcon,
+} from 'components/styled/icons';
 
 export const Footer = () => {
   return (
-    <footer className="flex flex-col sm:flex-row gap-20 bg-black/80 min-h-[250px] text-white px-10 pt-8 justify-between">
+    <footer className="flex flex-col sm:flex-row gap-20 bg-black/80 min-h-[180px] text-white px-10 pt-8 justify-between">
       <div className="flex flex-col gap-4">
         <TitleFooter>Company</TitleFooter>
-        <div className='flex flex-col gap-2'>
+        <div className="flex flex-col gap-2">
           <Link label="About us" />
           <Link label="Contact" href="/support" />
         </div>

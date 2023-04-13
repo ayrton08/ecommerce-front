@@ -1,4 +1,4 @@
-import { User } from 'ui';
+import { User } from 'components/styled';
 import { ShopLayout } from '../../components/layouts/ShopLayout';
 import { GetServerSideProps } from 'next';
 import { getSession } from 'next-auth/react';

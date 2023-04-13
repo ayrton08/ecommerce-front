@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import Image from 'next/image';
-import { Button } from 'ui';
+import { Button } from 'components/styled';
 import Link from 'next/link';
 
 interface Props {

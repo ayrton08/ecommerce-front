@@ -1,14 +1,14 @@
 import { signIn } from 'next-auth/react';
-import { GoogleIcon, LoginIcon } from '../../ui/icons';
-import { Basic } from '../../ui/wrappers/Basic';
-import { UserField } from 'ui/field/Field';
+import { GoogleIcon, LoginIcon } from '../styled/icons';
+import { Basic } from '../styled/wrappers/Basic';
+import { UserField } from 'components/styled/field/Field';
 
 import { Formik, Form } from 'formik';
-import { ContainerCard } from 'ui/wrappers/styled';
-import { CardTitle } from 'ui/label/styled';
+import { ContainerCard } from 'components/styled/wrappers/styled';
+import { CardTitle } from 'components/styled/label/styled';
 import * as yup from 'yup';
 import { Divider, Grid } from '@mui/material';
-import { Button } from 'ui';
+import { Button } from 'components/styled';
 import { FC } from 'react';
 import { useRouter } from 'next/router';
 

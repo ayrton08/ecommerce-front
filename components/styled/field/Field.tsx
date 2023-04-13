@@ -1,7 +1,7 @@
 import { InputAdornment, TextField } from '@mui/material';
 import { ErrorMessage, useField } from 'formik';
 import { ChangeEventHandler } from 'react';
-import { ContainerInput, Label } from 'ui/label/styled';
+import { ContainerInput, Label } from 'components/styled/label/styled';
 import { Field } from './styled';
 
 export interface FieldType {

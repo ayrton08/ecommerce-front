@@ -1,5 +1,5 @@
-import { NotFoundIcon } from 'ui/icons';
-import { Basic } from 'ui/wrappers/Basic';
+import { NotFoundIcon } from 'components/styled/icons';
+import { Basic } from 'components/styled/wrappers/Basic';
 import { ShopLayout } from 'components/layouts/ShopLayout';
 import { NextPage } from 'next';
 

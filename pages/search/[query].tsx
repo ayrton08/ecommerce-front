@@ -1,5 +1,5 @@
-import { Basic } from 'ui';
-import { NoResultsIcons } from 'ui/icons';
+import { Basic } from 'components/styled';
+import { NoResultsIcons } from 'components/styled/icons';
 import { ShopLayout } from '../../components/layouts/ShopLayout';
 import { IProduct } from '../../interfaces/product';
 import { ProductSearched } from '../../components/product/ProductSearched';

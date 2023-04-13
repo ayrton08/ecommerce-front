@@ -1,6 +1,6 @@
 import { ContactForm, Header } from 'components';
 import Head from 'next/head';
-import { SupportImage } from 'ui/icons';
+import { SupportImage } from 'components/styled/icons';
 import { ShopLayout } from '../../components/layouts/ShopLayout';
 
 export default function suport() {

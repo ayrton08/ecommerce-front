@@ -21,7 +21,7 @@ export default NextAuth({
         },
       },
       async authorize(credentials) {
-        const { email, id } = await createToken(
+        const { email, id, image, name } = await createToken(
           credentials?.email!,
           Number(credentials?.code!)
         );
@@ -29,6 +29,8 @@ export default NextAuth({
         return {
           id,
           email,
+          image,
+          fullname: name,
         };
       },
     }),
@@ -52,7 +54,6 @@ export default NextAuth({
     maxAge: 2592000,
     strategy: 'jwt',
     updateAge: 86400,
-    // timeout: 10000,
   },
 
   callbacks: {
@@ -62,10 +63,10 @@ export default NextAuth({
 
         switch (account.type) {
           case 'oauth':
-            const data = await findOrCreateAuth(user.email);
+            const data = await findOrCreateAuth(user);
             const userData = {
-              id: data.data.userId,
-              email: data.data.email,
+              id: data.userId,
+              email: data.email,
               image: user.image,
               fullname: user.name,
             };

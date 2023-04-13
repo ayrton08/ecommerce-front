@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 import { ProductType } from 'interfaces/product';
 import Image from 'next/image';
-import { Button, Loader } from 'ui';
+import { Button, Loader } from 'components/styled';
 import { ItemCounter } from '../cart/ItemCounter';
 import { useContext, useState } from 'react';
 import { ICartProduct } from 'interfaces';
