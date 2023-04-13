@@ -1,8 +1,8 @@
 import React from 'react';
-import { ButtonDanger, ButtonPrimary } from 'ui/button/styled';
-import { LabelPrimary } from 'ui/label/styled';
-import { Link } from '../../ui/Link';
-import { ContainerOrder, ItemLinkOrder, ItemOrder } from '../../ui/orders/styled';
+import { ButtonDanger, ButtonPrimary } from 'components/styled/button/styled';
+import { LabelPrimary } from 'components/styled/label/styled';
+import { Link } from '../styled/Link';
+import { ContainerOrder, ItemLinkOrder, ItemOrder } from '../styled/orders/styled';
 
 export const Order = ({
   index,

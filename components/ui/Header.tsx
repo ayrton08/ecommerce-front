@@ -1,4 +1,4 @@
-import { AcmeLogo } from 'ui/icons/Icon';
+import { AcmeLogo } from 'components/styled/icons/Icon';
 import { useContext } from 'react';
 import Link from 'next/link';
 import { CartContext } from 'context';
@@ -10,9 +10,9 @@ import {
   OrdersIcon,
   ProfileIcon,
   SupportIcon,
-} from 'ui/icons/boxicons';
+} from 'components/styled/icons/boxicons';
 import { AuthContext } from 'context/auth';
-import { Button } from 'ui';
+import { Button } from 'components/styled';
 import { Dropdown } from './Dropdown';
 
 export const Header = () => {
@@ -77,7 +77,7 @@ export const Header = () => {
               </Link>
               <Link className="items-center grid text-white" href="/support">
                 <Dropdown.Item
-                  key="orders"
+                  key="support"
                   icon={<SupportIcon />}
                   withDivider
                   className="bg-gray-900"

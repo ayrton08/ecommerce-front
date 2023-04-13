@@ -1,8 +1,8 @@
 import React, { useContext, useState } from 'react';
 import { useRouter } from 'next/router';
 import { useProduct } from 'hooks/useData';
-import { Toast } from 'ui/Toast';
-import { Loader } from 'ui/loaders/Loader';
+import { Toast } from 'components/styled/Toast';
+import { Loader } from 'components/styled/loaders/Loader';
 import { Product } from 'components';
 import { CartContext } from 'context';
 import { IProduct } from '../../interfaces/product';

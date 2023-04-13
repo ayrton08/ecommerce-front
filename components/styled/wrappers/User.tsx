@@ -2,8 +2,8 @@ import { AvatarIcon } from '../icons';
 import { useState, useContext } from 'react';
 import { Form, Formik } from 'formik';
 
-import { Button, UserField } from 'ui';
-import { EditIcon, SaveIcon } from 'ui/icons/boxicons';
+import { Button, UserField } from 'components/styled';
+import { EditIcon, SaveIcon } from 'components/styled/icons/boxicons';
 import { AuthContext } from 'context/auth';
 import Image from 'next/image';
 import cookies from 'js-cookie';

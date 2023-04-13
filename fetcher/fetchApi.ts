@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const fetchApi = axios.create({
-  baseURL: 'https://aj-market.vercel.app/api',
+  baseURL: process.env.NEXT_PUBLIC_BASE_URL,
   withCredentials: true,
 });
 

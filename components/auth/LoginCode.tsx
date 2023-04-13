@@ -1,10 +1,10 @@
 import { Formik, Form } from 'formik';
 
-import { LoginIcon } from '../../ui/icons';
-import { Basic, Button, UserField } from 'ui';
-import { CardTitle } from 'ui/label/styled';
-import { ContainerCard } from 'ui/wrappers/styled';
-import { PasteIcon } from 'ui/icons/boxicons';
+import { LoginIcon } from '../styled/icons';
+import { Basic, Button, UserField } from 'components/styled';
+import { CardTitle } from 'components/styled/label/styled';
+import { ContainerCard } from 'components/styled/wrappers/styled';
+import { PasteIcon } from 'components/styled/icons/boxicons';
 import * as yup from 'yup';
 import { signIn } from 'next-auth/react';
 import { pasteCode } from 'utils/pasteClipBoard';

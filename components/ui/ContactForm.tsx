@@ -4,9 +4,9 @@ import { Formik, Form, ErrorMessage } from 'formik';
 import { useSendMail } from 'hooks/useSendMail';
 
 import { MyTextarea } from 'components';
-import { Button, ButtonPrimary, Loader, UserField } from '../../ui';
-import { CardTitle } from 'ui/label/styled';
-import { Alert } from 'ui/Alert';
+import { Button, ButtonPrimary, Loader, UserField } from '../styled';
+import { CardTitle } from 'components/styled/label/styled';
+import { Alert } from 'components/styled/Alert';
 
 export interface InitialValue {
   fullname: string;

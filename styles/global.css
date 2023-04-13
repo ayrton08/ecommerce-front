@@ -55,7 +55,7 @@
 }
 
 .container-page {
-  min-height: calc(100vh - 315px);
+  min-height: calc(100vh - 265px);
   background-color: white;
 }
 

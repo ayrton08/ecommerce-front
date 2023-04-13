@@ -1,6 +1,6 @@
 import Link from "next/link";
 import React from "react";
-import { CardTitle } from "ui/label/styled";
+import { CardTitle } from "components/styled/label/styled";
 import { Category } from "../Category";
 
 export const Categories = ({ children }: any) => {

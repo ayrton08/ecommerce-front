@@ -1,6 +1,6 @@
 import { ProductFeatured } from 'components';
-import { Featured, Categories, Category } from 'ui';
-import { Divider } from 'ui/divider/styled';
+import { Featured, Categories, Category } from 'components/styled';
+import { Divider } from 'components/styled/divider/styled';
 import { GetStaticProps } from 'next';
 import { FC } from 'react';
 import { IProduct } from '../interfaces/product';

@@ -1,4 +1,4 @@
-import { CardTitle } from 'ui/label/styled';
+import { CardTitle } from 'components/styled/label/styled';
 
 export const OrdersWrapp = ({ children, status }: any) => {
   return (

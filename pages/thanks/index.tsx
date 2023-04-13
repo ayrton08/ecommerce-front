@@ -1,9 +1,9 @@
 import { GetServerSideProps } from 'next';
 import { getSession } from 'next-auth/react';
 import Link from 'next/link';
-import { Basic } from 'ui';
-import { PaymentIcon } from 'ui/icons';
-import { CardTitle } from 'ui/label/styled';
+import { Basic } from 'components/styled';
+import { PaymentIcon } from 'components/styled/icons';
+import { CardTitle } from 'components/styled/label/styled';
 import { ShopLayout } from '../../components/layouts/ShopLayout';
 
 const ThanksPage = () => {

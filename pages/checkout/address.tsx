@@ -5,7 +5,7 @@ import cookies from 'js-cookie';
 import { useRouter } from 'next/router';
 import { useContext, useEffect } from 'react';
 import { CartContext } from '../../context';
-import { Button } from 'ui';
+import { Button } from 'components/styled';
 
 type FormData = {
   firstName: string;
