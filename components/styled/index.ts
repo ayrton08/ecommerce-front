@@ -10,5 +10,4 @@ export * from './footer/Footer';
 export * from './Link';
 export * from './loaders/Loader';
 export * from '../cart/Orders';
-export * from './Toast';
 export * from './wrappers/Basic';

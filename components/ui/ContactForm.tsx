@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import * as Yup from 'yup';
 import { Formik, Form, ErrorMessage } from 'formik';
 import { useSendMail } from 'hooks/useSendMail';
@@ -6,7 +6,9 @@ import { useSendMail } from 'hooks/useSendMail';
 import { MyTextarea } from 'components';
 import { Button, ButtonPrimary, Loader, UserField } from '../styled';
 import { CardTitle } from 'components/styled/label/styled';
-import { Alert } from 'components/styled/Alert';
+
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export interface InitialValue {
   fullname: string;
@@ -47,6 +49,9 @@ export const ContactForm = () => {
           initialValues={initialValue}
           onSubmit={(values, { resetForm }) => {
             form.current && sendEmail(form.current, resetForm);
+            toast.success('The email has been sent successfully', {
+              style: { marginTop: 60 },
+            });
           }}
           validationSchema={schema}
         >
@@ -102,7 +107,10 @@ export const ContactForm = () => {
                 ) : (
                   <span className="w-full h-[24px] my-2"></span>
                 )}
-                <Button className="w-full flex gap-4 h-[45px] items-center" type="submit">
+                <Button
+                  className="w-full flex gap-4 h-[45px] items-center"
+                  type="submit"
+                >
                   <span>Send</span>
                   <i className="bx bx-mail-send bx-sm"></i>
                 </Button>
@@ -112,13 +120,16 @@ export const ContactForm = () => {
         </Formik>
       </div>
 
-      {isSending === 'sendig' && (
+      {isSending === 'sending' && (
         <div className="flex justify-center fixed top-0 bottom-0 right-0 left-0 bg-dark">
           <Loader />
         </div>
       )}
 
-      {isSending === 'sent' && <Alert message="Email sent successfull" />}
+      <ToastContainer />
+
+      {/* {isSending === 'sent' && <Alert message="Email sent successfull" />} */}
+      {/* {true && <Toast message="Email sent successfull" />} */}
     </section>
   );
 };
