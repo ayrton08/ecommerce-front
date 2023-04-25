@@ -25,7 +25,7 @@ export const ProductSearched: FC<Props> = ({
         height={300}
         alt={title}
         src={images}
-        className="md:w-52 w-full min-w-[200px] md:h-52 h-44 object-cover object-center  rounded-t-lg md:rounded-tr-none md:rounded-l-lg self-center"
+        className="md:w-52 w-full min-w-[200px] md:h-52 h-44 object-contain object-center  rounded-t-lg md:rounded-tr-none md:rounded-l-lg self-center"
       />
 
       <div className="flex px-4 flex-col pt-4 gap-4">
