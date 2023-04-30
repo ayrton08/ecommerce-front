@@ -12,7 +12,7 @@ _Desktop_
 
 ### Link to WebApp
 
-[Deploy](https://aj-market.vercel.app/)
+[Deploy](https://aj-market.up.railway.app/)
 
 ### Description:
 
