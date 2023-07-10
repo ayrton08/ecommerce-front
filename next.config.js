@@ -44,6 +44,11 @@ const nextConfig = withSvgr({
         hostname: 'lh3.googleusercontent.com',
         pathname: '/*/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'v5.airtableusercontent.com',
+        pathname: '/*/**',
+      },
     ],
   },
 });

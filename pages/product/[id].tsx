@@ -1,7 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { useRouter } from 'next/router';
 import { useProduct } from 'hooks/useData';
-import { Toast } from 'components/styled/Toast';
 import { Loader } from 'components/styled/loaders/Loader';
 import { Product } from 'components';
 import { CartContext } from 'context';
@@ -36,7 +35,7 @@ const ProductPage: NextPage<Props> = ({ product }) => {
     if (product) {
       addProductToCart(tempCartProduct);
     }
-    Toast(`${product.name} agregado al carrito`);
+    // Toast(`${product.name} agregado al carrito`);
   };
 
   return (
