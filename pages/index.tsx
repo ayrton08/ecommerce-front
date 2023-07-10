@@ -78,7 +78,9 @@ const HomePage: FC<Props> = ({ products }) => {
 };
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
-  const { data } = await fetchApi('/products');
+  const { data } = await fetchApi('/products', {
+    baseURL: 'https://e-commerce-backend-jade.vercel.app/api',
+  });
 
   if (data.error)
     return {
